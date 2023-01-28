@@ -6,7 +6,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  self.moduleName = @"AppMarketplaceBerroTech";
+  self.moduleName = @"BerroTech";
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
