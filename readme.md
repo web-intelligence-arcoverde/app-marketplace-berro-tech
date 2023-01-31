@@ -11,3 +11,7 @@
 ## Instalar dependencias no ios
 
 - npx pod-install
+
+## Limpar task do projeto
+
+- cd android ./gradlew clean
