@@ -12,6 +12,11 @@ export const SplashScreen = () => {
         backgroundColor: '#fff',
       }}>
       <Text>SplashScreen</Text>
+
+      <Input
+        placeholder="Comment"
+        leftIcon={{type: 'font-awesome', name: 'comment'}}
+      />
     </SafeAreaView>
   );
 };
