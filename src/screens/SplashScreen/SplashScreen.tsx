@@ -1,5 +1,7 @@
 import {SafeAreaView, Text} from 'react-native';
 
+import {Input} from '@rneui/themed';
+
 export const SplashScreen = () => {
   return (
     <SafeAreaView

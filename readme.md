@@ -7,3 +7,7 @@
 ## Rodar devices
 
 - emulator -avd avd_name
+
+## Instalar dependencias no ios
+
+- npx pod-install
