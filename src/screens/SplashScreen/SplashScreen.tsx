@@ -12,7 +12,16 @@ export const SplashScreen = () => {
         flex: 1,
         backgroundColor: '#fff',
       }}>
-      <Text>SplashScreen</Text>
+      <Text
+        style={{
+          fontFamily: 'Inter',
+          fontSize: 18,
+          fontWeight: '600',
+          lineHeight: 27,
+          color: '#4D4B5C',
+        }}>
+        Bem-vindo de volta
+      </Text>
       <Icon name="rocket" size={30} color="#900" />
       <Input
         placeholder="Comment"
