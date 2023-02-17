@@ -1,7 +1,10 @@
 import {SafeAreaView, Text} from 'react-native';
 
-import {Input} from '@rneui/themed';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Logo from '../../assets/icons/background-splash-screen.svg';
+
+import {Dimensions} from 'react-native';
+
+const {width, height} = Dimensions.get('screen');
 
 export const SplashScreen = () => {
   return (
@@ -12,21 +15,7 @@ export const SplashScreen = () => {
         flex: 1,
         backgroundColor: '#fff',
       }}>
-      <Text
-        style={{
-          fontFamily: 'Inter',
-          fontSize: 18,
-          fontWeight: '600',
-          lineHeight: 27,
-          color: '#4D4B5C',
-        }}>
-        Bem-vindo de volta
-      </Text>
-      <Icon name="rocket" size={30} color="#900" />
-      <Input
-        placeholder="Comment"
-        leftIcon={{type: 'font-awesome', name: 'comment'}}
-      />
+      <Logo width={width} height={height} />
     </SafeAreaView>
   );
 };
