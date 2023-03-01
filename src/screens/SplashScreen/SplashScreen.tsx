@@ -1,40 +1,22 @@
-import {Text} from '@rneui/base';
 import React from 'react';
 import {View, Image} from 'react-native';
 
-import {Button, Separator} from '../../components';
-
-import {ICONS, IMAGES} from '../../assets';
+import {
+  Button,
+  Separator,
+  HeaderLogoIntro,
+  HeaderDescriptionIntro,
+} from '../../components';
 
 export const SplashScreen = () => {
-  const Icon = ICONS['hands'];
-
   return (
     <View style={{backgroundColor: '#fff', flex: 1}}>
-      <Image
-        source={IMAGES.LogoIntro}
-        style={{width: '100%'}}
-        resizeMode="contain"
-      />
+      <HeaderLogoIntro />
 
-      <View
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          borderTopColor: '#f4f4f4',
-          borderTopWidth: 1,
-          borderRadius: 6,
-          paddingHorizontal: 20,
-          paddingVertical: 32,
-        }}>
-        <View>
-          <Text>Bem-vindo</Text>
-          <Separator height={4} />
-          <Text>É bom ter você aqui</Text>
-        </View>
-        <Icon />
-      </View>
+      <HeaderDescriptionIntro
+        title="Bem-vindo"
+        description="É bom ter você aqui"
+      />
 
       <View
         style={{
