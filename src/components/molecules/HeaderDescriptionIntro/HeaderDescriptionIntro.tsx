@@ -1,7 +1,6 @@
-import {Text} from '@rneui/base';
 import {View} from 'react-native';
 
-import {Separator} from '../..';
+import {Separator, Text} from '../..';
 import {ICONS} from '../../../assets';
 
 const Icon = ICONS['hands'];
@@ -28,9 +27,13 @@ export const HeaderDescriptionIntro = ({
         paddingVertical: 32,
       }}>
       <View>
-        <Text>{title}</Text>
+        <Text typography="h2" colorFamily="dark" colorVariant="_04">
+          {title}
+        </Text>
         <Separator height={4} />
-        <Text>{description}</Text>
+        <Text typography="h3" colorFamily="sub_brand" colorVariant="_02">
+          {description}
+        </Text>
       </View>
       <Icon />
     </View>

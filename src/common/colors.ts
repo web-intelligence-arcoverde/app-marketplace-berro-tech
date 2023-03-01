@@ -1,4 +1,4 @@
-export const COLORS = {
+export const COLORS: any = {
   dark: {
     _01: '#17161E',
     _02: '#282733',
