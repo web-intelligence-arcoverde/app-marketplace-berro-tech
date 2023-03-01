@@ -7,7 +7,7 @@ import {
 } from '../../components';
 import {Container, ContainerStyled} from './style';
 
-export const SignUpDefault = () => {
+export const SignInDefault = () => {
   return (
     <Container>
       <HeaderLogoIntro />

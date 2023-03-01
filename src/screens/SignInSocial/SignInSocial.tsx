@@ -8,7 +8,7 @@ import {
 } from '../../components';
 import {Container} from './style';
 
-export const SignUpSocial = () => {
+export const SignInSocial = () => {
   return (
     <Container>
       <HeaderLogoIntro />
