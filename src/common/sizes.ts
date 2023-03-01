@@ -3,7 +3,7 @@ import {scale} from '../utils';
 export const SIZES = {
   base: scale(10),
   font: scale(14),
-  radius: 12,
+  radius: scale(6),
   padding: scale(24),
 
   h1: scale(30),

@@ -1,0 +1,66 @@
+import {scale} from '../utils';
+import {COLORS} from '.';
+
+export const ButtonStyle = {
+  contained: {
+    containerStyle: {
+      width: '100%',
+    },
+
+    titleStyle: {
+      color: `${COLORS.brand_dark._01}`,
+      fontFamily: 'Inter',
+      fontSize: scale(14),
+      fontHeight: 'normal',
+      marginLeft: 15,
+    },
+
+    buttonStyle: {
+      backgroundColor: `${COLORS.brand_light._01}`,
+      height: scale(42),
+      borderRadius: scale(6),
+    },
+  },
+
+  containedSecondary: {
+    containerStyle: {
+      width: '100%',
+    },
+
+    titleStyle: {
+      color: `${COLORS.brand_dark._02}`,
+      fontFamily: 'Inter',
+      fontSize: scale(14),
+      fontHeight: 'normal',
+      marginLeft: 15,
+    },
+
+    buttonStyle: {
+      backgroundColor: `${COLORS.brand_light._02}`,
+      height: scale(42),
+      borderRadius: scale(6),
+    },
+  },
+
+  outlined: {
+    containerStyle: {
+      width: '100%',
+    },
+
+    titleStyle: {
+      color: `${COLORS.gray._02}`,
+      fontFamily: 'Inter',
+      fontSize: scale(14),
+      fontHeight: 'normal',
+      marginLeft: 15,
+    },
+
+    buttonStyle: {
+      backgroundColor: `${COLORS.light._05}`,
+      height: scale(42),
+      borderRadius: scale(6),
+      borderWidth: 1,
+      borderColor: `${COLORS.light._02}`,
+    },
+  },
+};
