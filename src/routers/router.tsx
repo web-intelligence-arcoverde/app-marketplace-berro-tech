@@ -1,16 +1,17 @@
 import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {SplashScreen} from '../screens/';
+import {SignUpSocial, SignUpDefault} from '../screens/';
 
 const Stack = createNativeStackNavigator();
 
 export const RouterApp = () => {
   return (
     <Stack.Navigator
-      initialRouteName={'SplashScreen'}
+      initialRouteName={'SignUpDefault'}
       screenOptions={{headerShown: false}}>
-      <Stack.Screen name="SplashScreen" component={SplashScreen} />
+      <Stack.Screen name="SignUpSocial" component={SignUpSocial} />
+      <Stack.Screen name="SignUpDefault" component={SignUpDefault} />
     </Stack.Navigator>
   );
 };

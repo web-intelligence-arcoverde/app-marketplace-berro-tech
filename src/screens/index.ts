@@ -1,1 +1,2 @@
-export * from './SplashScreen/SplashScreen';
+export * from './SignUpSocial/SignUpSocial';
+export * from './SignUpDefault/SignUpDefault';

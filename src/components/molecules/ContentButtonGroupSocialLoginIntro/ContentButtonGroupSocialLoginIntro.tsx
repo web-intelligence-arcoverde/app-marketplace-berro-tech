@@ -1,5 +1,3 @@
-import {View} from 'react-native';
-
 import {Button, Separator} from '../..';
 
 import {Container} from './style';
