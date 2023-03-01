@@ -1,6 +1,6 @@
 import {Text as DefaultText} from '@rneui/base';
 import {COLORS} from '../../../common';
-import {Typography} from '../../../common/typography';
+import {Typography} from '../../../common/';
 
 interface IText {
   typography?: string;
