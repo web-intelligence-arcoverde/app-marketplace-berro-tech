@@ -1,5 +1,5 @@
 import {View} from 'react-native';
-
+import {Container} from './style';
 import {Separator, Text} from '../..';
 import {ICONS} from '../../../assets';
 
@@ -15,17 +15,7 @@ export const HeaderDescriptionIntro = ({
   description,
 }: IHeaderDescriptionIntro) => {
   return (
-    <View
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        borderTopColor: '#f4f4f4',
-        borderTopWidth: 1,
-        borderRadius: 6,
-        paddingHorizontal: 20,
-        paddingVertical: 32,
-      }}>
+    <Container>
       <View>
         <Text typography="h2" colorFamily="dark" colorVariant="_04">
           {title}
@@ -36,6 +26,6 @@ export const HeaderDescriptionIntro = ({
         </Text>
       </View>
       <Icon />
-    </View>
+    </Container>
   );
 };
