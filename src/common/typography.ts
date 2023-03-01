@@ -1,3 +1,4 @@
+import {COLORS} from '.';
 import {scale} from '../utils';
 
 export const Typography: any = {
@@ -26,5 +27,13 @@ export const Typography: any = {
     fontWeight: '400',
     fontSize: scale(16),
     lineHeight: scale(24),
+  },
+
+  input: {
+    fontFamily: 'inter',
+    fontWeight: '400',
+    fontSize: scale(14),
+    lineHeight: scale(20),
+    color: COLORS['gray']['_04'],
   },
 };

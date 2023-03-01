@@ -4,6 +4,7 @@ import {
   HeaderLogoIntro,
   HeaderDescriptionIntro,
   Button,
+  Input,
 } from '../../components';
 import {Container, ContainerStyled} from './style';
 
@@ -18,6 +19,8 @@ export const SignInDefault = () => {
       />
 
       <ContainerStyled>
+        <Input />
+
         <Button title="Entrar" variant="contained" />
       </ContainerStyled>
     </Container>
