@@ -1,10 +1,56 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View} from 'react-native';
 import {Input, Separator, Button, Text} from '../..';
 import {StepContextRecovery} from '../../../screens';
 
+import {
+  CodeField,
+  Cursor,
+  useBlurOnFulfill,
+  useClearByFocusCell,
+} from 'react-native-confirmation-code-field';
+
+import {Text as DefaultText} from 'react-native';
+
+import {StyleSheet} from 'react-native';
+import {useChronometerHook} from '../../../hooks/useChronometerHook';
+
+const styles = StyleSheet.create({
+  cell: {
+    width: 40,
+    height: 55,
+    lineHeight: 38,
+    fontSize: 14,
+    borderWidth: 1,
+    borderColor: '#00000030',
+    textAlign: 'center',
+    borderRadius: 6,
+    color: '#9C99AD',
+    paddingTop: 8,
+  },
+  focusCell: {
+    backgroundColor: '#FAFAFC',
+    borderColor: '#F2F1F7',
+  },
+});
+
+const CELL_COUNT = 6;
+
 export const RecoveryAccountScreenStep02 = () => {
   const [step, setStep] = React.useContext(StepContextRecovery);
+
+  const [value, setValue] = useState('');
+  const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
+  const [props, getCellOnLayoutHandler] = useClearByFocusCell({
+    value,
+    setValue,
+  });
+
+  const {handleStart, chronometer} = useChronometerHook();
+
+  function resendCodeConfirmation() {
+    handleStart();
+  }
 
   return (
     <>
@@ -23,12 +69,29 @@ export const RecoveryAccountScreenStep02 = () => {
         </Text>
         <Separator height={24} />
       </View>
-      <Input label="Email" placeholder="Seu melhor email" />
+      <CodeField
+        ref={ref}
+        {...props}
+        value={value}
+        onChangeText={setValue}
+        cellCount={CELL_COUNT}
+        rootStyle={styles.codeFieldRoot}
+        keyboardType="number-pad"
+        textContentType="oneTimeCode"
+        renderCell={({index, symbol, isFocused}) => (
+          <DefaultText
+            key={index}
+            style={[styles.cell, isFocused && styles.focusCell]}
+            onLayout={getCellOnLayoutHandler(index)}>
+            {symbol || (isFocused ? <Cursor /> : null)}
+          </DefaultText>
+        )}
+      />
       <Separator height={24} />
-      <Button title="Próximo" variant="contained" onPress={() => setStep(1)} />
+      <Button title="Próximo" variant="contained" onPress={() => setStep(0)} />
       <Separator height={20} />
       <Button
-        title={`Reenviar código (01:00)`}
+        title={`Reenviar código (${chronometer})`}
         variant="disabled"
         onPress={() => setStep(1)}
       />
