@@ -3,8 +3,7 @@ import {Input, Separator, Button} from '../..';
 import {StepContext} from '../../../screens';
 
 export const SignUpScreenStep02 = () => {
-  const [step, setStep] = React.useContext(StepContext);
-  console.log(step);
+  const [step, setStep] = useContext(StepContext);
 
   return (
     <>

@@ -25,8 +25,15 @@ export const Typography: any = {
   h4: {
     fontFamily: 'inter',
     fontWeight: '400',
-    fontSize: scale(16),
-    lineHeight: scale(24),
+    fontSize: scale(14),
+    lineHeight: scale(21),
+  },
+
+  h5: {
+    fontFamily: 'inter',
+    fontWeight: '400',
+    fontSize: scale(12),
+    lineHeight: scale(19),
   },
 
   input: {
