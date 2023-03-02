@@ -63,4 +63,22 @@ export const ButtonStyle = {
       borderColor: `${COLORS.light._02}`,
     },
   },
+
+  none: {
+    containerStyle: {
+      width: '100%',
+    },
+
+    titleStyle: {
+      color: `${COLORS.sub_brand._02}`,
+      fontFamily: 'Inter',
+      fontSize: scale(14),
+      fontHeight: 'normal',
+      marginLeft: 0,
+    },
+
+    buttonStyle: {
+      backgroundColor: `${COLORS.light._05}`,
+    },
+  },
 };

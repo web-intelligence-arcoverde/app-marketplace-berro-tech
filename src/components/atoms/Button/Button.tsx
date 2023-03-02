@@ -9,6 +9,7 @@ interface IButton {
   variant?: string;
   icon?: string;
   iconRight?: boolean;
+  onPress: () => void;
 }
 
 export const Button = ({
@@ -16,11 +17,13 @@ export const Button = ({
   variant = 'contained',
   icon,
   iconRight,
+  onPress = () => {},
 }: IButton) => {
   const {buttonStyle, titleStyle, containerStyle} = ButtonStyle[variant];
 
   return (
     <ButtonDefault
+      onPress={() => onPress()}
       iconRight={iconRight}
       icon={icon && <IconComponent icon={icon} />}
       containerStyle={containerStyle}
