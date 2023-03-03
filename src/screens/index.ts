@@ -1,4 +1,4 @@
-export * from './SignInSocialScreen/SignInSocial';
+export * from './SignInSocialScreen/SignInSocialScreen';
 export * from './SignInDefault/SignInDefault';
 
 export * from './SignUpScreen/SignUpScreen';

@@ -1,20 +1,26 @@
-import {configureStore, PreloadedState} from '@reduxjs/toolkit';
+import {Action, configureStore, ThunkAction} from '@reduxjs/toolkit';
+import createSagaMiddleware from '@redux-saga/core';
 
-import rootReducer from './reducer';
+import logger from 'redux-logger';
+
+import {rootSaga} from './reducer/rootSagas';
+import {rootReducer} from './reducer/rootReducer';
+
+let sagaMiddleware = createSagaMiddleware();
+const middleware = [sagaMiddleware, logger];
 
 export const store = configureStore({
   reducer: rootReducer,
+  middleware,
 });
 
-export function setupStore(preloadedState?: PreloadedState<RootState>) {
-  return configureStore({
-    reducer: rootReducer,
-    preloadedState,
-  });
-}
+sagaMiddleware.run(rootSaga);
 
-export type RootState = ReturnType<typeof rootReducer>;
-export type AppStore = ReturnType<typeof setupStore>;
-export type AppDispatch = AppStore['dispatch'];
-
-export default store;
+export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+>;
