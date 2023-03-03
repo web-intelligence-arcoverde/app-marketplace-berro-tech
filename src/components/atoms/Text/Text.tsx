@@ -17,6 +17,8 @@ export const Text = ({
 }: IText) => {
   const typographyText = Typography[typography];
 
+  console.log(typographyText);
+
   const color = COLORS[colorFamily][colorVariant];
 
   return (

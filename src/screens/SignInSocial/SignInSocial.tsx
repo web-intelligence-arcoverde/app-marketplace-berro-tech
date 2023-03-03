@@ -8,6 +8,8 @@ import {
 } from '../../components';
 import {Container} from './style';
 
+import {PixelRatio} from 'react-native';
+
 export const SignInSocial = () => {
   return (
     <Container>

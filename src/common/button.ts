@@ -1,7 +1,9 @@
 import {scale} from '../utils';
 import {COLORS} from './colors';
 
-export const ButtonStyle = {
+import EStyleSheet from 'react-native-extended-stylesheet';
+
+export const ButtonStyle = EStyleSheet.create({
   contained: {
     containerStyle: {
       width: '100%',
@@ -100,4 +102,4 @@ export const ButtonStyle = {
       borderRadius: scale(6),
     },
   },
-};
+});

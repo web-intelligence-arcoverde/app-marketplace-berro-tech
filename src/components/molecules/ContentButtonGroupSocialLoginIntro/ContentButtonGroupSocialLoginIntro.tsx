@@ -11,14 +11,12 @@ export const ContentButtonGroupSocialLoginIntro = () => {
         icon="email"
         onPress={() => console.log('Event')}
       />
-      <Separator height={20} />
       <Button
         title="Entrar com google"
         variant="outlined"
         icon="gmail"
         onPress={() => console.log('Event')}
       />
-      <Separator height={20} />
       <Button
         title="Entrar com facebook"
         variant="outlined"

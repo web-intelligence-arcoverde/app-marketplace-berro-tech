@@ -1,6 +1,8 @@
 import {scale} from '../utils';
 
-export const Typography: any = {
+import EStyleSheet from 'react-native-extended-stylesheet';
+
+export const Typography = EStyleSheet.create({
   h1: {
     fontFamily: 'inter',
     fontSize: scale(20),
@@ -9,13 +11,14 @@ export const Typography: any = {
   h2: {
     fontFamily: 'inter',
     fontSize: scale(18),
-    lineHeight: scale(27),
+    lineHeight: scale(26),
+    fontWeight: 600,
   },
   h3: {
     fontFamily: 'inter',
     fontSize: scale(16),
-    lineHeight: scale(32),
-    letterSpacing: 0.2,
+    lineHeight: scale(28),
+    fontWeight: 400,
   },
 
   h4: {
@@ -35,4 +38,4 @@ export const Typography: any = {
     fontSize: scale(14),
     lineHeight: scale(20),
   },
-};
+});
