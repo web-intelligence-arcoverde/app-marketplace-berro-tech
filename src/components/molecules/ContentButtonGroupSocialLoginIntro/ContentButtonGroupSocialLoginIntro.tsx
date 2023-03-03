@@ -1,4 +1,4 @@
-import {Button, Separator} from '../..';
+import {Button} from '../..';
 
 import {Container} from './style';
 

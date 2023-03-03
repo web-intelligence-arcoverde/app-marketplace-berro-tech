@@ -10,7 +10,7 @@ import {Container} from './style';
 
 import {PixelRatio} from 'react-native';
 
-export const SignInSocial = () => {
+export const SignInSocialScreen = () => {
   return (
     <Container>
       <HeaderLogoIntro />

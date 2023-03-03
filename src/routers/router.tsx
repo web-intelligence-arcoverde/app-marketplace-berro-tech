@@ -2,7 +2,7 @@ import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {
-  SignInSocial,
+  SignInSocialScreen,
   SignInDefault,
   SignUpScreen,
   RecoveryAccountScreen,
@@ -13,9 +13,9 @@ const Stack = createNativeStackNavigator();
 export const RouterApp = () => {
   return (
     <Stack.Navigator
-      initialRouteName={'SignInSocial'}
+      initialRouteName={'SignInSocialScreen'}
       screenOptions={{headerShown: false}}>
-      <Stack.Screen name="SignInSocial" component={SignInSocial} />
+      <Stack.Screen name="SignInSocialScreen" component={SignInSocialScreen} />
 
       <Stack.Screen name="SignInDefault" component={SignInDefault} />
       <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
