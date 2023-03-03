@@ -1,27 +1,37 @@
 import {Button} from '../..';
+import {useNavigationHook} from '../../../hooks';
 
 import {Container} from './style';
 
+import {useAppDispatch} from '../../../hooks/useReduxHook';
+import {
+  signInRequestFacebook,
+  signInRequestGoogle,
+} from '../../../store/reducer/auth/actions';
+
 export const ContentButtonGroupSocialLoginIntro = () => {
+  const {goToRouter} = useNavigationHook();
+  const dispatch = useAppDispatch();
+
   return (
     <Container>
       <Button
         title="Entrar com email"
         variant="contained"
         icon="email"
-        onPress={() => console.log('Event')}
+        onPress={() => goToRouter('SignInDefault')}
       />
       <Button
         title="Entrar com google"
         variant="outlined"
         icon="gmail"
-        onPress={() => console.log('Event')}
+        onPress={() => dispatch(signInRequestGoogle())}
       />
       <Button
         title="Entrar com facebook"
         variant="outlined"
         icon="facebook"
-        onPress={() => console.log('Event')}
+        onPress={() => dispatch(signInRequestFacebook())}
       />
     </Container>
   );
