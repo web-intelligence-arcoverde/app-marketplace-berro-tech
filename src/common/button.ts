@@ -36,7 +36,7 @@ export const ButtonStyle = {
 
     buttonStyle: {
       backgroundColor: COLORS.brand_light._02,
-      height: scale(42),
+      height: scale(52),
       borderRadius: scale(6),
     },
   },
@@ -56,7 +56,7 @@ export const ButtonStyle = {
 
     buttonStyle: {
       backgroundColor: COLORS.light._05,
-      height: scale(42),
+      height: scale(52),
       borderRadius: scale(6),
       borderWidth: 1,
       borderColor: COLORS.light._02,
@@ -96,7 +96,7 @@ export const ButtonStyle = {
 
     buttonStyle: {
       backgroundColor: COLORS.light._02,
-      height: scale(42),
+      height: scale(52),
       borderRadius: scale(6),
     },
   },

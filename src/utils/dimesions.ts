@@ -4,7 +4,6 @@ import {
   isIphoneX as libIsIphoneX,
 } from 'react-native-iphone-x-helper';
 import {getStatusBarHeight as libGetStatusBarHeight} from 'react-native-status-bar-height';
-import {isWeb} from '.';
 
 export const isIphoneX = libIsIphoneX;
 
