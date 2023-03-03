@@ -1,5 +1,5 @@
 import {scale} from '../utils';
-import {COLORS} from '.';
+import {COLORS} from './colors';
 
 export const ButtonStyle = {
   contained: {
@@ -8,16 +8,15 @@ export const ButtonStyle = {
     },
 
     titleStyle: {
-      color: `${COLORS.brand_dark._01}`,
-      fontFamily: 'Inter',
+      color: COLORS.brand_dark._01,
+      fontFamily: 'inter',
       fontSize: scale(14),
-      fontHeight: 'normal',
-      marginLeft: 15,
+      marginLeft: scale(14),
     },
 
     buttonStyle: {
-      backgroundColor: `${COLORS.brand_light._01}`,
-      height: scale(42),
+      backgroundColor: COLORS.brand_light._01,
+      height: scale(52),
       borderRadius: scale(6),
     },
   },
@@ -28,15 +27,15 @@ export const ButtonStyle = {
     },
 
     titleStyle: {
-      color: `${COLORS.brand_dark._02}`,
-      fontFamily: 'Inter',
+      color: COLORS.brand_dark._02,
+      fontFamily: 'inter',
       fontSize: scale(14),
-      fontHeight: 'normal',
-      marginLeft: 15,
+
+      marginLeft: scale(14),
     },
 
     buttonStyle: {
-      backgroundColor: `${COLORS.brand_light._02}`,
+      backgroundColor: COLORS.brand_light._02,
       height: scale(42),
       borderRadius: scale(6),
     },
@@ -48,19 +47,19 @@ export const ButtonStyle = {
     },
 
     titleStyle: {
-      color: `${COLORS.gray._02}`,
-      fontFamily: 'Inter',
+      color: COLORS.gray._02,
+      fontFamily: 'inter',
       fontSize: scale(14),
-      fontHeight: 'normal',
-      marginLeft: 15,
+
+      marginLeft: scale(14),
     },
 
     buttonStyle: {
-      backgroundColor: `${COLORS.light._05}`,
+      backgroundColor: COLORS.light._05,
       height: scale(42),
       borderRadius: scale(6),
       borderWidth: 1,
-      borderColor: `${COLORS.light._02}`,
+      borderColor: COLORS.light._02,
     },
   },
 
@@ -70,15 +69,15 @@ export const ButtonStyle = {
     },
 
     titleStyle: {
-      color: `${COLORS.sub_brand._02}`,
-      fontFamily: 'Inter',
+      color: COLORS.sub_brand._02,
+      fontFamily: 'inter',
       fontSize: scale(14),
-      fontHeight: 'normal',
+
       marginLeft: 0,
     },
 
     buttonStyle: {
-      backgroundColor: `${COLORS.light._05}`,
+      backgroundColor: COLORS.light._05,
     },
   },
 
@@ -88,15 +87,15 @@ export const ButtonStyle = {
     },
 
     titleStyle: {
-      color: `${COLORS.gray._03}`,
-      fontFamily: 'Inter',
+      color: COLORS.gray._03,
+      fontFamily: 'inter',
       fontSize: scale(14),
-      fontHeight: 'normal',
+
       marginLeft: 0,
     },
 
     buttonStyle: {
-      backgroundColor: `${COLORS.light._02}`,
+      backgroundColor: COLORS.light._02,
       height: scale(42),
       borderRadius: scale(6),
     },

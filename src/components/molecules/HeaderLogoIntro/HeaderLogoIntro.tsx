@@ -1,5 +1,6 @@
 import {IMAGES} from '../../../assets';
 import {Image} from 'react-native';
+import {scale} from '../../../utils';
 
 export const HeaderLogoIntro = () => {
   return (

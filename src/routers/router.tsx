@@ -13,9 +13,10 @@ const Stack = createNativeStackNavigator();
 export const RouterApp = () => {
   return (
     <Stack.Navigator
-      initialRouteName={'RecoveryAccountScreen'}
+      initialRouteName={'SignInSocial'}
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="SignInSocial" component={SignInSocial} />
+
       <Stack.Screen name="SignInDefault" component={SignInDefault} />
       <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
 

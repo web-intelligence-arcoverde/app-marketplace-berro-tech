@@ -39,9 +39,29 @@ export const heightPercentageToDP = (
 const guidelineBaseWidth = 320;
 const guidelineBaseHeight = 680;
 
-export const scale = (size: number) => {
-  return !isWeb() ? (screenWidth / guidelineBaseWidth) * size : size;
-};
+function isTabletLike() {
+  const pixelDensity = PixelRatio.get();
+  const windowDimensions = Dimensions.get('window');
+  const adjustedWidth = windowDimensions.width * pixelDensity;
+  const adjustedHeight = windowDimensions.height * pixelDensity;
+  if (pixelDensity < 2 && (adjustedWidth >= 1000 || adjustedHeight >= 1000)) {
+    return true;
+  } else
+    return (
+      pixelDensity === 2 && (adjustedWidth >= 1920 || adjustedHeight >= 1920)
+    );
+}
+
+export function scale(size: number) {
+  // Fixed base width that has worked well for most of my use cases
+  const baseWidth = isTabletLike() ? 520 : 350;
+  const windowDimensions = Dimensions.get('window');
+  const shorterWindowDimension =
+    windowDimensions.width > windowDimensions.height
+      ? windowDimensions.height
+      : windowDimensions.width;
+  return (shorterWindowDimension / baseWidth) * size;
+}
 
 export const verticalScale = (size: number) =>
   (screenHeight / guidelineBaseHeight) * size;
