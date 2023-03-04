@@ -5,6 +5,7 @@ import {
   DescriptionInformationUserRecoveryAccountScreen,
   ConfirmationCodeInputRecoveryAccount,
 } from '../..';
+import {SIZES} from '../../../common';
 
 import {useAppDispatch, useChronometerHook} from '../../../hooks';
 
@@ -17,7 +18,6 @@ export const RecoveryAccountScreenStep02 = () => {
   const {handleStart, chronometer} = useChronometerHook();
   const [value, setValue] = useState('');
   const [email, setEmail] = useState('brennoguedes9@gmail.com');
-  const [confirmationCode, setConfirmationCode] = useState('');
 
   const dispatch = useAppDispatch();
 
@@ -33,13 +33,13 @@ export const RecoveryAccountScreenStep02 = () => {
     <>
       <DescriptionInformationUserRecoveryAccountScreen email={email} />
       <ConfirmationCodeInputRecoveryAccount value={value} setValue={setValue} />
-      <Separator height={24} />
+      <Separator height={SIZES.insideSpacingSmall} />
       <Button
         title="Próximo"
         variant="contained"
         onPress={() => dispatch(sendCodeRecoveryAccountRequest({code: ''}))}
       />
-      <Separator height={24} />
+      <Separator height={SIZES.insideSpacingSmall} />
       <Button
         title={`Reenviar código (${chronometer})`}
         variant={isAtZeroStyle}
