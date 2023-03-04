@@ -8,5 +8,7 @@ export const useNavigationHook = () => {
     navigation.navigate(router);
   };
 
-  return {goToRouter};
+  const goBack = () => navigation.goBack();
+
+  return {goToRouter, goBack};
 };

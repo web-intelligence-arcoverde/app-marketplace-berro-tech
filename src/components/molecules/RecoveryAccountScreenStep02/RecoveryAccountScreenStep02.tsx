@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
 import {Input, Separator, Button, Text} from '../..';
-import {StepContextRecovery} from '../../../screens';
 
 import {
   CodeField,
@@ -14,6 +13,7 @@ import {Text as DefaultText} from 'react-native';
 
 import {StyleSheet} from 'react-native';
 import {useChronometerHook} from '../../../hooks/useChronometerHook';
+import {AppContextStepRecoveryAccount} from '../../../context/AppContextStepRecoveryAccount';
 
 const styles = StyleSheet.create({
   cell: {
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
 const CELL_COUNT = 6;
 
 export const RecoveryAccountScreenStep02 = () => {
-  const [step, setStep] = React.useContext(StepContextRecovery);
+  const [step, setStep] = React.useContext(AppContextStepRecoveryAccount);
 
   const [value, setValue] = useState('');
   const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
