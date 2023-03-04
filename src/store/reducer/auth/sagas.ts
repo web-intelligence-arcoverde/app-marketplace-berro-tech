@@ -1,12 +1,12 @@
-import axios from 'axios';
 import {all, call, put, takeLatest} from 'redux-saga/effects';
 
-const getPosts = () =>
-  axios.get<any[]>('https://jsonplaceholder.typicode.com/todos');
+import {signInGoogleRequest} from './service';
 
-function* fetchPostsSaga(): any {
+function* signInGoogle(): any {
   try {
-    const response = yield call(getPosts);
+    console.log('n fala nada');
+
+    const response = yield call(signInGoogleRequest);
 
     console.log(response);
   } catch (e) {
@@ -15,7 +15,7 @@ function* fetchPostsSaga(): any {
 }
 
 function* authSagas() {
-  yield all([takeLatest('user/sign-in', fetchPostsSaga)]);
+  yield all([takeLatest('user/sign-in-request-google', signInGoogle)]);
 }
 
 export default authSagas;

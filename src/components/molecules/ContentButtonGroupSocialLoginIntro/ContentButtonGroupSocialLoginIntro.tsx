@@ -19,7 +19,7 @@ export const ContentButtonGroupSocialLoginIntro = () => {
         title="Entrar com email"
         variant="contained"
         icon="email"
-        onPress={() => goToRouter('SignInDefault')}
+        onPress={() => goToRouter('SignInEmailScreen')}
       />
       <Button
         title="Entrar com google"

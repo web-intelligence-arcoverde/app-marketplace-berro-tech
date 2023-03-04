@@ -3,7 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {
   SignInSocialScreen,
-  SignInDefault,
+  SignInEmailScreen,
   SignUpScreen,
   RecoveryAccountScreen,
 } from '../screens/';
@@ -17,7 +17,7 @@ export const RouterApp = () => {
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="SignInSocialScreen" component={SignInSocialScreen} />
 
-      <Stack.Screen name="SignInDefault" component={SignInDefault} />
+      <Stack.Screen name="SignInEmailScreen" component={SignInEmailScreen} />
       <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
 
       <Stack.Screen

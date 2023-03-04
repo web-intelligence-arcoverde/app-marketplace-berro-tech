@@ -8,5 +8,5 @@ export const signInRequestFacebook = createAction(
 export const signInRequestGoogle = createAction('user/sign-in-request-google');
 
 export const signInRequestEmail = createAction<ISignInRequestEmail>(
-  'user/sign-in-request-facebook',
+  'user/sign-in-request-email',
 );

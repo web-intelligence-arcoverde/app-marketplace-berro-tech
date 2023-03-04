@@ -8,3 +8,5 @@ export * from './SignUpScreenStep02/SignUpScreenStep02';
 
 export * from './RecoveryAccountScreenStep01/RecoveryAccountScreenStep01';
 export * from './RecoveryAccountScreenStep02/RecoveryAccountScreenStep02';
+
+export * from './FormSignInEmailScreen/FormSignInEmailScreen';
