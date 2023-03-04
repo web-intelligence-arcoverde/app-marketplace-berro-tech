@@ -1,18 +1,12 @@
 import React from 'react';
-import {View} from 'react-native';
 
 import {
   HeaderLogoIntro,
   HeaderDescriptionIntro,
-  Button,
-  Input,
-  Separator,
-  Text,
   FormSignInEmailScreen,
+  FooterButtonCreateAccountIntro,
 } from '../../components';
-import {Container, ContainerStyled} from './style';
-
-import {TouchableOpacity} from 'react-native';
+import {Container} from './style';
 
 export const SignInEmailScreen = () => {
   return (
@@ -26,9 +20,7 @@ export const SignInEmailScreen = () => {
 
       <FormSignInEmailScreen />
 
-      <View style={{paddingHorizontal: 20}}>
-        <Button title="Criar conta" variant="containedSecondary" />
-      </View>
+      <FooterButtonCreateAccountIntro />
     </Container>
   );
 };

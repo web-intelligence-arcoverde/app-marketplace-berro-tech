@@ -11,8 +11,6 @@ export const Container = styled.View`
   border-top-color: ${borderColor};
   border-top-width: ${scale(1)};
 
-  border-radius: ${SIZES.borderRadius.small};
-
   border-bottom-color: ${borderColor};
   border-bottom-width: ${scale(1)};
 
