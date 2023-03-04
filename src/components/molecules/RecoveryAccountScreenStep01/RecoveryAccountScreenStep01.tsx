@@ -16,7 +16,7 @@ export const RecoveryAccountScreenStep01 = () => {
         variant="outlinedSecondary"
         icon="arrow-left"
       />
-      <Separator height={16} />
+      <Separator height={SIZES.insideSpacingMedium} />
       <Input label="Email" placeholder="Seu melhor email" />
       <Separator height={SIZES.insideSpacingMedium} />
       <Button
