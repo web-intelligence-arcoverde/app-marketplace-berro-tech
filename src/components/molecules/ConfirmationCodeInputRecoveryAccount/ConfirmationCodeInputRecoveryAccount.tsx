@@ -2,40 +2,24 @@ import {useState} from 'react';
 
 import {
   CodeField,
-  Cursor,
   useBlurOnFulfill,
   useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
 
-import {StyleSheet} from 'react-native';
+import {styles} from './style';
 
-const styles = StyleSheet.create({
-  codeFieldRoot: {},
-  cell: {
-    width: 44,
-    height: 55,
-    lineHeight: 38,
-    fontSize: 14,
-    borderWidth: 1,
-    textAlign: 'center',
-    borderRadius: 6,
-    color: '#9C99AD',
-    paddingTop: 8,
-    backgroundColor: '#FAFAFC',
-    borderColor: '#F2F1F7',
-  },
-  focusCell: {
-    backgroundColor: '#FAFAFC',
-    borderColor: '#F2F1F7',
-  },
-});
+import {InputProps} from '@rneui/base';
 
-const CELL_COUNT = 6;
+import {InputCodeCell} from './InputCodeCell';
 
-import {Text} from 'react-native';
+interface IConfirmationCodeInputRecoveryAccount extends InputProps {}
 
-export const ConfirmationCodeInputRecoveryAccount = () => {
-  const [value, setValue] = useState('');
+export const ConfirmationCodeInputRecoveryAccount = ({
+  value,
+  setValue,
+}: IConfirmationCodeInputRecoveryAccount) => {
+  const CELL_COUNT = 6;
+
   const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
     value,
@@ -53,12 +37,12 @@ export const ConfirmationCodeInputRecoveryAccount = () => {
       keyboardType="number-pad"
       textContentType="oneTimeCode"
       renderCell={({index, symbol, isFocused}) => (
-        <Text
-          key={index}
-          style={[styles.cell, isFocused && styles.focusCell]}
-          onLayout={getCellOnLayoutHandler(index)}>
-          {symbol || (isFocused ? <Cursor /> : '-')}
-        </Text>
+        <InputCodeCell
+          index={index}
+          symbol={symbol}
+          isFocused={isFocused}
+          getCellOnLayoutHandler={getCellOnLayoutHandler}
+        />
       )}
     />
   );

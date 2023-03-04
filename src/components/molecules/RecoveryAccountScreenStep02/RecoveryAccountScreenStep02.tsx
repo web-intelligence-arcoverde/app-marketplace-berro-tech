@@ -1,13 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Separator,
   Button,
   DescriptionInformationUserRecoveryAccountScreen,
   ConfirmationCodeInputRecoveryAccount,
 } from '../..';
-import {useAppDispatch, useHookStepsRecoveryAccount} from '../../../hooks';
 
-import {useChronometerHook} from '../../../hooks/useChronometerHook';
+import {useAppDispatch, useChronometerHook} from '../../../hooks';
+
 import {
   sendEmailRecoveryAccountRequest,
   sendCodeRecoveryAccountRequest,
@@ -15,6 +15,9 @@ import {
 
 export const RecoveryAccountScreenStep02 = () => {
   const {handleStart, chronometer} = useChronometerHook();
+  const [value, setValue] = useState('');
+  const [email, setEmail] = useState('brennoguedes9@gmail.com');
+  const [confirmationCode, setConfirmationCode] = useState('');
 
   const dispatch = useAppDispatch();
 
@@ -22,16 +25,14 @@ export const RecoveryAccountScreenStep02 = () => {
   let isAtZeroStyle = !isAtZero ? 'disabled' : 'containedSecondary';
 
   function resendCodeConfirmation() {
-    dispatch(
-      sendEmailRecoveryAccountRequest({email: 'brennoguedes9@gmail.com'}),
-    );
+    dispatch(sendEmailRecoveryAccountRequest({email}));
     handleStart();
   }
 
   return (
     <>
-      <DescriptionInformationUserRecoveryAccountScreen />
-      <ConfirmationCodeInputRecoveryAccount />
+      <DescriptionInformationUserRecoveryAccountScreen email={email} />
+      <ConfirmationCodeInputRecoveryAccount value={value} setValue={setValue} />
       <Separator height={24} />
       <Button
         title="Próximo"
