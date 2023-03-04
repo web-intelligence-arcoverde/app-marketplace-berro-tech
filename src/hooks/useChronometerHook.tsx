@@ -22,7 +22,7 @@ function useInterval(callback, delay) {
   }, [delay]);
 }
 
-const INITIAL_COUNT = 120;
+const INITIAL_COUNT = 10;
 
 const STATUS = {
   STARTED: 'Started',

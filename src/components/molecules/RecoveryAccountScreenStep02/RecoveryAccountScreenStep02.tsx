@@ -1,105 +1,49 @@
-import React, {useState} from 'react';
-import {View} from 'react-native';
+import React from 'react';
 import {
-  Input,
   Separator,
   Button,
-  Text,
-  useHookStepsRecoveryAccount,
+  DescriptionInformationUserRecoveryAccountScreen,
+  ConfirmationCodeInputRecoveryAccount,
 } from '../..';
+import {useAppDispatch, useHookStepsRecoveryAccount} from '../../../hooks';
 
-import {
-  CodeField,
-  Cursor,
-  useBlurOnFulfill,
-  useClearByFocusCell,
-} from 'react-native-confirmation-code-field';
-
-import {Text as DefaultText} from 'react-native';
-
-import {StyleSheet} from 'react-native';
 import {useChronometerHook} from '../../../hooks/useChronometerHook';
-import {AppContextStepRecoveryAccount} from '../../../context/ContextRecoveryAccountStep';
-
-const styles = StyleSheet.create({
-  cell: {
-    width: 40,
-    height: 55,
-    lineHeight: 38,
-    fontSize: 14,
-    borderWidth: 1,
-    borderColor: '#00000030',
-    textAlign: 'center',
-    borderRadius: 6,
-    color: '#9C99AD',
-    paddingTop: 8,
-  },
-  focusCell: {
-    backgroundColor: '#FAFAFC',
-    borderColor: '#F2F1F7',
-  },
-});
-
-const CELL_COUNT = 6;
+import {
+  sendEmailRecoveryAccountRequest,
+  sendCodeRecoveryAccountRequest,
+} from '../../../store/reducer/auth/actions';
 
 export const RecoveryAccountScreenStep02 = () => {
-  const {setStep} = useHookStepsRecoveryAccount();
-
-  const [value, setValue] = useState('');
-  const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
-  const [props, getCellOnLayoutHandler] = useClearByFocusCell({
-    value,
-    setValue,
-  });
-
   const {handleStart, chronometer} = useChronometerHook();
 
+  const dispatch = useAppDispatch();
+
+  let isAtZero = chronometer === '00:00';
+  let isAtZeroStyle = !isAtZero ? 'disabled' : 'containedSecondary';
+
   function resendCodeConfirmation() {
+    dispatch(
+      sendEmailRecoveryAccountRequest({email: 'brennoguedes9@gmail.com'}),
+    );
     handleStart();
   }
 
   return (
     <>
-      <View
-        style={{
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-        <Text typography="h5" colorFamily="dark" colorVariant="_04">
-          Verifique o código que enviamos pro seu email
-        </Text>
-        <Separator height={8} />
-        <Text typography="h5" colorFamily="gray" colorVariant="_04">
-          brennoguedes9@gmail.com
-        </Text>
-        <Separator height={24} />
-      </View>
-      <CodeField
-        ref={ref}
-        {...props}
-        value={value}
-        onChangeText={setValue}
-        cellCount={CELL_COUNT}
-        rootStyle={styles.codeFieldRoot}
-        keyboardType="number-pad"
-        textContentType="oneTimeCode"
-        renderCell={({index, symbol, isFocused}) => (
-          <DefaultText
-            key={index}
-            style={[styles.cell, isFocused && styles.focusCell]}
-            onLayout={getCellOnLayoutHandler(index)}>
-            {symbol || (isFocused ? <Cursor /> : null)}
-          </DefaultText>
-        )}
+      <DescriptionInformationUserRecoveryAccountScreen />
+      <ConfirmationCodeInputRecoveryAccount />
+      <Separator height={24} />
+      <Button
+        title="Próximo"
+        variant="contained"
+        onPress={() => dispatch(sendCodeRecoveryAccountRequest({code: ''}))}
       />
       <Separator height={24} />
-      <Button title="Próximo" variant="contained" onPress={() => setStep(0)} />
-      <Separator height={20} />
       <Button
         title={`Reenviar código (${chronometer})`}
-        variant="disabled"
-        onPress={() => setStep(1)}
+        variant={isAtZeroStyle}
+        disabled={!isAtZero}
+        onPress={() => resendCodeConfirmation()}
       />
     </>
   );

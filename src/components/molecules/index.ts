@@ -14,3 +14,7 @@ export * from './FormSignInEmailScreen/FormSignInEmailScreen';
 export * from './AppContextStepRecoveryAccountComponent/AppContextStepRecoveryAccountComponent';
 
 export * from './StepRecoveryAccount/StepRecoveryAccount';
+
+export * from './ConfirmationCodeInputRecoveryAccount/ConfirmationCodeInputRecoveryAccount';
+
+export * from './DescriptionInformationUserRecoveryAccountScreen/DescriptionInformationUserRecoveryAccountScreen';
