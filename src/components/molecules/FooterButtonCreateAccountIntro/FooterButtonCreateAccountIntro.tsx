@@ -13,7 +13,7 @@ export const FooterButtonCreateAccountIntro = () => {
         title="Criar conta"
         variant="containedSecondary"
         icon="user"
-        onPress={() => goToRouter('SignUpScren')}
+        onPress={() => goToRouter('SignUpScreen')}
       />
     </Container>
   );

@@ -1,19 +1,25 @@
-import React from 'react';
-import {Input, Separator, Button} from '../..';
-import {StepContext} from '../../../screens';
+import React, {useContext} from 'react';
+import {View} from 'react-native';
+import {Input, Button} from '../..';
+import {ContextSignUpScreenStep} from '../../../context';
 
 export const SignUpScreenStep01 = () => {
-  const [step, setStep] = React.useContext(StepContext);
+  const [step, setStep] = useContext(ContextSignUpScreenStep);
+
+  const STEP_SIZE = step + 1;
+  const TOTAL_STEPS = 2;
 
   return (
-    <>
+    <View style={{gap: 16}}>
+      <Button
+        title={`Etapa ${STEP_SIZE} de ${TOTAL_STEPS}`}
+        variant="outlinedThirdy"
+        onPress={() => {}}
+      />
       <Input label="Email" placeholder="Seu melhor email" />
-      <Separator height={20} />
       <Input label="Nome" placeholder="Seu nome completo" />
-      <Separator height={20} />
       <Input label="Telefone" placeholder="(_ _) _ _ _ _ _-_ _ _ _" />
-      <Separator height={20} />
       <Button title="Próximo" variant="contained" onPress={() => setStep(1)} />
-    </>
+    </View>
   );
 };

@@ -18,3 +18,6 @@ export * from './StepRecoveryAccount/StepRecoveryAccount';
 export * from './ConfirmationCodeInputRecoveryAccount/ConfirmationCodeInputRecoveryAccount';
 
 export * from './DescriptionInformationUserRecoveryAccountScreen/DescriptionInformationUserRecoveryAccountScreen';
+
+export * from './AppContextSignUpScreenComponent/AppContextSignUpScreenComponent';
+export * from './SignInButtonContainer/SignInButtonContainer';
