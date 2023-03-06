@@ -1,6 +1,5 @@
 import styled from 'styled-components/native';
-import {COLORS} from '../../../common';
-import {SIZES} from '../../../common';
+import {COLORS, SIZES} from '../../../common';
 
 const borderColor = COLORS['light']['_04'];
 
