@@ -3,14 +3,13 @@ import React from 'react';
 import {
   HeaderLogoIntro,
   HeaderDescriptionIntro,
-  Button,
   AppContextSignUpScreenComponent,
+  KeyboardContainer,
 } from '../../components';
-import {Container} from './style';
 
 export const SignUpScreen = () => {
   return (
-    <Container>
+    <KeyboardContainer>
       <HeaderLogoIntro />
 
       <HeaderDescriptionIntro
@@ -19,6 +18,6 @@ export const SignUpScreen = () => {
       />
 
       <AppContextSignUpScreenComponent />
-    </Container>
+    </KeyboardContainer>
   );
 };

@@ -13,13 +13,16 @@ interface IDescriptionInformationUserRecoveryAccountScreen {
 export const DescriptionInformationUserRecoveryAccountScreen = ({
   email,
 }: IDescriptionInformationUserRecoveryAccountScreen) => {
-  const {setStep} = useHookStepsRecoveryAccount();
+  const {setStep, setEmail} = useHookStepsRecoveryAccount();
 
   return (
     <Container>
       <Button
         title="Volta"
-        onPress={() => setStep(0)}
+        onPress={() => {
+          setStep(0);
+          setEmail('');
+        }}
         variant="outlinedSecondary"
         icon="arrow-left"
       />

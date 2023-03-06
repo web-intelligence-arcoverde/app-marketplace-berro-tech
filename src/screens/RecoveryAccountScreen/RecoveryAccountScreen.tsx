@@ -4,13 +4,12 @@ import {
   HeaderLogoIntro,
   HeaderDescriptionIntro,
   StepsRecoveryAccount,
+  KeyboardContainer,
 } from '../../components';
-
-import {Container} from './style';
 
 export const RecoveryAccountScreen = () => {
   return (
-    <Container>
+    <KeyboardContainer>
       <HeaderLogoIntro />
 
       <HeaderDescriptionIntro
@@ -19,6 +18,6 @@ export const RecoveryAccountScreen = () => {
       />
 
       <StepsRecoveryAccount />
-    </Container>
+    </KeyboardContainer>
   );
 };

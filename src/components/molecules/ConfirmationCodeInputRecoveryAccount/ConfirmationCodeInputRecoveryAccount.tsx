@@ -1,5 +1,3 @@
-import {useState} from 'react';
-
 import {
   CodeField,
   useBlurOnFulfill,
@@ -8,11 +6,14 @@ import {
 
 import {styles} from './style';
 
-import {InputProps} from '@rneui/base';
+import {Dispatch, SetStateAction} from 'react';
 
 import {InputCodeCell} from './InputCodeCell';
 
-interface IConfirmationCodeInputRecoveryAccount extends InputProps {}
+interface IConfirmationCodeInputRecoveryAccount {
+  value: string;
+  setValue: Dispatch<SetStateAction<string>>;
+}
 
 export const ConfirmationCodeInputRecoveryAccount = ({
   value,
@@ -38,6 +39,7 @@ export const ConfirmationCodeInputRecoveryAccount = ({
       textContentType="oneTimeCode"
       renderCell={({index, symbol, isFocused}) => (
         <InputCodeCell
+          key={`input_cell_index_${index}`}
           index={index}
           symbol={symbol}
           isFocused={isFocused}

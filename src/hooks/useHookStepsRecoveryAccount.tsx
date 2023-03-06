@@ -12,9 +12,11 @@ const stepContainer: any = {
 };
 
 export const useHookStepsRecoveryAccount = () => {
-  const [step, setStep] = useContext(AppContextStepRecoveryAccount);
+  const [step, setStep, email, setEmail] = useContext(
+    AppContextStepRecoveryAccount,
+  );
 
   const Steps = stepContainer[step];
 
-  return {step, setStep, Steps};
+  return {step, setStep, Steps, setEmail, email};
 };

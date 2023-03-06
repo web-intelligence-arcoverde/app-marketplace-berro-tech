@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 export interface AppContextInterface {
   step?: string;
   setStep?: () => void;
+  email?: string;
+  setEmail?: () => void;
 }
 
 export const AppContextStepRecoveryAccount =

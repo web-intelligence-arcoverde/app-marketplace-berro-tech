@@ -7,7 +7,11 @@ import {
 } from '../..';
 import {SIZES} from '../../../common';
 
-import {useAppDispatch, useChronometerHook} from '../../../hooks';
+import {
+  useAppDispatch,
+  useHookStepsRecoveryAccount,
+  useChronometerHook,
+} from '../../../hooks';
 
 import {
   sendEmailRecoveryAccountRequest,
@@ -17,7 +21,8 @@ import {
 export const RecoveryAccountScreenStep02 = () => {
   const {handleStart, chronometer} = useChronometerHook();
   const [value, setValue] = useState('');
-  const [email, setEmail] = useState('brennoguedes9@gmail.com');
+
+  const {setStep, email} = useHookStepsRecoveryAccount();
 
   const dispatch = useAppDispatch();
 
