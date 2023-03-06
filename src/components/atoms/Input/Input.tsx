@@ -3,14 +3,15 @@ import {Typography} from '../../../common';
 
 import {scale} from '../../../utils';
 
-import {useForm, Controller} from 'react-hook-form';
+import {Controller} from 'react-hook-form';
 
 interface IInput {
   label?: string;
   placeholder?: string;
   password?: boolean;
   name: string;
-  control: any;
+  control?: any;
+  errors?: string;
 }
 
 import EStyleSheet from 'react-native-extended-stylesheet';
@@ -36,6 +37,8 @@ export const InputStyle = EStyleSheet.create({
 
   errorStyle: {margin: 0, padding: 0},
   inputContainerStyle: {borderBottomColor: '#FAFAFC', margin: 0, padding: 0},
+  leftIconContainerStyle: {padding: 0},
+  rightIconContainerStyle: {padding: 0},
 });
 
 export const Input = ({
@@ -44,11 +47,18 @@ export const Input = ({
   password = false,
   name,
   control,
+  errors,
 }: IInput) => {
   const typography = Typography['input'];
 
-  const {containerStyle, inputStyle, errorStyle, inputContainerStyle} =
-    InputStyle;
+  const {
+    containerStyle,
+    inputStyle,
+    errorStyle,
+    inputContainerStyle,
+    leftIconContainerStyle,
+    rightIconContainerStyle,
+  } = InputStyle;
 
   return (
     <Controller
@@ -63,7 +73,7 @@ export const Input = ({
           errorStyle={errorStyle}
           inputContainerStyle={inputContainerStyle}
           labelStyle={typography}
-          errorMessage="event"
+          errorMessage={errors}
           onBlur={onBlur}
           onChangeText={onChange}
           value={value}
@@ -71,6 +81,8 @@ export const Input = ({
           autoCapitalize="none"
           secureTextEntry={password}
           autoCorrect={false}
+          leftIconContainerStyle={leftIconContainerStyle}
+          rightIconContainerStyle={rightIconContainerStyle}
         />
       )}
       name={name}

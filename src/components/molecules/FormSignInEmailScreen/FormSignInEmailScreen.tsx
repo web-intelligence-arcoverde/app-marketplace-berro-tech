@@ -1,28 +1,12 @@
 import {Button, Input, ButtonText, Separator} from '../../';
-import {useNavigationHook, useAppDispatch} from '../../../hooks';
-import {signInRequestEmail} from '../../../store/reducer/auth/actions';
+import {useNavigationHook, useHookFormSignInEmail} from '../../../hooks';
 
 import {Container} from './style';
 
-import {useForm, Controller} from 'react-hook-form';
-
 export const FormSignInEmailScreen = () => {
-  const dispatch = useAppDispatch();
-
   const {goToRouter} = useNavigationHook();
 
-  const {
-    control,
-    handleSubmit,
-    formState: {errors},
-  } = useForm({
-    defaultValues: {
-      email: '',
-      password: '',
-    },
-  });
-
-  const onSubmit = handleSubmit(data => console.log(data));
+  const {onSubmit, control, errors} = useHookFormSignInEmail();
 
   return (
     <Container>
@@ -31,6 +15,7 @@ export const FormSignInEmailScreen = () => {
         placeholder="Seu melhor email"
         control={control}
         name="email"
+        errors={errors?.email?.message}
       />
       <Separator height={12} />
       <Input
@@ -39,6 +24,7 @@ export const FormSignInEmailScreen = () => {
         password
         control={control}
         name="password"
+        errors={errors?.password?.message}
       />
       <Separator height={12} />
       <ButtonText
@@ -47,14 +33,7 @@ export const FormSignInEmailScreen = () => {
         Recuperar conta
       </ButtonText>
       <Separator height={12} />
-      <Button
-        title="Entrar"
-        variant="contained"
-        onPress={() => {
-          onSubmit();
-          dispatch(signInRequestEmail({email: '', password: ''}));
-        }}
-      />
+      <Button title="Entrar" variant="contained" onPress={() => onSubmit()} />
       <Separator height={12} />
     </Container>
   );

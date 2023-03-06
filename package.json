@@ -15,6 +15,7 @@
     "build:ios:hml:release": "cd ./ios && /usr/bin/xcodebuild -sdk iphoneos -configuration Hml -workspace smiles_app.xcworkspace -scheme smiles_app_hml build && /usr/bin/xcodebuild -exportArchive -archivePath output/iphoneos/Hml/archive/smiles_app.xcarchive -exportPath output/iphoneos/Hml/export -exportOptionsPlist ios/ExportOptionsHom.plist"
   },
   "dependencies": {
+    "@hookform/resolvers": "^2.9.11",
     "@react-navigation/native": "^6.1.2",
     "@react-navigation/native-stack": "^6.9.8",
     "@redux-saga/core": "^1.2.2",
@@ -45,7 +46,8 @@
     "react-redux": "^8.0.5",
     "redux-logger": "^3.0.6",
     "redux-saga": "^1.2.2",
-    "styled-components": "^4.1.1"
+    "styled-components": "^4.1.1",
+    "yup": "^1.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
