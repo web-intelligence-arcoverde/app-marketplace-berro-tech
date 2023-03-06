@@ -12,7 +12,7 @@ export const signInRequestFacebook = createAction(
 export const signInRequestGoogle = createAction('user/sign-in-request-google');
 
 export const signInRequestEmail = createAction<ISignInRequestEmail>(
-  'user/sign-in-request-email',
+  'user/sign-in-email-request',
 );
 
 export const sendEmailRecoveryAccountRequest =

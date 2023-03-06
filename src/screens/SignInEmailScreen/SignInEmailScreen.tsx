@@ -5,12 +5,12 @@ import {
   HeaderDescriptionIntro,
   FormSignInEmailScreen,
   FooterButtonCreateAccountIntro,
+  KeyboardContainer,
 } from '../../components';
-import {Container} from './style';
 
 export const SignInEmailScreen = () => {
   return (
-    <Container>
+    <KeyboardContainer>
       <HeaderLogoIntro />
 
       <HeaderDescriptionIntro
@@ -21,6 +21,6 @@ export const SignInEmailScreen = () => {
       <FormSignInEmailScreen />
 
       <FooterButtonCreateAccountIntro />
-    </Container>
+    </KeyboardContainer>
   );
 };
