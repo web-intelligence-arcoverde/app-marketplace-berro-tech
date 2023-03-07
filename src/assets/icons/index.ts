@@ -7,6 +7,7 @@ import ArrowLeft from './arrow-left.svg';
 
 import FilterIcon from './filter-icon.svg';
 import SearchIcon from './search-icon.svg';
+import CloseIcon from './close-icon.svg';
 
 export const ICONS = {
   email: EmailIcon,
@@ -17,4 +18,5 @@ export const ICONS = {
   'arrow-left': ArrowLeft,
   'filter-icon': FilterIcon,
   'search-icon': SearchIcon,
+  'close-icon': CloseIcon,
 };
