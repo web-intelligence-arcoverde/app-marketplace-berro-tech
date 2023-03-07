@@ -13,7 +13,7 @@ const Stack = createNativeStackNavigator();
 export const RouterApp = () => {
   return (
     <Stack.Navigator
-      initialRouteName={'SignInSocialScreen'}
+      initialRouteName={'SignInEmailScreen'}
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="SignInSocialScreen" component={SignInSocialScreen} />
 

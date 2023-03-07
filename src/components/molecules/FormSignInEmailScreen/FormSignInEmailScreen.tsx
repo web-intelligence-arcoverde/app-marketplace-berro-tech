@@ -24,6 +24,7 @@ export const FormSignInEmailScreen = () => {
         password
         control={control}
         name="password"
+        rightIcon
         errors={errors?.password?.message}
       />
       <Separator height={12} />

@@ -5,6 +5,10 @@ import {scale} from '../../../utils';
 
 import {Controller} from 'react-hook-form';
 
+import {IconComponent} from '../../';
+
+import {TouchableOpacity} from 'react-native';
+
 interface IInput {
   label?: string;
   placeholder?: string;
@@ -12,9 +16,12 @@ interface IInput {
   name: string;
   control?: any;
   errors?: string;
+  rightIcon?: boolean;
+  leftIcon?: boolean;
 }
 
 import EStyleSheet from 'react-native-extended-stylesheet';
+import {useState} from 'react';
 
 export const InputStyle = EStyleSheet.create({
   containerStyle: {
@@ -24,8 +31,17 @@ export const InputStyle = EStyleSheet.create({
     backgroundColor: '#FAFAFC',
     margin: 0,
     padding: 0,
-    paddingHorizontal: 0,
+    paddingTop: scale(16),
+    paddingHorizontal: scale(16),
   },
+
+  inputContainerStyle: {
+    borderBottomColor: '#FAFAFC',
+    margin: 0,
+    padding: 0,
+    height: scale(22),
+  },
+
   inputStyle: {
     borderWidth: 0,
     color: '#9C99AD',
@@ -35,10 +51,10 @@ export const InputStyle = EStyleSheet.create({
     padding: 0,
   },
 
-  errorStyle: {margin: 0, padding: 0},
-  inputContainerStyle: {borderBottomColor: '#FAFAFC', margin: 0, padding: 0},
-  leftIconContainerStyle: {padding: 0},
-  rightIconContainerStyle: {padding: 0},
+  errorStyle: {margin: 0, padding: 0, height: scale(22)},
+
+  leftIconContainerStyle: {padding: 0, minHeight: scale(22)},
+  rightIconContainerStyle: {padding: 0, minHeight: scale(22)},
 });
 
 export const Input = ({
@@ -48,8 +64,16 @@ export const Input = ({
   name,
   control,
   errors,
+  rightIcon,
+  leftIcon,
 }: IInput) => {
   const typography = Typography['input'];
+
+  const rightShowIcon = rightIcon && password;
+
+  const leftShowIcon = leftIcon && password;
+
+  const [showPassword, setShowPassword] = useState(password);
 
   const {
     containerStyle,
@@ -79,10 +103,28 @@ export const Input = ({
           value={value}
           keyboardType="email-address"
           autoCapitalize="none"
-          secureTextEntry={password}
+          secureTextEntry={showPassword}
           autoCorrect={false}
           leftIconContainerStyle={leftIconContainerStyle}
           rightIconContainerStyle={rightIconContainerStyle}
+          rightIcon={
+            rightShowIcon && (
+              <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+                <IconComponent
+                  icon={showPassword ? 'arrow-left' : 'arrow-left'}
+                />
+              </TouchableOpacity>
+            )
+          }
+          leftIcon={
+            leftShowIcon && (
+              <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+                <IconComponent
+                  icon={showPassword ? 'arrow-left' : 'arrow-left'}
+                />
+              </TouchableOpacity>
+            )
+          }
         />
       )}
       name={name}
