@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
+import {DashboardBottomNavigation} from './bottom.router';
+
 import {
   SignInSocialScreen,
   SignInEmailScreen,
@@ -13,7 +15,7 @@ const Stack = createNativeStackNavigator();
 export const RouterApp = () => {
   return (
     <Stack.Navigator
-      initialRouteName={'SignInEmailScreen'}
+      initialRouteName={'DashboardBottomNavigation'}
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="SignInSocialScreen" component={SignInSocialScreen} />
 
@@ -23,6 +25,11 @@ export const RouterApp = () => {
       <Stack.Screen
         name="RecoveryAccountScreen"
         component={RecoveryAccountScreen}
+      />
+
+      <Stack.Screen
+        name="DashboardBottomNavigation"
+        component={DashboardBottomNavigation}
       />
     </Stack.Navigator>
   );

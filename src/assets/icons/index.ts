@@ -5,6 +5,9 @@ import HandIcon from './hand-icon.svg';
 import UserIcon from './user-icon.svg';
 import ArrowLeft from './arrow-left.svg';
 
+import FilterIcon from './filter-icon.svg';
+import SearchIcon from './search-icon.svg';
+
 export const ICONS = {
   email: EmailIcon,
   gmail: GmailIcon,
@@ -12,4 +15,6 @@ export const ICONS = {
   hands: HandIcon,
   user: UserIcon,
   'arrow-left': ArrowLeft,
+  'filter-icon': FilterIcon,
+  'search-icon': SearchIcon,
 };

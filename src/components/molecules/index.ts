@@ -21,3 +21,5 @@ export * from './DescriptionInformationUserRecoveryAccountScreen/DescriptionInfo
 
 export * from './AppContextSignUpScreenComponent/AppContextSignUpScreenComponent';
 export * from './SignInButtonContainer/SignInButtonContainer';
+
+export * from './HeaderDashboard/HeaderDashboard';

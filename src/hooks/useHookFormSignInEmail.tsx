@@ -13,9 +13,11 @@ const schema = yup
   .required();
 
 import {signInRequestEmail} from '../store/reducer/auth/actions';
+import {useNavigationHook} from './useNavigationHook';
 
 export const useHookFormSignInEmail = () => {
   const dispatch = useAppDispatch();
+  const {goToRouter} = useNavigationHook();
 
   const {
     control,
@@ -29,7 +31,12 @@ export const useHookFormSignInEmail = () => {
     },
   });
 
-  const onSubmit = handleSubmit(data => dispatch(signInRequestEmail(data)));
+  const onSubmit = handleSubmit(data => nextStep(data));
+
+  const nextStep = (data: any) => {
+    dispatch(signInRequestEmail(data));
+    goToRouter('DashboardBottomNavigation');
+  };
 
   return {onSubmit, control, errors};
 };

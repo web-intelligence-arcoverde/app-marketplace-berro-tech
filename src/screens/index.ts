@@ -3,3 +3,7 @@ export * from './SignInEmailScreen/SignInEmailScreen';
 
 export * from './SignUpScreen/SignUpScreen';
 export * from './RecoveryAccountScreen/RecoveryAccountScreen';
+
+export * from './ProfileScreen/ProfileScreen';
+export * from './BusinessScreen/BusinessScreen';
+export * from './HomeScreen/HomeScreen';
