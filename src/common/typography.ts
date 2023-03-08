@@ -33,6 +33,13 @@ export const Typography = EStyleSheet.create({
     lineHeight: scale(19),
   },
 
+  button: {
+    fontFamily: 'inter',
+    fontSize: scale(14),
+    lineHeight: scale(21),
+    fontWeight: 500,
+  },
+
   input: {
     fontFamily: 'inter',
     fontSize: scale(14),

@@ -26,7 +26,9 @@ export const AddressUserProfileScreen = ({
           {city}, {uf}, {country}
         </Text>
       ) : (
-        <ButtonText onPress={() => {}}>Adicione uma localização</ButtonText>
+        <ButtonText typography="button" onPress={() => {}}>
+          Adicione uma localização
+        </ButtonText>
       )}
     </Container>
   );
