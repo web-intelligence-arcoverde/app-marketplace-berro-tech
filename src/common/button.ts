@@ -43,6 +43,26 @@ export const ButtonStyle = EStyleSheet.create({
     },
   },
 
+  containedThirdy: {
+    containerStyle: {
+      width: '100%',
+    },
+
+    titleStyle: {
+      color: COLORS.sub_brand._04,
+      fontFamily: 'inter',
+      fontSize: scale(14),
+      fontWeight: 600,
+      marginLeft: scale(14),
+    },
+
+    buttonStyle: {
+      backgroundColor: COLORS.sub_brand._02,
+      height: scale(52),
+      borderRadius: scale(6),
+    },
+  },
+
   outlined: {
     containerStyle: {
       width: '100%',

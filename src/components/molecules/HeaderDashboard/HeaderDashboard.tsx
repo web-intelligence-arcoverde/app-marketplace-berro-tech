@@ -6,7 +6,7 @@ import {IMAGES} from '../../../assets';
 
 import {View, Image, TextInput, TouchableOpacity} from 'react-native';
 
-import {Separator, IconComponent} from '../..';
+import {Separator, IconComponent, Button} from '../..';
 
 const style = EStyleSheet.create({
   container: {
@@ -41,7 +41,21 @@ const inputSearch = EStyleSheet.create({
   },
 });
 
+import {useRoute} from '@react-navigation/native';
+
 export const HeaderDashboard = () => {
+  const {name} = useRoute();
+
+  const isProfile = name === 'Perfil';
+
+  const product = [];
+
+  const isExistProducts = product.length > 1;
+
+  const titleButtonProfileAddNewProduct = !isExistProducts
+    ? 'Adicionar meu primeiro negócio'
+    : 'Adicionar novo negócio';
+
   return (
     <View style={style.container}>
       <Separator height={getStatusBarHeight()} />
@@ -49,7 +63,15 @@ export const HeaderDashboard = () => {
       <View>
         <View style={style.content}>
           <Image source={IMAGES.LogoHeader} />
-          <SearchInput />
+          {isProfile ? (
+            <Button
+              title={titleButtonProfileAddNewProduct}
+              variant="containedThirdy"
+              onPress={() => {}}
+            />
+          ) : (
+            <SearchInput />
+          )}
         </View>
       </View>
     </View>
