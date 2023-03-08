@@ -23,3 +23,7 @@ export * from './AppContextSignUpScreenComponent/AppContextSignUpScreenComponent
 export * from './SignInButtonContainer/SignInButtonContainer';
 
 export * from './HeaderDashboard/HeaderDashboard';
+
+// Componentes do produto
+export * from './ProductItemCard/ProductItemCard';
+export * from './ProductItemDescriptionFooter/ProductItemDescriptionFooter';

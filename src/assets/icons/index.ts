@@ -9,6 +9,8 @@ import FilterIcon from './filter-icon.svg';
 import SearchIcon from './search-icon.svg';
 import CloseIcon from './close-icon.svg';
 
+import LocationIcon from './location.svg';
+
 export const ICONS = {
   email: EmailIcon,
   gmail: GmailIcon,
@@ -19,4 +21,5 @@ export const ICONS = {
   'filter-icon': FilterIcon,
   'search-icon': SearchIcon,
   'close-icon': CloseIcon,
+  'location-icon': LocationIcon,
 };
