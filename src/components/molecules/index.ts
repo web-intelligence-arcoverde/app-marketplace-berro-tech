@@ -39,3 +39,6 @@ export * from './FooterUserProfilerScreen/FooterUserProfilerScreen';
 export * from './ProductListProfile/ProductListProfile';
 export * from './MyProductsProfileScreen/MyProductsProfileScreen';
 export * from './EmptyContainerProductMyProducts/EmptyContainerProductMyProducts';
+
+export * from './BreedSteps/BreedSteps';
+export * from './FiltersProfileScreen/FiltersProfileScreen';

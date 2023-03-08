@@ -1,19 +1,22 @@
 import {
   DescriptionUserProfileScreen,
   HeaderDashboard,
-  Text,
-  IconComponent,
+  FiltersProfileScreen,
   MyProductsProfileScreen,
+  Separator,
 } from '../../components';
 
-import {View} from 'react-native';
+import {Container} from './style';
 
 export const ProfileScreen = () => {
   return (
-    <View style={{flex: 1, backgroundColor: '#fff'}}>
+    <Container>
       <HeaderDashboard />
       <DescriptionUserProfileScreen />
+      <Separator height={12} />
+      <FiltersProfileScreen />
+      <Separator height={12} />
       <MyProductsProfileScreen />
-    </View>
+    </Container>
   );
 };
