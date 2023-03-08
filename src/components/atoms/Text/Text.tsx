@@ -7,12 +7,14 @@ interface IText {
   children?: any;
   colorFamily?: string;
   colorVariant?: string;
+  textAlign?: string;
 }
 
 export const Text = ({
   typography = 'h1',
   colorFamily = 'dark',
   colorVariant = '01',
+  textAlign = 'auto',
   children,
 }: IText) => {
   const typographyText = Typography[typography];
@@ -20,6 +22,8 @@ export const Text = ({
   const color = COLORS[colorFamily][colorVariant];
 
   return (
-    <DefaultText style={{...typographyText, color}}>{children}</DefaultText>
+    <DefaultText style={{...typographyText, color, textAlign}}>
+      {children}
+    </DefaultText>
   );
 };

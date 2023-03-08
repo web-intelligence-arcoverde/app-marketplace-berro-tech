@@ -35,3 +35,7 @@ export * from './DescriptionUserProfileScreen/DescriptionUserProfileScreen';
 export * from './HeaderUserProfileScreen/HeaderUserProfileScreen';
 export * from './AddressUserProfileScreen/AddressUserProfileScreen';
 export * from './FooterUserProfilerScreen/FooterUserProfilerScreen';
+
+export * from './ProductListProfile/ProductListProfile';
+export * from './MyProductsProfileScreen/MyProductsProfileScreen';
+export * from './EmptyContainerProductMyProducts/EmptyContainerProductMyProducts';

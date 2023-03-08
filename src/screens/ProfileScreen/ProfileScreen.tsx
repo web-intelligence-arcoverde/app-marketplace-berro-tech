@@ -1,4 +1,10 @@
-import {DescriptionUserProfileScreen, HeaderDashboard} from '../../components';
+import {
+  DescriptionUserProfileScreen,
+  HeaderDashboard,
+  Text,
+  IconComponent,
+  MyProductsProfileScreen,
+} from '../../components';
 
 import {View} from 'react-native';
 
@@ -7,6 +13,7 @@ export const ProfileScreen = () => {
     <View style={{flex: 1, backgroundColor: '#fff'}}>
       <HeaderDashboard />
       <DescriptionUserProfileScreen />
+      <MyProductsProfileScreen />
     </View>
   );
 };

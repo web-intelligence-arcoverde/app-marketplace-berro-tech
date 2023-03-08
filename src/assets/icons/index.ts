@@ -12,6 +12,8 @@ import CloseIcon from './close-icon.svg';
 import LocationIcon from './location.svg';
 import StarIcon from './star-icon.svg';
 
+import LogoProfile from './logo-profile.svg';
+
 export const ICONS = {
   email: EmailIcon,
   gmail: GmailIcon,
@@ -24,4 +26,5 @@ export const ICONS = {
   'close-icon': CloseIcon,
   'location-icon': LocationIcon,
   'star-icon': StarIcon,
+  'logo-profile': LogoProfile,
 };
