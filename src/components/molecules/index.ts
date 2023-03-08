@@ -27,3 +27,5 @@ export * from './HeaderDashboard/HeaderDashboard';
 // Componentes do produto
 export * from './ProductItemCard/ProductItemCard';
 export * from './ProductItemDescriptionFooter/ProductItemDescriptionFooter';
+export * from './ProductItemAddress/ProductItemAddress';
+export * from './ProductItemHeader/ProductItemHeader';

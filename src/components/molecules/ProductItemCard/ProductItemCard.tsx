@@ -1,9 +1,11 @@
 import {mockImages} from '../../../assets/images/mock';
 
-import {Image, View, Text} from 'react-native';
+import {Image, View} from 'react-native';
 import {scale} from '../../../utils';
 
-import {Separator, IconComponent, ProductItemDescriptionFooter} from '../..';
+import {ProductItemDescriptionFooter, ProductItemHeader} from '../..';
+
+import {ContainerFoorterDescription} from './style';
 
 export const ProductItemCard = () => {
   return (
@@ -17,43 +19,15 @@ export const ProductItemCard = () => {
           borderTopRightRadius: scale(6),
         }}
       />
-      <View style={{paddingVertical: scale(20)}}>
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-          }}>
-          <Text>Senepol</Text>
-          <Text>3 restantes</Text>
-        </View>
-        <Separator height={8} />
-        <View
-          style={{
-            display: 'flex',
-          }}>
-          <Text>Garrote Senepol</Text>
-          <Separator height={8} />
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <IconComponent icon="location-icon" />
-            <Separator width={10} />
-            <Text>Campina Grande, PB</Text>
-          </View>
-        </View>
-      </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          borderWidth: 1,
-          borderColor: '#F2F1F7',
-        }}>
+      <ProductItemHeader />
+      <ContainerFoorterDescription>
         <ProductItemDescriptionFooter title="Sexo" description="Macho" />
         <ProductItemDescriptionFooter title="Idade" description="Garrote" />
         <ProductItemDescriptionFooter
           title="Classifi..."
           description="Genética"
         />
-      </View>
+      </ContainerFoorterDescription>
     </View>
   );
 };
