@@ -29,3 +29,9 @@ export * from './ProductItemCard/ProductItemCard';
 export * from './ProductItemDescriptionFooter/ProductItemDescriptionFooter';
 export * from './ProductItemAddress/ProductItemAddress';
 export * from './ProductItemHeader/ProductItemHeader';
+
+// Profile
+export * from './DescriptionUserProfileScreen/DescriptionUserProfileScreen';
+export * from './HeaderUserProfileScreen/HeaderUserProfileScreen';
+export * from './AddressUserProfileScreen/AddressUserProfileScreen';
+export * from './FooterUserProfilerScreen/FooterUserProfilerScreen';

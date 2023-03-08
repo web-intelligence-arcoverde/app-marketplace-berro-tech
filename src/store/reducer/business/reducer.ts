@@ -5,10 +5,6 @@ import {readProductsRequest, readProductsSuccess} from './actions';
 
 export const authReducer = createReducer(initialState, builder => {
   builder
-    .addCase(readProductsRequest, (state, action) => {
-      console.log(state);
-    })
-    .addCase(readProductsSuccess, (state, action) => {
-      console.log(state);
-    });
+    .addCase(readProductsRequest, (state, action) => {})
+    .addCase(readProductsSuccess, (state, action) => {});
 });

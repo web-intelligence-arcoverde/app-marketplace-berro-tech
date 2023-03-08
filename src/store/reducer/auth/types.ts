@@ -18,4 +18,5 @@ export interface IRecoveryAccount {
 export type UserState = {
   token: string;
   lastSearchs: string[];
+  isLogged: boolean;
 };

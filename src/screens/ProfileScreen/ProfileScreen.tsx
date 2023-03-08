@@ -1,9 +1,12 @@
-import {KeyboardContainer, HeaderDashboard} from '../../components';
+import {DescriptionUserProfileScreen, HeaderDashboard} from '../../components';
+
+import {View} from 'react-native';
 
 export const ProfileScreen = () => {
   return (
-    <KeyboardContainer>
+    <View style={{flex: 1, backgroundColor: '#fff'}}>
       <HeaderDashboard />
-    </KeyboardContainer>
+      <DescriptionUserProfileScreen />
+    </View>
   );
 };

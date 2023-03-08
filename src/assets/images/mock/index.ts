@@ -4,6 +4,7 @@ import GadoThree from './gado-3.png';
 import GadoFour from './gado-4.png';
 import GadoFive from './gado-5.png';
 import GadoSix from './gado-6.png';
+import UserImage from './user.png';
 
 export const mockImages = {
   GadoOne,
@@ -12,4 +13,5 @@ export const mockImages = {
   GadoFour,
   GadoFive,
   GadoSix,
+  UserImage,
 };

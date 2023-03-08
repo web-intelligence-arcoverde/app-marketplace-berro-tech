@@ -7,7 +7,7 @@ import {ProfileScreen, HomeScreen, BusinessScreen} from '../screens/';
 export const DashboardBottomNavigation = () => {
   return (
     <Tab.Navigator
-      initialRouteName={'Home'}
+      initialRouteName={'Perfil'}
       screenOptions={{headerShown: false}}>
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Negocios" component={BusinessScreen} />

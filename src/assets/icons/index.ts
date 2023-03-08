@@ -10,6 +10,7 @@ import SearchIcon from './search-icon.svg';
 import CloseIcon from './close-icon.svg';
 
 import LocationIcon from './location.svg';
+import StarIcon from './star-icon.svg';
 
 export const ICONS = {
   email: EmailIcon,
@@ -22,4 +23,5 @@ export const ICONS = {
   'search-icon': SearchIcon,
   'close-icon': CloseIcon,
   'location-icon': LocationIcon,
+  'star-icon': StarIcon,
 };

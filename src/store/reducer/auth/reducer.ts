@@ -4,7 +4,5 @@ import {initialState} from './initialState';
 import {signInRequestGoogle} from './actions';
 
 export const authReducer = createReducer(initialState, builder => {
-  builder.addCase(signInRequestGoogle, (state, action) => {
-    console.log(state);
-  });
+  builder.addCase(signInRequestGoogle, (state, action) => {});
 });
