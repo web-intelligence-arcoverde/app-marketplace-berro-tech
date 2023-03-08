@@ -1,24 +1,13 @@
 import {mockImages} from '../../../assets/images/mock';
 
-import {Image, View} from 'react-native';
-import {scale} from '../../../utils';
-
 import {ProductItemDescriptionFooter, ProductItemHeader} from '../..';
 
-import {ContainerFoorterDescription} from './style';
+import {ContainerFoorterDescription, ImageContainer, Container} from './style';
 
 export const ProductItemCard = () => {
   return (
-    <View style={{marginTop: 10}}>
-      <Image
-        source={mockImages.GadoOne}
-        style={{
-          width: scale(335),
-          height: scale(288),
-          borderTopLeftRadius: scale(6),
-          borderTopRightRadius: scale(6),
-        }}
-      />
+    <Container>
+      <ImageContainer source={mockImages.GadoOne} />
       <ProductItemHeader />
       <ContainerFoorterDescription>
         <ProductItemDescriptionFooter title="Sexo" description="Macho" />
@@ -28,6 +17,6 @@ export const ProductItemCard = () => {
           description="Genética"
         />
       </ContainerFoorterDescription>
-    </View>
+    </Container>
   );
 };
