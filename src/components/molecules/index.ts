@@ -42,3 +42,6 @@ export * from './EmptyContainerProductMyProducts/EmptyContainerProductMyProducts
 
 export * from './BreedSteps/BreedSteps';
 export * from './FiltersProfileScreen/FiltersProfileScreen';
+
+export * from './SearchInput/SearchInput';
+export * from './HeaderVariantProfile/HeaderVariantProfile';
