@@ -16,6 +16,21 @@ import LogoProfile from './logo-profile.svg';
 
 import OrdenedIcon from './ordened-icon.svg';
 
+/*
+
+  - Icons de navegação
+
+*/
+
+import HomeIcon from './home-icon.svg';
+import HomeOutlinedIcon from './home-icon-outlined.svg';
+
+import BusinessIcon from './business-icon.svg';
+import BusinessOutlinedIcon from './business-icon-outlined.svg';
+
+import ProfileIcon from './profile-icon.svg';
+import ProfileOutlinedIcon from './profile-icon-outlined.svg';
+
 export const ICONS = {
   email: EmailIcon,
   gmail: GmailIcon,
@@ -30,4 +45,10 @@ export const ICONS = {
   'star-icon': StarIcon,
   'logo-profile': LogoProfile,
   'ordened-icon': OrdenedIcon,
+  'home-icon': HomeIcon,
+  'home-outlined-icon': HomeOutlinedIcon,
+  'business-icon': BusinessIcon,
+  'business-outlined-icon': BusinessOutlinedIcon,
+  'profile-icon': ProfileIcon,
+  'profile-outlined-icon': ProfileOutlinedIcon,
 };
