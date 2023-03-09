@@ -15,6 +15,7 @@ import StarIcon from './star-icon.svg';
 import LogoProfile from './logo-profile.svg';
 
 import OrdenedIcon from './ordened-icon.svg';
+import EditIcon from './edit-icon.svg';
 
 /*
 
@@ -51,4 +52,5 @@ export const ICONS = {
   'business-outlined-icon': BusinessOutlinedIcon,
   'profile-icon': ProfileIcon,
   'profile-outlined-icon': ProfileOutlinedIcon,
+  'edit-icon': EditIcon,
 };
