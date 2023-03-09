@@ -171,6 +171,30 @@ export const ButtonStyle = EStyleSheet.create({
     },
   },
 
+  outlinedFour: {
+    containerStyle: {
+      width: 'auto',
+    },
+
+    titleStyle: {
+      color: COLORS.gray._02,
+      fontFamily: 'inter',
+      fontSize: scale(14),
+      marginLeft: scale(14),
+    },
+
+    buttonStyle: {
+      backgroundColor: COLORS.light._05,
+      height: 'auto',
+      width: 'auto',
+      borderRadius: scale(100),
+      paddingHorizontal: scale(16),
+      paddingVertical: scale(8),
+      borderWidth: 1,
+      borderColor: COLORS.light._02,
+    },
+  },
+
   none: {
     containerStyle: {
       width: '100%',

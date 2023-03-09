@@ -5,7 +5,12 @@ const Tab = createBottomTabNavigator();
 
 import {IconComponent} from '../components';
 
-import {ProfileScreen, HomeScreen, BusinessScreen} from '../screens/';
+import {
+  ProfileScreen,
+  HomeScreen,
+  BusinessScreen,
+  EditProfileScreen,
+} from '../screens/';
 
 export const DashboardBottomNavigation = () => {
   return (

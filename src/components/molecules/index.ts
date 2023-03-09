@@ -32,7 +32,7 @@ export * from './ProductItemHeader/ProductItemHeader';
 
 // Profile
 export * from './DescriptionUserProfileScreen/DescriptionUserProfileScreen';
-export * from './HeaderUserProfileScreen/HeaderUserProfileScreen';
+
 export * from './AddressUserProfileScreen/AddressUserProfileScreen';
 export * from './FooterUserProfilerScreen/FooterUserProfilerScreen';
 
@@ -45,3 +45,9 @@ export * from './FiltersProfileScreen/FiltersProfileScreen';
 
 export * from './SearchInput/SearchInput';
 export * from './HeaderVariantProfile/HeaderVariantProfile';
+
+//Header
+export * from './HeaderDashboard/HeaderDashboard';
+export * from './HeaderUserProfileScreen/HeaderUserProfileScreen';
+export * from './HeaderVariantProfileEdit/HeaderVariantProfileEdit';
+export * from './HeaderUserProfileScreen/HeaderUserProfileScreen';

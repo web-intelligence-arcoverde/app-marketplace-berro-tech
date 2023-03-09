@@ -2,6 +2,7 @@ import {Text, Button, Separator} from '../../';
 import {View} from 'react-native';
 import {ImageProps} from 'react-native';
 import {Container, ContainerImage} from './style';
+import {useNavigationHook} from '../../../hooks';
 
 interface IHeaderUserProfileScreen {
   photo?: string | ImageProps | Readonly<ImageProps>;
@@ -19,6 +20,8 @@ export const HeaderUserProfileScreen = ({
   const firstName = formatedName[0];
   const secondName = formatedName[1];
 
+  const {goToRouter} = useNavigationHook();
+
   return (
     <Container>
       <ContainerImage source={photo} />
@@ -34,7 +37,7 @@ export const HeaderUserProfileScreen = ({
         <Button
           title="Minha conta"
           variant="containedFour"
-          onPress={() => {}}
+          onPress={() => goToRouter('EditProfileScreen')}
         />
       </View>
     </Container>

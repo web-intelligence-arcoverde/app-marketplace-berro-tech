@@ -8,6 +8,8 @@ import {
   SignInEmailScreen,
   SignUpScreen,
   RecoveryAccountScreen,
+  EditProfileScreen,
+  AddProductScreen,
 } from '../screens/';
 
 const Stack = createNativeStackNavigator();
@@ -31,6 +33,9 @@ export const RouterApp = () => {
         name="DashboardBottomNavigation"
         component={DashboardBottomNavigation}
       />
+
+      <Stack.Screen name="EditProfileScreen" component={EditProfileScreen} />
+      <Stack.Screen name="AddProductScreen" component={AddProductScreen} />
     </Stack.Navigator>
   );
 };
