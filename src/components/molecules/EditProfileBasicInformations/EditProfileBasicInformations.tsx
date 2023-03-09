@@ -3,7 +3,7 @@ import {Image, TouchableOpacity, View, ScrollView} from 'react-native';
 
 import {Button, Text, Input, Separator} from '../../';
 
-import {useAppSelector} from '../../../hooks';
+import {useAppSelector, useNavigationHook} from '../../../hooks';
 
 import * as ImagePicker from 'react-native-image-picker';
 
@@ -23,6 +23,8 @@ export const EditProfileBasicInformations = () => {
   const {photo} = useAppSelector(state => state.user.user);
 
   const [response, setResponse] = useState<any>(null);
+
+  const {goToRouter} = useNavigationHook();
 
   const {
     control,
@@ -96,7 +98,11 @@ export const EditProfileBasicInformations = () => {
           <Input control={control} label="Email" name="email" />
           <Input control={control} label="Telefone" name="phone" />
 
-          <Button title="Alterar senha" onPress={() => {}} variant="none" />
+          <Button
+            title="Alterar senha"
+            onPress={() => goToRouter('ProfileChangerPasswordScreen')}
+            variant="none"
+          />
           <Button title="Excluir conta" onPress={() => {}} variant="none" />
 
           <Button

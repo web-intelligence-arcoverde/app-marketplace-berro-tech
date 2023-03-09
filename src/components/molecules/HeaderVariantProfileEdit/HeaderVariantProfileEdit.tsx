@@ -11,12 +11,14 @@ export const HeaderVariantProfileEdit = () => {
   const {goBack} = useNavigationHook();
   const isRouter = verifyRouter(name);
 
+  const isEditProfileScreen = name === 'EditProfileScreen';
+
   return (
     <View
       style={{
         flexDirection: 'row',
         justifyContent: 'space-between',
-        width: '100%',
+        width: isEditProfileScreen ? '100%' : 'auto',
         alignItems: 'center',
       }}>
       {isRouter?.router && (
@@ -37,8 +39,14 @@ function verifyRouter(name: string) {
   const isAddProductScreen = name === 'AddProductScreen';
   const isEditProductScreenn = name === 'EditProductScreen';
   const isSelleterProfile = name === 'EditProductScreen';
+  const isProfileChangerPasswordScreen = name == 'ProfileChangerPasswordScreen';
 
-  if (isAddProductScreen || isEditProductScreenn || isSelleterProfile) {
+  if (
+    isAddProductScreen ||
+    isEditProductScreenn ||
+    isSelleterProfile ||
+    isProfileChangerPasswordScreen
+  ) {
     return {
       router: true,
       buttonBackText: 'Voltar',

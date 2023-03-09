@@ -13,17 +13,16 @@ export const HeaderDashboard = () => {
   const {name} = useRoute();
 
   const isEditProfileScreen = name === 'EditProfileScreen';
+  const isProfileChangerPasswordScreen = name == 'ProfileChangerPasswordScreen';
 
   return (
     <View style={style.container}>
       <Separator height={getStatusBarHeight()} />
 
-      <View>
-        <View style={style.content}>
-          {!isEditProfileScreen && <Image source={IMAGES.LogoHeader} />}
-          <HeaderVariantProfileEdit />
-          <HeaderVariantProfile />
-        </View>
+      <View style={style.content}>
+        <HeaderVariantProfileEdit />
+
+        <HeaderVariantProfile />
       </View>
     </View>
   );

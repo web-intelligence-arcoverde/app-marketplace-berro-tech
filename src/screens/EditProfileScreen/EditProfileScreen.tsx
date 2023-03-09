@@ -45,7 +45,7 @@ export const EditProfileScreen = () => {
               paddingHorizontal: 20,
               paddingVertical: 20,
             }}>
-            <Text typography="h4">Editar </Text>
+            <Text typography="h4">Editar</Text>
             <Text typography="h4">Localização</Text>
           </TouchableOpacity>
         </View>
