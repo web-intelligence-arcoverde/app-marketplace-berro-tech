@@ -1,11 +1,9 @@
 import {useState, useCallback} from 'react';
-import {Image, TouchableOpacity, View, ScrollView} from 'react-native';
+import {View, ScrollView} from 'react-native';
 
-import {Button, Text, Input, Separator} from '../../';
+import {Button, Text, Input, Separator, EditProfileChangeImage} from '../../';
 
-import {useAppSelector, useNavigationHook} from '../../../hooks';
-
-import * as ImagePicker from 'react-native-image-picker';
+import {useNavigationHook} from '../../../hooks';
 
 import {useForm} from 'react-hook-form';
 
@@ -20,10 +18,6 @@ const schema = yup
   .required();
 
 export const EditProfileBasicInformations = () => {
-  const {photo} = useAppSelector(state => state.user.user);
-
-  const [response, setResponse] = useState<any>(null);
-
   const {goToRouter} = useNavigationHook();
 
   const {
@@ -37,61 +31,14 @@ export const EditProfileBasicInformations = () => {
     },
   });
 
-  const onButtonPress = useCallback(options => {
-    ImagePicker.launchImageLibrary(options, response => {
-      console.log('Response = ', response);
-
-      if (response.didCancel) {
-      } else if (response?.error) {
-        console.log('ImagePicker Error: ', response?.error);
-      } else {
-        setResponse(response.assets[0].uri);
-      }
-    });
-  }, []);
-
-  function renderFileData() {
-    if (response) {
-      return (
-        <Image
-          resizeMode="stretch"
-          source={{
-            uri: response,
-          }}
-          style={{width: '100%', height: '100%', borderRadius: 6}}
-        />
-      );
-    } else {
-      return (
-        <Image
-          resizeMode="stretch"
-          source={photo}
-          style={{width: '100%', height: '100%', borderRadius: 6}}
-        />
-      );
-    }
-  }
-
   return (
     <ScrollView>
       <View style={{paddingHorizontal: 20}}>
-        <TouchableOpacity
-          style={{
-            width: 'auto',
-            height: 246,
-          }}
-          onPress={() =>
-            onButtonPress({
-              saveToPhotos: true,
-              mediaType: 'photo',
-              includeBase64: false,
-              includeExtra: true,
-            })
-          }>
-          {renderFileData()}
-        </TouchableOpacity>
+        <EditProfileChangeImage />
         <Separator height={20} />
-        <Text typography="h3">Suas Informações</Text>
+        <Text typography="h3" colorFamily="gray" colorVariant="_01">
+          Suas Informações
+        </Text>
         <Separator height={20} />
         <View style={{gap: 20}}>
           <Input control={control} label="Nome" name="name" />

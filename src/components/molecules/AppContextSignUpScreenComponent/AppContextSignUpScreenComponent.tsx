@@ -1,10 +1,9 @@
 import React from 'react';
 
-import {useHookStepsEditProfile} from '../../../hooks/useHookStepsEditProfile';
-
 import {Separator, StepsEditProfileScreen} from '../..';
 
 import {ContextEditProfileStep} from '../../../context';
+import {useHookStepsEditProfile} from '../../../hooks/';
 
 export const AppContextEditProfileScreenComponent = () => {
   const {Steps, step, setStep} = useHookStepsEditProfile();

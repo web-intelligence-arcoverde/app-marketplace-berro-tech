@@ -54,6 +54,8 @@ export * from './EditProfileLocationInformation/EditProfileLocationInformation';
 
 export * from './StepsEditProfileScreen/StepsEditProfileScreen';
 
+export * from './EditProfileChangeImage/EditProfileChangeImage';
+
 //Context
 
 export * from './AppContextEditProfileScreenComponent/AppContextEditProfileScreenComponent';

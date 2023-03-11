@@ -1,9 +1,8 @@
-import {useContext, useState} from 'react';
+import {useState} from 'react';
 
 import {
   EditProfileLocationInformation,
   EditProfileBasicInformations,
-  ContextEditProfileStep,
 } from '../components';
 
 const renderSteps = {
