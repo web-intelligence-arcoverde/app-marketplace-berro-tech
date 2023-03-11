@@ -1,11 +1,11 @@
-import {useState} from 'react';
-
+import {useContext} from 'react';
 import {Separator, Text} from '../../';
+import {ContextEditProfileStep} from '../../../context';
 
 import {StepItem, Container} from './style';
 
 export const StepsEditProfileScreen = () => {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useContext(ContextEditProfileStep);
 
   return (
     <Container>

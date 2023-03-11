@@ -11,15 +11,12 @@ export * from './RecoveryAccountScreenStep02/RecoveryAccountScreenStep02';
 
 export * from './FormSignInEmailScreen/FormSignInEmailScreen';
 
-export * from './AppContextStepRecoveryAccountComponent/AppContextStepRecoveryAccountComponent';
-
 export * from './StepRecoveryAccount/StepRecoveryAccount';
 
 export * from './ConfirmationCodeInputRecoveryAccount/ConfirmationCodeInputRecoveryAccount';
 
 export * from './DescriptionInformationUserRecoveryAccountScreen/DescriptionInformationUserRecoveryAccountScreen';
 
-export * from './AppContextSignUpScreenComponent/AppContextSignUpScreenComponent';
 export * from './SignInButtonContainer/SignInButtonContainer';
 
 export * from './HeaderDashboard/HeaderDashboard';
@@ -56,3 +53,9 @@ export * from './EditProfileBasicInformations/EditProfileBasicInformations';
 export * from './EditProfileLocationInformation/EditProfileLocationInformation';
 
 export * from './StepsEditProfileScreen/StepsEditProfileScreen';
+
+//Context
+
+export * from './AppContextEditProfileScreenComponent/AppContextEditProfileScreenComponent';
+export * from './AppContextStepRecoveryAccountComponent/AppContextStepRecoveryAccountComponent';
+export * from './AppContextSignUpScreenComponent/AppContextSignUpScreenComponent';

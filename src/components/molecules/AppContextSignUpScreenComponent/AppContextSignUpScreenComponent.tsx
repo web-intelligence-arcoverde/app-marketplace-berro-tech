@@ -1,19 +1,19 @@
 import React from 'react';
-import {ContextSignUpScreenStep} from '../../../context/ContextSignUpScreenStep';
-import {useHookStepsSignUpScreen} from '../../../hooks/useHookStepsSignUpScreen';
-import {Container} from './style';
 
-import {SignInButtonContainer} from '../..';
+import {useHookStepsEditProfile} from '../../../hooks/useHookStepsEditProfile';
 
-export const AppContextSignUpScreenComponent = () => {
-  const {Steps, step, setStep} = useHookStepsSignUpScreen();
+import {Separator, StepsEditProfileScreen} from '../..';
+
+import {ContextEditProfileStep} from '../../../context';
+
+export const AppContextEditProfileScreenComponent = () => {
+  const {Steps, step, setStep} = useHookStepsEditProfile();
 
   return (
-    <ContextSignUpScreenStep.Provider value={[step, setStep]}>
-      <Container>
-        <Steps />
-      </Container>
-      <SignInButtonContainer />
-    </ContextSignUpScreenStep.Provider>
+    <ContextEditProfileStep.Provider value={[step, setStep]}>
+      <StepsEditProfileScreen />
+      <Separator height={28} />
+      <Steps />
+    </ContextEditProfileStep.Provider>
   );
 };
