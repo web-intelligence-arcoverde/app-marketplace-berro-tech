@@ -7,7 +7,6 @@ interface IStepItem {
 
 export const Container = styled.View`
   flex-direction: row;
-  border-radius: ${scale(6)};
 `;
 
 export const StepItem = styled.TouchableOpacity<IStepItem>`

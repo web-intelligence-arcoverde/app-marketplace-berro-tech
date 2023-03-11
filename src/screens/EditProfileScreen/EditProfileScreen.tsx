@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {TouchableOpacity, View} from 'react-native';
+import React from 'react';
 
 import {
   Text,
@@ -19,6 +19,14 @@ const renderSteps = {
   1: EditProfileLocationInformation,
 };
 
+export interface IAppContextEditProfileStepp {
+  step: string;
+  setStep: () => string;
+}
+
+export const ContextEditProfileStep =
+  React.createContext<IAppContextEditProfileStepp | null>(null);
+
 export const EditProfileScreen = () => {
   const [step, setStep] = useState(0);
 
@@ -27,9 +35,11 @@ export const EditProfileScreen = () => {
   return (
     <KeyboardContainer>
       <HeaderDashboard />
-      <StepsEditProfileScreen />
-      <Separator height={28} />
-      <Steps />
+      <ContextEditProfileStep.Provider value={[step, setStep]}>
+        <StepsEditProfileScreen />
+        <Separator height={28} />
+        <Steps />
+      </ContextEditProfileStep.Provider>
 
       <Separator height={getBottomSpaceHeight()} />
     </KeyboardContainer>
