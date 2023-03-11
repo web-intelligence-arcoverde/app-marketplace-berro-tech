@@ -54,3 +54,5 @@ export * from './HeaderUserProfileScreen/HeaderUserProfileScreen';
 
 export * from './EditProfileBasicInformations/EditProfileBasicInformations';
 export * from './EditProfileLocationInformation/EditProfileLocationInformation';
+
+export * from './StepsEditProfileScreen/StepsEditProfileScreen';

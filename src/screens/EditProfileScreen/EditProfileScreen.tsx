@@ -7,6 +7,7 @@ import {
   KeyboardContainer,
   EditProfileLocationInformation,
   EditProfileBasicInformations,
+  StepsEditProfileScreen,
 } from '../../components';
 
 import {HeaderDashboard} from '../../components';
@@ -26,30 +27,8 @@ export const EditProfileScreen = () => {
   return (
     <KeyboardContainer>
       <HeaderDashboard />
-      <View>
-        <View style={{flexDirection: 'row'}}>
-          <TouchableOpacity
-            onPress={() => setStep(0)}
-            style={{
-              flexDirection: 'column',
-              paddingHorizontal: 20,
-              paddingVertical: 20,
-            }}>
-            <Text typography="h4">Editar </Text>
-            <Text typography="h4">Conta</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => setStep(1)}
-            style={{
-              flexDirection: 'column',
-              paddingHorizontal: 20,
-              paddingVertical: 20,
-            }}>
-            <Text typography="h4">Editar</Text>
-            <Text typography="h4">Localização</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+      <StepsEditProfileScreen />
+      <Separator height={28} />
       <Steps />
 
       <Separator height={getBottomSpaceHeight()} />

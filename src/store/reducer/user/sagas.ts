@@ -8,7 +8,7 @@ const user = {
   address: null,
   phone: '87998093765',
   avaliation_rate: '4.8',
-  photo: mockImages.UserImage,
+  photo: mockImages.UserHightQualityImage,
 };
 
 function* readUserInformation(): any {
