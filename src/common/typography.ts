@@ -44,5 +44,6 @@ export const Typography = EStyleSheet.create({
     fontFamily: 'inter',
     fontSize: scale(14),
     lineHeight: scale(20),
+    fontWeight: 500,
   },
 });
