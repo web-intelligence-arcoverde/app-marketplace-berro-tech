@@ -53,7 +53,7 @@ export * from './EditProfileBasicInformations/EditProfileBasicInformations';
 export * from './EditProfileLocationInformation/EditProfileLocationInformation';
 
 export * from './StepsEditProfileScreen/StepsEditProfileScreen';
-
+export * from './EditProfileImage/EditProfileImage';
 export * from './EditProfileChangeImage/EditProfileChangeImage';
 
 //Context
