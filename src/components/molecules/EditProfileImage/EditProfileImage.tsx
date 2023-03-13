@@ -10,11 +10,5 @@ export const EditProfileImage = ({url}: IEditProfileImage) => {
 
   const imageUrl = url ? {uri: url} : photo;
 
-  return (
-    <ImageContainer
-      resizeMode="stretch"
-      source={imageUrl}
-      style={{width: '100%', height: '100%', borderRadius: 6}}
-    />
-  );
+  return <ImageContainer resizeMode="stretch" source={imageUrl} />;
 };
