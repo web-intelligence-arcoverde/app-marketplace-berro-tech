@@ -1,6 +1,6 @@
 import {IconComponent, Text} from '../../';
 
-import {ScrollView, View} from 'react-native';
+import {View} from 'react-native';
 import {Separator} from '../../atoms';
 
 export const EmptyContainerProductMyProducts = () => {
