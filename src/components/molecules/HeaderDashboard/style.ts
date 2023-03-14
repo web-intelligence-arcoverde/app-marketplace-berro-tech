@@ -9,10 +9,8 @@ export const style = EStyleSheet.create({
 
   content: {
     flexDirection: 'row',
-    height: scale(96),
     paddingHorizontal: scale(20),
-    paddingTop: scale(22),
-    paddingBottom: scale(12),
+    paddingVertical: scale(12),
     alignItems: 'center',
     justifyContent: 'space-between',
   },

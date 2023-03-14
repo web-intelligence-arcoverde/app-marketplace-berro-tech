@@ -1,12 +1,15 @@
-import {ProductItemCard} from '../../';
+import {ProductItemCard, FiltersProfileScreen} from '../../';
 
-import {ScrollView} from 'react-native';
+import {View, ScrollView} from 'react-native';
 
 export const ProductListProfile = () => {
   return (
-    <ScrollView style={{paddingHorizontal: 20, paddingVertical: 20}}>
-      <ProductItemCard />
-      <ProductItemCard />
-    </ScrollView>
+    <View>
+      <FiltersProfileScreen />
+      <ScrollView style={{paddingHorizontal: 20, paddingVertical: 20}}>
+        <ProductItemCard />
+        <ProductItemCard />
+      </ScrollView>
+    </View>
   );
 };

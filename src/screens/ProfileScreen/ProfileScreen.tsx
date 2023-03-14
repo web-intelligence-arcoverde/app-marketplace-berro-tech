@@ -14,8 +14,6 @@ export const ProfileScreen = () => {
       <HeaderDashboard />
       <DescriptionUserProfileScreen />
       <Separator height={12} />
-      <FiltersProfileScreen />
-      <Separator height={12} />
       <MyProductsProfileScreen />
     </Container>
   );

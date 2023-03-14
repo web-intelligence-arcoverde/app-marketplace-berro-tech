@@ -3,7 +3,7 @@ import {View} from 'react-native';
 import {EmptyContainerProductMyProducts, ProductListProfile} from '../../';
 
 export const MyProductsProfileScreen = () => {
-  const products = [1];
+  const products = [];
 
   const isEmptyProduct = products.length >= 1;
 
