@@ -1,24 +1,34 @@
-import {useState, useCallback} from 'react';
 import {View, ScrollView} from 'react-native';
 
 import {Button, Text, Input, Separator, EditProfileChangeImage} from '../../';
 
-import {useNavigationHook} from '../../../hooks';
+import {useAppSelector, useNavigationHook} from '../../../hooks';
 
 import {useForm} from 'react-hook-form';
+
+import {CustomInput} from '../../atoms/CustomInput/CustomInput';
 
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 const schema = yup
   .object({
+    name: yup.string().required(),
     email: yup.string().required().email(),
-    password: yup.string().required().min(8),
+    phone: yup
+      .string()
+      .required()
+      .matches(
+        /^(\+\d{1,2}-)?\(?\d{3}\)?[-]\d{7}$/,
+        'Cell phone must have 12 digits at max',
+      ),
   })
   .required();
 
 export const EditProfileBasicInformations = () => {
   const {goToRouter} = useNavigationHook();
+
+  const {name, email, phone} = useAppSelector(state => state.user.user);
 
   const {
     control,
@@ -27,9 +37,15 @@ export const EditProfileBasicInformations = () => {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      email: '',
+      name,
+      email,
+      phone,
     },
   });
+
+  console.log(control);
+
+  const onSubmit = data => console.log(data);
 
   return (
     <ScrollView>
@@ -41,9 +57,25 @@ export const EditProfileBasicInformations = () => {
         </Text>
         <Separator height={20} />
         <View style={{gap: 20}}>
-          <Input control={control} label="Nome" name="name" />
-          <Input control={control} label="Email" name="email" />
-          <Input control={control} label="Telefone" name="phone" />
+          <Input
+            control={control}
+            label="Nome"
+            name="name"
+            errors={errors?.name?.message}
+          />
+          <Input
+            control={control}
+            label="Email"
+            name="email"
+            errors={errors?.email?.message}
+          />
+          <CustomInput
+            control={control}
+            label="Telefone"
+            name="phone"
+            mask="phone"
+            errors={errors?.phone?.message}
+          />
 
           <Button
             title="Alterar senha"
@@ -54,7 +86,7 @@ export const EditProfileBasicInformations = () => {
 
           <Button
             title="Salvar Alterações"
-            onPress={() => {}}
+            onPress={() => console.log('exa')}
             variant="containedThirdy"
           />
         </View>

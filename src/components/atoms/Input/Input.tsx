@@ -7,6 +7,8 @@ import {IconComponent} from '../../';
 
 import {TouchableOpacity} from 'react-native';
 
+import {CustomInput} from '../CustomInput/CustomInput';
+
 import {InputProps} from '@rneui/base';
 
 interface IInput extends InputProps {
@@ -19,9 +21,10 @@ interface IInput extends InputProps {
   rightIcon?: boolean;
   leftIcon?: boolean;
   variant?: string;
+  mask?: string;
 }
 
-import {useState} from 'react';
+import React, {useState} from 'react';
 
 import {InputStyle} from './style';
 
@@ -35,6 +38,7 @@ export const Input = ({
   rightIcon,
   leftIcon,
   variant = 'contained',
+  mask,
 }: IInput) => {
   const typography = Typography['input'];
 
@@ -57,46 +61,49 @@ export const Input = ({
   return (
     <Controller
       control={control}
-      render={({field: {onChange, onBlur, value}}) => (
-        <Default
-          style={{padding: 0, margin: 0}}
-          label={label}
-          placeholder={placeholder}
-          containerStyle={containerStyle}
-          inputStyle={inputStyle}
-          errorStyle={errorStyle}
-          inputContainerStyle={inputContainerStyle}
-          labelStyle={[typography, labelStyle]}
-          errorMessage={errors}
-          onBlur={onBlur}
-          onChangeText={onChange}
-          value={value}
-          keyboardType="email-address"
-          autoCapitalize="none"
-          secureTextEntry={showPassword}
-          autoCorrect={false}
-          leftIconContainerStyle={leftIconContainerStyle}
-          rightIconContainerStyle={rightIconContainerStyle}
-          rightIcon={
-            rightShowIcon && (
-              <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-                <IconComponent
-                  icon={showPassword ? 'arrow-left' : 'arrow-left'}
-                />
-              </TouchableOpacity>
-            )
-          }
-          leftIcon={
-            leftShowIcon && (
-              <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-                <IconComponent
-                  icon={showPassword ? 'arrow-left' : 'arrow-left'}
-                />
-              </TouchableOpacity>
-            )
-          }
-        />
-      )}
+      render={({field: {onChange, onBlur, value}}) => {
+        return (
+          <Default
+            label={label}
+            placeholder={placeholder}
+            containerStyle={containerStyle}
+            inputStyle={inputStyle}
+            errorStyle={errorStyle}
+            inputContainerStyle={inputContainerStyle}
+            labelStyle={[typography, labelStyle]}
+            errorMessage={errors}
+            onBlur={onBlur}
+            onChangeText={onChange}
+            value={value}
+            keyboardType="email-address"
+            autoCapitalize="none"
+            secureTextEntry={showPassword}
+            autoCorrect={false}
+            leftIconContainerStyle={leftIconContainerStyle}
+            rightIconContainerStyle={rightIconContainerStyle}
+            rightIcon={
+              rightShowIcon && (
+                <TouchableOpacity
+                  onPress={() => setShowPassword(!showPassword)}>
+                  <IconComponent
+                    icon={showPassword ? 'arrow-left' : 'arrow-left'}
+                  />
+                </TouchableOpacity>
+              )
+            }
+            leftIcon={
+              leftShowIcon && (
+                <TouchableOpacity
+                  onPress={() => setShowPassword(!showPassword)}>
+                  <IconComponent
+                    icon={showPassword ? 'arrow-left' : 'arrow-left'}
+                  />
+                </TouchableOpacity>
+              )
+            }
+          />
+        );
+      }}
       name={name}
     />
   );
