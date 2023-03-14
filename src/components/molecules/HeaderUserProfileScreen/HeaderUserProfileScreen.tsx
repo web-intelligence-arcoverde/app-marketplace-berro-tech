@@ -2,19 +2,11 @@ import {Text, Button, Separator} from '../../';
 import {View} from 'react-native';
 import {ImageProps} from 'react-native';
 import {Container, ContainerImage} from './style';
-import {useNavigationHook} from '../../../hooks';
+import {useAppSelector, useNavigationHook} from '../../../hooks';
 
-interface IHeaderUserProfileScreen {
-  photo?: string | ImageProps | Readonly<ImageProps>;
-  name?: string;
-  email?: string;
-}
+export const HeaderUserProfileScreen = () => {
+  const {name, email, photo} = useAppSelector(state => state.user.user);
 
-export const HeaderUserProfileScreen = ({
-  photo,
-  name = '',
-  email,
-}: IHeaderUserProfileScreen) => {
   const formatedName = name?.split(' ');
 
   const firstName = formatedName[0];

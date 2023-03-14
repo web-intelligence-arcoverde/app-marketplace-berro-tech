@@ -3,7 +3,6 @@ import {View} from 'react-native';
 import {scale} from '../../../utils';
 
 import {
-  Separator,
   HeaderUserProfileScreen,
   AddressUserProfileScreen,
   FooterUserProfilerScreen,
@@ -15,7 +14,7 @@ import {readInformationUserRequest} from '../../../store/reducer/user/actions';
 export const DescriptionUserProfileScreen = () => {
   const dispatch = useAppDispatch();
 
-  const {name, email, address, phone, avaliation_rate, photo} = useAppSelector(
+  const {address, phone, avaliation_rate} = useAppSelector(
     state => state.user.user,
   );
 
@@ -25,7 +24,7 @@ export const DescriptionUserProfileScreen = () => {
 
   return (
     <View style={{paddingHorizontal: scale(20)}}>
-      <HeaderUserProfileScreen photo={photo} name={name} email={email} />
+      <HeaderUserProfileScreen />
       <AddressUserProfileScreen {...address} />
       <FooterUserProfilerScreen
         phone={phone}

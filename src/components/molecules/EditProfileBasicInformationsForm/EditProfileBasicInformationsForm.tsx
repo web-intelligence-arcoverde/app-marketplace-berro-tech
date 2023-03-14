@@ -76,7 +76,6 @@ export const EditProfileBasicInformationsForm = () => {
         title="Salvar alterações"
         onPress={handleSubmit(onSubmit)}
         variant="containedThirdy"
-        disabled
       />
     </View>
   );

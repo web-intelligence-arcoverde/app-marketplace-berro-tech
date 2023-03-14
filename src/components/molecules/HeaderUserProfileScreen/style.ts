@@ -10,4 +10,5 @@ export const Container = styled.View`
 export const ContainerImage = styled.Image`
   width: ${scale(96)};
   height: ${scale(96)};
+  border-radius: ${scale(6)};
 `;
