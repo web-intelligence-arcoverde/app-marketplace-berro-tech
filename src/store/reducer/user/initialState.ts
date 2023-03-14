@@ -10,4 +10,5 @@ export const initialState: IUserInitialState = {
     photo: '',
   },
   loading: false,
+  step_edit_profile: 0,
 };

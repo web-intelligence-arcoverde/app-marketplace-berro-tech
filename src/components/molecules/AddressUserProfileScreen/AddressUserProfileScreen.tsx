@@ -1,6 +1,7 @@
-import {Text, Button, Separator, ButtonText} from '../..';
-
-import {View} from 'react-native';
+import {Text, Separator, ButtonText} from '../..';
+import {useAppDispatch, useNavigationHook} from '../../../hooks';
+import {changerStepEditProfile} from '../../../store/reducer/user/actions';
+import {Container} from './style';
 
 interface IAddressUserProfileScreen {
   city?: string;
@@ -8,13 +9,15 @@ interface IAddressUserProfileScreen {
   country?: string;
 }
 
-import {Container} from './style';
-
 export const AddressUserProfileScreen = ({
   city,
   uf,
   country,
 }: IAddressUserProfileScreen) => {
+  const {goToRouter} = useNavigationHook();
+
+  const dispatch = useAppDispatch();
+
   return (
     <Container>
       <Text typography="h4" colorFamily="gray" colorVariant="_04">
@@ -26,7 +29,12 @@ export const AddressUserProfileScreen = ({
           {city}, {uf}, {country}
         </Text>
       ) : (
-        <ButtonText typography="button" onPress={() => {}}>
+        <ButtonText
+          typography="button"
+          onPress={() => {
+            goToRouter('EditProfileScreen');
+            dispatch(changerStepEditProfile({step_edit_profile: 1}));
+          }}>
           Adicione uma localização
         </ButtonText>
       )}

@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {useAppSelector} from '.';
 
 import {
   EditProfileLocationInformation,
@@ -11,7 +12,9 @@ const renderSteps = {
 };
 
 export const useHookStepsEditProfile = () => {
-  const [step, setStep] = useState(0);
+  const {step_edit_profile} = useAppSelector(state => state.user);
+
+  const [step, setStep] = useState(step_edit_profile);
 
   const Steps = renderSteps[step];
 

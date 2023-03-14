@@ -2,7 +2,12 @@ import {Text, Button, Separator} from '../../';
 import {View} from 'react-native';
 import {ImageProps} from 'react-native';
 import {Container, ContainerImage} from './style';
-import {useAppSelector, useNavigationHook} from '../../../hooks';
+import {
+  useAppDispatch,
+  useAppSelector,
+  useNavigationHook,
+} from '../../../hooks';
+import {changerStepEditProfile} from '../../../store/reducer/user/actions';
 
 export const HeaderUserProfileScreen = () => {
   const {name, email, photo} = useAppSelector(state => state.user.user);
@@ -13,6 +18,8 @@ export const HeaderUserProfileScreen = () => {
   const secondName = formatedName[1];
 
   const {goToRouter} = useNavigationHook();
+
+  const dispatch = useAppDispatch();
 
   return (
     <Container>
@@ -29,7 +36,10 @@ export const HeaderUserProfileScreen = () => {
         <Button
           title="Minha conta"
           variant="containedFour"
-          onPress={() => goToRouter('EditProfileScreen')}
+          onPress={() => {
+            goToRouter('EditProfileScreen');
+            dispatch(changerStepEditProfile({step_edit_profile: 0}));
+          }}
         />
       </View>
     </Container>
