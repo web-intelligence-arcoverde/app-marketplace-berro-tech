@@ -213,6 +213,24 @@ export const ButtonStyle = EStyleSheet.create({
     },
   },
 
+  noneSecondary: {
+    containerStyle: {
+      width: '100%',
+    },
+
+    titleStyle: {
+      color: COLORS.auxiliary.red_state,
+      fontFamily: 'inter',
+      fontSize: scale(14),
+
+      marginLeft: 0,
+    },
+
+    buttonStyle: {
+      backgroundColor: COLORS.light._05,
+    },
+  },
+
   disabled: {
     containerStyle: {
       width: '100%',

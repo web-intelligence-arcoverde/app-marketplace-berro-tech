@@ -55,6 +55,7 @@ export * from './EditProfileLocationInformation/EditProfileLocationInformation';
 export * from './StepsEditProfileScreen/StepsEditProfileScreen';
 export * from './EditProfileImage/EditProfileImage';
 export * from './EditProfileChangeImage/EditProfileChangeImage';
+export * from './EditProfileBasicInformationsForm/EditProfileBasicInformationsForm';
 
 //Context
 
