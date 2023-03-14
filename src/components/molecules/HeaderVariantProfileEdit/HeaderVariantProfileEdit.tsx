@@ -55,7 +55,7 @@ function verifyRouter(name: string) {
   } else if (isEditProfileScreen) {
     return {
       router: true,
-      buttonBackText: 'Voltar ao perfil',
+      buttonBackText: 'Voltar',
       buttonVariant: 'outlinedFour',
     };
   }

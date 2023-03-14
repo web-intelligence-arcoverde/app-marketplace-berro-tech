@@ -15,3 +15,7 @@
 ## Limpar task do projeto
 
 - cd android ./gradlew clean
+
+## Guias
+
+- https://www.youtube.com/watch?v=V1M39hKE_D8

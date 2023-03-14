@@ -22,7 +22,7 @@ export const EditProfileLocationInformation = () => {
   const {address} = useAppSelector(state => state.user.user);
 
   const defaultValue = address
-    ? {state: address?.state, city: address?.city}
+    ? {state: address?.uf, city: address?.city}
     : {state: '', city: ''};
 
   const {
