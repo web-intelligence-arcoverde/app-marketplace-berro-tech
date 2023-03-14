@@ -6,6 +6,8 @@ import {useAppSelector, useNavigationHook} from '../../../hooks';
 
 import {useForm} from 'react-hook-form';
 
+import {scale} from '../../../utils';
+
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
@@ -38,7 +40,7 @@ export const EditProfileBasicInformationsForm = () => {
   const onSubmit = data => console.log(data);
 
   return (
-    <View style={{gap: 16}}>
+    <View style={{gap: scale(16)}}>
       <Input
         control={control}
         label="Nome"

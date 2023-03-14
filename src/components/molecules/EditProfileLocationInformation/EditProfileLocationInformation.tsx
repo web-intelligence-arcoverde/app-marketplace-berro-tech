@@ -4,8 +4,12 @@ import {Button, Text, Input, Separator} from '../../';
 
 import {useForm} from 'react-hook-form';
 
+import {scale} from '../../../utils';
+
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+
+import {useAppSelector} from '../../../hooks';
 
 const schema = yup
   .object({
@@ -15,20 +19,28 @@ const schema = yup
   .required();
 
 export const EditProfileLocationInformation = () => {
+  const {address} = useAppSelector(state => state.user.user);
+
+  const defaultValue = address
+    ? {state: address?.state, city: address?.city}
+    : {state: '', city: ''};
+
   const {
     control,
     handleSubmit,
     formState: {errors},
   } = useForm({
     resolver: yupResolver(schema),
-    defaultValues: {
-      email: '',
-    },
+    defaultValues: defaultValue,
   });
 
+  const onSubmit = data => console.log(data);
+
   return (
-    <View style={{paddingHorizontal: 20}}>
-      <Text typography="h3">Localização</Text>
+    <View style={{paddingHorizontal: scale(20)}}>
+      <Text typography="h3" colorFamily="gray" colorVariant="_01">
+        Localização
+      </Text>
       <Separator height={20} />
       <View style={{gap: 20}}>
         <Input control={control} label="Estado" name="name" />
@@ -36,7 +48,7 @@ export const EditProfileLocationInformation = () => {
 
         <Button
           title="Salvar Alterações"
-          onPress={() => {}}
+          onPress={handleSubmit(onSubmit)}
           variant="containedThirdy"
         />
       </View>
