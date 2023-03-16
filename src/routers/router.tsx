@@ -11,6 +11,7 @@ import {
   EditProfileScreen,
   AddProductScreen,
   ProfileChangerPasswordScreen,
+  SplashScreen,
 } from '../screens/';
 
 const Stack = createNativeStackNavigator();
@@ -18,8 +19,10 @@ const Stack = createNativeStackNavigator();
 export const RouterApp = () => {
   return (
     <Stack.Navigator
-      initialRouteName={'DashboardBottomNavigation'}
+      initialRouteName={'SplashScreen'}
       screenOptions={{headerShown: false}}>
+      <Stack.Screen name="SplashScreen" component={SplashScreen} />
+
       <Stack.Screen name="SignInSocialScreen" component={SignInSocialScreen} />
 
       <Stack.Screen name="SignInEmailScreen" component={SignInEmailScreen} />
@@ -38,8 +41,10 @@ export const RouterApp = () => {
       <Stack.Screen name="EditProfileScreen" component={EditProfileScreen} />
       <Stack.Screen
         name="ProfileChangerPasswordScreen"
-        component={AddProductScreen}
+        component={ProfileChangerPasswordScreen}
       />
+
+      <Stack.Screen name="AddProductScreen" component={AddProductScreen} />
     </Stack.Navigator>
   );
 };

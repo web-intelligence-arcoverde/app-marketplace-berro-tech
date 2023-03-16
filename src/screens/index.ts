@@ -1,3 +1,5 @@
+export * from './SplashScreen/SplashScreent';
+
 export * from './SignInSocialScreen/SignInSocialScreen';
 export * from './SignInEmailScreen/SignInEmailScreen';
 

@@ -6,3 +6,4 @@ export * from './useHookStepsSignUpScreen';
 export * from './useHookStepsEditProfile';
 export * from './useHookFormSignInEmail';
 export * from './useHookImagePickerImage';
+export * from './useRedirectRouterTimeOut';
