@@ -57,6 +57,8 @@ export * from './EditProfileImage/EditProfileImage';
 export * from './EditProfileChangeImage/EditProfileChangeImage';
 export * from './EditProfileBasicInformationsForm/EditProfileBasicInformationsForm';
 
+export * from './InformationCardOnboarding/InformationCardOnboarding';
+
 //Context
 
 export * from './AppContextEditProfileScreenComponent/AppContextEditProfileScreenComponent';

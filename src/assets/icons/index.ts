@@ -17,6 +17,11 @@ import LogoProfile from './logo-profile.svg';
 import OrdenedIcon from './ordened-icon.svg';
 import EditIcon from './edit-icon.svg';
 
+import ArrowDownIcon from './arrow-down-onboarding-screen-icon.svg';
+
+import SearchIconYellow from './search-icon-yellow.svg';
+import ListIconYellow from './list-icon-yellow.svg';
+import PhoneIconYellow from './phone-icon.svg';
 /*
 
   - Icons de navegação
@@ -53,4 +58,8 @@ export const ICONS = {
   'profile-icon': ProfileIcon,
   'profile-outlined-icon': ProfileOutlinedIcon,
   'edit-icon': EditIcon,
+  'arrow-down-icon': ArrowDownIcon,
+  'search-icon-yellow': SearchIconYellow,
+  'list-icon-yellow': ListIconYellow,
+  'phone-icon-yellow': PhoneIconYellow,
 };
