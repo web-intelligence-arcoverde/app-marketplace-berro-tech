@@ -8,7 +8,7 @@ import {useNavigationHook} from '../../../hooks';
 const BUTTON_SIGN_IN_ONLY_SHOW_STEP = 0;
 
 export const SignInButtonContainer = () => {
-  const [steps] = useContext(ContextSignUpScreenStep);
+  const {steps} = useContext(ContextSignUpScreenStep);
 
   const SHOW_BUTTON_SIGN_IN = steps === BUTTON_SIGN_IN_ONLY_SHOW_STEP;
 

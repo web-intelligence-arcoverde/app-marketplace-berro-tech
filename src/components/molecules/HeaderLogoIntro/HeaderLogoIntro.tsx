@@ -1,14 +1,7 @@
 import {IMAGES} from '../../../assets';
-import {Image} from 'react-native';
+
+import {ImageComponent} from './style';
 
 export const HeaderLogoIntro = () => {
-  return (
-    <Image
-      source={IMAGES.LogoIntro}
-      style={{
-        width: '100%',
-      }}
-      resizeMode="contain"
-    />
-  );
+  return <ImageComponent source={IMAGES.LogoIntro} resizeMode="contain" />;
 };

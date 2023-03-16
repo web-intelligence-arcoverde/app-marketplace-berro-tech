@@ -1,19 +1,11 @@
-import React from 'react';
-import {ContextSignUpScreenStep} from '../../../context/ContextSignUpScreenStep';
-import {useHookStepsSignUpScreen} from '../../../hooks/useHookStepsSignUpScreen';
-import {Container} from './style';
-
-import {SignInButtonContainer} from '../..';
+import {ProviderStepsFormSignUp} from '../../../context/ContextSignUpScreenStep';
+import {SignInButtonContainer, StepsFormSignUpContainer} from '../..';
 
 export const AppContextSignUpScreenComponent = () => {
-  const {Steps, step, setStep} = useHookStepsSignUpScreen();
-
   return (
-    <ContextSignUpScreenStep.Provider value={[step, setStep]}>
-      <Container>
-        <Steps />
-      </Container>
+    <ProviderStepsFormSignUp>
+      <StepsFormSignUpContainer />
       <SignInButtonContainer />
-    </ContextSignUpScreenStep.Provider>
+    </ProviderStepsFormSignUp>
   );
 };

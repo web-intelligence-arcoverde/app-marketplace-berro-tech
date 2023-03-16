@@ -1,7 +1,11 @@
 import React, {useContext} from 'react';
 import {View} from 'react-native';
-import {Input, Button} from '../..';
-import {ContextSignUpScreenStep} from '../../../context';
+import {Input, Button, CustomInput} from '../..';
+
+import {
+  ContextSignUpScreenStep,
+  IAppContextSignUpScreenStep,
+} from '../../../context';
 
 import {useForm} from 'react-hook-form';
 
@@ -16,7 +20,9 @@ const schema = yup
   .required();
 
 export const SignUpScreenStep02 = () => {
-  const [step, setStep] = useContext(ContextSignUpScreenStep);
+  const {step, setStep} = useContext(
+    ContextSignUpScreenStep,
+  ) as IAppContextSignUpScreenStep;
 
   const STEP_SIZE = step + 1;
   const TOTAL_STEPS = 2;

@@ -1,5 +1,6 @@
 import TextInputMask, {TextInputMaskProps} from 'react-native-text-input-mask';
 import {Input} from '@rneui/themed';
+import {Controller} from 'react-hook-form';
 
 const maskPhone = '([00]) [0] [0000]-[0000]';
 
@@ -13,9 +14,6 @@ interface IInput extends TextInputMaskProps {
   variant?: string;
 }
 
-import {Controller} from 'react-hook-form';
-
-import React from 'react';
 import {Typography} from '../../../common';
 import {InputStyle} from './style';
 
@@ -26,7 +24,6 @@ export const CustomInput = ({
   name,
   errors,
   variant = 'contained',
-  ...rest
 }: IInput) => {
   const typography = Typography['input'];
 
@@ -38,24 +35,19 @@ export const CustomInput = ({
     labelStyle,
   } = InputStyle[variant];
 
-  const Example = ({...rest}) => (
-    <TextInputMask
-      {...rest}
-      mask={maskPhone}
-      style={[inputStyle, {width: '100%'}]}
-    />
-  );
-
   return (
     <Controller
       control={control}
       render={({field}) => {
         return (
           <Input
-            InputComponent={Example}
+            //@ts-ignore
+            mask={maskPhone}
+            InputComponent={TextInputMask}
             {...field}
             label={label}
             placeholder={placeholder}
+            style={[inputStyle, {width: '100%'}]}
             containerStyle={containerStyle}
             errorStyle={errorStyle}
             inputContainerStyle={inputContainerStyle}

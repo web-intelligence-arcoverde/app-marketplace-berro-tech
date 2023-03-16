@@ -28,6 +28,7 @@ export const RouterApp = () => {
       <Stack.Screen name="SignInSocialScreen" component={SignInSocialScreen} />
 
       <Stack.Screen name="SignInEmailScreen" component={SignInEmailScreen} />
+
       <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
 
       <Stack.Screen
