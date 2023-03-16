@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import {useNavigationHook} from './';
 
 export const useRedirectRouterTimeOut = () => {
-  const [count, setCount] = useState(10);
+  const [count, setCount] = useState(6);
 
   const {goToRouter} = useNavigationHook();
 
@@ -12,7 +12,7 @@ export const useRedirectRouterTimeOut = () => {
       setCount(currentCount => currentCount - 1);
     }, 1000);
     // when count is 0, navigate
-    count === 0 && goToRouter('/OnboardingScreen');
+    count === 0 && goToRouter('OnboardingScreen');
     // clean up the interval
     return () => clearInterval(interval);
   }, [count, goToRouter]);

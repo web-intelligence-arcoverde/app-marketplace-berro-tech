@@ -12,6 +12,7 @@ import {
   AddProductScreen,
   ProfileChangerPasswordScreen,
   SplashScreen,
+  OnboardingScreen,
 } from '../screens/';
 
 const Stack = createNativeStackNavigator();
@@ -22,6 +23,7 @@ export const RouterApp = () => {
       initialRouteName={'SplashScreen'}
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="SplashScreen" component={SplashScreen} />
+      <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
 
       <Stack.Screen name="SignInSocialScreen" component={SignInSocialScreen} />
 

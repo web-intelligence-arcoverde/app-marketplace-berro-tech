@@ -1,4 +1,5 @@
-export * from './SplashScreen/SplashScreent';
+export * from './SplashScreen/SplashScreen';
+export * from './OnboardingScreen/OnboardingScreen';
 
 export * from './SignInSocialScreen/SignInSocialScreen';
 export * from './SignInEmailScreen/SignInEmailScreen';
