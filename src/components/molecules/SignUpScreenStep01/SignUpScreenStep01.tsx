@@ -11,14 +11,20 @@ import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
+import {ErrorMessage} from '../../../locale';
+
 const schema = yup.object({
-  email: yup.string().required().email(),
-  name: yup.string().required(),
-  phone: yup.string().required(),
+  email: yup
+    .string()
+    .email(ErrorMessage['email-valid'])
+    .required(ErrorMessage['email-required']),
+
+  name: yup.string().required(ErrorMessage['name-required']),
+  phone: yup.string().required(ErrorMessage['phone-required']),
 });
 
 export const SignUpScreenStep01 = () => {
-  const {step, setStep} = useContext(
+  const {step} = useContext(
     ContextSignUpScreenStep,
   ) as IAppContextSignUpScreenStep;
 
@@ -78,7 +84,6 @@ export const SignUpScreenStep01 = () => {
         title="Próximo"
         variant="contained"
         onPress={() => {
-          console.log('aq');
           handleSubmit(onSubmit)();
         }}
       />

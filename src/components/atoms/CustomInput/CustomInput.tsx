@@ -38,13 +38,15 @@ export const CustomInput = ({
   return (
     <Controller
       control={control}
-      render={({field}) => {
+      render={({field: {onChange, onBlur, value}}) => {
         return (
           <Input
             //@ts-ignore
             mask={maskPhone}
             InputComponent={TextInputMask}
-            {...field}
+            onBlur={onBlur}
+            onChangeText={onChange}
+            value={value}
             label={label}
             placeholder={placeholder}
             style={[inputStyle, {width: '100%'}]}
