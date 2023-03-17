@@ -11,6 +11,7 @@ import {
   useAppDispatch,
   useHookStepsRecoveryAccount,
   useChronometerHook,
+  useNavigationHook,
 } from '../../../hooks';
 
 import {
@@ -21,6 +22,7 @@ import {
 export const RecoveryAccountScreenStep02 = () => {
   const {handleStart, chronometer} = useChronometerHook();
   const [value, setValue] = useState('');
+  const {goToRouter} = useNavigationHook();
 
   const {setStep, email} = useHookStepsRecoveryAccount();
 
@@ -42,7 +44,10 @@ export const RecoveryAccountScreenStep02 = () => {
       <Button
         title="Próximo"
         variant="contained"
-        onPress={() => dispatch(sendCodeRecoveryAccountRequest({code: ''}))}
+        onPress={() => {
+          dispatch(sendCodeRecoveryAccountRequest({code: ''}));
+          goToRouter('SignInEmailScreen');
+        }}
       />
       <Separator height={SIZES.insideSpacingSmall} />
       <Button

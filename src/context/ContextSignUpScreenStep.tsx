@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
 
-import {SignUpScreenStep01, SignUpScreenStep02} from '../components/';
-
 type Props = {
   children: string | JSX.Element | JSX.Element[];
 };

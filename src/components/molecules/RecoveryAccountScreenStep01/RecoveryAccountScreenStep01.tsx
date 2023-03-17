@@ -7,12 +7,14 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import {useForm} from 'react-hook-form';
+import {ErrorMessage} from '../../../locale';
 
-const schema = yup
-  .object({
-    email: yup.string().required().email(),
-  })
-  .required();
+const schema = yup.object({
+  email: yup
+    .string()
+    .required(ErrorMessage['email-required'])
+    .email(ErrorMessage['email-valid']),
+});
 
 export const RecoveryAccountScreenStep01 = () => {
   const {setStep, setEmail} = useHookStepsRecoveryAccount();

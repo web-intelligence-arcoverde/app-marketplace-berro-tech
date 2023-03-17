@@ -6,6 +6,7 @@ import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import {ErrorMessage} from '../locale';
+import {useNavigationHook} from '.';
 
 const schema = yup
   .object({
@@ -29,6 +30,8 @@ export const useFormSignUpStep02 = () => {
     ContextSignUpScreenStep,
   ) as IAppContextSignUpScreenStep;
 
+  const {goToRouter} = useNavigationHook();
+
   const STEP_SIZE = step + 1;
   const TOTAL_STEPS = 2;
 
@@ -44,7 +47,10 @@ export const useFormSignUpStep02 = () => {
     },
   });
 
-  const onSubmit = data => console.log(data);
+  const onSubmit = data => {
+    console.log(data);
+    goToRouter('SignInEmailScreen');
+  };
 
   const onSubmitForm = () => handleSubmit(onSubmit)();
 

@@ -15,7 +15,7 @@ import {
 export const DashboardBottomNavigation = () => {
   return (
     <Tab.Navigator
-      initialRouteName={'Negócios'}
+      initialRouteName={'Home'}
       screenOptions={({route}) => ({
         tabBarStyle: {
           height: 100,

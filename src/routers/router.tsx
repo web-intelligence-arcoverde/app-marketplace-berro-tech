@@ -20,7 +20,7 @@ const Stack = createNativeStackNavigator();
 export const RouterApp = () => {
   return (
     <Stack.Navigator
-      initialRouteName={'SplashScreen'}
+      initialRouteName={'DashboardBottomNavigation'}
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="SplashScreen" component={SplashScreen} />
       <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />

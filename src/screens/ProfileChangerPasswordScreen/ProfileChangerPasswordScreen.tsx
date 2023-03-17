@@ -1,5 +1,4 @@
-import {useState, useCallback} from 'react';
-import {Image, TouchableOpacity, View, ScrollView} from 'react-native';
+import {View} from 'react-native';
 
 import {
   Button,
@@ -10,15 +9,20 @@ import {
 } from '../../components';
 
 import {HeaderDashboard} from '../../components';
-import {useAppSelector} from '../../hooks';
-
-import * as ImagePicker from 'react-native-image-picker';
 
 import {useForm} from 'react-hook-form';
 
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import {getBottomSpaceHeight} from '../../utils';
+
+import {ErrorMessage} from '../../locale';
+
+const schema = yup.object({
+  email: yup
+    .string()
+    .required(ErrorMessage['email-required'])
+    .email(ErrorMessage['email-valid']),
+});
 
 export const ProfileChangerPasswordScreen = () => {
   const {
