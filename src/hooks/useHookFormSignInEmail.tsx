@@ -5,10 +5,18 @@ import {useForm} from 'react-hook-form';
 
 import {useAppDispatch} from '../hooks';
 
+import {ErrorMessage} from '../locale';
+
 const schema = yup
   .object({
-    email: yup.string().required().email(),
-    password: yup.string().required().min(8),
+    email: yup
+      .string()
+      .required(ErrorMessage['email-required'])
+      .email(ErrorMessage['email-valid']),
+    password: yup
+      .string()
+      .required(ErrorMessage['password-required'])
+      .min(8, ErrorMessage['password-min']),
   })
   .required();
 

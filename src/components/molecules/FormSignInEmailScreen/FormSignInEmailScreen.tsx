@@ -17,7 +17,6 @@ export const FormSignInEmailScreen = () => {
         name="email"
         errors={errors?.email?.message}
       />
-      <Separator height={12} />
       <Input
         label="Senha"
         placeholder="No mínimo 8 dígitos"
@@ -27,15 +26,12 @@ export const FormSignInEmailScreen = () => {
         rightIcon
         errors={errors?.password?.message}
       />
-      <Separator height={12} />
       <ButtonText
         alignItems="flex-end"
         onPress={() => goToRouter('RecoveryAccountScreen')}>
         Recuperar conta
       </ButtonText>
-      <Separator height={12} />
       <Button title="Entrar" variant="contained" onPress={() => onSubmit()} />
-      <Separator height={12} />
     </Container>
   );
 };

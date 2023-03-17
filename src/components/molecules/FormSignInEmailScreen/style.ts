@@ -16,4 +16,6 @@ export const Container = styled.View`
 
   padding-horizontal: ${SIZES.insideSpacingSmall};
   padding-vertical: ${SIZES.insideSpacingSmall};
+
+  gap: ${scale(16)};
 `;
