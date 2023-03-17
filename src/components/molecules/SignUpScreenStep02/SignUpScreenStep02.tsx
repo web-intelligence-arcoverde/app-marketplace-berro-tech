@@ -1,45 +1,15 @@
-import React, {useContext} from 'react';
-import {View} from 'react-native';
-import {Input, Button, CustomInput} from '../..';
+import React from 'react';
+import {Input, Button} from '../..';
 
-import {
-  ContextSignUpScreenStep,
-  IAppContextSignUpScreenStep,
-} from '../../../context';
-
-import {useForm} from 'react-hook-form';
-
-import {yupResolver} from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-
-const schema = yup
-  .object({
-    email: yup.string().required().email(),
-    password: yup.string().required().min(8),
-  })
-  .required();
+import {Container} from './style';
+import {useFormSignUpStep02} from '../../../hooks/useFormSignUpStep02';
 
 export const SignUpScreenStep02 = () => {
-  const {step, setStep} = useContext(
-    ContextSignUpScreenStep,
-  ) as IAppContextSignUpScreenStep;
-
-  const STEP_SIZE = step + 1;
-  const TOTAL_STEPS = 2;
-
-  const {
-    control,
-    handleSubmit,
-    formState: {errors},
-  } = useForm({
-    resolver: yupResolver(schema),
-    defaultValues: {
-      email: '',
-    },
-  });
+  const {STEP_SIZE, TOTAL_STEPS, setStep, control, errors, onSubmitForm} =
+    useFormSignUpStep02();
 
   return (
-    <View style={{gap: 16}}>
+    <Container>
       <Button
         title={`Etapa ${STEP_SIZE} de ${TOTAL_STEPS}`}
         variant="outlinedThirdyWithIcon"
@@ -52,19 +22,19 @@ export const SignUpScreenStep02 = () => {
         password
         control={control}
         name="password"
+        rightIcon
+        errors={errors?.password?.message}
       />
       <Input
         label="Repita a senha"
         placeholder="A mesma senha de cima"
         password
         control={control}
+        rightIcon
         name="confirmationPassword"
+        errors={errors?.confirmationPassword?.message}
       />
-      <Button
-        title="Criar conta"
-        variant="contained"
-        onPress={() => setStep(0)}
-      />
-    </View>
+      <Button title="Criar conta" variant="contained" onPress={onSubmitForm} />
+    </Container>
   );
 };

@@ -7,3 +7,4 @@ export * from './useHookStepsEditProfile';
 export * from './useHookFormSignInEmail';
 export * from './useHookImagePickerImage';
 export * from './useRedirectRouterTimeOut';
+export * from './useFormSignUpStep01';

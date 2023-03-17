@@ -37,6 +37,9 @@ import BusinessOutlinedIcon from './business-icon-outlined.svg';
 import ProfileIcon from './profile-icon.svg';
 import ProfileOutlinedIcon from './profile-icon-outlined.svg';
 
+import EyeCloseIcon from './eye-close.svg';
+import EyeIcon from './eye.svg';
+
 export const ICONS = {
   email: EmailIcon,
   gmail: GmailIcon,
@@ -62,4 +65,6 @@ export const ICONS = {
   'search-icon-yellow': SearchIconYellow,
   'list-icon-yellow': ListIconYellow,
   'phone-icon-yellow': PhoneIconYellow,
+  'eye-close-icon': EyeCloseIcon,
+  'eye-icon': EyeIcon,
 };

@@ -86,7 +86,7 @@ export const Input = ({
                 <TouchableOpacity
                   onPress={() => setShowPassword(!showPassword)}>
                   <IconComponent
-                    icon={showPassword ? 'arrow-left' : 'arrow-left'}
+                    icon={showPassword ? 'eye-close-icon' : 'eye-icon'}
                   />
                 </TouchableOpacity>
               )

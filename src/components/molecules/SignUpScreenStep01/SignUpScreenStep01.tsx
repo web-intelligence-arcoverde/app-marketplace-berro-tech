@@ -1,58 +1,15 @@
-import React, {useContext} from 'react';
-import {View} from 'react-native';
+import React from 'react';
 import {Input, Button, CustomInput} from '../..';
-import {
-  ContextSignUpScreenStep,
-  IAppContextSignUpScreenStep,
-} from '../../../context';
 
-import {useForm} from 'react-hook-form';
-
-import {yupResolver} from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-
-import {ErrorMessage} from '../../../locale';
-
-const schema = yup.object({
-  email: yup
-    .string()
-    .email(ErrorMessage['email-valid'])
-    .required(ErrorMessage['email-required']),
-
-  name: yup.string().required(ErrorMessage['name-required']),
-  phone: yup.string().required(ErrorMessage['phone-required']),
-});
+import {useFormSignUpSteps} from '../../../hooks';
+import {Container} from './style';
 
 export const SignUpScreenStep01 = () => {
-  const {step} = useContext(
-    ContextSignUpScreenStep,
-  ) as IAppContextSignUpScreenStep;
-
-  const STEP_SIZE = step + 1;
-  const TOTAL_STEPS = 2;
-
-  const {
-    control,
-    handleSubmit,
-    formState: {errors},
-  } = useForm({
-    resolver: yupResolver(schema),
-    defaultValues: {
-      email: '',
-      name: '',
-      phone: '',
-    },
-  });
-
-  const nextStep = data => {
-    console.log(data);
-    //setStep(1)
-  };
-
-  const onSubmit = data => console.log(data);
+  const {control, errors, onSubmitForm, disabled, STEP_SIZE, TOTAL_STEPS} =
+    useFormSignUpSteps();
 
   return (
-    <View style={{gap: 16}}>
+    <Container>
       <Button
         title={`Etapa ${STEP_SIZE} de ${TOTAL_STEPS}`}
         variant="outlinedThirdy"
@@ -83,10 +40,9 @@ export const SignUpScreenStep01 = () => {
       <Button
         title="Próximo"
         variant="contained"
-        onPress={() => {
-          handleSubmit(onSubmit)();
-        }}
+        disabled={disabled}
+        onPress={onSubmitForm}
       />
-    </View>
+    </Container>
   );
 };

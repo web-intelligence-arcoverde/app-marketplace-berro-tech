@@ -7,4 +7,10 @@ export const ErrorMessage = {
 
   'phone-valid': 'Informe um telefone valido',
   'phone-required': 'Campo de telefone necessario',
+
+  'password-min': 'Informe no minimo 8 caracteres no campo',
+  'password-required': 'Campo de senha necessario',
+  'confirmation-password-required': 'Campo confirmação de senha necessario',
+  'confirmation-password-equal-password':
+    'Confirmação de senha deve ser igual ao anterior',
 };
