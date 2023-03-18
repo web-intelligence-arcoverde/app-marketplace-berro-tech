@@ -1,10 +1,11 @@
-import TextInputMask, {TextInputMaskProps} from 'react-native-text-input-mask';
+import {MaskedTextInput, MaskedTextProps} from 'react-native-mask-text';
+
 import {Input} from '@rneui/themed';
 import {Controller} from 'react-hook-form';
 
 const maskPhone = '([00]) [0] [0000]-[0000]';
 
-interface IInput extends TextInputMaskProps {
+interface IInput extends MaskedTextProps {
   mask: string;
   control: any;
   name: string;
@@ -43,7 +44,7 @@ export const CustomInput = ({
           <Input
             //@ts-ignore
             mask={maskPhone}
-            InputComponent={TextInputMask}
+            InputComponent={MaskedTextInput}
             onBlur={onBlur}
             onChangeText={onChange}
             value={value}
