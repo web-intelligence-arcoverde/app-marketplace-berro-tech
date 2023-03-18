@@ -3,7 +3,8 @@ import {ImageProps} from 'react-native';
 export interface IUserInitialState {
   user: IUserState;
   loading?: boolean;
-  step_edit_profile: number;
+  step_edit_profile?: number;
+  bottom_sheet_index?: number;
 }
 
 export interface IUserState {

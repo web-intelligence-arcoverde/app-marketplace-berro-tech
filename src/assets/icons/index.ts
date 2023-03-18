@@ -22,6 +22,7 @@ import ArrowDownIcon from './arrow-down-onboarding-screen-icon.svg';
 import SearchIconYellow from './search-icon-yellow.svg';
 import ListIconYellow from './list-icon-yellow.svg';
 import PhoneIconYellow from './phone-icon.svg';
+
 /*
 
   - Icons de navegação

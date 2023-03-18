@@ -1,17 +1,27 @@
 import {useRoute} from '@react-navigation/native';
 
-import {Image, View} from 'react-native';
-import {Button} from '../..';
+import {Image, TouchableOpacity, View} from 'react-native';
+import {Button, HeaderVariantProfile, IconComponent} from '../..';
 import {IMAGES} from '../../../assets';
 import {useNavigationHook} from '../../../hooks';
 
-export const HeaderVariantProfileEdit = () => {
+const EDIT_PROFILE_ROUTER = 'EditProfileScreen';
+
+interface IHeaderVariantProfileEdit {
+  focus?: boolean;
+  setFocus?: (set: boolean) => boolean;
+}
+
+export const HeaderVariantProfileEdit = ({
+  focus,
+  setFocus,
+}: IHeaderVariantProfileEdit) => {
   const {name} = useRoute();
 
   const {goBack} = useNavigationHook();
   const isRouter = verifyRouter(name);
 
-  const isEditProfileScreen = name === 'EditProfileScreen';
+  const isEditProfileScreen = name === EDIT_PROFILE_ROUTER;
 
   return (
     <View
@@ -29,7 +39,13 @@ export const HeaderVariantProfileEdit = () => {
           onPress={() => goBack()}
         />
       )}
-      <Image source={IMAGES.LogoHeader} />
+      {focus && (
+        <TouchableOpacity onPress={() => setFocus(false)}>
+          <IconComponent icon="close-icon" />
+        </TouchableOpacity>
+      )}
+      {!focus && <Image source={IMAGES.LogoHeader} />}
+      <HeaderVariantProfile />
     </View>
   );
 };

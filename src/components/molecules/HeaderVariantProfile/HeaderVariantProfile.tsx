@@ -1,7 +1,7 @@
 import {useRoute} from '@react-navigation/native';
 
 import {View} from 'react-native';
-import {Button, SearchInput} from '../..';
+import {Button} from '../..';
 import {useNavigationHook} from '../../../hooks';
 
 export const HeaderVariantProfile = () => {

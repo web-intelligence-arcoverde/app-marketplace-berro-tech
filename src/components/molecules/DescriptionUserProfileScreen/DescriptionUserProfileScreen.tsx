@@ -14,7 +14,7 @@ import {readInformationUserRequest} from '../../../store/reducer/user/actions';
 export const DescriptionUserProfileScreen = () => {
   const dispatch = useAppDispatch();
 
-  const {address, phone, avaliation_rate} = useAppSelector(
+  const {address, phone, avaliation_rate, name, email, photo} = useAppSelector(
     state => state.user.user,
   );
 
@@ -24,7 +24,7 @@ export const DescriptionUserProfileScreen = () => {
 
   return (
     <View style={{paddingHorizontal: scale(20)}}>
-      <HeaderUserProfileScreen />
+      <HeaderUserProfileScreen name={name} photo={photo} email={email} />
       <AddressUserProfileScreen {...address} />
       <FooterUserProfilerScreen
         phone={phone}

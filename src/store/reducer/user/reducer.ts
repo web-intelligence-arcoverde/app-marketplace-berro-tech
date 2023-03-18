@@ -5,6 +5,7 @@ import {
   readInformationUserRequest,
   readInformationUserSuccess,
   changerStepEditProfile,
+  changerIndexBottomSheetRecentSearch,
 } from './actions';
 
 export const userReducer = createReducer(initialState, builder => {
@@ -18,5 +19,8 @@ export const userReducer = createReducer(initialState, builder => {
     })
     .addCase(changerStepEditProfile, (state, action) => {
       state.step_edit_profile = action.payload.step_edit_profile;
+    })
+    .addCase(changerIndexBottomSheetRecentSearch, (state, action) => {
+      state.bottom_sheet_index = action.payload.index;
     });
 });

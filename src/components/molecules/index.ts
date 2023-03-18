@@ -47,7 +47,6 @@ export * from './HeaderVariantProfile/HeaderVariantProfile';
 export * from './HeaderDashboard/HeaderDashboard';
 export * from './HeaderUserProfileScreen/HeaderUserProfileScreen';
 export * from './HeaderVariantProfileEdit/HeaderVariantProfileEdit';
-export * from './HeaderUserProfileScreen/HeaderUserProfileScreen';
 
 export * from './EditProfileBasicInformations/EditProfileBasicInformations';
 export * from './EditProfileLocationInformation/EditProfileLocationInformation';

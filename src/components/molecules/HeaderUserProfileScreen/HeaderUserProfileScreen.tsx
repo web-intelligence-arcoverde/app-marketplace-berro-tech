@@ -1,18 +1,21 @@
 import {Text, Button, Separator} from '../../';
 import {View} from 'react-native';
-import {ImageProps} from 'react-native';
 import {Container, ContainerImage} from './style';
-import {
-  useAppDispatch,
-  useAppSelector,
-  useNavigationHook,
-} from '../../../hooks';
+import {useAppDispatch, useNavigationHook} from '../../../hooks';
 import {changerStepEditProfile} from '../../../store/reducer/user/actions';
 
-export const HeaderUserProfileScreen = () => {
-  const {name, email, photo} = useAppSelector(state => state.user.user);
+interface IHeaderUserProfileScreen {
+  name?: string;
+  email?: string;
+  photo?: string;
+}
 
-  const formatedName = name?.split(' ');
+export const HeaderUserProfileScreen = ({
+  name = '',
+  email,
+  photo,
+}: IHeaderUserProfileScreen) => {
+  const formatedName = name.split(' ');
 
   const firstName = formatedName[0];
   const secondName = formatedName[1];

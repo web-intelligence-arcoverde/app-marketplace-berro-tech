@@ -12,3 +12,7 @@ export const readInformationUserSuccess = createAction<IUserState>(
 export const changerStepEditProfile = createAction<IChangerStepEditProfile>(
   'user/changer-step-edit-profile',
 );
+
+export const changerIndexBottomSheetRecentSearch = createAction<{
+  index: number;
+}>('user/changer-index-bottom-sheet-recent-search');

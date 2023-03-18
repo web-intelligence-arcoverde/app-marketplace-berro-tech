@@ -11,4 +11,5 @@ export const initialState: IUserInitialState = {
   },
   loading: false,
   step_edit_profile: 0,
+  bottom_sheet_index: 0,
 };
