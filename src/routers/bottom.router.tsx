@@ -19,7 +19,7 @@ export const DashboardBottomNavigation = () => {
             height: 100,
           },
 
-          tabBarItemStyle: {justifyContent: 'flex-start', paddingTop: 10},
+          tabBarItemStyle: {justifyContent: 'flex-start'},
 
           headerShown: false,
           tabBarHideOnKeyboard: true,

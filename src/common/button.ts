@@ -11,7 +11,7 @@ export const ButtonStyle = EStyleSheet.create({
 
     titleStyle: {
       color: COLORS.brand_dark._01,
-      fontFamily: 'inter',
+      fontFamily: 'Inter-Regular',
       fontSize: scale(14),
       marginLeft: scale(14),
     },
@@ -30,7 +30,7 @@ export const ButtonStyle = EStyleSheet.create({
 
     titleStyle: {
       color: COLORS.brand_dark._02,
-      fontFamily: 'inter',
+      fontFamily: 'Inter-Regular',
       fontSize: scale(14),
 
       marginLeft: scale(14),
@@ -50,7 +50,7 @@ export const ButtonStyle = EStyleSheet.create({
 
     titleStyle: {
       color: COLORS.sub_brand._04,
-      fontFamily: 'inter',
+      fontFamily: 'Inter-SemiBold',
       fontSize: scale(14),
       fontWeight: 600,
       marginLeft: scale(14),
@@ -70,7 +70,7 @@ export const ButtonStyle = EStyleSheet.create({
 
     titleStyle: {
       color: COLORS.sub_brand._02,
-      fontFamily: 'inter',
+      fontFamily: 'Inter-SemiBold',
       fontSize: scale(14),
       fontWeight: 600,
       marginLeft: scale(14),
@@ -90,7 +90,7 @@ export const ButtonStyle = EStyleSheet.create({
 
     titleStyle: {
       color: COLORS.gray._02,
-      fontFamily: 'inter',
+      fontFamily: 'Inter-Regular',
       fontSize: scale(14),
 
       marginLeft: scale(14),
@@ -112,7 +112,7 @@ export const ButtonStyle = EStyleSheet.create({
 
     titleStyle: {
       color: COLORS.gray._02,
-      fontFamily: 'inter',
+      fontFamily: 'Inter-Regular',
       fontSize: scale(14),
 
       marginLeft: scale(14),
@@ -135,7 +135,7 @@ export const ButtonStyle = EStyleSheet.create({
 
     titleStyle: {
       color: COLORS.gray._02,
-      fontFamily: 'inter',
+      fontFamily: 'Inter-Regular',
       fontSize: scale(14),
     },
 
@@ -156,7 +156,7 @@ export const ButtonStyle = EStyleSheet.create({
 
     titleStyle: {
       color: COLORS.gray._02,
-      fontFamily: 'inter',
+      fontFamily: 'Inter-Regular',
       fontSize: scale(14),
       marginLeft: scale(14),
     },
@@ -178,7 +178,7 @@ export const ButtonStyle = EStyleSheet.create({
 
     titleStyle: {
       color: COLORS.gray._02,
-      fontFamily: 'inter',
+      fontFamily: 'Inter-Regular',
       fontSize: scale(14),
       marginLeft: scale(14),
     },
@@ -202,7 +202,7 @@ export const ButtonStyle = EStyleSheet.create({
 
     titleStyle: {
       color: COLORS.sub_brand._02,
-      fontFamily: 'inter',
+      fontFamily: 'Inter-Regular',
       fontSize: scale(14),
 
       marginLeft: 0,
@@ -220,7 +220,7 @@ export const ButtonStyle = EStyleSheet.create({
 
     titleStyle: {
       color: COLORS.auxiliary.red_state,
-      fontFamily: 'inter',
+      fontFamily: 'Inter-Regular',
       fontSize: scale(14),
 
       marginLeft: 0,
@@ -238,7 +238,7 @@ export const ButtonStyle = EStyleSheet.create({
 
     titleStyle: {
       color: COLORS.gray._03,
-      fontFamily: 'inter',
+      fontFamily: 'Inter-Regular',
       fontSize: scale(14),
 
       marginLeft: 0,

@@ -1,4 +1,4 @@
-import {Dimensions, PixelRatio} from 'react-native';
+import {Dimensions, Platform, PixelRatio} from 'react-native';
 import {
   getBottomSpace,
   isIphoneX as libIsIphoneX,
@@ -40,7 +40,11 @@ const guidelineBaseWidth = 375;
 const guidelineBaseHeight = 811;
 
 export const scale = (size: number) => {
-  return !isWeb() ? (screenWidth / guidelineBaseWidth) * size : size;
+  if (Platform.OS === 'ios') {
+    return !isWeb() ? (screenWidth / guidelineBaseWidth) * size : size;
+  } else {
+    return !isWeb() ? (screenWidth / guidelineBaseWidth) * size - 2 : size - 2;
+  }
 };
 
 export const verticalScale = (size: number) =>

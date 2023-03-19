@@ -2,11 +2,11 @@ import styled from 'styled-components/native';
 import {COLORS} from '../../../common';
 import {scale} from '../../../utils';
 
-export const CardContainer = styled.View`
+export const Container = styled.View`
   width: 100%;
   background-color: ${COLORS.sub_brand._04};
-  padding-horizontal: ${scale(14)};
-  padding-vertical: ${scale(24)};
+  padding-horizontal: ${scale(20)};
+  padding-vertical: ${scale(28)};
   border-radius: ${scale(6)};
   border-width: 1;
   border-color: ${COLORS.light._02};

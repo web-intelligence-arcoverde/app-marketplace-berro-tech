@@ -1,6 +1,6 @@
 import {IconComponent, Text, Separator} from '../../';
 
-import {CardContainer, IconContainer} from './style';
+import {Container, IconContainer} from './style';
 
 interface IInformationCardOnboarding {
   icon: string;
@@ -14,17 +14,17 @@ export const InformationCardOnboarding = ({
   description,
 }: IInformationCardOnboarding) => {
   return (
-    <CardContainer>
+    <Container>
       <IconContainer>
         <IconComponent icon={icon} />
       </IconContainer>
-      <Separator height={16} />
+      <Separator height={20} />
       <Text typography="h3" colorFamily="brand_dark" colorVariant="_01">
         {title}
       </Text>
       <Text typography="h4" colorFamily="brand_dark" colorVariant="_01">
         {description}
       </Text>
-    </CardContainer>
+    </Container>
   );
 };

@@ -5,6 +5,9 @@ export const Container = styled.View`
   display: flex;
   flex: 1;
   background-color: ${COLORS.brand_light._01};
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const ContainerLogoImage = styled.View`
