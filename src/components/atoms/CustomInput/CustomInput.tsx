@@ -3,9 +3,11 @@ import {MaskedTextInput, MaskedTextProps} from 'react-native-mask-text';
 import {Input} from '@rneui/themed';
 import {Controller} from 'react-hook-form';
 
-const maskPhone = '([00]) [0] [0000]-[0000]';
+import {TextInputMask, TextInputMaskOptionProp} from 'react-native-masked-text';
 
-interface IInput extends MaskedTextProps {
+const maskPhone = '(99) [9] [9999]-[9999]';
+
+interface IInput extends TextInputMaskOptionProp {
   mask: string;
   control: any;
   name: string;
@@ -25,6 +27,7 @@ export const CustomInput = ({
   name,
   errors,
   variant = 'contained',
+  type = 'cel-phone',
 }: IInput) => {
   const typography = Typography['input'];
 
@@ -42,9 +45,9 @@ export const CustomInput = ({
       render={({field: {onChange, onBlur, value}}) => {
         return (
           <Input
+            type={type}
             //@ts-ignore
-            mask={maskPhone}
-            InputComponent={MaskedTextInput}
+            InputComponent={TextInputMask}
             onBlur={onBlur}
             onChangeText={onChange}
             value={value}

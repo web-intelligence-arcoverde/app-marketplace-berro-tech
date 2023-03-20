@@ -12,7 +12,7 @@ export const ContainerFoorterDescription = styled.View`
 `;
 
 export const ImageContainer = styled.Image`
-  width: ${scale(335)};
+  width: 100%;
   height: ${scale(288)};
   border-top-left-radius: ${scale(6)};
   border-top-right-radius: ${scale(6)};

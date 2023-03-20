@@ -23,6 +23,10 @@ import SearchIconYellow from './search-icon-yellow.svg';
 import ListIconYellow from './list-icon-yellow.svg';
 import PhoneIconYellow from './phone-icon.svg';
 
+import Map01 from './map-00.svg';
+import Map02 from './map-01.svg';
+import Map03 from './map-02.svg';
+
 /*
 
   - Icons de navegação
@@ -68,4 +72,7 @@ export const ICONS = {
   'phone-icon-yellow': PhoneIconYellow,
   'eye-close-icon': EyeCloseIcon,
   'eye-icon': EyeIcon,
+  'map-00-icon': Map01,
+  'map-01-icon': Map02,
+  'map-02-icon': Map03,
 };

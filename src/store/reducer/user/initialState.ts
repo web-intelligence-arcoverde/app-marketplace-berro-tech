@@ -9,7 +9,7 @@ export const initialState: IUserInitialState = {
     avaliation_rate: '',
     photo: '',
   },
-  loading: false,
+  loading: true,
   step_edit_profile: 0,
   bottom_sheet_index: 0,
 };

@@ -38,7 +38,6 @@ export const Input = ({
   rightIcon,
   leftIcon,
   variant = 'contained',
-  mask,
 }: IInput) => {
   const typography = Typography['input'];
 
@@ -75,10 +74,10 @@ export const Input = ({
             onBlur={onBlur}
             onChangeText={onChange}
             value={value}
-            keyboardType="email-address"
             autoCapitalize="none"
-            secureTextEntry={showPassword}
+            keyboardType="email-address"
             autoCorrect={false}
+            secureTextEntry={showPassword}
             leftIconContainerStyle={leftIconContainerStyle}
             rightIconContainerStyle={rightIconContainerStyle}
             rightIcon={

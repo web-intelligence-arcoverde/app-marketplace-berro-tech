@@ -18,18 +18,28 @@ export const DescriptionUserProfileScreen = () => {
     state => state.user.user,
   );
 
+  const {loading} = useAppSelector(state => state.user);
+
   useEffect(() => {
     dispatch(readInformationUserRequest());
   }, []);
 
+  console.log(loading);
+
   return (
     <View style={{paddingHorizontal: scale(20)}}>
-      <HeaderUserProfileScreen name={name} photo={photo} email={email} />
-      <AddressUserProfileScreen {...address} />
-      <FooterUserProfilerScreen
-        phone={phone}
-        avaliationRate={avaliation_rate}
-      />
+      {loading ? (
+        <></>
+      ) : (
+        <>
+          <HeaderUserProfileScreen name={name} photo={photo} email={email} />
+          <AddressUserProfileScreen {...address} />
+          <FooterUserProfilerScreen
+            phone={phone}
+            avaliationRate={avaliation_rate}
+          />
+        </>
+      )}
     </View>
   );
 };

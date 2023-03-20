@@ -58,6 +58,13 @@ export * from './EditProfileBasicInformationsForm/EditProfileBasicInformationsFo
 
 export * from './InformationCardOnboarding/InformationCardOnboarding';
 
+export * from './BusinessHighlight/BusinessHighlight';
+export * from './RegionsInformationsHeader/RegionsInformationsHeader';
+export * from './RegionInformationCard/RegionInformationCard';
+export * from './RegionInformationList/RegionInformationList';
+export * from './ProductSpecificList/ProductSpecificList';
+export * from './SelectFilterProductSpecificList/SelectFilterProductSpecificList';
+
 //Context
 
 export * from './AppContextEditProfileScreenComponent/AppContextEditProfileScreenComponent';
