@@ -5,3 +5,4 @@ export * from './StepsFormSignUpContainer/StepsFormSignUpContainer';
 export * from './RegionInformationSection/RegionInformationSection';
 export * from './ProductListSpecificHomeScreen/ProductListSpecificHomeScreen';
 export * from './BusinessHighlightProductList/BusinessHighlightProductList';
+export * from './RegionInformationHeaderList/RegionInformationHeaderList';

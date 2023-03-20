@@ -1,8 +1,7 @@
-import {View} from 'react-native';
-import {COLORS} from '../../../common';
-import {scale} from '../../../utils';
-
 import {IconComponent, Separator, Text} from '../../';
+
+import {Container, IconContainer} from './style';
+import React from 'react';
 
 interface IRegionInformationCard {
   backgroundIcon: string;
@@ -18,27 +17,10 @@ export const RegionInformationCard = ({
   description,
 }: IRegionInformationCard) => {
   return (
-    <View
-      style={{
-        backgroundColor: COLORS.light._04,
-        paddingHorizontal: scale(20),
-        paddingVertical: scale(28),
-        width: scale(300),
-        borderWidth: 1,
-        borderColor: COLORS.light._02,
-      }}>
-      <View
-        style={{
-          paddingVertical: scale(12),
-          paddingHorizontal: scale(12),
-          backgroundColor: backgroundIcon,
-          width: scale(48),
-          borderRadius: scale(6),
-          alignContent: 'center',
-          justifyContent: 'center',
-        }}>
+    <Container>
+      <IconContainer backgroundColor={backgroundIcon}>
         <IconComponent icon={icon} />
-      </View>
+      </IconContainer>
       <Separator height={56} />
       <Text typography="h3" colorFamily="dark" colorVariant="_04">
         {title}
@@ -47,6 +29,6 @@ export const RegionInformationCard = ({
       <Text typography="h4" colorFamily="dark" colorVariant="_04">
         {description}
       </Text>
-    </View>
+    </Container>
   );
 };
