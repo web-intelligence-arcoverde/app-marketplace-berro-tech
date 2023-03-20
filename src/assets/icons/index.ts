@@ -26,6 +26,8 @@ import PhoneIconYellow from './phone-icon.svg';
 import Map01 from './map-00.svg';
 import Map02 from './map-01.svg';
 import Map03 from './map-02.svg';
+import Map04 from './map-03.svg';
+import Map05 from './map-04.svg';
 
 /*
 
@@ -75,4 +77,6 @@ export const ICONS = {
   'map-00-icon': Map01,
   'map-01-icon': Map02,
   'map-02-icon': Map03,
+  'map-03-icon': Map04,
+  'map-04-icon': Map05,
 };

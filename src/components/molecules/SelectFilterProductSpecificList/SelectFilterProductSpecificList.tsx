@@ -1,7 +1,6 @@
-import {ScrollView, TouchableOpacity} from 'react-native';
+import {ScrollView} from 'react-native';
 
 import {Text} from '../../';
-import {scale} from '../../../utils';
 
 const dataOptionsSelect = [
   {id: 0, title: 'Principais buscas'},
@@ -11,18 +10,22 @@ const dataOptionsSelect = [
   {id: 4, title: 'Sexo'},
 ];
 
+import React, {useState} from 'react';
+
+import {SelectFilterSpecific} from './style';
+
 export const SelectFilterProductSpecificList = () => {
+  const [indexSelect, setIndexSelected] = useState(0);
+
   return (
-    <ScrollView horizontal={true}>
+    <ScrollView horizontal={true} style={{paddingLeft: 20}}>
       {dataOptionsSelect.map(item => {
         return (
-          <TouchableOpacity
-            style={{
-              paddingVertical: scale(20),
-              paddingHorizontal: scale(16),
-            }}>
+          <SelectFilterSpecific
+            selected={indexSelect === item.id}
+            onPress={() => setIndexSelected(item.id)}>
             <Text typography="h4">{item.title}</Text>
-          </TouchableOpacity>
+          </SelectFilterSpecific>
         );
       })}
     </ScrollView>
