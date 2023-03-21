@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import {scale} from '../../../utils';
 import {COLORS} from '../../../common';
 
-export const Container = styled.View``;
+export const Container = styled.TouchableOpacity``;
 
 export const ContainerFoorterDescription = styled.View`
   border-width: 1;

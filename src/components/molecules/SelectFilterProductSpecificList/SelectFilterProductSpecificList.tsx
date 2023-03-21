@@ -13,12 +13,13 @@ const dataOptionsSelect = [
 import React, {useState} from 'react';
 
 import {SelectFilterSpecific} from './style';
+import {scale} from '../../../utils';
 
 export const SelectFilterProductSpecificList = () => {
   const [indexSelect, setIndexSelected] = useState(0);
 
   return (
-    <ScrollView horizontal={true} style={{paddingLeft: 20}}>
+    <ScrollView horizontal={true} style={{paddingLeft: scale(20)}}>
       {dataOptionsSelect.map(item => {
         return (
           <SelectFilterSpecific

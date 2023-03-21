@@ -11,7 +11,7 @@ import {useState} from 'react';
 export const HeaderDashboard = () => {
   const {name} = useRoute();
 
-  const isHome = name == 'Home';
+  const isHome = name == 'Home' || name == 'Negócios';
 
   const [focus, setFocus] = useState(false);
 

@@ -7,6 +7,8 @@ import {
   SelectFilterProductSpecificList,
 } from '../../';
 
+import {Container} from './style';
+
 export const ProductListSpecificHomeScreen = () => {
   return (
     <View>
@@ -14,7 +16,9 @@ export const ProductListSpecificHomeScreen = () => {
       <Separator height={32} />
       <ProductSpecificList />
       <Separator height={32} />
-      <Button title="Ver mais" onPress={() => {}} />
+      <Container>
+        <Button title="Ver mais" variant="disabled" onPress={() => {}} />
+      </Container>
       <Separator height={56} />
     </View>
   );
