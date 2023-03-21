@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "android-pixel": "emulator -avd Pixel_3a_API_30",
+    "android-pixel": "emulator -avd Pixel_6_Pro_API_30",
     "ios": "npx pod-install && react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",

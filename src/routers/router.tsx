@@ -13,6 +13,7 @@ import {
   ProfileChangerPasswordScreen,
   SplashScreen,
   OnboardingScreen,
+  ShowProductByIdScreen,
 } from '../screens/';
 
 const Stack = createNativeStackNavigator();
@@ -43,12 +44,14 @@ export const RouterApp = () => {
       />
 
       <Stack.Screen name="EditProfileScreen" component={EditProfileScreen} />
+
       <Stack.Screen
         name="ProfileChangerPasswordScreen"
         component={ProfileChangerPasswordScreen}
       />
 
       <Stack.Screen name="AddProductScreen" component={AddProductScreen} />
+      <Stack.Screen name="ShowProductByIdScreen" component={AddProductScreen} />
     </Stack.Navigator>
   );
 };
