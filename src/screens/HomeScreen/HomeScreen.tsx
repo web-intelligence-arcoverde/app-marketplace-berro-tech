@@ -1,3 +1,4 @@
+import {ScrollView} from 'react-native';
 import {
   KeyboardContainer,
   HeaderDashboard,
@@ -11,12 +12,14 @@ export const HomeScreen = () => {
   return (
     <KeyboardContainer>
       <HeaderDashboard />
-      <BusinessHighlight />
+      <ScrollView>
+        <BusinessHighlight />
 
-      <RegionInformationSection />
+        <RegionInformationSection />
 
-      <Separator height={100} />
-      <ProductListSpecificHomeScreen />
+        <Separator height={100} />
+        <ProductListSpecificHomeScreen />
+      </ScrollView>
     </KeyboardContainer>
   );
 };

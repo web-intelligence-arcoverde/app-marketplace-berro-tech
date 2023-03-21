@@ -1,4 +1,4 @@
-import {KeyboardAvoidingView, ScrollView} from 'react-native';
+import {KeyboardAvoidingView} from 'react-native';
 
 import {scale} from '../../../utils';
 
@@ -11,7 +11,7 @@ export const KeyboardContainer = ({children}: any) => {
       }}
       keyboardVerticalOffset={scale(-210)}
       behavior={'padding'}>
-      <ScrollView>{children}</ScrollView>
+      {children}
     </KeyboardAvoidingView>
   );
 };
