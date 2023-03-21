@@ -8,6 +8,7 @@ import {IconComponent} from '../components';
 import {BottomSheetExample} from '../components/molecules/BottomSheetExample/BottomSheetExample';
 
 import {ProfileScreen, HomeScreen, BusinessScreen} from '../screens/';
+import {getBottomSpaceHeight, scale} from '../utils';
 
 export const DashboardBottomNavigation = () => {
   return (
@@ -15,17 +16,24 @@ export const DashboardBottomNavigation = () => {
       <Tab.Navigator
         initialRouteName={'Home'}
         screenOptions={({route}) => ({
-          tabBarStyle: {
-            height: 100,
+          headerShown: false,
+
+          tabBarItemStyle: {
+            justifyContent: 'center',
           },
 
-          tabBarItemStyle: {justifyContent: 'flex-start'},
-
-          headerShown: false,
-          tabBarHideOnKeyboard: true,
           tabBarLabelStyle: {fontFamily: 'inter', fontSize: 14},
+
+          tabBarStyle: {
+            height: scale(74) + getBottomSpaceHeight(),
+          },
+
+          tabBarIconStyle: {
+            maxHeight: scale(30),
+          },
+
           tabBarIcon: ({focused}) => {
-            let iconName;
+            let iconName = '';
 
             if (route.name === 'Home') {
               iconName = !focused ? 'home-icon' : 'home-outlined-icon';

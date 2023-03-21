@@ -5,8 +5,10 @@ import {regionInformationData} from '../../../mock';
 export const RegionInformationList = () => {
   return (
     <ScrollView horizontal={true}>
-      {regionInformationData.map(item => {
-        return <RegionInformationCard {...item} />;
+      {regionInformationData.map((item, index) => {
+        return (
+          <RegionInformationCard {...item} key={`${item.icon}-${index}`} />
+        );
       })}
     </ScrollView>
   );

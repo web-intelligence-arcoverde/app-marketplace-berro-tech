@@ -20,9 +20,10 @@ export const SelectFilterProductSpecificList = () => {
 
   return (
     <ScrollView horizontal={true} style={{paddingLeft: scale(20)}}>
-      {dataOptionsSelect.map(item => {
+      {dataOptionsSelect.map((item, index) => {
         return (
           <SelectFilterSpecific
+            key={`${item.id}-${index}`}
             selected={indexSelect === item.id}
             onPress={() => setIndexSelected(item.id)}>
             <Text typography="h4">{item.title}</Text>
