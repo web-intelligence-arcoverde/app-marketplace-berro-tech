@@ -1,4 +1,5 @@
 import React from 'react';
+import {ScrollView} from 'react-native';
 
 import {
   HeaderLogoIntro,
@@ -10,14 +11,16 @@ import {
 export const RecoveryAccountScreen = () => {
   return (
     <KeyboardContainer>
-      <HeaderLogoIntro />
+      <ScrollView>
+        <HeaderLogoIntro />
 
-      <HeaderDescriptionIntro
-        title="Esqueci minha senha"
-        description="Siga os passos abaixo para recuperar"
-      />
+        <HeaderDescriptionIntro
+          title="Esqueci minha senha"
+          description="Siga os passos abaixo para recuperar"
+        />
 
-      <StepsRecoveryAccount />
+        <StepsRecoveryAccount />
+      </ScrollView>
     </KeyboardContainer>
   );
 };

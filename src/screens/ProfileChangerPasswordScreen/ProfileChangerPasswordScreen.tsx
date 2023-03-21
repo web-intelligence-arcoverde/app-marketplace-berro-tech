@@ -1,4 +1,4 @@
-import {View} from 'react-native';
+import {View, ScrollView} from 'react-native';
 
 import {
   Button,
@@ -38,21 +38,23 @@ export const ProfileChangerPasswordScreen = () => {
 
   return (
     <KeyboardContainer>
-      <HeaderDashboard />
-      <View style={{paddingHorizontal: 20}}>
-        <Text typography="h3">Localização</Text>
-        <Separator height={20} />
-        <View style={{gap: 20}}>
-          <Input control={control} label="Senha atual" name="password" />
-          <Input control={control} label="Nova senha" name="newPassword" />
+      <ScrollView>
+        <HeaderDashboard />
+        <View style={{paddingHorizontal: 20}}>
+          <Text typography="h3">Localização</Text>
+          <Separator height={20} />
+          <View style={{gap: 20}}>
+            <Input control={control} label="Senha atual" name="password" />
+            <Input control={control} label="Nova senha" name="newPassword" />
 
-          <Button
-            title="Salvar Alterações"
-            onPress={() => {}}
-            variant="containedThirdy"
-          />
+            <Button
+              title="Salvar Alterações"
+              onPress={() => {}}
+              variant="containedThirdy"
+            />
+          </View>
         </View>
-      </View>
+      </ScrollView>
     </KeyboardContainer>
   );
 };
