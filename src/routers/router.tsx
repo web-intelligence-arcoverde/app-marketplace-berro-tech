@@ -51,7 +51,10 @@ export const RouterApp = () => {
       />
 
       <Stack.Screen name="AddProductScreen" component={AddProductScreen} />
-      <Stack.Screen name="ShowProductByIdScreen" component={AddProductScreen} />
+      <Stack.Screen
+        name="ShowProductByIdScreen"
+        component={ShowProductByIdScreen}
+      />
     </Stack.Navigator>
   );
 };

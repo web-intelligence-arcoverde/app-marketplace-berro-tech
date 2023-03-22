@@ -1,15 +1,10 @@
-import {Input as Default} from '@rneui/themed';
-import {Typography} from '../../../common';
-
-import {Controller} from 'react-hook-form';
-
-import {IconComponent} from '../../';
-
 import {TouchableOpacity} from 'react-native';
-
-import {CustomInput} from '../CustomInput/CustomInput';
-
 import {InputProps} from '@rneui/base';
+import {Input as Default} from '@rneui/themed';
+
+import {Typography} from '../../../common';
+import {Controller} from 'react-hook-form';
+import {IconComponent} from '../../';
 
 interface IInput extends InputProps {
   label?: string;

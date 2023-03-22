@@ -1,5 +1,3 @@
-import {MaskedTextInput, MaskedTextProps} from 'react-native-mask-text';
-
 import {Input} from '@rneui/themed';
 import {Controller} from 'react-hook-form';
 
@@ -15,6 +13,7 @@ interface IInput extends TextInputMaskOptionProp {
   placeholder?: string;
   errors?: string;
   variant?: string;
+  type?: string;
 }
 
 import {Typography} from '../../../common';
@@ -42,6 +41,7 @@ export const CustomInput = ({
   return (
     <Controller
       control={control}
+      name={name}
       render={({field: {onChange, onBlur, value}}) => {
         return (
           <Input
@@ -62,7 +62,6 @@ export const CustomInput = ({
           />
         );
       }}
-      name={name}
     />
   );
 };
