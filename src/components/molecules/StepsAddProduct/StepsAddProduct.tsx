@@ -1,37 +1,46 @@
-import {useContext} from 'react';
-import {Separator, Text} from '../../';
-import {ContextEditProfileStep} from '../../../context';
+import {useState} from 'react';
+import {Separator, Text} from '../..';
 
 import {StepItem, Container} from './style';
 
-import {useState} from 'react';
-
-export const StepsEditProfileScreen = () => {
+export const StepsAddProduct = () => {
   const [step, setStep] = useState(0);
 
   return (
     <Container>
       <StepItem isActive={step === 0} onPress={() => setStep(0)}>
         <Text typography="h4" colorFamily="gray" colorVariant="_04">
-          Editar
+          Passo 1
         </Text>
         <Separator height={8} />
         <Text
           typography="h4"
           colorFamily="gray"
           colorVariant={step === 0 ? '_01' : '_03'}>
-          Conta
+          Informações
         </Text>
       </StepItem>
       <StepItem isActive={step === 1} onPress={() => setStep(1)}>
         <Text typography="h4" colorFamily="gray" colorVariant="_04">
-          Editar
+          Passo 2
         </Text>
         <Separator height={8} />
         <Text
           typography="h4"
           colorFamily="gray"
           colorVariant={step === 1 ? '_01' : '_03'}>
+          Fotos e vídeos
+        </Text>
+      </StepItem>
+      <StepItem isActive={step === 2} onPress={() => setStep(2)}>
+        <Text typography="h4" colorFamily="gray" colorVariant="_04">
+          Passo 3
+        </Text>
+        <Separator height={8} />
+        <Text
+          typography="h4"
+          colorFamily="gray"
+          colorVariant={step === 2 ? '_01' : '_03'}>
           Localização
         </Text>
       </StepItem>

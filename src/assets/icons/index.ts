@@ -4,6 +4,7 @@ import FacebookIcon from './facebook-icon.svg';
 import HandIcon from './hand-icon.svg';
 import UserIcon from './user-icon.svg';
 import ArrowLeft from './arrow-left.svg';
+import ArrowDown from './arrow-down.svg';
 
 import FilterIcon from './filter-icon.svg';
 import SearchIcon from './search-icon.svg';
@@ -69,6 +70,7 @@ export const ICONS = {
   'profile-outlined-icon': ProfileOutlinedIcon,
   'edit-icon': EditIcon,
   'arrow-down-icon': ArrowDownIcon,
+  'arrow-down': ArrowDown,
   'search-icon-yellow': SearchIconYellow,
   'list-icon-yellow': ListIconYellow,
   'phone-icon-yellow': PhoneIconYellow,

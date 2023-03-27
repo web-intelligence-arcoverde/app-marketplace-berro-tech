@@ -47,7 +47,6 @@ export const useFormSignUpSteps = () => {
   });
 
   const onSubmit = data => {
-    console.log(data);
     setStep(1);
   };
 

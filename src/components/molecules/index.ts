@@ -65,8 +65,11 @@ export * from './RegionInformationList/RegionInformationList';
 export * from './ProductSpecificList/ProductSpecificList';
 export * from './SelectFilterProductSpecificList/SelectFilterProductSpecificList';
 
-//Context
+export * from './StepsAddProduct/StepsAddProduct';
 
+export * from './DefaultBottomSheetExample/DefaultBottomSheetExample';
+
+//Context
 export * from './AppContextEditProfileScreenComponent/AppContextEditProfileScreenComponent';
 export * from './AppContextStepRecoveryAccountComponent/AppContextStepRecoveryAccountComponent';
 export * from './AppContextSignUpScreenComponent/AppContextSignUpScreenComponent';

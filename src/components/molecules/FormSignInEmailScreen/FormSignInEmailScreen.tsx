@@ -8,6 +8,8 @@ export const FormSignInEmailScreen = () => {
 
   const {onSubmit, control, errors} = useHookFormSignInEmail();
 
+  console.log(errors['password']?.message);
+
   return (
     <Container>
       <Input

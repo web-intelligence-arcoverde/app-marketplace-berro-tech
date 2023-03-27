@@ -52,6 +52,7 @@ export const DashboardBottomNavigation = () => {
         <Tab.Screen name="Negócios" component={BusinessScreen} />
         <Tab.Screen name="Perfil" component={ProfileScreen} />
       </Tab.Navigator>
+
       <BottomSheetExample />
     </>
   );

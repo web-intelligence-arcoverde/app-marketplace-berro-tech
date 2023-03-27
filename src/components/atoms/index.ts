@@ -7,3 +7,5 @@ export * from './Input/Input';
 export * from './ButtonText/ButtonText';
 export * from './ButtonIcon/ButtonIcon';
 export * from './CustomInput/CustomInput';
+export * from './SecondInput/SecondInput';
+export * from './CustomDropDownPicker/CustomDropDownPicker';
