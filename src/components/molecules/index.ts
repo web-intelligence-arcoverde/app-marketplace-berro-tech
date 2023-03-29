@@ -79,6 +79,8 @@ export * from './AppContextSignUpScreenComponent/AppContextSignUpScreenComponent
 export * from './CustomDropDownPickerAnimalType/CustomDropDownPickerAnimalType';
 export * from './BottomSheetSelectAnimalTypeItem/BottomSheetSelectAnimalTypeItem';
 export * from './CustomDropDownPickerAnimalSex/CustomDropDownPickerAnimalSex';
+export * from './CustomDropDownPickerAnimalBreed/CustomDropDownPickerAnimalBreed';
 
 //BottomSheet
 export * from './BottomSheetSelectAnimalSex/BottomSheetSelectAnimalSex';
+export * from './BottomSheetSelectAnimalBreed/BottomSheetSelectAnimalBreed';

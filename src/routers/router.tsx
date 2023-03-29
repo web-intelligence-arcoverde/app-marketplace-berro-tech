@@ -18,6 +18,7 @@ import {
 import {
   BottomSheetSelectAnimalType,
   BottomSheetSelectAnimalSex,
+  BottomSheetSelectAnimalBreed,
 } from '../components';
 
 const Stack = createNativeStackNavigator();
@@ -66,6 +67,7 @@ export const RouterApp = () => {
       </Stack.Navigator>
       <BottomSheetSelectAnimalType defaultSize={180} />
       <BottomSheetSelectAnimalSex defaultSize={160} />
+      <BottomSheetSelectAnimalBreed defaultSize={280} />
     </>
   );
 };

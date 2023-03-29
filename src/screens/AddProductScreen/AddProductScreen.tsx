@@ -7,6 +7,7 @@ import {
   Button,
   CustomDropDownPickerAnimalType,
   CustomDropDownPickerAnimalSex,
+  CustomDropDownPickerAnimalBreed,
 } from '../../components';
 
 import {yupResolver} from '@hookform/resolvers/yup';
@@ -52,7 +53,7 @@ export const AddProductScreen = () => {
         }}>
         <ScrollView style={{height: '70%'}}>
           <Text typography="h3">Sobre o produto</Text>
-          <Separator height={20} />
+          <Separator height={24} />
           <SecondInput
             name="name"
             control={control}
@@ -60,17 +61,18 @@ export const AddProductScreen = () => {
             placeholder="Nome"
             errors={errors?.name?.message}
           />
+          <Separator height={16} />
+          <CustomDropDownPickerAnimalType />
+
+          <Separator height={16} />
+          <CustomDropDownPickerAnimalBreed />
+          <Separator height={16} />
+          <CustomDropDownPickerAnimalType />
+          <Separator height={16} />
+          <CustomDropDownPickerAnimalSex />
 
           <Separator height={12} />
           <Text typography="h3">Sobre o produto</Text>
-          <Separator height={12} />
-
-          <CustomDropDownPickerAnimalType />
-
-          <Separator height={12} />
-
-          <CustomDropDownPickerAnimalSex />
-
           <Separator height={12} />
 
           <Button

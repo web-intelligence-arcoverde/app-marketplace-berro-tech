@@ -7,4 +7,8 @@ export const initialState: IStateProduct = {
 
   visible_animal_sex_select: 0,
   animal_sex: '',
+
+  visible_animal_breed_select: 0,
+  animal_breed: '',
+  breeds: [],
 };

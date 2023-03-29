@@ -24,3 +24,19 @@ export const readTypesAnimalsRequest = createAction(
 export const readTypesAnimalsSuccess = createAction<{animals_types: string[]}>(
   'product/read-types-animals-success',
 );
+
+export const readAnimalBreedRequest = createAction<{bread: string}>(
+  'product/read-animal-breed-request',
+);
+
+export const readAnimalBreedSuccess = createAction<{breeds: string[]}>(
+  'product/read-animal-breed-success',
+);
+
+export const setVisibleBottomSheetAnimalBreed = createAction<{
+  visible_animal_breed_select: number;
+}>('product/set-visible-bottom-sheet-animal-breed');
+
+export const setAnimalBreed = createAction<{animal_breed: string}>(
+  'product/set-animal-breed',
+);

@@ -5,6 +5,10 @@ export interface IStateProduct {
 
   visible_animal_sex_select: number;
   animal_sex: string;
+
+  visible_animal_breed_select: number;
+  animal_breed: string;
+  breeds: string[];
 }
 
 export interface IProduct {}

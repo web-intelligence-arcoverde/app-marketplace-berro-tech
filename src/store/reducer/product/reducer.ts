@@ -7,6 +7,9 @@ import {
   readTypesAnimalsSuccess,
   setAnimalSex,
   setVisibleBottomSheetAnimalSex,
+  readAnimalBreedSuccess,
+  setAnimalBreed,
+  setVisibleBottomSheetAnimalBreed,
 } from './actions';
 
 export const productReducer = createReducer(initialState, builder => {
@@ -30,5 +33,16 @@ export const productReducer = createReducer(initialState, builder => {
     .addCase(setAnimalSex, (state, action) => {
       state.animal_sex = action.payload.animal_sex;
       state.visible_animal_sex_select = 0;
+    })
+    .addCase(readAnimalBreedSuccess, (state, action) => {
+      state.breeds = action.payload.breeds;
+    })
+    .addCase(setAnimalBreed, (state, action) => {
+      state.animal_breed = action.payload.animal_breed;
+      state.visible_animal_breed_select = 0;
+    })
+    .addCase(setVisibleBottomSheetAnimalBreed, (state, action) => {
+      state.visible_animal_breed_select =
+        action.payload.visible_animal_breed_select;
     });
 });
