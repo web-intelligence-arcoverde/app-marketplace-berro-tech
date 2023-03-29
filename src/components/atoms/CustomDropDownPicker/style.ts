@@ -12,5 +12,11 @@ export const InputStyle = EStyleSheet.create({
       paddingHorizontal: scale(16),
       paddingVertical: scale(16),
     },
+    containerContent: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      height: scale(48),
+    },
   },
 });

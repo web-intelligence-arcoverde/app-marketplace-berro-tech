@@ -15,7 +15,7 @@ import {
   OnboardingScreen,
   ShowProductByIdScreen,
 } from '../screens/';
-import {DefaultBottomSheetExample} from '../components';
+import {BottomSheetSelectAnimalType} from '../components';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,7 +23,7 @@ export const RouterApp = () => {
   return (
     <>
       <Stack.Navigator
-        initialRouteName={'SplashScreen'}
+        initialRouteName={'AddProductScreen'}
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
 
@@ -61,7 +61,7 @@ export const RouterApp = () => {
           component={ShowProductByIdScreen}
         />
       </Stack.Navigator>
-      <DefaultBottomSheetExample defaultSize={180} />
+      <BottomSheetSelectAnimalType defaultSize={180} />
     </>
   );
 };

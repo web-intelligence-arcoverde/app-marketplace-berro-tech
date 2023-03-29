@@ -9,3 +9,4 @@ export * from './ButtonIcon/ButtonIcon';
 export * from './CustomInput/CustomInput';
 export * from './SecondInput/SecondInput';
 export * from './CustomDropDownPicker/CustomDropDownPicker';
+export * from './ContentDropDownPicker/ContentDropDownPicker';

@@ -2,13 +2,12 @@ import {useEffect, useState} from 'react';
 import {useNavigationHook} from './';
 
 export const useRedirectRouterTimeOut = () => {
-  const [count, setCount] = useState(6);
+  const [count, setCount] = useState(2);
 
   const {goToRouter} = useNavigationHook();
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // update the state after 1000ms
       setCount(currentCount => currentCount - 1);
     }, 1000);
     // when count is 0, navigate

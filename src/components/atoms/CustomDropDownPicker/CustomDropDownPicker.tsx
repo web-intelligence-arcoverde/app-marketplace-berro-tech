@@ -1,67 +1,44 @@
-import {useState} from 'react';
-
-import {IconComponent, Text} from '../../';
+import {IconComponent, ContentDropDownPicker} from '../../';
 
 import {InputStyle} from './style';
 
 import {TouchableOpacity, View} from 'react-native';
-import {scale} from '../../../utils';
 
-export const CustomDropDownPicker = () => {
-  const [focus, setFocus] = useState(false);
+interface ICustomDropDownPicker {
+  onPress: () => void;
+  focus: boolean;
+  value: string;
+  placeholder: string;
+  label: string;
+  errorMessage?: string;
+}
 
-  const {containerStyle} = InputStyle['contained'];
+export const CustomDropDownPicker = ({
+  onPress,
+  focus,
+  placeholder,
+  value,
+  label,
+  errorMessage,
+}: ICustomDropDownPicker) => {
+  const {containerStyle, containerContent} = InputStyle['contained'];
 
   return (
-    <TouchableOpacity style={containerStyle} onPress={() => setFocus(!focus)}>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          height: scale(48),
-        }}>
-        <View>
-          <Content focus={focus} />
-        </View>
+    <TouchableOpacity
+      style={containerStyle}
+      onPress={() => {
+        onPress();
+      }}>
+      <View style={containerContent}>
+        <ContentDropDownPicker
+          focus={focus}
+          placeholder={placeholder}
+          value={value}
+          label={label}
+          errorMessage={errorMessage}
+        />
         <IconComponent icon="arrow-down" />
       </View>
     </TouchableOpacity>
-  );
-};
-
-const Content = ({focus}: any) => {
-  const placeholderText = !focus ? 'Animal' : 'Selecione um tipo de animal';
-
-  const label = focus ? 'Animal' : '';
-
-  const erroMessage = 'Error';
-
-  return (
-    <View>
-      {!!label && (
-        <View style={{height: scale(22)}}>
-          <Text typography="h4" colorFamily="gray" colorVariant="_04">
-            {label}
-          </Text>
-        </View>
-      )}
-      <View style={{height: scale(22)}}>
-        <Text typography="h4" colorFamily="gray" colorVariant="_03">
-          {placeholderText}
-        </Text>
-      </View>
-
-      {!focus && (
-        <View style={{height: scale(22)}}>
-          <Text
-            typography="h5"
-            colorFamily="auxiliary"
-            colorVariant="red_state">
-            {erroMessage}
-          </Text>
-        </View>
-      )}
-    </View>
   );
 };

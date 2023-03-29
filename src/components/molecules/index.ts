@@ -67,9 +67,14 @@ export * from './SelectFilterProductSpecificList/SelectFilterProductSpecificList
 
 export * from './StepsAddProduct/StepsAddProduct';
 
-export * from './DefaultBottomSheetExample/DefaultBottomSheetExample';
+export * from './BottomSheetSelectAnimalType/BottomSheetSelectAnimalType';
 
 //Context
 export * from './AppContextEditProfileScreenComponent/AppContextEditProfileScreenComponent';
 export * from './AppContextStepRecoveryAccountComponent/AppContextStepRecoveryAccountComponent';
 export * from './AppContextSignUpScreenComponent/AppContextSignUpScreenComponent';
+
+//
+
+export * from './CustomDropDownPickerAnimalType/CustomDropDownPickerAnimalType';
+export * from './BottomSheetSelectAnimalTypeItem/BottomSheetSelectAnimalTypeItem';
