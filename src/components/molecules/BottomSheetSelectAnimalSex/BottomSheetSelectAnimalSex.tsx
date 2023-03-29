@@ -5,35 +5,33 @@ import {Separator} from '../..';
 import {getStatusBarHeight} from '../../../utils';
 import {useAppDispatch, useAppSelector} from '../../../hooks';
 import {
-  setVisibleBottomSheetAnimalType,
-  setAnimalType,
+  setVisibleBottomSheetAnimalSex,
+  setAnimalSex,
 } from '../../../store/reducer/product/actions';
 
-import {BottomSheetSelectAnimalTypeItem} from '../../';
+import {BottomSheetSelectAnimalTypeItem} from '../..';
 
-export const BottomSheetSelectAnimalType = ({defaultSize}: any) => {
+export const BottomSheetSelectAnimalSex = ({defaultSize}: any) => {
   const bottomSheetRef = useRef<BottomSheet>(null);
   const handleClosePress = () => bottomSheetRef?.current?.close();
 
-  const {visible_animal_type_select, types_animals} = useAppSelector(
-    state => state.product,
-  );
+  const {visible_animal_sex_select} = useAppSelector(state => state.product);
 
   const dispatch = useAppDispatch();
 
   const snapPoints = useMemo(() => [1, defaultSize], []);
 
-  const data = useMemo(() => types_animals.map(item => item), [types_animals]);
+  const data = useMemo(() => ['Macho', 'Fêmea'].map(item => item), []);
 
-  const handleSelectAnimalType = (item: string) => {
-    dispatch(setAnimalType({animal_type: item}));
+  const handleSelectAnimalSex = (item: string) => {
+    dispatch(setAnimalSex({animal_sex: item}));
   };
 
   const renderItem = useCallback(
     ({item}: any) => (
       <BottomSheetSelectAnimalTypeItem
         item={item}
-        selectOption={handleSelectAnimalType}
+        selectOption={handleSelectAnimalSex}
       />
     ),
     [],
@@ -42,16 +40,14 @@ export const BottomSheetSelectAnimalType = ({defaultSize}: any) => {
   const handleSheetChanges = useCallback((index: number) => {
     if (index === 0) {
       handleClosePress();
-      dispatch(
-        setVisibleBottomSheetAnimalType({visible_animal_type_select: 0}),
-      );
+      dispatch(setVisibleBottomSheetAnimalSex({visible_animal_sex_select: 0}));
     }
   }, []);
 
   return (
     <BottomSheet
       ref={bottomSheetRef}
-      index={visible_animal_type_select}
+      index={visible_animal_sex_select}
       snapPoints={snapPoints}
       onChange={handleSheetChanges}>
       <BottomSheetFlatList

@@ -15,7 +15,10 @@ import {
   OnboardingScreen,
   ShowProductByIdScreen,
 } from '../screens/';
-import {BottomSheetSelectAnimalType} from '../components';
+import {
+  BottomSheetSelectAnimalType,
+  BottomSheetSelectAnimalSex,
+} from '../components';
 
 const Stack = createNativeStackNavigator();
 
@@ -62,6 +65,7 @@ export const RouterApp = () => {
         />
       </Stack.Navigator>
       <BottomSheetSelectAnimalType defaultSize={180} />
+      <BottomSheetSelectAnimalSex defaultSize={160} />
     </>
   );
 };

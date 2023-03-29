@@ -78,3 +78,7 @@ export * from './AppContextSignUpScreenComponent/AppContextSignUpScreenComponent
 
 export * from './CustomDropDownPickerAnimalType/CustomDropDownPickerAnimalType';
 export * from './BottomSheetSelectAnimalTypeItem/BottomSheetSelectAnimalTypeItem';
+export * from './CustomDropDownPickerAnimalSex/CustomDropDownPickerAnimalSex';
+
+//BottomSheet
+export * from './BottomSheetSelectAnimalSex/BottomSheetSelectAnimalSex';

@@ -3,10 +3,8 @@ import {View, TouchableOpacity} from 'react-native';
 import {Separator, Text} from '../..';
 import {capitalize, scale} from '../../../utils';
 import {useAppDispatch} from '../../../hooks';
-import {setAnimalType} from '../../../store/reducer/product/actions';
 
-export const BottomSheetSelectAnimalTypeItem = ({item}: any) => {
-  const dispatch = useAppDispatch();
+export const BottomSheetSelectAnimalTypeItem = ({item, selectOption}: any) => {
   return (
     <TouchableOpacity
       style={{
@@ -15,7 +13,7 @@ export const BottomSheetSelectAnimalTypeItem = ({item}: any) => {
         height: scale(50),
         paddingHorizontal: scale(20),
       }}
-      onPress={() => dispatch(setAnimalType({animal_type: item}))}>
+      onPress={() => selectOption(item)}>
       <View
         style={{
           height: scale(16),

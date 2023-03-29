@@ -6,6 +6,7 @@ import {
   Separator,
   Button,
   CustomDropDownPickerAnimalType,
+  CustomDropDownPickerAnimalSex,
 } from '../../components';
 
 import {yupResolver} from '@hookform/resolvers/yup';
@@ -18,9 +19,6 @@ import {ErrorMessage} from '../../locale';
 import {View, ScrollView} from 'react-native';
 import {scale, getBottomSpaceHeight} from '../../utils';
 import {useAppDispatch} from '../../hooks';
-
-import {useCallback} from 'react';
-import {setVisibleBottomSheetAnimalType} from '../../store/reducer/product/actions';
 
 const schema = yup.object({
   name: yup.string().required(ErrorMessage['email-required']),
@@ -63,13 +61,17 @@ export const AddProductScreen = () => {
             errors={errors?.name?.message}
           />
 
-          <Separator height={18} />
+          <Separator height={12} />
           <Text typography="h3">Sobre o produto</Text>
-          <Separator height={18} />
+          <Separator height={12} />
 
           <CustomDropDownPickerAnimalType />
 
-          <Separator height={18} />
+          <Separator height={12} />
+
+          <CustomDropDownPickerAnimalSex />
+
+          <Separator height={12} />
 
           <Button
             title="Próximo"
