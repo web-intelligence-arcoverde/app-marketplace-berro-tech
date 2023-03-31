@@ -53,3 +53,5 @@ end
 pod 'React-RCTText', :path => '../node_modules/react-native/Libraries/Text', :modular_headers => true
 pod 'FirebaseCoreInternal', :modular_headers => true  
 pod 'GoogleUtilities', :modular_headers => true;
+pod 'FirebaseCore', :modular_headers => true;
+pod 'react-native-fbsdk-next', :path => '../node_modules/react-native-fbsdk-next'

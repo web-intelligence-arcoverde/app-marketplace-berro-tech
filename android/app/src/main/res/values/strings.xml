@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">BerroTech</string>
+    
+    <string name="facebook_app_id">784328079697639</string>
+    <string name="fb_login_protocol_scheme">fb{784328079697639}</string>
+    <string name="facebook_client_token">a07b00a27d6d10d460bb9d8c2a746e0b</string>
 </resources>
