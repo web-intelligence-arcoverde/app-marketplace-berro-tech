@@ -51,3 +51,5 @@ target 'BerroTech' do
 end
 
 pod 'React-RCTText', :path => '../node_modules/react-native/Libraries/Text', :modular_headers => true
+pod 'FirebaseCoreInternal', :modular_headers => true  
+pod 'GoogleUtilities', :modular_headers => true;

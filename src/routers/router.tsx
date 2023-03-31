@@ -27,7 +27,7 @@ export const RouterApp = () => {
   return (
     <>
       <Stack.Navigator
-        initialRouteName={'AddProductScreen'}
+        initialRouteName={'SignInSocialScreen'}
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
 

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "766145534601",
+    "project_id": "berrotech-df084",
+    "storage_bucket": "berrotech-df084.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766145534601:android:931d6525441f0ca7288458",
+        "android_client_info": {
+          "package_name": "com.appmarketplaceberrotech"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "766145534601-n9m7chk3uud6is79if6kilqjgatslr6r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBa4tNhZxZq0cVM-hhz75Ury6NLb_YtIh0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "766145534601-3ipn3f2hgq3mckupjn88b9vq8uqv8868.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
