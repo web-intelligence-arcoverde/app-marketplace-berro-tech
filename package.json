@@ -12,7 +12,10 @@
     "build:android:dev:release": "cd ./android && ./gradlew assembleRelease",
     "build:android:dev:aab": "cd ./android && ./gradlew bundleRelease",
     "build:ios:prod:release": "cd ./ios && /usr/bin/xcodebuild -sdk iphoneos -configuration Prod -workspace smiles_app.xcworkspace -scheme smiles_app_prod build && /usr/bin/xcodebuild -exportArchive -archivePath output/iphoneos/Prod/archive/smiles_app.xcarchive -exportPath output/iphoneos/Prod/export -exportOptionsPlist ios/ExportOptions.plist",
-    "build:ios:hml:release": "cd ./ios && /usr/bin/xcodebuild -sdk iphoneos -configuration Hml -workspace smiles_app.xcworkspace -scheme smiles_app_hml build && /usr/bin/xcodebuild -exportArchive -archivePath output/iphoneos/Hml/archive/smiles_app.xcarchive -exportPath output/iphoneos/Hml/export -exportOptionsPlist ios/ExportOptionsHom.plist"
+    "build:ios:hml:release": "cd ./ios && /usr/bin/xcodebuild -sdk iphoneos -configuration Hml -workspace smiles_app.xcworkspace -scheme smiles_app_hml build && /usr/bin/xcodebuild -exportArchive -archivePath output/iphoneos/Hml/archive/smiles_app.xcarchive -exportPath output/iphoneos/Hml/export -exportOptionsPlist ios/ExportOptionsHom.plist",
+    "clear:ios": "cd ios && xcodebuild clean && cd ../",
+    "check-dependencies": "rnx-align-deps",
+    "fix-dependencies": "rnx-align-deps --write"
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "^4.4.5",
@@ -35,7 +38,7 @@
     "latinize": "^0.5.0",
     "react": "18.2.0",
     "react-hook-form": "^7.43.4",
-    "react-native": "0.71.0",
+    "react-native": "0.71.8",
     "react-native-confirmation-code-field": "^7.3.1",
     "react-native-device-info": "^10.3.0",
     "react-native-dropdown-picker": "^5.4.6",
@@ -65,10 +68,11 @@
     "yup": "^1.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9",
-    "@babel/preset-env": "^7.14.0",
-    "@babel/runtime": "^7.12.5",
-    "@react-native-community/eslint-config": "^3.0.0",
+    "@babel/core": "^7.20.0",
+    "@babel/preset-env": "^7.20.0",
+    "@babel/runtime": "^7.20.0",
+    "@react-native-community/eslint-config": "^3.2.0",
+    "@rnx-kit/align-deps": "^2.2.2",
     "@tsconfig/react-native": "^2.0.2",
     "@types/jest": "^29.2.1",
     "@types/latinize": "^0.2.15",
@@ -86,5 +90,28 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "rnx-kit": {
+    "kitType": "app",
+    "alignDeps": {
+      "requirements": [
+        "react-native@0.71"
+      ],
+      "capabilities": [
+        "animation",
+        "babel-preset-react-native",
+        "core",
+        "core-android",
+        "core-ios",
+        "gestures",
+        "jest",
+        "navigation/native",
+        "react",
+        "react-test-renderer",
+        "safe-area",
+        "screens",
+        "svg"
+      ]
+    }
   }
 }

@@ -1,7 +1,6 @@
 apply plugin: "com.android.application"
-apply plugin: 'com.google.gms.google-services' 
 apply plugin: "com.facebook.react"
-
+apply plugin: 'com.google.gms.google-services' 
 import com.android.build.OutputFile
 
 /**
@@ -86,8 +85,14 @@ def jscFlavor = 'org.webkit:android-jsc:+'
  */
 def reactNativeArchitectures() {
     def value = project.getProperties().get("reactNativeArchitectures")
-    return value ? value.split(",") : ["armeabi-v7a", "x86", "x86_64", "arm64-v8a"]
-}
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    namespace "com.rndiffapp"
+    defaultConfig {
+        applicationId "com.rndiffapp"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
 
 android {
     ndkVersion rootProject.ext.ndkVersion
