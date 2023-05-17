@@ -13,7 +13,7 @@ import {
   ProfileChangerPasswordScreen,
   SplashScreen,
   OnboardingScreen,
-  ShowProductByIdScreen,
+  DetailProductScreen,
 } from '../screens/';
 import {
   BottomSheetSelectAnimalType,
@@ -61,8 +61,8 @@ export const RouterApp = () => {
 
         <Stack.Screen name="AddProductScreen" component={AddProductScreen} />
         <Stack.Screen
-          name="ShowProductByIdScreen"
-          component={ShowProductByIdScreen}
+          name="DetailProductScreen"
+          component={DetailProductScreen}
         />
       </Stack.Navigator>
       <BottomSheetSelectAnimalType defaultSize={180} />

@@ -4,11 +4,23 @@ import { ProductItemCard } from '../../';
 import { useAppSelector } from '../../../hooks';
 import { scale } from '../../../utils';
 
+import { useNavigation } from '@react-navigation/core';
+
 import { ContainerProduct } from './style';
 
 export const BusinessHighlightProductList = () => {
 
   const { businessHighlightProduct } = useAppSelector(state => state.product)
+
+  const navigate = useNavigation();
+
+  const redirectToDetailsProduct = (id: number) => {
+    console.log(id)
+    navigate.navigate('DetailProductScreen', {
+      id
+    })
+  }
+
 
   return (
     <ScrollView
@@ -17,7 +29,7 @@ export const BusinessHighlightProductList = () => {
       {businessHighlightProduct.map((item, index) => {
         return (
           <ContainerProduct key={`${item}-${index}-product-item-highlight`}>
-            <ProductItemCard {...item} />
+            <ProductItemCard {...item} onPress={redirectToDetailsProduct} />
           </ContainerProduct>
         );
       })}

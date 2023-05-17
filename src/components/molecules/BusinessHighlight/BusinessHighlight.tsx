@@ -7,11 +7,8 @@ import { readBusinessHighlightProductRequest } from '../../../store/reducer/prod
 import { Container, TitleContainer } from './style';
 
 export const BusinessHighlight = () => {
-
   const dispatch = useAppDispatch()
-
   const { loadingBusinessHighlightProduct } = useAppSelector(state => state.product)
-
 
   useEffect(() => {
     dispatch(readBusinessHighlightProductRequest())

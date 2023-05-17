@@ -14,4 +14,4 @@ export * from './HomeScreen/HomeScreen';
 export * from './EditProfileScreen/EditProfileScreen';
 export * from './AddProductScreen/AddProductScreen';
 export * from './ProfileChangerPasswordScreen/ProfileChangerPasswordScreen';
-export * from './ShowProductByIdScreen/ShowProductByIdScreen';
+export * from './DetailProductScreen/DetailProductScreen';
