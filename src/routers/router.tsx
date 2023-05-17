@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import {DashboardBottomNavigation} from './bottom.router';
+import { DashboardBottomNavigation } from './bottom.router';
 
 import {
   SignInSocialScreen,
@@ -27,8 +27,8 @@ export const RouterApp = () => {
   return (
     <>
       <Stack.Navigator
-        initialRouteName={'SignInSocialScreen'}
-        screenOptions={{headerShown: false}}>
+        initialRouteName={'DashboardBottomNavigation'}
+        screenOptions={{ headerShown: false }}>
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
 
         <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />

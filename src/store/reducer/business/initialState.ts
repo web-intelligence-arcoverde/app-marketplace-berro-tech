@@ -1,4 +1,4 @@
-import {IBusiness} from './types';
+import { IBusiness } from './types';
 
 export const initialState: IBusiness = {
   products: [],

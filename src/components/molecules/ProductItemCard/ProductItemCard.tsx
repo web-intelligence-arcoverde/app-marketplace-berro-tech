@@ -1,20 +1,26 @@
-import {mockImages} from '../../../assets/images/mock';
+import { mockImages } from '../../../assets/images/mock';
 
-import {ProductItemDescriptionFooter, ProductItemHeader} from '../..';
+import { ProductItemDescriptionFooter, ProductItemHeader } from '../..';
 
-import {ContainerFoorterDescription, ImageContainer, Container} from './style';
+import { ContainerFoorterDescription, ImageContainer, Container } from './style';
 
-export const ProductItemCard = () => {
+export const ProductItemCard = (props: any) => {
+
+
+  const { documents, gender, ageCategory, classification } = props
+
+  console.log(documents[0])
+
   return (
     <Container>
       <ImageContainer source={mockImages.GadoOne} />
-      <ProductItemHeader />
+      <ProductItemHeader {...props} />
       <ContainerFoorterDescription>
-        <ProductItemDescriptionFooter title="Sexo" description="Macho" />
-        <ProductItemDescriptionFooter title="Idade" description="Garrote" />
+        <ProductItemDescriptionFooter title="Sexo" description={gender} />
+        <ProductItemDescriptionFooter title="Idade" description={ageCategory?.name} />
         <ProductItemDescriptionFooter
-          title="Classifi..."
-          description="Genética"
+          title="Classificação"
+          description={classification?.name}
         />
       </ContainerFoorterDescription>
     </Container>

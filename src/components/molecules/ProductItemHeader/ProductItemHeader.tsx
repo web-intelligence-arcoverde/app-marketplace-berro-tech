@@ -1,24 +1,25 @@
-import {Separator, ProductItemAddress, Text} from '../..';
+import { Separator, ProductItemAddress, Text } from '../..';
 
-import {Container, ContainerHeader} from './style';
+import { Container, ContainerHeader } from './style';
 
-export const ProductItemHeader = () => {
+export const ProductItemHeader = ({ name, breed, business, address }: any) => {
+
   return (
     <Container>
       <ContainerHeader>
         <Text typography="h4" colorFamily="gray" colorVariant="_02">
-          Senepol
+          {breed?.name}
         </Text>
         <Text typography="h4" colorFamily="gray" colorVariant="_02">
-          3 restantes
+          {business?.amount} restantes
         </Text>
       </ContainerHeader>
       <Separator height={8} />
       <Text typography="h3" colorFamily="gray" colorVariant="_01">
-        Garrote Senepol
+        {name}
       </Text>
       <Separator height={8} />
-      <ProductItemAddress />
+      <ProductItemAddress {...address} />
     </Container>
   );
 };

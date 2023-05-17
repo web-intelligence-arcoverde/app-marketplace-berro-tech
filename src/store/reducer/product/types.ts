@@ -9,6 +9,12 @@ export interface IStateProduct {
   visible_animal_breed_select: number;
   animal_breed: string;
   breeds: string[];
+
+
+  businessHighlightProduct: Array<IProduct>;
+  loadingBusinessHighlightProduct: boolean
 }
 
-export interface IProduct {}
+export interface IProduct {
+  documents?: any[]
+}

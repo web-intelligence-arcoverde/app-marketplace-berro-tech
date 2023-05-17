@@ -1,5 +1,5 @@
-import {createAction} from '@reduxjs/toolkit';
-import {IProduct} from './types';
+import { createAction } from '@reduxjs/toolkit';
+import { IProduct } from './types';
 
 export const readProductsRequest = createAction<string>(
   'business/read-products-request',

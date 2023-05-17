@@ -1,6 +1,6 @@
-import {Separator, Text} from '../../';
-
-import {Container} from './style';
+import { Separator, Text } from '../../';
+import { View } from "react-native"
+import { Container } from './style';
 
 interface IProductItemDescriptionFooter {
   title: string;
@@ -13,11 +13,11 @@ export const ProductItemDescriptionFooter = ({
 }: IProductItemDescriptionFooter) => {
   return (
     <Container>
-      <Text typography="h4" colorFamily="gray" colorVariant="_02">
+      <Text typography="h4" colorFamily="gray" colorVariant="_02" numberOfLines={1}>
         {title}
       </Text>
       <Separator height={4} />
-      <Text typography="h4" colorFamily="gray" colorVariant="_04">
+      <Text typography="h4" colorFamily="gray" colorVariant="_04" numberOfLines={1}>
         {description}
       </Text>
     </Container>

@@ -1,14 +1,12 @@
-import {Button, Input, ButtonText, Separator} from '../../';
-import {useNavigationHook, useHookFormSignInEmail} from '../../../hooks';
+import { Button, Input, ButtonText, Separator } from '../../';
+import { useNavigationHook, useHookFormSignInEmail } from '../../../hooks';
 
-import {Container} from './style';
+import { Container } from './style';
 
 export const FormSignInEmailScreen = () => {
-  const {goToRouter} = useNavigationHook();
+  const { goToRouter } = useNavigationHook();
 
-  const {onSubmit, control, errors} = useHookFormSignInEmail();
-
-  console.log(errors['password']?.message);
+  const { onSubmit, control, errors } = useHookFormSignInEmail();
 
   return (
     <Container>

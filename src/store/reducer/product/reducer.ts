@@ -1,5 +1,5 @@
-import {createReducer} from '@reduxjs/toolkit';
-import {initialState} from './initialState';
+import { createReducer } from '@reduxjs/toolkit';
+import { initialState } from './initialState';
 
 import {
   setVisibleBottomSheetAnimalType,
@@ -10,6 +10,8 @@ import {
   readAnimalBreedSuccess,
   setAnimalBreed,
   setVisibleBottomSheetAnimalBreed,
+  readBusinessHighlightProductSuccess,
+  readBusinessHighlightProductRequest,
 } from './actions';
 
 export const productReducer = createReducer(initialState, builder => {
@@ -44,5 +46,10 @@ export const productReducer = createReducer(initialState, builder => {
     .addCase(setVisibleBottomSheetAnimalBreed, (state, action) => {
       state.visible_animal_breed_select =
         action.payload.visible_animal_breed_select;
+    }).addCase(readBusinessHighlightProductSuccess, (state, action) => {
+      state.businessHighlightProduct = action.payload
+      state.loadingBusinessHighlightProduct = false
+    }).addCase(readBusinessHighlightProductRequest, (state, action) => {
+      state.loadingBusinessHighlightProduct = true
     });
 });

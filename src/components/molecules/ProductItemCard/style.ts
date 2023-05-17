@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
-import {scale} from '../../../utils';
-import {COLORS} from '../../../common';
+import { scale } from '../../../utils';
+import { COLORS } from '../../../common';
 
 export const Container = styled.TouchableOpacity``;
 
@@ -9,6 +9,7 @@ export const ContainerFoorterDescription = styled.View`
   border-width: 1;
   border-color: ${COLORS.light._02};
   flex-direction: row;
+  height: 100px;
 `;
 
 export const ImageContainer = styled.Image`
