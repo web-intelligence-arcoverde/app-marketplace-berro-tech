@@ -9,11 +9,13 @@ export const ProductItemCard = (props: any) => {
 
   const { documents, gender, ageCategory, classification } = props
 
-  console.log(documents[0])
+  let document = Array.isArray(documents) && documents[0]
+
+
 
   return (
     <Container>
-      <ImageContainer source={mockImages.GadoOne} />
+      <ImageContainer source={{ uri: document.url }} />
       <ProductItemHeader {...props} />
       <ContainerFoorterDescription>
         <ProductItemDescriptionFooter title="Sexo" description={gender} />

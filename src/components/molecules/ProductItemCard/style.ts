@@ -17,4 +17,5 @@ export const ImageContainer = styled.Image`
   height: ${scale(288)};
   border-top-left-radius: ${scale(6)};
   border-top-right-radius: ${scale(6)};
+  resize-mode: stretch;
 `;
