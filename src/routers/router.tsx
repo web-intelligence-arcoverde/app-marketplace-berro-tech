@@ -29,6 +29,7 @@ export const RouterApp = () => {
       <Stack.Navigator
         initialRouteName={'DashboardBottomNavigation'}
         screenOptions={{ headerShown: false }}>
+
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
 
         <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />

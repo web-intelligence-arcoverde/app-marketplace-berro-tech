@@ -10,7 +10,9 @@ export const DetailProductScreen = ({ route }: any) => {
   }, [])
 
 
-  return (<View>
-    <Text>Eu</Text>
-  </View>)
+  return (
+    <View>
+      <Text>Eu</Text>
+    </View>
+  )
 }
