@@ -8,7 +8,7 @@ export const FooterButtonCreateAccountIntro = () => {
 
   return (
     <Container>
-      <Separator height={20} />
+      <Separator height={42} />
       <Button
         title="Criar conta"
         variant="containedSecondary"

@@ -4,15 +4,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { DashboardBottomNavigation } from './bottom.router';
 
 import {
-  SignInSocialScreen,
+  SplashScreen,
+  OnboardingScreen,
+  SignInOptionScreen,
   SignInEmailScreen,
   SignUpScreen,
   RecoveryAccountScreen,
   EditProfileScreen,
   AddProductScreen,
   ProfileChangerPasswordScreen,
-  SplashScreen,
-  OnboardingScreen,
   DetailProductScreen,
 } from '../screens/';
 import {
@@ -27,7 +27,7 @@ export const RouterApp = () => {
   return (
     <>
       <Stack.Navigator
-        initialRouteName={'DashboardBottomNavigation'}
+        initialRouteName={'SignInOptionScreen'}
         screenOptions={{ headerShown: false }}>
 
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
@@ -35,8 +35,8 @@ export const RouterApp = () => {
         <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
 
         <Stack.Screen
-          name="SignInSocialScreen"
-          component={SignInSocialScreen}
+          name="SignInOptionScreen"
+          component={SignInOptionScreen}
         />
 
         <Stack.Screen name="SignInEmailScreen" component={SignInEmailScreen} />

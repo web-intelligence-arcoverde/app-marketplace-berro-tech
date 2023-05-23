@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {
   HeaderLogoIntro,
   HeaderDescriptionIntro,
@@ -8,7 +6,7 @@ import {
 } from '../../components';
 import {Container} from './style';
 
-export const SignInSocialScreen = () => {
+export const SignInOptionScreen = () => {
   return (
     <Container>
       <HeaderLogoIntro />

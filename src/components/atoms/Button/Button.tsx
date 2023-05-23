@@ -1,8 +1,8 @@
-import {Button as ButtonDefault} from '@rneui/themed';
+import { Button as ButtonDefault } from '@rneui/themed';
 
-import {IconComponent} from '..';
+import { IconComponent } from '..';
 
-import {ButtonStyle, COLORS} from '../../../common';
+import { ButtonStyle, COLORS } from '../../../common';
 
 interface IButton {
   title: string;
@@ -25,7 +25,7 @@ export const Button = ({
   colorVariant = '01',
   onPress = () => {},
 }: IButton) => {
-  const {buttonStyle, titleStyle, containerStyle} = ButtonStyle[variant];
+  const { buttonStyle, titleStyle, containerStyle } = ButtonStyle[variant];
 
   const color = COLORS[colorFamily][colorVariant];
 
@@ -35,9 +35,10 @@ export const Button = ({
       iconRight={iconRight}
       icon={icon && <IconComponent icon={icon} />}
       containerStyle={containerStyle}
-      buttonStyle={buttonStyle}
+      buttonStyle={[buttonStyle, color]}
       titleStyle={titleStyle}
-      disabled={disabled}>
+      disabled={disabled}
+    >
       {title}
     </ButtonDefault>
   );

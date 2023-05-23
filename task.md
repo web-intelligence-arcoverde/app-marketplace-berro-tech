@@ -1,34 +1,39 @@
-## Screens
+# Screens
 
-  - SplashScreen
+  ## SplashScreen
   
-  - OnboardingScreen
+  ## OnboardingScreen
   
-  - SignInSocialScreen
+    - ajustado status bar 
+  
+  ## SignInSocialScreen
     
     - mudar nome da screen para SignInOptionScreen
  
-  - SignUpScreen
+  ## SignUpScreen
+  
+    - gerar build
     - verificar tipos dos inputs
     - faltando button [ já tenho uma conta ]
     - faltando button [ voltar ]
     - mudar campo telefone para celular (whatsapp)
     - integrar com o back end
  
-  - SignInEmailScreen
+  ## SignInEmailScreen
     
     - mudar nome da screen para SignInScreen
     - verificar tipos dos inputs
     - integrar com o back end
     - salvar token no asyncLocalStorage
  
-  - RecoveryAccountScreen
+  ## RecoveryAccountScreen
     
     - adicionar provedor envio email
     - integrar com o back end
     
-  - DashboardBottomNavigation
-    # Home
+  ## DashboardBottomNavigation
+  
+    ### Home
       
       - header arrumar iteracoes com back
       - header adicionar espaçamento no topo
@@ -38,14 +43,14 @@
       - adicionar redirecionamento quando clicar no produto para os detalhes dele
       - integrar ProductListSpecificHomeScreen com back end
     
-    # Negócios  
+    ### Negócios  
     
       - arrumar header
       - integrar com back end
       - arrumar informacoes do produto
       - organizar filtros
       
-    # Perfil
+    ### Perfil
     
       - arrumar header
       - pegar informacoes do usuario do back
@@ -53,8 +58,7 @@
       - remover item de avaliacoes
       - arrumar steps de editar conta
   
-  
-  - AddProductScreen
+  ## AddProductScreen
     
     - ESSA SCREEN VAI SERVIR TANTO PARA CRIAR COMO EDITAR
     - mudar nome da screen para ProductScreen

@@ -4,27 +4,32 @@ import {
   Separator,
   InformationCardsOnboardingScreen,
 } from '../../components';
-import {useNavigationHook} from '../../hooks';
-import {getStatusBarHeight} from '../../utils';
+import { useNavigationHook } from '../../hooks';
+import { getStatusBarHeight, scale } from '../../utils';
 
-import {Container} from './style';
+import { Container } from './style';
 
 export const OnboardingScreen = () => {
-  const {goToRouter} = useNavigationHook();
+  const { goToRouter } = useNavigationHook();
 
   return (
     <Container>
-      <Separator height={getStatusBarHeight()} />
+
+      <Separator height={scale(getStatusBarHeight()) + scale(24)} />
+
       <IconComponent icon="arrow-down-icon" />
 
-      <Separator height={32} />
+      <Separator height={12} />
 
       <InformationCardsOnboardingScreen />
+
       <Separator height={42} />
+
       <Button
         title="Vamos lá"
-        onPress={() => goToRouter('SignInSocialScreen')}
+        onPress={() => goToRouter('SignInOptionScreen')}
       />
+
     </Container>
   );
 };

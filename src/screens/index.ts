@@ -1,7 +1,7 @@
 export * from './SplashScreen/SplashScreen';
 export * from './OnboardingScreen/OnboardingScreen';
 
-export * from './SignInSocialScreen/SignInSocialScreen';
+export * from './SignInOptionScreen/SignInOptionScreen';
 export * from './SignInEmailScreen/SignInEmailScreen';
 
 export * from './SignUpScreen/SignUpScreen';
