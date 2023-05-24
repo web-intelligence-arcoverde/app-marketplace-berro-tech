@@ -11,8 +11,8 @@
     "test": "jest",
     "build:android:dev:release": "cd ./android && ./gradlew assembleRelease",
     "build:android:dev:aab": "cd ./android && ./gradlew bundleRelease",
-    "build:ios:prod:release": "cd ./ios && /usr/bin/xcodebuild -sdk iphoneos -configuration Prod -workspace smiles_app.xcworkspace -scheme smiles_app_prod build && /usr/bin/xcodebuild -exportArchive -archivePath output/iphoneos/Prod/archive/smiles_app.xcarchive -exportPath output/iphoneos/Prod/export -exportOptionsPlist ios/ExportOptions.plist",
-    "build:ios:hml:release": "cd ./ios && /usr/bin/xcodebuild -sdk iphoneos -configuration Hml -workspace smiles_app.xcworkspace -scheme smiles_app_hml build && /usr/bin/xcodebuild -exportArchive -archivePath output/iphoneos/Hml/archive/smiles_app.xcarchive -exportPath output/iphoneos/Hml/export -exportOptionsPlist ios/ExportOptionsHom.plist",
+    "build:ios:prod:release": "cd ./ios && /usr/bin/xcodebuild -sdk iphoneos -configuration Prod -workspace BerroTech.xcworkspace -scheme BerroTech_prod build && /usr/bin/xcodebuild -exportArchive -archivePath output/iphoneos/Prod/archive/BerroTech.xcarchive -exportPath output/iphoneos/Prod/export -exportOptionsPlist ios/ExportOptions.plist",
+    "build:ios:hml:release": "cd ./ios && /usr/bin/xcodebuild -sdk iphoneos -configuration Hml -workspace BerroTech.xcworkspace -scheme BerroTech_hml build && /usr/bin/xcodebuild -exportArchive -archivePath output/iphoneos/Hml/archive/BerroTech.xcarchive -exportPath output/iphoneos/Hml/export -exportOptionsPlist ios/ExportOptionsHom.plist",
     "clear:ios": "cd ios && xcodebuild clean && cd ../",
     "check-dependencies": "rnx-align-deps",
     "fix-dependencies": "rnx-align-deps --write"
@@ -20,9 +20,6 @@
   "dependencies": {
     "@gorhom/bottom-sheet": "^4.4.5",
     "@hookform/resolvers": "^2.9.11",
-    "@react-native-firebase/app": "^17.4.0",
-    "@react-native-firebase/auth": "^17.4.0",
-    "@react-native-google-signin/google-signin": "^9.0.2",
     "@react-native-picker/picker": "^2.4.9",
     "@react-navigation/bottom-tabs": "^6.5.7",
     "@react-navigation/native": "^6.1.2",

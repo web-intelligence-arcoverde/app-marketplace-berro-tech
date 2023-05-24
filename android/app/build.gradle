@@ -83,16 +83,16 @@ def jscFlavor = 'org.webkit:android-jsc:+'
  * This reads the value from reactNativeArchitectures in your gradle.properties
  * file and works together with the --active-arch-only flag of react-native run-android.
  */
+ 
+apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle" 
+ 
+ 
 def reactNativeArchitectures() {
     def value = project.getProperties().get("reactNativeArchitectures")
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    namespace "com.rndiffapp"
-    defaultConfig {
-        applicationId "com.rndiffapp"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+    return value ? value.split(",") : ["armeabi-v7a", "x86", "x86_64", "arm64-v8a"]
+}
+
 
 android {
     ndkVersion rootProject.ext.ndkVersion
@@ -100,6 +100,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     namespace "com.appmarketplaceberrotech"
+
     defaultConfig {
         applicationId "com.appmarketplaceberrotech"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -113,9 +114,10 @@ android {
             reset()
             enable enableSeparateBuildPerCPUArchitecture
             universalApk false  // If true, also generate a universal APK
-            include (*reactNativeArchitectures())
+            include(*reactNativeArchitectures())
         }
     }
+
     signingConfigs {
         debug {
             storeFile file('debug.keystore')
@@ -123,8 +125,8 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
-        
-         release {
+
+        release {
             if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
                 storeFile file(MYAPP_UPLOAD_STORE_FILE)
                 storePassword MYAPP_UPLOAD_STORE_PASSWORD
@@ -133,10 +135,13 @@ android {
             }
         }
     }
+
     buildTypes {
+
         debug {
             signingConfig signingConfigs.debug
         }
+
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
@@ -145,9 +150,10 @@ android {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
+
     }
 
-    // applicationVariants are e.g. debug, release
+        // applicationVariants are e.g. debug, release
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
             // For each separate APK per architecture, set a unique version code as described here:
@@ -155,37 +161,32 @@ android {
             // Example: versionCode 1 will generate 1001 for armeabi-v7a, 1002 for x86, etc.
             def versionCodes = ["armeabi-v7a": 1, "x86": 2, "arm64-v8a": 3, "x86_64": 4]
             def abi = output.getFilter(OutputFile.ABI)
-            if (abi != null) {  // null for the universal-debug, universal-release variants
-                output.versionCodeOverride =
-                        defaultConfig.versionCode * 1000 + versionCodes.get(abi)
-            }
 
+            if (abi != null) {  // null for the universal-debug, universal-release variants
+                output.versionCodeOverride = defaultConfig.versionCode * 1000 + versionCodes.get(abi)
+            }
         }
     }
 }
 
+
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
-    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
-    
-    implementation project(':react-native-fbsdk-next')
-    
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}")
+
     debugImplementation("com.facebook.flipper:flipper-network-plugin:${FLIPPER_VERSION}") {
-        exclude group:'com.squareup.okhttp3', module:'okhttp'
+            exclude group: 'com.squareup.okhttp3', module: 'okhttp'
     }
 
     debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}")
+
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
     } else {
         implementation jscFlavor
     }
 }
-
-apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
-
-apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"

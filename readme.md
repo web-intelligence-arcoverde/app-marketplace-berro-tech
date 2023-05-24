@@ -33,3 +33,6 @@ rm -rf node_modules
 yarn cache clean --force
 yarn install
 cd ios && pod install
+
+
+## https://react-native-async-storage.github.io/async-storage/docs/install
