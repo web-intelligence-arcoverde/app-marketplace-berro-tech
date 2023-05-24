@@ -1,6 +1,6 @@
 import {TouchableOpacity} from 'react-native';
 import {InputProps} from '@rneui/base';
-import {Input as Default} from '@rneui/themed';
+import {Input as Default} from '@rneui/base';
 
 import {Typography} from '../../../common';
 import {Controller} from 'react-hook-form';
@@ -55,7 +55,7 @@ export const Input = ({
   return (
     <Controller
       control={control}
-      render={({field: {onChange, onBlur, value}}) => {
+      render={({field: {onChange, value}}) => {
         return (
           <Default
             label={label}
@@ -66,11 +66,9 @@ export const Input = ({
             inputContainerStyle={inputContainerStyle}
             labelStyle={[typography, labelStyle]}
             errorMessage={errors}
-            onBlur={onBlur}
             onChangeText={onChange}
             value={value}
             autoCapitalize="none"
-            keyboardType="email-address"
             autoCorrect={false}
             secureTextEntry={showPassword}
             leftIconContainerStyle={leftIconContainerStyle}
