@@ -9,7 +9,7 @@ export const KeyboardContainer = ({children}: any) => {
         flex: 1,
         backgroundColor: '#fff',
       }}
-      keyboardVerticalOffset={scale(-210)}
+      keyboardVerticalOffset={scale(-190)}
       behavior={'padding'}>
       {children}
     </KeyboardAvoidingView>

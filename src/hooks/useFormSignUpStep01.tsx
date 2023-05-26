@@ -8,6 +8,8 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import {ErrorMessage} from '../locale';
+import {useAppDispatch, useAppSelector} from '.';
+import {signUpStep01} from '../store/reducer/auth/actions';
 
 const schema = yup.object({
   email: yup
@@ -33,6 +35,8 @@ export const useFormSignUpSteps = () => {
   const STEP_SIZE = step + 1;
   const TOTAL_STEPS = 2;
 
+  const dispatch = useAppDispatch();
+
   const {
     control,
     handleSubmit,
@@ -47,6 +51,7 @@ export const useFormSignUpSteps = () => {
   });
 
   const onSubmit = data => {
+    dispatch(signUpStep01(data));
     setStep(1);
   };
 

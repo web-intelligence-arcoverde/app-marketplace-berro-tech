@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import { DashboardBottomNavigation } from './bottom.router';
+import {DashboardBottomNavigation} from './bottom.router';
 
 import {
   SplashScreen,
@@ -15,6 +15,7 @@ import {
   ProfileChangerPasswordScreen,
   DetailProductScreen,
 } from '../screens/';
+
 import {
   BottomSheetSelectAnimalType,
   BottomSheetSelectAnimalSex,
@@ -27,9 +28,8 @@ export const RouterApp = () => {
   return (
     <>
       <Stack.Navigator
-        initialRouteName={'SignInOptionScreen'}
-        screenOptions={{ headerShown: false }}>
-
+        initialRouteName={'SignUpScreen'}
+        screenOptions={{headerShown: false}}>
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
 
         <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />

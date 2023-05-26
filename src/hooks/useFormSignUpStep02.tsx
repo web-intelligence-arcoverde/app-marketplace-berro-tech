@@ -6,7 +6,8 @@ import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import {ErrorMessage} from '../locale';
-import {useNavigationHook} from '.';
+import {useAppDispatch, useAppSelector, useNavigationHook} from '.';
+import {signUpStep02} from '../store/reducer/auth/actions';
 
 const schema = yup
   .object({
@@ -32,6 +33,9 @@ export const useFormSignUpStep02 = () => {
 
   const {goToRouter} = useNavigationHook();
 
+  const {userSignUp} = useAppSelector(state => state.auth);
+  const dispatch = useAppDispatch();
+
   const STEP_SIZE = step + 1;
   const TOTAL_STEPS = 2;
 
@@ -40,6 +44,7 @@ export const useFormSignUpStep02 = () => {
     handleSubmit,
     formState: {errors},
   } = useForm({
+    //@ts-ignore
     resolver: yupResolver(schema),
     defaultValues: {
       password: '',
@@ -47,9 +52,17 @@ export const useFormSignUpStep02 = () => {
     },
   });
 
+  //@ts-ignore
   const onSubmit = data => {
-    console.log(data);
-    goToRouter('SignInEmailScreen');
+    dispatch(
+      signUpStep02({
+        ...userSignUp,
+        confirmationPassword: data.confirmationPassword,
+        password: data.password,
+        router: goToRouter,
+      }),
+    );
+    //goToRouter('SignInEmailScreen');
   };
 
   const onSubmitForm = () => handleSubmit(onSubmit)();

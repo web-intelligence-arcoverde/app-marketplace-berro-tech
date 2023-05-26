@@ -1,12 +1,12 @@
-import { Button, Input, ButtonText, Separator } from '../../';
-import { useNavigationHook, useHookFormSignInEmail } from '../../../hooks';
+import {Button, Input, ButtonText, Separator} from '../../';
+import {useNavigationHook, useHookFormSignInEmail} from '../../../hooks';
 
-import { Container } from './style';
+import {Container} from './style';
 
 export const FormSignInEmailScreen = () => {
-  const { goToRouter } = useNavigationHook();
+  const {goToRouter} = useNavigationHook();
 
-  const { onSubmit, control, errors } = useHookFormSignInEmail();
+  const {onSubmit, control, errors} = useHookFormSignInEmail();
 
   return (
     <Container>
@@ -17,6 +17,7 @@ export const FormSignInEmailScreen = () => {
         name="email"
         errors={errors?.email?.message}
       />
+
       <Input
         label="Senha"
         placeholder="No mínimo 8 dígitos"
@@ -26,11 +27,14 @@ export const FormSignInEmailScreen = () => {
         rightIcon
         errors={errors?.password?.message}
       />
+
       <ButtonText
         alignItems="flex-end"
+        typography="h4"
         onPress={() => goToRouter('RecoveryAccountScreen')}>
         Recuperar conta
       </ButtonText>
+
       <Button title="Entrar" variant="contained" onPress={() => onSubmit()} />
     </Container>
   );

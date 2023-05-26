@@ -1,8 +1,12 @@
-import {createReducer} from '@reduxjs/toolkit';
-import {initialState} from './initialState';
+import { createReducer } from '@reduxjs/toolkit';
+import { initialState } from './initialState';
 
-import {signInRequestGoogle} from './actions';
+import { signUpStep01, signUpStep02 } from './actions';
 
 export const authReducer = createReducer(initialState, builder => {
-  builder.addCase(signInRequestGoogle, (state, action) => {});
+  builder.addCase(signUpStep01, (state, action) => {
+    state.userSignUp = action.payload
+  }).addCase(signUpStep02, (state, action) => {
+    state.userSignUp = { ...state.userSignUp, ...action.payload }
+  });
 });
