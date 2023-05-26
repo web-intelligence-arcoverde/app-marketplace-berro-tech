@@ -1,31 +1,32 @@
-import { ScrollView } from 'react-native';
+import {ScrollView} from 'react-native';
 
-import { ProductItemCard } from '../../';
-import { useAppSelector } from '../../../hooks';
-import { scale } from '../../../utils';
+import {ProductItemCard} from '../../';
+import {useAppSelector} from '../../../hooks';
+import {scale} from '../../../utils';
 
-import { useNavigation } from '@react-navigation/core';
+import {useNavigation} from '@react-navigation/core';
 
-import { ContainerProduct } from './style';
+import {ContainerProduct} from './style';
 
 export const BusinessHighlightProductList = () => {
-
-  const { businessHighlightProduct } = useAppSelector(state => state.product)
+  const {businessHighlightProduct} = useAppSelector(state => state.product);
 
   const navigate = useNavigation();
 
   const redirectToDetailsProduct = (id: number) => {
-    console.log(id)
+    //@ts-ignore
     navigate.navigate('DetailProductScreen', {
-      id
-    })
-  }
-
+      id,
+    });
+  };
 
   return (
     <ScrollView
       horizontal={true}
-      style={{ paddingHorizontal: scale(20), width: '100%' }}>
+      style={{
+        width: '100%',
+        marginHorizontal: scale(20),
+      }}>
       {businessHighlightProduct.map((item, index) => {
         return (
           <ContainerProduct key={`${item}-${index}-product-item-highlight`}>

@@ -1,4 +1,4 @@
-import { IStateProduct } from './types';
+import {IStateProduct} from './types';
 
 export const initialState: IStateProduct = {
   visible_animal_type_select: 0,
@@ -13,5 +13,8 @@ export const initialState: IStateProduct = {
   breeds: [],
 
   businessHighlightProduct: [],
-  loadingBusinessHighlightProduct: true
+  loadingBusinessHighlightProduct: true,
+
+  topSearchProduct: [],
+  loadingTopSearchProduct: false,
 };

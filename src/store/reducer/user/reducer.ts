@@ -6,6 +6,7 @@ import {
   readInformationUserSuccess,
   changerStepEditProfile,
   changerIndexBottomSheetRecentSearch,
+  signUpSuccess,
 } from './actions';
 
 export const userReducer = createReducer(initialState, builder => {
@@ -22,5 +23,9 @@ export const userReducer = createReducer(initialState, builder => {
     })
     .addCase(changerIndexBottomSheetRecentSearch, (state, action) => {
       state.bottom_sheet_index = action.payload.index;
+    })
+    .addCase(signUpSuccess, (state, action) => {
+      state.token = action.payload.token;
+      state.user = action.payload.user;
     });
 });

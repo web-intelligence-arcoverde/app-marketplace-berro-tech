@@ -1,10 +1,9 @@
-import {ImageProps} from 'react-native';
-
 export interface IUserInitialState {
   user: IUserState;
   loading?: boolean;
   step_edit_profile?: number;
   bottom_sheet_index?: number;
+  token: string;
 }
 
 export interface IUserState {
@@ -12,8 +11,7 @@ export interface IUserState {
   email?: string;
   address?: IAddress | null;
   phone?: string;
-  avaliation_rate?: string;
-  photo?: string | ImageProps | Readonly<ImageProps> | undefined;
+  photo?: any;
 }
 
 interface IAddress {

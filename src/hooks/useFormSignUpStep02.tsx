@@ -54,15 +54,16 @@ export const useFormSignUpStep02 = () => {
 
   //@ts-ignore
   const onSubmit = data => {
+    console.log(data);
     dispatch(
       signUpStep02({
         ...userSignUp,
         confirmationPassword: data.confirmationPassword,
         password: data.password,
+        //@ts-ignore
         router: goToRouter,
       }),
     );
-    //goToRouter('SignInEmailScreen');
   };
 
   const onSubmitForm = () => handleSubmit(onSubmit)();

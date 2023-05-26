@@ -1,33 +1,29 @@
-import { all, call, takeLatest, put } from 'redux-saga/effects';
-import { signUpRequest } from './service';
+import {all, call, takeLatest, put} from 'redux-saga/effects';
+import {signUpRequest} from './service';
 
-import { StackActions } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {signUpSuccess} from '../user/actions';
 
-function* signInEmail(): any {
+function* signUp({payload}: any): any {
   try {
-  } catch (e) {
-    console.log(e);
-  }
-}
+    const router = payload.router;
 
+    delete payload.router;
 
-function* signUp({ payload }: any): any {
-  try {
-    const router = payload.router
-    delete payload.router
-    const { data: { token, user } } = yield call(() => signUpRequest(payload));
-    AsyncStorage.setItem('access_token', token)
+    const {
+      data: {token, user},
+    } = yield call(() => signUpRequest(payload));
 
-    //yield put(router('SplashScreen'))
+    yield AsyncStorage.setItem('token', token);
 
-  } catch (e) {
-    console.log(e);
-  }
+    yield put(signUpSuccess({user: user, token: token}));
+
+    yield put(router('DashboardBottomNavigation'));
+  } catch (e) {}
 }
 
 function* authSagas() {
-  yield all([takeLatest('user/sign-in-email-request', signInEmail), takeLatest('user/sign-up-step-02', signUp)]);
+  yield all([takeLatest('user/sign-up-step-02', signUp)]);
 }
 
 export default authSagas;

@@ -1,32 +1,38 @@
 import axios from 'axios';
-import { store } from '../store';
+import {store} from '../store';
 
 const local = 'http://127.0.0.1:3333/v1';
 
-const api = axios.create({ baseURL: local });
+const api = axios.create({baseURL: local});
 
-api.interceptors.request.use((config: any) => {
-  const { token } = store.getState().auth;
-  const headers = {
-    ...config.headers
-  };
-  if (token) {
-    headers.Authorization = `Bearer ${token}`;
-  }
-  return {
-    ...config,
-    headers
-  };
-}, (error) => {
-  console.log(error)
-});
+api.interceptors.request.use(
+  (config: any) => {
+    const {token} = store.getState().user;
+    const headers = {
+      ...config.headers,
+    };
+    if (token) {
+      headers.Authorization = `Bearer ${token}`;
+    }
+    return {
+      ...config,
+      headers,
+    };
+  },
+  error => {
+    console.log(error);
+  },
+);
 
-api.interceptors.response.use((response) => {
-  return response;
-}, (error) => {
-  if (error.response.status === 401) {
-    console.log('aq')
-  }
-});
+api.interceptors.response.use(
+  response => {
+    return response;
+  },
+  error => {
+    if (error.response.status === 401) {
+      console.log('aq');
+    }
+  },
+);
 
 export default api;

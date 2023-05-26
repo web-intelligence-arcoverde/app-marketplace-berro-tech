@@ -10,11 +10,13 @@ export interface IStateProduct {
   animal_breed: string;
   breeds: string[];
 
-
   businessHighlightProduct: Array<IProduct>;
-  loadingBusinessHighlightProduct: boolean
+  loadingBusinessHighlightProduct: boolean;
+
+  topSearchProduct: Array<IProduct>;
+  loadingTopSearchProduct: boolean;
 }
 
 export interface IProduct {
-  documents?: any[]
+  documents?: any[];
 }

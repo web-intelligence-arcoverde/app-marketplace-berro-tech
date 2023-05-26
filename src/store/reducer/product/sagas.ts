@@ -1,6 +1,11 @@
-import { all, call, put, takeLatest } from 'redux-saga/effects';
+import {all, call, put, takeLatest} from 'redux-saga/effects';
 import api from '../../../service';
-import { readAnimalBreedSuccess, readBusinessHighlightProductSuccess, readTypesAnimalsSuccess } from './actions';
+import {
+  readAnimalBreedSuccess,
+  readBusinessHighlightProductSuccess,
+  readTypesAnimalsSuccess,
+  topSearchProductSuccess,
+} from './actions';
 
 const animals = ['ovino', 'caprino'];
 
@@ -22,7 +27,7 @@ const racas = [
 
 function* readAnimalType(): any {
   try {
-    yield put(readTypesAnimalsSuccess({ animals_types: animals }));
+    yield put(readTypesAnimalsSuccess({animals_types: animals}));
   } catch (e) {
     console.log(e);
   }
@@ -30,7 +35,7 @@ function* readAnimalType(): any {
 
 function* readBreeds(exemplo: any): any {
   try {
-    yield put(readAnimalBreedSuccess({ breeds: racas }));
+    yield put(readAnimalBreedSuccess({breeds: racas}));
   } catch (e) {
     console.log(e);
   }
@@ -38,10 +43,18 @@ function* readBreeds(exemplo: any): any {
 
 function* readBusinessHighlightProcuct() {
   try {
-
-    const { data } = yield call(api.get, '/products');
+    const {data} = yield call(api.get, '/products');
 
     yield put(readBusinessHighlightProductSuccess(data));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function* topSearchProduct({payload}: any): any {
+  try {
+    const {data} = yield call(api.post, `/search-product/`, {type: payload});
+    yield put(topSearchProductSuccess(data));
   } catch (e) {
     console.log(e);
   }
@@ -51,7 +64,11 @@ function* productSagas() {
   yield all([
     takeLatest('product/read-types-animals-request', readAnimalType),
     takeLatest('product/read-animal-breed-request', readBreeds),
-    takeLatest('product/read-business-highlight-product-request', readBusinessHighlightProcuct)
+    takeLatest(
+      'product/read-business-highlight-product-request',
+      readBusinessHighlightProcuct,
+    ),
+    takeLatest('product/top-search-product-request', topSearchProduct),
   ]);
 }
 

@@ -1,3 +1,7 @@
 import api from '../../../service';
 
-export const signUpRequest = (payload: any) => api.post<any[]>('/sign-up', payload);
+export const signUpRequest = (payload: any) => {
+  try {
+    return api.post<any[]>('/sign-up', payload);
+  } catch (error) {}
+};

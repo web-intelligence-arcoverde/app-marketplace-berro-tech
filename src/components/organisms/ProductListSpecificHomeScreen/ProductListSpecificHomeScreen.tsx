@@ -6,15 +6,18 @@ import {
   ProductSpecificList,
   SelectFilterProductSpecificList,
 } from '../../';
+import {useAppSelector} from '../../../hooks';
 
 import {Container} from './style';
 
 export const ProductListSpecificHomeScreen = () => {
+  const {loadingTopSearchProduct} = useAppSelector(state => state.product);
+
   return (
     <View>
       <SelectFilterProductSpecificList />
       <Separator height={32} />
-      <ProductSpecificList />
+      {!loadingTopSearchProduct && <ProductSpecificList />}
       <Separator height={32} />
       <Container>
         <Button title="Ver mais" variant="disabled" onPress={() => {}} />
