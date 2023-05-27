@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
-import { scale } from '../../../utils';
-import { COLORS } from '../../../common';
+import {scale} from '../../../utils';
+import {COLORS} from '../../../common';
 
 export const Container = styled.TouchableOpacity``;
 

@@ -1,12 +1,14 @@
 import {Container} from './style';
 
-import {BreedSteps, ButtonIcon} from '../../';
+import {BreedSteps, OrderFilterDropdown} from '../../';
+
+import React, {useState} from 'react';
 
 export const FiltersProfileScreen = () => {
   return (
     <Container>
       <BreedSteps />
-      <ButtonIcon icon="ordened-icon" />
+      <OrderFilterDropdown />
     </Container>
   );
 };

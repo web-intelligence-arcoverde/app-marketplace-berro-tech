@@ -22,8 +22,12 @@ export const BusinessScreen = () => {
     <View style={{flex: 1, backgroundColor: '#fff'}}>
       <HeaderDashboard />
       <Separator height={28} />
-      <ScrollView>
-        <FiltersProfileScreen />
+      <FiltersProfileScreen />
+      <ScrollView
+        style={{
+          zIndex: -1,
+          elevation: -1,
+        }}>
         <Separator height={28} />
         <View
           style={{

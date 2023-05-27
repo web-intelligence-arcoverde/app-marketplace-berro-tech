@@ -17,3 +17,19 @@ export function filterByAllAttributes(data: any, term: any) {
     return false;
   });
 }
+
+//@ts-ignore
+export function sortFunction(a, b) {
+  var dateA = new Date(a.created_at).getTime();
+  var dateB = new Date(b.created_at).getTime();
+
+  return dateA > dateB ? 1 : -1;
+}
+
+//@ts-ignore
+export function sortFunctionReverse(a, b) {
+  var dateA = new Date(a.created_at).getTime();
+  var dateB = new Date(b.created_at).getTime();
+
+  return dateA < dateB ? 1 : -1;
+}

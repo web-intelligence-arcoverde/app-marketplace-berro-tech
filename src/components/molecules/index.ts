@@ -64,10 +64,9 @@ export * from './RegionInformationCard/RegionInformationCard';
 export * from './RegionInformationList/RegionInformationList';
 export * from './ProductSpecificList/ProductSpecificList';
 export * from './SelectFilterProductSpecificList/SelectFilterProductSpecificList';
-
 export * from './StepsAddProduct/StepsAddProduct';
-
 export * from './BottomSheetSelectAnimalType/BottomSheetSelectAnimalType';
+export * from './OrderFilterDropdown/OrderFilterDropdown';
 
 //Context
 export * from './AppContextEditProfileScreenComponent/AppContextEditProfileScreenComponent';
