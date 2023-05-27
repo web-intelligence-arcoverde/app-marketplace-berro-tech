@@ -5,8 +5,10 @@ import {useAppSelector} from '../../../hooks';
 import {useNavigation} from '@react-navigation/native';
 
 export const BusinessProductCardList = () => {
-  const {produtcs} = useAppSelector(state => state.product);
+  const {produtcs, filterProdutcs} = useAppSelector(state => state.product);
   const navigate = useNavigation();
+
+  let product = filterProdutcs.length >= 1 ? filterProdutcs : produtcs;
 
   const redirectToDetailsProduct = (id: number) => {
     //@ts-ignore
@@ -17,7 +19,7 @@ export const BusinessProductCardList = () => {
 
   return (
     <View>
-      {produtcs.map((item, index) => {
+      {product.map((item, index) => {
         return (
           <View key={`${item}-${index}-item-product-card`}>
             <ProductItemCard {...item} onPress={redirectToDetailsProduct} />

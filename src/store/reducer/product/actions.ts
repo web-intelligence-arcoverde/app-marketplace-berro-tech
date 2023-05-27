@@ -62,3 +62,7 @@ export const readProductRequest = createAction('product/read-product-request');
 export const readProductSuccess = createAction<Array<IProduct>>(
   'product/read-product-success',
 );
+
+export const readFilterProduct = createAction<Array<IProduct>>(
+  'product/read-filter-product',
+);

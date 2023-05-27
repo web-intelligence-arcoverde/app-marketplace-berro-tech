@@ -16,6 +16,7 @@ import {
   topSearchProductRequest,
   readProductRequest,
   readProductSuccess,
+  readFilterProduct,
 } from './actions';
 
 export const productReducer = createReducer(initialState, builder => {
@@ -71,5 +72,8 @@ export const productReducer = createReducer(initialState, builder => {
     .addCase(readProductSuccess, (state, action) => {
       state.loadingProducts = false;
       state.produtcs = action.payload;
+    })
+    .addCase(readFilterProduct, (state, action) => {
+      state.filterProdutcs = action.payload;
     });
 });

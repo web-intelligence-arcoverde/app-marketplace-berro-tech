@@ -19,5 +19,6 @@ export const initialState: IStateProduct = {
   loadingTopSearchProduct: false,
 
   produtcs: [],
+  filterProdutcs: [],
   loadingProducts: true,
 };

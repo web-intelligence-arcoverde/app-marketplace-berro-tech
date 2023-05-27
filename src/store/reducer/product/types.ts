@@ -17,6 +17,8 @@ export interface IStateProduct {
   loadingTopSearchProduct: boolean;
 
   produtcs: Array<IProduct>;
+  filterProdutcs: Array<IProduct>;
+
   loadingProducts: boolean;
 }
 
