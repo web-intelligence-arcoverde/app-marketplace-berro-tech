@@ -3,6 +3,7 @@ import api from '../../../service';
 import {
   readAnimalBreedSuccess,
   readBusinessHighlightProductSuccess,
+  readProductSuccess,
   readTypesAnimalsSuccess,
   topSearchProductSuccess,
 } from './actions';
@@ -60,6 +61,16 @@ function* topSearchProduct({payload}: any): any {
   }
 }
 
+function* readProducts() {
+  try {
+    const {data} = yield call(api.get, `/products/`);
+
+    yield put(readProductSuccess(data));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 function* productSagas() {
   yield all([
     takeLatest('product/read-types-animals-request', readAnimalType),
@@ -69,6 +80,7 @@ function* productSagas() {
       readBusinessHighlightProcuct,
     ),
     takeLatest('product/top-search-product-request', topSearchProduct),
+    takeLatest('product/read-product-request', readProducts),
   ]);
 }
 

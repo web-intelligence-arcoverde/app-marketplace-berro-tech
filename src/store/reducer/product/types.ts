@@ -15,6 +15,9 @@ export interface IStateProduct {
 
   topSearchProduct: Array<IProduct>;
   loadingTopSearchProduct: boolean;
+
+  produtcs: Array<IProduct>;
+  loadingProducts: boolean;
 }
 
 export interface IProduct {

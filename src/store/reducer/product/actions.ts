@@ -56,3 +56,9 @@ export const topSearchProductRequest = createAction<string>(
 export const topSearchProductSuccess = createAction<Array<IProduct>>(
   'product/top-search-product-success',
 );
+
+export const readProductRequest = createAction('product/read-product-request');
+
+export const readProductSuccess = createAction<Array<IProduct>>(
+  'product/read-product-success',
+);

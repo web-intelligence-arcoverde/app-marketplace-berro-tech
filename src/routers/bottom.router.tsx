@@ -1,33 +1,33 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
-import { COLORS } from '../common';
+import {COLORS} from '../common';
 
 const Tab = createBottomTabNavigator();
 
-import { IconComponent } from '../components';
-import { BottomSheetExample } from '../components/molecules/BottomSheetExample/BottomSheetExample';
+import {IconComponent} from '../components';
+import {BottomSheetExample} from '../components/molecules/BottomSheetExample/BottomSheetExample';
 
-import { ProfileScreen, HomeScreen, BusinessScreen } from '../screens/';
-import { getBottomSpaceHeight, scale } from '../utils';
+import {ProfileScreen, HomeScreen, BusinessScreen} from '../screens/';
+import {getBottomSpaceHeight, scale} from '../utils';
 
 export const DashboardBottomNavigation = () => {
   return (
     <>
       <Tab.Navigator
-        initialRouteName={'Home'}
-        screenOptions={({ route }) => ({
+        initialRouteName={'Negócios'}
+        screenOptions={({route}) => ({
           headerShown: false,
           tabBarItemStyle: {
             justifyContent: 'center',
           },
-          tabBarLabelStyle: { fontFamily: 'inter', fontSize: 14 },
+          tabBarLabelStyle: {fontFamily: 'inter', fontSize: 14},
           tabBarStyle: {
             height: scale(74) + getBottomSpaceHeight(),
           },
           tabBarIconStyle: {
             maxHeight: scale(30),
           },
-          tabBarIcon: ({ focused }) => {
+          tabBarIcon: ({focused}) => {
             let iconName = '';
             if (route.name === 'Home') {
               iconName = !focused ? 'home-icon' : 'home-outlined-icon';

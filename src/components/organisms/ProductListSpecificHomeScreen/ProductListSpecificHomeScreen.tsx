@@ -6,12 +6,14 @@ import {
   ProductSpecificList,
   SelectFilterProductSpecificList,
 } from '../../';
-import {useAppSelector} from '../../../hooks';
+import {useAppSelector, useNavigationHook} from '../../../hooks';
 
 import {Container} from './style';
 
 export const ProductListSpecificHomeScreen = () => {
   const {loadingTopSearchProduct} = useAppSelector(state => state.product);
+
+  const {goToRouter} = useNavigationHook();
 
   return (
     <View>
@@ -20,7 +22,11 @@ export const ProductListSpecificHomeScreen = () => {
       {!loadingTopSearchProduct && <ProductSpecificList />}
       <Separator height={32} />
       <Container>
-        <Button title="Ver mais" variant="disabled" onPress={() => {}} />
+        <Button
+          title="Ver mais"
+          variant="disabled"
+          onPress={() => goToRouter('Negócios')}
+        />
       </Container>
       <Separator height={56} />
     </View>
