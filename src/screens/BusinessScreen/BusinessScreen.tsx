@@ -10,6 +10,8 @@ import {useAppDispatch, useAppSelector} from '../../hooks';
 import {useEffect} from 'react';
 import {readProductRequest} from '../../store/reducer/product/actions';
 
+import {EmptyContainerProduct} from '../../components';
+
 export const BusinessScreen = () => {
   const {loadingProducts} = useAppSelector(state => state.product);
   const dispatch = useAppDispatch();
@@ -23,20 +25,8 @@ export const BusinessScreen = () => {
       <HeaderDashboard />
       <Separator height={28} />
       <FiltersProfileScreen />
-      <ScrollView
-        style={{
-          zIndex: -1,
-          elevation: -1,
-        }}>
-        <Separator height={28} />
-        <View
-          style={{
-            flex: 1,
-            paddingHorizontal: 20,
-          }}>
-          {!loadingProducts && <BusinessProductCardList />}
-        </View>
-      </ScrollView>
+
+      {!loadingProducts && <BusinessProductCardList />}
     </View>
   );
 };

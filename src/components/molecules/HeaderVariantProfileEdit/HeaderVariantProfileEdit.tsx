@@ -3,13 +3,14 @@ import {useRoute} from '@react-navigation/native';
 import {Image, TouchableOpacity, View} from 'react-native';
 import {Button, HeaderVariantProfile, IconComponent} from '../..';
 import {IMAGES} from '../../../assets';
-import {useNavigationHook} from '../../../hooks';
+import {useAppDispatch, useNavigationHook} from '../../../hooks';
+import {readFilterProduct} from '../../../store/reducer/product/actions';
 
 const EDIT_PROFILE_ROUTER = 'EditProfileScreen';
 
 interface IHeaderVariantProfileEdit {
   focus?: boolean;
-  setFocus?: (set: boolean) => boolean;
+  setFocus?: any;
 }
 
 export const HeaderVariantProfileEdit = ({
@@ -20,6 +21,8 @@ export const HeaderVariantProfileEdit = ({
 
   const {goBack} = useNavigationHook();
   const isRouter = verifyRouter(name);
+
+  const dispatch = useAppDispatch();
 
   const isEditProfileScreen = name === EDIT_PROFILE_ROUTER;
 
@@ -40,7 +43,11 @@ export const HeaderVariantProfileEdit = ({
         />
       )}
       {focus && (
-        <TouchableOpacity onPress={() => setFocus(false)}>
+        <TouchableOpacity
+          onPress={() => {
+            setFocus(false);
+            dispatch(readFilterProduct([]));
+          }}>
           <IconComponent icon="close-icon" />
         </TouchableOpacity>
       )}

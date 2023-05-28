@@ -1,23 +1,31 @@
-import {IconComponent, Text} from '../../';
+import {IconComponent, Text} from '../..';
 
 import {View} from 'react-native';
 import {Separator} from '../../atoms';
 
-export const EmptyContainerProductMyProducts = () => {
+interface IEmptyContainerProduct {
+  title?: string;
+  description?: string;
+}
+
+export const EmptyContainerProduct = ({
+  title = ' Publique seus animais para venda',
+  description = 'Em apenas 3 etapas você pode começar a vender',
+}: IEmptyContainerProduct) => {
   return (
     <View
       style={{
         alignItems: 'center',
         justifyContent: 'center',
         alignContent: 'center',
-        height: '100%',
+        height: '70%',
       }}>
       <IconComponent icon="logo-profile" />
 
       <Separator height={12} />
 
       <Text typography="h3" colorFamily="gray" colorVariant="_01">
-        Publique seus animais para venda
+        {title}
       </Text>
 
       <View style={{width: '60%'}}>
@@ -26,7 +34,7 @@ export const EmptyContainerProductMyProducts = () => {
           colorFamily="gray"
           colorVariant="_04"
           textAlign="center">
-          Em apenas 3 etapas você pode começar a vender
+          {description}
         </Text>
       </View>
     </View>

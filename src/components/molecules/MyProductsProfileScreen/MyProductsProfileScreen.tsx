@@ -1,6 +1,6 @@
 import {View} from 'react-native';
 
-import {EmptyContainerProductMyProducts, ProductListProfile} from '../../';
+import {EmptyContainerProduct, ProductListProfile} from '../../';
 
 export const MyProductsProfileScreen = () => {
   const products = [];
@@ -10,7 +10,7 @@ export const MyProductsProfileScreen = () => {
   const renderContent = isEmptyProduct ? (
     <ProductListProfile />
   ) : (
-    <EmptyContainerProductMyProducts />
+    <EmptyContainerProduct />
   );
 
   return (

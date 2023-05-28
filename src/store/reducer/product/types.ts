@@ -20,6 +20,8 @@ export interface IStateProduct {
   filterProdutcs: Array<IProduct>;
 
   loadingProducts: boolean;
+
+  search: string;
 }
 
 export interface IProduct {

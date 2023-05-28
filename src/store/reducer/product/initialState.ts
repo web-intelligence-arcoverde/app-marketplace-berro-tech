@@ -21,4 +21,6 @@ export const initialState: IStateProduct = {
   produtcs: [],
   filterProdutcs: [],
   loadingProducts: true,
+
+  search: '',
 };

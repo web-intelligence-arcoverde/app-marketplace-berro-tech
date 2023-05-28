@@ -14,7 +14,7 @@ export const inputSearch = EStyleSheet.create({
   },
 
   input: {
-    width: '80%',
+    width: '86%',
     height: '100%',
     marginLeft: scale(8),
   },
