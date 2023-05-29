@@ -13,14 +13,9 @@ export const OrderFilterDropdown = () => {
     state => state.product,
   );
 
-  let isSearchExist = search.length >= 1;
   let isFilterProductExist = filterProdutcs.length >= 1;
 
-  let productsSearchListExist = isSearchExist && isFilterProductExist;
-
   let product: any = isFilterProductExist ? filterProdutcs : produtcs;
-
-  console.log(product);
 
   const dispatch = useAppDispatch();
 

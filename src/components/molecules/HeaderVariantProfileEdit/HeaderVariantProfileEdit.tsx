@@ -35,6 +35,10 @@ export const HeaderVariantProfileEdit = ({
 
   const isEditProfileScreen = name === EDIT_PROFILE_ROUTER;
 
+  let isVisibleClearSearch = search.length > 0 || focus;
+
+  console.log(search.length > 0);
+
   return (
     <View
       style={{
@@ -51,17 +55,16 @@ export const HeaderVariantProfileEdit = ({
           onPress={() => goBack()}
         />
       )}
-      {focus ||
-        (search.length > 0 && (
-          <TouchableOpacity
-            onPress={() => {
-              setFocus(false);
-              dispatch(readFilterProduct([]));
-              dispatch(searchProduct(''));
-            }}>
-            <IconComponent icon="close-icon" />
-          </TouchableOpacity>
-        ))}
+      {isVisibleClearSearch && (
+        <TouchableOpacity
+          onPress={() => {
+            setFocus(false);
+            dispatch(readFilterProduct([]));
+            dispatch(searchProduct(''));
+          }}>
+          <IconComponent icon="close-icon" />
+        </TouchableOpacity>
+      )}
       {!focus && search.length <= 0 && <Image source={IMAGES.LogoHeader} />}
       <HeaderVariantProfile />
     </View>
