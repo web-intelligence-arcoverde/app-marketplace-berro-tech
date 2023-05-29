@@ -1,9 +1,13 @@
-import {TouchableOpacity, View, TextInput} from 'react-native';
+import {TouchableOpacity, View, TextInput, Keyboard} from 'react-native';
 import {inputSearch} from './style';
 
 import {IconComponent} from '../../';
 import React, {useEffect, useState} from 'react';
-import {useAppDispatch, useAppSelector} from '../../../hooks';
+import {
+  useAppDispatch,
+  useAppSelector,
+  useNavigationHook,
+} from '../../../hooks';
 import {changerIndexBottomSheetRecentSearch} from '../../../store/reducer/user/actions';
 import {
   readFilterProduct,
@@ -11,15 +15,25 @@ import {
 } from '../../../store/reducer/product/actions';
 import {filterByAllAttributes} from '../../../utils/filters';
 
-import {Keyboard} from 'react-native';
+import {useRoute} from '@react-navigation/native';
 
-export const SearchInput = ({setFocus}: any) => {
+export const SearchInput = ({setFocus, focus}: any) => {
   const {produtcs, filterProdutcs} = useAppSelector(state => state.product);
   const dispatch = useAppDispatch();
 
   const [searchTerm, setSearchTerm] = useState('');
 
-  let isEmptyFilterProducts = filterProdutcs.length < 1;
+  const {goToRouter} = useNavigationHook();
+
+  const {name} = useRoute();
+
+  let isNotBusinessScreen = name !== 'Negócios';
+
+  const changeRouter = () => {
+    if (isNotBusinessScreen) {
+      goToRouter('Negócios');
+    }
+  };
 
   const searchByTerm = () => {
     if (searchTerm !== '') {
@@ -31,6 +45,8 @@ export const SearchInput = ({setFocus}: any) => {
       dispatch(readFilterProduct([]));
     }
     setSearchTerm('');
+    changeRouter();
+    setFocus(false);
   };
 
   const handleKeyDown = (e: any) => {
@@ -39,11 +55,20 @@ export const SearchInput = ({setFocus}: any) => {
     }
   };
 
+  useEffect(() => {
+    if (searchTerm.length >= 1) {
+      setFocus(true);
+    } else {
+      setFocus(false);
+    }
+  }, [searchTerm]);
+
   return (
     <View style={inputSearch.container}>
       <TextInput
         style={inputSearch.input}
         onFocus={() => setFocus(true)}
+        onBlur={() => setFocus(false)}
         value={searchTerm}
         onChangeText={(value: string) => setSearchTerm(value)}
         onKeyPress={handleKeyDown}
@@ -51,17 +76,21 @@ export const SearchInput = ({setFocus}: any) => {
         returnKeyType="done"
       />
 
-      {isEmptyFilterProducts || !!searchTerm.length ? (
+      {focus || isNotBusinessScreen ? (
         <TouchableOpacity onPress={() => searchByTerm()}>
           <IconComponent icon="search-icon" />
         </TouchableOpacity>
       ) : (
-        <TouchableOpacity
-          onPress={() =>
-            dispatch(changerIndexBottomSheetRecentSearch({index: 1}))
-          }>
-          <IconComponent icon="filter-icon" />
-        </TouchableOpacity>
+        <>
+          {!isNotBusinessScreen && (
+            <TouchableOpacity
+              onPress={() =>
+                dispatch(changerIndexBottomSheetRecentSearch({index: 1}))
+              }>
+              <IconComponent icon="filter-icon" />
+            </TouchableOpacity>
+          )}
+        </>
       )}
     </View>
   );

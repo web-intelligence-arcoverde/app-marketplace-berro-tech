@@ -21,7 +21,7 @@ export const HeaderDashboard = () => {
 
       <View style={style.content}>
         <HeaderVariantProfileEdit focus={focus} setFocus={setFocus} />
-        {isHome && <SearchInput setFocus={setFocus} />}
+        {isHome && <SearchInput setFocus={setFocus} focus={focus} />}
       </View>
     </View>
   );

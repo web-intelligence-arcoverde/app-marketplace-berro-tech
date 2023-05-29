@@ -35,7 +35,7 @@ export const HeaderVariantProfileEdit = ({
 
   const isEditProfileScreen = name === EDIT_PROFILE_ROUTER;
 
-  let isVisibleClearSearch = search.length > 0 || focus;
+  let isVisibleClearSearch = search.length > 0;
 
   console.log(search.length > 0);
 
@@ -65,7 +65,7 @@ export const HeaderVariantProfileEdit = ({
           <IconComponent icon="close-icon" />
         </TouchableOpacity>
       )}
-      {!focus && search.length <= 0 && <Image source={IMAGES.LogoHeader} />}
+      {search.length <= 0 && <Image source={IMAGES.LogoHeader} />}
       <HeaderVariantProfile />
     </View>
   );
