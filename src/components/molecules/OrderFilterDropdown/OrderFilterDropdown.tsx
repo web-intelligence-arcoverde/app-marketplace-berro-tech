@@ -9,9 +9,18 @@ const optionsOrder = [
 ];
 
 export const OrderFilterDropdown = () => {
-  const {produtcs, filterProdutcs} = useAppSelector(state => state.product);
+  const {produtcs, filterProdutcs, search} = useAppSelector(
+    state => state.product,
+  );
 
-  let product = filterProdutcs.length >= 1 ? filterProdutcs : produtcs;
+  let isSearchExist = search.length >= 1;
+  let isFilterProductExist = filterProdutcs.length >= 1;
+
+  let productsSearchListExist = isSearchExist && isFilterProductExist;
+
+  let product: any = isFilterProductExist ? filterProdutcs : produtcs;
+
+  console.log(product);
 
   const dispatch = useAppDispatch();
 

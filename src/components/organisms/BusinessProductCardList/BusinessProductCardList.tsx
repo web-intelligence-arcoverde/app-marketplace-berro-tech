@@ -18,46 +18,30 @@ export const BusinessProductCardList = () => {
 
   let producstListExist = produtcs.length >= 1;
 
-  let filterProduct = productsSearchListExist && filterProdutcs;
+  let product: any = isFilterProductExist ? filterProdutcs : produtcs;
 
-  let product: any = isFilterProductExist ? filterProduct : produtcs;
+  const RenderList = () => {
+    return (
+      <Container>
+        <Separator height={32} />
+        {product.map((item: any, index: number) => {
+          return (
+            <ContainerProduct key={`${item}-${index}-item-product-card`}>
+              <ProductItemCard {...item} onPress={redirectToDetailsProduct} />
+              <Separator height={20} />
+            </ContainerProduct>
+          );
+        })}
+      </Container>
+    );
+  };
 
-  const renderList = () => {
+  const renderContainerList = () => {
     if (producstListExist) {
       if (productsSearchListExist) {
-        return (
-          <Container>
-            <Separator height={32} />
-            {product.map((item: any, index: number) => {
-              return (
-                <ContainerProduct key={`${item}-${index}-item-product-card`}>
-                  <ProductItemCard
-                    {...item}
-                    onPress={redirectToDetailsProduct}
-                  />
-                  <Separator height={20} />
-                </ContainerProduct>
-              );
-            })}
-          </Container>
-        );
+        return <RenderList />;
       } else if (!isSearchExist) {
-        return (
-          <Container>
-            <Separator height={32} />
-            {product.map((item: any, index: number) => {
-              return (
-                <ContainerProduct key={`${item}-${index}-item-product-card`}>
-                  <ProductItemCard
-                    {...item}
-                    onPress={redirectToDetailsProduct}
-                  />
-                  <Separator height={20} />
-                </ContainerProduct>
-              );
-            })}
-          </Container>
-        );
+        return <RenderList />;
       } else {
         return (
           <EmptyContainerProduct
@@ -76,8 +60,6 @@ export const BusinessProductCardList = () => {
     }
   };
 
-  console.log(search.length);
-
   const redirectToDetailsProduct = (id: number) => {
     //@ts-ignore
     navigate.navigate('DetailProductScreen', {
@@ -85,21 +67,22 @@ export const BusinessProductCardList = () => {
     });
   };
 
-  return <>{renderList()}</>;
+  return <>{renderContainerList()}</>;
 };
 
 /*
 
  <Container>
-          <Separator height={32} />
-          {product.map((item: any, index: number) => {
-            return (
-              <ContainerProduct key={`${item}-${index}-item-product-card`}>
-                <ProductItemCard {...item} onPress={redirectToDetailsProduct} />
-                <Separator height={20} />
-              </ContainerProduct>
-            );
-          })}
-        </Container>
+        <Separator height={32} />
+        {product.map((item: any, index: number) => {
+          return (
+            <ContainerProduct key={`${item}-${index}-item-product-card`}>
+              <ProductItemCard {...item} onPress={redirectToDetailsProduct} />
+              <Separator height={20} />
+            </ContainerProduct>
+          );
+        })}
+      </Container>
+
 
 */
