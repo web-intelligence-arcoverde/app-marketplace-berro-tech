@@ -3,8 +3,15 @@ import {useRoute} from '@react-navigation/native';
 import {Image, TouchableOpacity, View} from 'react-native';
 import {Button, HeaderVariantProfile, IconComponent} from '../..';
 import {IMAGES} from '../../../assets';
-import {useAppDispatch, useNavigationHook} from '../../../hooks';
-import {readFilterProduct} from '../../../store/reducer/product/actions';
+import {
+  useAppDispatch,
+  useAppSelector,
+  useNavigationHook,
+} from '../../../hooks';
+import {
+  readFilterProduct,
+  searchProduct,
+} from '../../../store/reducer/product/actions';
 
 const EDIT_PROFILE_ROUTER = 'EditProfileScreen';
 
@@ -17,6 +24,8 @@ export const HeaderVariantProfileEdit = ({
   focus,
   setFocus,
 }: IHeaderVariantProfileEdit) => {
+  const {search} = useAppSelector(state => state.product);
+
   const {name} = useRoute();
 
   const {goBack} = useNavigationHook();
@@ -42,16 +51,18 @@ export const HeaderVariantProfileEdit = ({
           onPress={() => goBack()}
         />
       )}
-      {focus && (
-        <TouchableOpacity
-          onPress={() => {
-            setFocus(false);
-            dispatch(readFilterProduct([]));
-          }}>
-          <IconComponent icon="close-icon" />
-        </TouchableOpacity>
-      )}
-      {!focus && <Image source={IMAGES.LogoHeader} />}
+      {focus ||
+        (search.length > 0 && (
+          <TouchableOpacity
+            onPress={() => {
+              setFocus(false);
+              dispatch(readFilterProduct([]));
+              dispatch(searchProduct(''));
+            }}>
+            <IconComponent icon="close-icon" />
+          </TouchableOpacity>
+        ))}
+      {!focus && search.length <= 0 && <Image source={IMAGES.LogoHeader} />}
       <HeaderVariantProfile />
     </View>
   );

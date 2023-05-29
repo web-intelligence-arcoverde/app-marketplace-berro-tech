@@ -49,7 +49,6 @@ export const SearchInput = ({setFocus}: any) => {
         onKeyPress={handleKeyDown}
         keyboardType="default"
         returnKeyType="done"
-        onSubmitEditing={Keyboard.dismiss}
       />
 
       {isEmptyFilterProducts || !!searchTerm.length ? (
