@@ -84,20 +84,3 @@ export const BusinessProductCardList = () => {
     </>
   );
 };
-
-/*
-
- <Container>
-        <Separator height={32} />
-        {product.map((item: any, index: number) => {
-          return (
-            <ContainerProduct key={`${item}-${index}-item-product-card`}>
-              <ProductItemCard {...item} onPress={redirectToDetailsProduct} />
-              <Separator height={20} />
-            </ContainerProduct>
-          );
-        })}
-      </Container>
-
-
-*/
