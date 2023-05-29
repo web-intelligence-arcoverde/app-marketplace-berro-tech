@@ -4,6 +4,10 @@ import {useAppSelector} from '../../../hooks';
 import {useNavigation} from '@react-navigation/native';
 
 import {Container, ContainerProduct} from './style';
+import {Text} from '../../atoms';
+import React from 'react';
+import {View} from 'react-native';
+import {scale} from '../../../utils';
 
 export const BusinessProductCardList = () => {
   const {produtcs, filterProdutcs, search} = useAppSelector(
@@ -67,7 +71,18 @@ export const BusinessProductCardList = () => {
     });
   };
 
-  return <>{renderContainerList()}</>;
+  return (
+    <>
+      {productsSearchListExist && (
+        <View style={{paddingHorizontal: scale(20), marginTop: scale(28)}}>
+          <Text typography="h3" colorFamily="gray" colorVariant="_03">
+            {filterProdutcs.length} resultados para "{search}"
+          </Text>
+        </View>
+      )}
+      {renderContainerList()}
+    </>
+  );
 };
 
 /*

@@ -37,8 +37,6 @@ export const HeaderVariantProfileEdit = ({
 
   let isVisibleClearSearch = search.length > 0;
 
-  console.log(search.length > 0);
-
   return (
     <View
       style={{
