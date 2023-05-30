@@ -48,6 +48,19 @@ import ProfileOutlinedIcon from './profile-icon-outlined.svg';
 import EyeCloseIcon from './eye-close.svg';
 import EyeIcon from './eye.svg';
 
+/*
+
+  - Icons de filter
+
+*/
+
+import StateIcon from './state-icon.svg';
+import QuantityIcon from './quantity-icon.svg';
+import GenderIcon from './gender-icon.svg';
+import AgeIcon from './age-icon.svg';
+import BreedIcon from './breed-icon.svg';
+import ClassificationIcon from './classification-icon.svg';
+
 export const ICONS = {
   email: EmailIcon,
   gmail: GmailIcon,
@@ -81,4 +94,10 @@ export const ICONS = {
   'map-02-icon': Map03,
   'map-03-icon': Map04,
   'map-04-icon': Map05,
+  'state-icon': StateIcon,
+  'quantity-icon': QuantityIcon,
+  'gender-icon': GenderIcon,
+  'age-icon': AgeIcon,
+  'breed-icon': BreedIcon,
+  'classification-icon': ClassificationIcon,
 };

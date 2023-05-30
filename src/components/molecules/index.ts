@@ -79,6 +79,7 @@ export * from './CustomDropDownPickerAnimalType/CustomDropDownPickerAnimalType';
 export * from './BottomSheetSelectAnimalTypeItem/BottomSheetSelectAnimalTypeItem';
 export * from './CustomDropDownPickerAnimalSex/CustomDropDownPickerAnimalSex';
 export * from './CustomDropDownPickerAnimalBreed/CustomDropDownPickerAnimalBreed';
+export * from './HeaderFilterProducts/HeaderFilterProducts';
 
 //BottomSheet
 export * from './BottomSheetSelectAnimalSex/BottomSheetSelectAnimalSex';
