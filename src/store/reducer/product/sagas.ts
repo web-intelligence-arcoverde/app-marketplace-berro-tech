@@ -1,6 +1,7 @@
 import {all, call, put, takeLatest} from 'redux-saga/effects';
 import api from '../../../service';
 import {
+  getProductByIdSuccess,
   readAnimalBreedSuccess,
   readBusinessHighlightProductSuccess,
   readProductSuccess,
@@ -71,6 +72,18 @@ function* readProducts() {
   }
 }
 
+function* readProduct({payload}: any): any {
+  try {
+    console.log(payload);
+
+    const {data} = yield call(api.get, `/product/${payload}`);
+
+    yield put(getProductByIdSuccess(data));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 function* productSagas() {
   yield all([
     takeLatest('product/read-types-animals-request', readAnimalType),
@@ -81,6 +94,7 @@ function* productSagas() {
     ),
     takeLatest('product/top-search-product-request', topSearchProduct),
     takeLatest('product/read-product-request', readProducts),
+    takeLatest('product/get-product-by-id-request', readProduct),
   ]);
 }
 

@@ -80,6 +80,10 @@ export * from './BottomSheetSelectAnimalTypeItem/BottomSheetSelectAnimalTypeItem
 export * from './CustomDropDownPickerAnimalSex/CustomDropDownPickerAnimalSex';
 export * from './CustomDropDownPickerAnimalBreed/CustomDropDownPickerAnimalBreed';
 export * from './HeaderFilterProducts/HeaderFilterProducts';
+export * from './FooterDescriptionProduct/FooterDescriptionProduct';
+export * from './CarouselImagesDetailProductScreen/CarouselImagesDetailProductScreen';
+
+export * from './MoreInformationProductDetail/MoreInformationProductDetail';
 
 //BottomSheet
 export * from './BottomSheetSelectAnimalSex/BottomSheetSelectAnimalSex';

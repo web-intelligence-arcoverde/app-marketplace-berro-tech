@@ -19,6 +19,8 @@ import {
   readFilterProduct,
   searchProduct,
   addItemSelectedFilter,
+  getProductByIdRequest,
+  getProductByIdSuccess,
 } from './actions';
 
 export const productReducer = createReducer(initialState, builder => {
@@ -98,5 +100,12 @@ export const productReducer = createReducer(initialState, builder => {
 
         state.itemsSelectedFilter = newSeletedItemsFilter;
       }
+    })
+    .addCase(getProductByIdRequest, (state, action) => {
+      state.loadingProduct = true;
+    })
+    .addCase(getProductByIdSuccess, (state, action) => {
+      state.product = action.payload;
+      state.loadingProduct = false;
     });
 });

@@ -72,3 +72,11 @@ export const searchProduct = createAction<string>('product/search-product');
 export const addItemSelectedFilter = createAction<string>(
   'product/add-item-seleted-filter',
 );
+
+export const getProductByIdRequest = createAction<number>(
+  'product/get-product-by-id-request',
+);
+
+export const getProductByIdSuccess = createAction<IProduct>(
+  'product/get-product-by-id-success',
+);

@@ -39,7 +39,7 @@ export const RouterApp = () => {
   return (
     <>
       <Stack.Navigator
-        initialRouteName={'DashboardBottomNavigation'}
+        initialRouteName={'DetailProductScreen'}
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
 
@@ -72,6 +72,7 @@ export const RouterApp = () => {
         />
 
         <Stack.Screen name="AddProductScreen" component={AddProductScreen} />
+
         <Stack.Screen
           name="DetailProductScreen"
           component={DetailProductScreen}
