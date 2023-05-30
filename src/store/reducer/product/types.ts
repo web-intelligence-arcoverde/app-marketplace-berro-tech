@@ -22,6 +22,8 @@ export interface IStateProduct {
   loadingProducts: boolean;
 
   search: string;
+
+  itemsSelectedFilter: string[];
 }
 
 export interface IProduct {

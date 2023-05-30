@@ -8,7 +8,10 @@ import {CollapsibleAccordionSelect, HeaderFilterProducts} from '../..';
 import {businessFiltersMock} from '../../../mock/bussiness-filters';
 import {ScrollView} from 'react-native';
 import {filterByAllAttributes} from '../../../utils/filters';
-import {readFilterProduct} from '../../../store/reducer/product/actions';
+import {
+  addItemSelectedFilter,
+  readFilterProduct,
+} from '../../../store/reducer/product/actions';
 
 export const BottomSheetExample = () => {
   const {bottom_sheet_index} = useAppSelector(state => state.user);
@@ -31,26 +34,11 @@ export const BottomSheetExample = () => {
     }
   }, []);
 
-  const [itemsFilter, setItemsFilter] = useState<string[]>([]);
+  const {produtcs, filterProdutcs, itemsSelectedFilter} = useAppSelector(
+    state => state.product,
+  );
 
-  console.log(itemsFilter);
-
-  const selectedItemsFilter = (selected: string) => {
-    let isExistItemSelected = itemsFilter.includes(selected);
-    if (!isExistItemSelected) {
-      setItemsFilter([...itemsFilter, selected]);
-    } else {
-      let newSeletedItemsFilter = itemsFilter.filter(
-        (item: string) => item.toLowerCase() !== selected.toLowerCase(),
-      );
-
-      setItemsFilter(newSeletedItemsFilter);
-    }
-  };
-
-  let isExistItemsSelectedFilter = itemsFilter.length >= 1;
-
-  const {produtcs, filterProdutcs} = useAppSelector(state => state.product);
+  let isExistItemsSelectedFilter = itemsSelectedFilter.length >= 1;
 
   let isFilterProductExist = filterProdutcs.length >= 1;
 
@@ -58,10 +46,10 @@ export const BottomSheetExample = () => {
 
   useEffect(() => {
     if (isExistItemsSelectedFilter) {
-      itemsFilter.map((item: any, index: number) => {
-        if (itemsFilter.length === 1) {
+      itemsSelectedFilter.map((item: any, index: number) => {
+        if (itemsSelectedFilter.length === 1) {
           let productsFiltred = filterByAllAttributes(product, item);
-          console.log(productsFiltred);
+
           dispatch(readFilterProduct(productsFiltred));
         } else if (index >= 1) {
           let productsFiltred = filterByAllAttributes(produtcs, item);
@@ -72,7 +60,7 @@ export const BottomSheetExample = () => {
     } else {
       dispatch(readFilterProduct(produtcs));
     }
-  }, [itemsFilter, isExistItemsSelectedFilter, produtcs]);
+  }, [itemsSelectedFilter, isExistItemsSelectedFilter, produtcs]);
 
   return (
     <BottomSheet
@@ -82,11 +70,12 @@ export const BottomSheetExample = () => {
       onChange={handleSheetChanges}>
       <ScrollView style={styles.contentContainer}>
         <HeaderFilterProducts />
-        {businessFiltersMock.map(item => {
+        {businessFiltersMock.map((item: any, index: number) => {
           return (
             <CollapsibleAccordionSelect
+              key={`index-${item.title}-${index}`}
               getValueSelected={(selected: string) =>
-                selectedItemsFilter(selected)
+                dispatch(addItemSelectedFilter(selected))
               }
               filters={item.filters}
               title={item.title}

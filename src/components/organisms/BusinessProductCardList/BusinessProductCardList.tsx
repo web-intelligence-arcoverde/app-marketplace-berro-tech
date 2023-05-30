@@ -10,9 +10,8 @@ import {View} from 'react-native';
 import {scale} from '../../../utils';
 
 export const BusinessProductCardList = () => {
-  const {produtcs, filterProdutcs, search} = useAppSelector(
-    state => state.product,
-  );
+  const {produtcs, filterProdutcs, search, itemsSelectedFilter} =
+    useAppSelector(state => state.product);
   const navigate = useNavigation();
 
   let isSearchExist = search.length >= 1;

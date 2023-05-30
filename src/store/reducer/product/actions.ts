@@ -68,3 +68,7 @@ export const readFilterProduct = createAction<Array<IProduct>>(
 );
 
 export const searchProduct = createAction<string>('product/search-product');
+
+export const addItemSelectedFilter = createAction<string>(
+  'product/add-item-seleted-filter',
+);

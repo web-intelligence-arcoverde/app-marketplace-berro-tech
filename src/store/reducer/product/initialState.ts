@@ -23,4 +23,5 @@ export const initialState: IStateProduct = {
   loadingProducts: true,
 
   search: '',
+  itemsSelectedFilter: [],
 };

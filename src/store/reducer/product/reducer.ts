@@ -18,6 +18,7 @@ import {
   readProductSuccess,
   readFilterProduct,
   searchProduct,
+  addItemSelectedFilter,
 } from './actions';
 
 export const productReducer = createReducer(initialState, builder => {
@@ -79,5 +80,23 @@ export const productReducer = createReducer(initialState, builder => {
     })
     .addCase(searchProduct, (state, action) => {
       state.search = action.payload;
+    })
+    .addCase(addItemSelectedFilter, (state, action) => {
+      let isExistItemSelected = state.itemsSelectedFilter.includes(
+        action.payload,
+      );
+
+      if (!isExistItemSelected) {
+        state.itemsSelectedFilter = [
+          ...state.itemsSelectedFilter,
+          action.payload,
+        ];
+      } else {
+        let newSeletedItemsFilter = state.itemsSelectedFilter.filter(
+          (item: string) => item.toLowerCase() !== action.payload.toLowerCase(),
+        );
+
+        state.itemsSelectedFilter = newSeletedItemsFilter;
+      }
     });
 });
