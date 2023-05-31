@@ -10,6 +10,7 @@ export const ContainerFoorterDescription = styled.View`
   border-color: ${COLORS.light._02};
   flex-direction: row;
   height: 100px;
+  align-items: center;
 `;
 
 export const ImageContainer = styled.Image`

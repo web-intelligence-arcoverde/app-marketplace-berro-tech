@@ -1,17 +1,20 @@
 import {Image, Linking, View} from 'react-native';
 import {Text} from '../../';
-import {capitalize} from '../../../utils';
+import {capitalize, scale} from '../../../utils';
 
 import {Separator, Button} from '../../';
 import {ICONS} from '../../../assets';
+import {useNavigation} from '@react-navigation/core';
 
 interface IProfileUserBasicInformation {
+  id?: number;
   name?: string;
   addresses?: any;
   avatar_url?: any;
 }
 
 export const ProfileUserBasicInformation = ({
+  id,
   name,
   addresses,
   avatar_url,
@@ -23,18 +26,18 @@ export const ProfileUserBasicInformation = ({
 
   const Seller = ICONS['seller-default'];
 
-  let whatsappNo = '87998093765';
-  let whatsappMsg = 'BerroTech';
+  const navigate = useNavigation();
+
+  const redirectToDetailsProduct = (id: any) => {
+    //@ts-ignore
+    navigate.navigate('SellerScreen', {
+      id,
+    });
+  };
 
   return (
-    <View
-      style={{
-        paddingHorizontal: 20,
-      }}>
-      <View
-        style={{
-          paddingVertical: 20,
-        }}>
+    <View>
+      <View>
         <Text colorFamily="gray" colorVariant="_02">
           Perfil do vendedor
         </Text>
@@ -51,17 +54,17 @@ export const ProfileUserBasicInformation = ({
             <Text typography="h4" colorFamily="gray" colorVariant="_04">
               Nome
             </Text>
-            <Separator height={8} />
+            <Separator height={4} />
             <Text typography="h3" colorFamily="gray" colorVariant="_02">
               {capitalize(name)}
             </Text>
           </View>
-          <Separator height={8} />
+          <Separator height={12} />
           <View>
             <Text typography="h4" colorFamily="gray" colorVariant="_04">
               Localização
             </Text>
-            <Separator height={8} />
+            <Separator height={4} />
             {isExistAddress && (
               <Text typography="h3" colorFamily="gray" colorVariant="_02">
                 {city}, {state}
@@ -69,11 +72,15 @@ export const ProfileUserBasicInformation = ({
             )}
           </View>
         </View>
-        <View style={{width: 150, height: 140}}>
+        <View style={{width: scale(150), height: scale(140)}}>
           {!!avatar_url ? (
             <Image
               source={{uri: avatar_url}}
-              style={{width: 150, height: 140, borderRadius: 5}}
+              style={{
+                width: scale(150),
+                height: scale(140),
+                borderRadius: scale(6),
+              }}
             />
           ) : (
             <Seller />
@@ -84,11 +91,7 @@ export const ProfileUserBasicInformation = ({
       <Button
         variant="none"
         title="Ver mais"
-        onPress={() =>
-          Linking.openURL(
-            `whatsapp://send?phone=${whatsappNo}&text=${whatsappMsg}`,
-          )
-        }
+        onPress={() => redirectToDetailsProduct(id)}
       />
     </View>
   );

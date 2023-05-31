@@ -1,5 +1,5 @@
 import {useEffect} from 'react';
-import {ScrollView, View} from 'react-native';
+import {Linking, ScrollView, View} from 'react-native';
 
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {
@@ -18,8 +18,11 @@ import {
   MoreInformationProductDetail,
   ProfileUserBasicInformation,
   ProductSpecificList,
+  PriceProductDetailScreen,
+  DescriptionProductDetailScreen,
 } from '../../components';
-import {useFormatMoney} from '../../utils/formatMoney';
+
+import {LayoutContainer} from './style';
 
 export const DetailProductScreen = ({route}: any) => {
   //const { id } = route.params
@@ -28,8 +31,6 @@ export const DetailProductScreen = ({route}: any) => {
   const {product, loadingProduct} = useAppSelector(state => state.product);
 
   let productInfo = !loadingProduct ? product?.products[0] : {};
-
-  let {business} = productInfo;
 
   const dispatch = useAppDispatch();
 
@@ -41,6 +42,14 @@ export const DetailProductScreen = ({route}: any) => {
     dispatch(topSearchProductRequest('rank'));
   }, []);
 
+  let whatsappNo = '87998093765';
+  let whatsappMsg = 'BerroTech';
+
+  const goToWhatsapp = async () =>
+    await Linking.openURL(
+      `whatsapp://send?phone=${whatsappNo}&text=${whatsappMsg}`,
+    );
+
   return (
     <ScrollView style={{backgroundColor: '#fff'}}>
       {loadingProduct ? (
@@ -50,59 +59,25 @@ export const DetailProductScreen = ({route}: any) => {
           <HeaderDashboard />
           <CarouselImagesDetailProductScreen />
           <ProductItemHeader {...productInfo} />
+
           <FooterDescriptionProduct {...productInfo} />
 
-          <View
-            style={{
-              paddingHorizontal: 24,
-              flexDirection: 'row',
-              alignItems: 'flex-end',
-              justifyContent: 'space-between',
-            }}>
-            <View>
-              <Text typography="h4" colorFamily="gray" colorVariant="_04">
-                Preço
-              </Text>
-              <View style={{display: 'flex', flexDirection: 'row', gap: 6}}>
-                <Text typography="h3" colorFamily="gray" colorVariant="_02">
-                  {useFormatMoney(business.price)}
-                </Text>
-                <Text
-                  typography="h3"
-                  colorFamily="brand_dark"
-                  colorVariant="_04">
-                  cada
-                </Text>
-              </View>
-            </View>
-            <View>
-              <Text typography="h4" colorFamily="gray" colorVariant="_04">
-                ou {business.installments} x
-                {useFormatMoney(business.price / business.installments)}
-              </Text>
-            </View>
-          </View>
-          <Separator height={32} />
-          <View style={{paddingHorizontal: 20, paddingVertical: 20}}>
+          <PriceProductDetailScreen {...productInfo} />
+          <LayoutContainer>
             <Button
               title="Entrar em contato"
-              onPress={() => {}}
+              onPress={() => goToWhatsapp()}
               icon="whatsapp-icon"
+              variant="whatsapp"
             />
-          </View>
-          <View style={{paddingHorizontal: 20}}>
-            <Text typography="h3" colorFamily="gray" colorVariant="_02">
-              Descrição
-            </Text>
-            <Separator height={10} />
-            <Text typography="h3" colorFamily="gray" colorVariant="_04">
-              {productInfo.description}
-            </Text>
-          </View>
-          <Separator height={20} />
-          <MoreInformationProductDetail {...productInfo} />
-          <Separator height={20} />
-          <ProfileUserBasicInformation {...product} />
+          </LayoutContainer>
+          <DescriptionProductDetailScreen {...productInfo} />
+          <LayoutContainer>
+            <MoreInformationProductDetail {...productInfo} />
+          </LayoutContainer>
+          <LayoutContainer>
+            <ProfileUserBasicInformation {...product} />
+          </LayoutContainer>
         </>
       )}
       <Separator height={20} />

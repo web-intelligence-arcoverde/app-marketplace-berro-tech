@@ -84,6 +84,8 @@ export * from './FooterDescriptionProduct/FooterDescriptionProduct';
 export * from './CarouselImagesDetailProductScreen/CarouselImagesDetailProductScreen';
 export * from './ProfileUserBasicInformation/ProfileUserBasicInformation';
 export * from './MoreInformationProductDetail/MoreInformationProductDetail';
+export * from './PriceProductDetailScreen/PriceProductDetailScreen';
+export * from './DescriptionProductDetailScreen/DescriptionProductDetailScreen';
 
 //BottomSheet
 export * from './BottomSheetSelectAnimalSex/BottomSheetSelectAnimalSex';

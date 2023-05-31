@@ -2,6 +2,8 @@ import {mockImages} from '../../../assets/images/mock';
 
 import {ProductItemDescriptionFooter, ProductItemHeader} from '../..';
 
+import {ProductDescriptionFooter} from '../ProductDescriptionFooter/ProductDescriptionFooter';
+
 import {ContainerFoorterDescription, ImageContainer, Container} from './style';
 
 export const ProductItemCard = (props: any) => {
@@ -13,12 +15,12 @@ export const ProductItemCard = (props: any) => {
       <ImageContainer source={{uri: document.url}} />
       <ProductItemHeader {...props} />
       <ContainerFoorterDescription>
-        <ProductItemDescriptionFooter title="Sexo" description={gender} />
-        <ProductItemDescriptionFooter
+        <ProductDescriptionFooter title="Sexo" description={gender} />
+        <ProductDescriptionFooter
           title="Idade"
           description={ageCategory?.name}
         />
-        <ProductItemDescriptionFooter
+        <ProductDescriptionFooter
           title="Classificação"
           description={classification?.name}
         />

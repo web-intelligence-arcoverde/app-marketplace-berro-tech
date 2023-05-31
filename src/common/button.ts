@@ -23,6 +23,26 @@ export const ButtonStyle = EStyleSheet.create({
     },
   },
 
+  whatsapp: {
+    containerStyle: {
+      width: '100%',
+    },
+
+    titleStyle: {
+      color: COLORS.light._05,
+      fontFamily: 'Inter-Regular',
+      fontSize: scale(16),
+      marginLeft: scale(14),
+      fontWeight: 500,
+    },
+
+    buttonStyle: {
+      backgroundColor: COLORS.auxiliary.green_confirm,
+      height: scale(52),
+      borderRadius: scale(6),
+    },
+  },
+
   containedSecondary: {
     containerStyle: {
       width: '100%',

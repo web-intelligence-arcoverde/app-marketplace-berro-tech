@@ -1,4 +1,4 @@
-import {Separator, Text} from '../../';
+import {Separator, Text} from '../..';
 import {View} from 'react-native';
 import {Container} from './style';
 
@@ -7,7 +7,7 @@ interface IProductItemDescriptionFooter {
   description: string;
 }
 
-export const ProductItemDescriptionFooter = ({
+export const ProductDescriptionFooter = ({
   title,
   description,
 }: IProductItemDescriptionFooter) => {

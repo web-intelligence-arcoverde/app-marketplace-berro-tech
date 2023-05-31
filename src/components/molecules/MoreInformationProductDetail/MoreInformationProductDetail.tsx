@@ -19,7 +19,6 @@ export const MoreInformationProductDetail = ({
   return (
     <View
       style={{
-        paddingHorizontal: 20,
         flexDirection: 'row',
         flexWrap: 'wrap',
       }}>
