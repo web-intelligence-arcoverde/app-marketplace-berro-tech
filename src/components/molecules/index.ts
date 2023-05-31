@@ -82,7 +82,7 @@ export * from './CustomDropDownPickerAnimalBreed/CustomDropDownPickerAnimalBreed
 export * from './HeaderFilterProducts/HeaderFilterProducts';
 export * from './FooterDescriptionProduct/FooterDescriptionProduct';
 export * from './CarouselImagesDetailProductScreen/CarouselImagesDetailProductScreen';
-
+export * from './ProfileUserBasicInformation/ProfileUserBasicInformation';
 export * from './MoreInformationProductDetail/MoreInformationProductDetail';
 
 //BottomSheet

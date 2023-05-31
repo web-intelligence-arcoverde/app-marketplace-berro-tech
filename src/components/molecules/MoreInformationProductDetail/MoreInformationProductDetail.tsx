@@ -21,7 +21,6 @@ export const MoreInformationProductDetail = ({
       style={{
         paddingHorizontal: 20,
         flexDirection: 'row',
-        alignItems: 'flex-end',
         flexWrap: 'wrap',
       }}>
       <View style={{width: '50%'}}>
@@ -40,7 +39,7 @@ export const MoreInformationProductDetail = ({
           {setWeightMask(weight.toString())}
         </Text>
       </View>
-      <View>
+      <View style={{marginTop: 32}}>
         <Text typography="h4" colorFamily="gray" colorVariant="_04">
           Data de nascimento
         </Text>

@@ -48,6 +48,8 @@ import ProfileOutlinedIcon from './profile-icon-outlined.svg';
 import EyeCloseIcon from './eye-close.svg';
 import EyeIcon from './eye.svg';
 
+import SellerImgDefault from './seller-default.svg'
+
 /*
 
   - Icons de filter
@@ -100,5 +102,6 @@ export const ICONS = {
   'age-icon': AgeIcon,
   'breed-icon': BreedIcon,
   'classification-icon': ClassificationIcon,
-  'whatsapp-icon':WhatsappIcon
+  'whatsapp-icon':WhatsappIcon,
+  'seller-default':SellerImgDefault
 };

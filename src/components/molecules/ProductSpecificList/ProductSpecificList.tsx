@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/core';
 import {ScrollView, View} from 'react-native';
 import {ProductItemCard} from '../../';
 import {useAppSelector} from '../../../hooks';
@@ -5,6 +6,8 @@ import {scale} from '../../../utils';
 
 export const ProductSpecificList = () => {
   const {topSearchProduct} = useAppSelector(state => state.product);
+
+  const navigate = useNavigation();
 
   const redirectToDetailsProduct = (id: number) => {
     //@ts-ignore

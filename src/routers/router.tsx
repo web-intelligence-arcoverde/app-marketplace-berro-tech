@@ -14,6 +14,7 @@ import {
   AddProductScreen,
   ProfileChangerPasswordScreen,
   DetailProductScreen,
+  SellerScreen,
 } from '../screens/';
 
 import {
@@ -77,6 +78,8 @@ export const RouterApp = () => {
           name="DetailProductScreen"
           component={DetailProductScreen}
         />
+
+        <Stack.Screen name="SellerScreen" component={SellerScreen} />
       </Stack.Navigator>
       <BottomSheetSelectAnimalType defaultSize={180} />
       <BottomSheetSelectAnimalSex defaultSize={160} />

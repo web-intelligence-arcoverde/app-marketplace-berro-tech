@@ -4,6 +4,8 @@ export interface IUserInitialState {
   step_edit_profile?: number;
   bottom_sheet_index?: number;
   token: string;
+
+  seller?: any;
 }
 
 export interface IUserState {
