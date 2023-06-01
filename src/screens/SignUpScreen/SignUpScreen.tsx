@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 
 import {
   HeaderLogoIntro,
@@ -8,19 +8,8 @@ import {
 } from '../../components';
 
 import {ScrollView} from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const SignUpScreen = () => {
-  useEffect(() => {
-    async function example() {
-      const example = await AsyncStorage.getAllKeys();
-
-      return example;
-    }
-
-    console.log(example());
-  }, []);
-
   return (
     <KeyboardContainer>
       <HeaderLogoIntro />

@@ -14,7 +14,7 @@ export const DashboardBottomNavigation = () => {
   return (
     <>
       <Tab.Navigator
-        initialRouteName={'Negócios'}
+        initialRouteName={'Perfil'}
         screenOptions={({route}) => ({
           headerShown: false,
           tabBarItemStyle: {

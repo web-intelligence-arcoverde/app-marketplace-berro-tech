@@ -32,8 +32,6 @@ export const SellerScreen = ({route}: any) => {
     dispatch(readSellerRequest(id));
   }, []);
 
-  console.log(products);
-
   const Seller = ICONS['seller-default'];
 
   let {city, state} =
