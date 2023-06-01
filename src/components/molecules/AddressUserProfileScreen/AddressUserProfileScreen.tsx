@@ -5,14 +5,12 @@ import {Container} from './style';
 
 interface IAddressUserProfileScreen {
   city?: string;
-  uf?: string;
-  country?: string;
+  state?: string;
 }
 
 export const AddressUserProfileScreen = ({
   city,
-  uf,
-  country,
+  state,
 }: IAddressUserProfileScreen) => {
   const {goToRouter} = useNavigationHook();
 
@@ -26,7 +24,7 @@ export const AddressUserProfileScreen = ({
       <Separator height={8} />
       {city ? (
         <Text typography="h4">
-          {city}, {uf}, {country}
+          {city}, {state}
         </Text>
       ) : (
         <ButtonText

@@ -1,5 +1,4 @@
 import {View} from 'react-native';
-
 import {scale} from '../../../utils';
 
 import {
@@ -14,11 +13,15 @@ import {readInformationUserRequest} from '../../../store/reducer/user/actions';
 export const DescriptionUserProfileScreen = () => {
   const dispatch = useAppDispatch();
 
-  const {address, phone, name, email, photo} = useAppSelector(
-    state => state.user.user,
+  const {addresses, contacts, name, email, avatar_url} = useAppSelector(
+    state => state.auth.user,
   );
 
-  const {loading} = useAppSelector(state => state.user);
+  const {state, city} =
+    addresses.length >= 1 ? addresses[0] : {state: '', city: ''};
+
+  const {phone_number} =
+    contacts.length >= 1 ? contacts[0] : {phone_number: ''};
 
   useEffect(() => {
     dispatch(readInformationUserRequest());
@@ -26,15 +29,9 @@ export const DescriptionUserProfileScreen = () => {
 
   return (
     <View style={{paddingHorizontal: scale(20)}}>
-      {loading ? (
-        <></>
-      ) : (
-        <>
-          <HeaderUserProfileScreen name={name} photo={photo} email={email} />
-          <AddressUserProfileScreen {...address} />
-          <FooterUserProfilerScreen phone={phone} />
-        </>
-      )}
+      <HeaderUserProfileScreen name={name} photo={avatar_url} email={email} />
+      <AddressUserProfileScreen state={state} city={city} />
+      <FooterUserProfilerScreen phone={phone_number} />
     </View>
   );
 };

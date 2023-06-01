@@ -122,3 +122,24 @@ export const getMaskFromCore = (
     return smilesMaskPhone(phone, ddi.value || '', undefined);
   }
 };
+
+export const setCellphoneMask = (value: string) => {
+  // Verifica se o valor de entrada é uma string.
+  if (typeof value !== 'string') {
+    return value;
+  }
+
+  const regex = /^(\d{2})(\d{4,5})(\d{4})$/;
+  const partes = regex.exec(value);
+  if (partes) {
+    // Usa uma string template literal para construir o valor mascarado.
+    const valorMascarado = `(${partes[1]}) ${
+      partes[2].length === 5
+        ? `${partes[2][0]} ${partes[2].substr(1)}`
+        : `${partes[2]}`
+    } - ${partes[3]}`;
+    return valorMascarado;
+  } else {
+    return value;
+  }
+};

@@ -15,7 +15,7 @@ import {
 
 const EDIT_PROFILE_ROUTER = 'EditProfileScreen';
 const SELLER_SCREEN = 'SellerScreen';
-const PROFILE_SCREEN = 'ProfileScreen';
+const PROFILE_SCREEN = 'Perfil';
 const DETAIL_PRODUCT_ROUTER = 'DetailProductScreen';
 
 interface IHeaderVariantProfileEdit {

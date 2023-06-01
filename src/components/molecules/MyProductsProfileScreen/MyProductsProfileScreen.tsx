@@ -1,25 +1,23 @@
-import {View} from 'react-native';
+import {ScrollView} from 'react-native';
 
 import {EmptyContainerProduct, ProductListProfile} from '../../';
+import {useAppSelector} from '../../../hooks';
 
 export const MyProductsProfileScreen = () => {
-  const products = [];
+  const {
+    filterProducts,
+    user: {products},
+  } = useAppSelector(state => state.auth);
 
   const isEmptyProduct = products.length >= 1;
 
+  const product = filterProducts.length >= 1 ? filterProducts : products;
+
   const renderContent = isEmptyProduct ? (
-    <ProductListProfile />
+    <ProductListProfile products={product} />
   ) : (
     <EmptyContainerProduct />
   );
 
-  return (
-    <View
-      style={{
-        backgroundColor: '#FCFCFA',
-        flex: 1,
-      }}>
-      {renderContent}
-    </View>
-  );
+  return <>{renderContent}</>;
 };

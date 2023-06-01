@@ -1,7 +1,12 @@
 import {createReducer} from '@reduxjs/toolkit';
 
 import {initialState} from './initialState';
-import {setToken, signInSuccess} from './actions';
+import {
+  filterProductsByAnimalType,
+  readInformationUserLoggedSuccess,
+  setToken,
+  signInSuccess,
+} from './actions';
 import {storeData} from '../../../hooks/useAsyncStorage';
 
 export const authReducer = createReducer(initialState, builder => {
@@ -15,5 +20,11 @@ export const authReducer = createReducer(initialState, builder => {
       state.token = action.payload;
       state.isLogged = true;
       storeData(action.payload);
+    })
+    .addCase(readInformationUserLoggedSuccess, (state, action) => {
+      state.user = action.payload;
+    })
+    .addCase(filterProductsByAnimalType, (state, action) => {
+      state.filterProducts = action.payload;
     });
 });

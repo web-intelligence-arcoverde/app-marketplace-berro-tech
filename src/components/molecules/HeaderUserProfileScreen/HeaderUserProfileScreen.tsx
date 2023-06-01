@@ -26,7 +26,7 @@ export const HeaderUserProfileScreen = ({
 
   return (
     <Container>
-      <ContainerImage source={photo} />
+      <ContainerImage source={{uri: photo}} />
       <Separator width={20} />
       <View>
         <Text typography="h3" colorFamily="gray" colorVariant="_02">

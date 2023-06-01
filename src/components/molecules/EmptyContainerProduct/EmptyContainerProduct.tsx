@@ -18,7 +18,8 @@ export const EmptyContainerProduct = ({
         alignItems: 'center',
         justifyContent: 'center',
         alignContent: 'center',
-        height: '70%',
+        height: '30%',
+        backgroundColor: '#fff',
       }}>
       <IconComponent icon="logo-profile" />
 

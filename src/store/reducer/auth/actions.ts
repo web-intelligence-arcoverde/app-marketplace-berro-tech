@@ -10,3 +10,15 @@ export const signOutRequest = createAction('auth/sign-out-request');
 export const signOutSuccess = createAction('auth/sign-out-request');
 
 export const setToken = createAction<string>('auth/set-token');
+
+export const readInformationUserLoggedRequest = createAction(
+  'auth/read-information-user-logged-request',
+);
+
+export const readInformationUserLoggedSuccess = createAction<IUser>(
+  'auth/read-information-user-logged-success',
+);
+
+export const filterProductsByAnimalType = createAction<any>(
+  'auth/filter-products-by-animal-type',
+);

@@ -1,9 +1,13 @@
 import {IProduct} from '../product/types';
 
-export type IUser = {
+export type IStateAuth = {
+  user: IUser;
   token: string;
   isLogged: boolean;
-  loading: boolean;
+  filterProducts: IProduct[];
+};
+
+export type IUser = {
   id: '';
   avatar_url?: string;
   name: string;
