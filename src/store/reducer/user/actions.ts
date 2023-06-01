@@ -22,9 +22,9 @@ export const signUpSuccess = createAction<{
   token: '';
 }>('user/sign-up-success');
 
-export const readSellerRequest = createAction<{
-  id: number;
-}>('user/read-seller-request');
+export const readSellerRequest = createAction<number>(
+  'user/read-seller-request',
+);
 
 export const readSellerSuccess = createAction<{
   user: IUserState;

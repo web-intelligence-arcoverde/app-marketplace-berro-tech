@@ -19,5 +19,8 @@ export const initialState: IUserInitialState = {
     address: {city: '', uf: '', country: ''},
     phone: '',
     photo: '',
+    products: [],
   },
+
+  loadingSeller: true,
 };

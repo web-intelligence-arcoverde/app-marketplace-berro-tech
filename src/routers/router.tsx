@@ -25,22 +25,11 @@ import {
 
 const Stack = createNativeStackNavigator();
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
 export const RouterApp = () => {
-  const getToken = async () => {
-    const value = await AsyncStorage.getItem('token');
-    if (value !== null) {
-      return value;
-    }
-  };
-
-  console.log(getToken());
-
   return (
     <>
       <Stack.Navigator
-        initialRouteName={'DetailProductScreen'}
+        initialRouteName={'DashboardBottomNavigation'}
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
 

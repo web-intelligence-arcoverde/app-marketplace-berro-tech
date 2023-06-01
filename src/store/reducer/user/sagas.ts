@@ -1,28 +1,19 @@
 import {all, call, put, takeLatest} from 'redux-saga/effects';
 import {mockImages} from '../../../assets/images/mock';
-import {readInformationUserSuccess} from './actions';
+import api from '../../../service';
+import {readInformationUserSuccess, readSellerSuccess} from './actions';
 
-const user = {
-  name: 'Lucas Henrique Paes de Carvalho',
-  email: 'lucas@berrotech.com',
-  address: null,
-  phone: '87998093765',
-  avaliation_rate: '4.8',
-  photo: mockImages.UserHightQualityImage,
-};
-
-function* readUserInformation(): any {
+function* readSeller({payload}: any): any {
   try {
-    yield put(readInformationUserSuccess(user));
+    const {data} = yield call(api.get, `/user/${payload}`);
+    yield put(readSellerSuccess(data));
   } catch (e) {
     console.log(e);
   }
 }
 
 function* userSagas() {
-  yield all([
-    takeLatest('user/sign-information-user-request', readUserInformation),
-  ]);
+  yield all([takeLatest('user/read-seller-request', readSeller)]);
 }
 
 export default userSagas;

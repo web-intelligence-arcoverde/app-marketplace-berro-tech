@@ -25,8 +25,7 @@ import {
 import {LayoutContainer} from './style';
 
 export const DetailProductScreen = ({route}: any) => {
-  //const { id } = route.params
-  const id = 4;
+  const {id} = route.params;
 
   const {product, loadingProduct} = useAppSelector(state => state.product);
 

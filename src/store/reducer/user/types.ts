@@ -6,6 +6,7 @@ export interface IUserInitialState {
   token: string;
 
   seller?: any;
+  loadingSeller?: boolean;
 }
 
 export interface IUserState {

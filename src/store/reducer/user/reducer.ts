@@ -7,6 +7,8 @@ import {
   changerStepEditProfile,
   changerIndexBottomSheetRecentSearch,
   signUpSuccess,
+  readSellerRequest,
+  readSellerSuccess,
 } from './actions';
 
 export const userReducer = createReducer(initialState, builder => {
@@ -27,5 +29,12 @@ export const userReducer = createReducer(initialState, builder => {
     .addCase(signUpSuccess, (state, action) => {
       state.token = action.payload.token;
       state.user = action.payload.user;
+    })
+    .addCase(readSellerRequest, (state, action) => {
+      state.loadingSeller = true;
+    })
+    .addCase(readSellerSuccess, (state, action) => {
+      state.seller = action.payload;
+      state.loadingSeller = false;
     });
 });

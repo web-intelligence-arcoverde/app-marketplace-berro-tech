@@ -14,6 +14,8 @@ import {
 } from '../../../store/reducer/product/actions';
 
 const EDIT_PROFILE_ROUTER = 'EditProfileScreen';
+const SELLER_SCREEN = 'SellerScreen';
+const DETAIL_PRODUCT_ROUTER = 'DetailProductScreen';
 
 interface IHeaderVariantProfileEdit {
   focus?: boolean;
@@ -34,6 +36,8 @@ export const HeaderVariantProfileEdit = ({
   const dispatch = useAppDispatch();
 
   const isEditProfileScreen = name === EDIT_PROFILE_ROUTER;
+  const isDetailProduictScreen = name === DETAIL_PRODUCT_ROUTER;
+  const isSelleterScreen = name === SELLER_SCREEN;
 
   let isVisibleClearSearch = search.length > 0;
 
@@ -42,7 +46,10 @@ export const HeaderVariantProfileEdit = ({
       style={{
         flexDirection: 'row',
         justifyContent: 'space-between',
-        width: isEditProfileScreen ? '100%' : 'auto',
+        width:
+          isEditProfileScreen || isDetailProduictScreen || isSelleterScreen
+            ? '100%'
+            : 'auto',
         alignItems: 'center',
       }}>
       {isRouter?.router && (
@@ -64,7 +71,11 @@ export const HeaderVariantProfileEdit = ({
         </TouchableOpacity>
       )}
       {search.length <= 0 && <Image source={IMAGES.LogoHeader} />}
-      <HeaderVariantProfile />
+      {isEditProfileScreen || isDetailProduictScreen || isSelleterScreen ? (
+        <></>
+      ) : (
+        <HeaderVariantProfile />
+      )}
     </View>
   );
 };
@@ -76,11 +87,16 @@ function verifyRouter(name: string) {
   const isSelleterProfile = name === 'EditProductScreen';
   const isProfileChangerPasswordScreen = name == 'ProfileChangerPasswordScreen';
 
+  const isSelleterScreen = name === SELLER_SCREEN;
+  const isDetailProduictScreen = name === DETAIL_PRODUCT_ROUTER;
+
   if (
     isAddProductScreen ||
     isEditProductScreenn ||
     isSelleterProfile ||
-    isProfileChangerPasswordScreen
+    isProfileChangerPasswordScreen ||
+    isDetailProduictScreen ||
+    isSelleterScreen
   ) {
     return {
       router: true,

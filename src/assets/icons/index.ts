@@ -5,7 +5,7 @@ import HandIcon from './hand-icon.svg';
 import UserIcon from './user-icon.svg';
 import ArrowLeft from './arrow-left.svg';
 import ArrowDown from './arrow-down.svg';
-import WhatsappIcon from "./whatsapp-icon.svg"
+import WhatsappIcon from './whatsapp-icon.svg';
 import FilterIcon from './filter-icon.svg';
 import SearchIcon from './search-icon.svg';
 import CloseIcon from './close-icon.svg';
@@ -48,7 +48,7 @@ import ProfileOutlinedIcon from './profile-icon-outlined.svg';
 import EyeCloseIcon from './eye-close.svg';
 import EyeIcon from './eye.svg';
 
-import SellerImgDefault from './seller-default.svg'
+import SellerImgDefault from './seller-default.svg';
 
 /*
 
@@ -102,6 +102,6 @@ export const ICONS = {
   'age-icon': AgeIcon,
   'breed-icon': BreedIcon,
   'classification-icon': ClassificationIcon,
-  'whatsapp-icon':WhatsappIcon,
-  'seller-default':SellerImgDefault
+  'whatsapp-icon': WhatsappIcon,
+  'seller-default': SellerImgDefault,
 };
