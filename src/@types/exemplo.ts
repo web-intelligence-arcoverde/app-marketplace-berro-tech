@@ -1,16 +1,15 @@
-import {IProduct} from '../product/types';
+import {IProduct} from '../store/reducer/product/types';
 
-export type IUser = {
+export type UserState = {
   token: string;
   isLogged: boolean;
-  loading: boolean;
   id: '';
   avatar_url?: string;
   name: string;
   email: string;
-  products: IProduct[];
-  addresses: IAddress[];
-  contacts: IContact[];
+  products?: IProduct[];
+  addresses?: IAddress[];
+  contacts?: IContact[];
 };
 
 export type IAddress = {

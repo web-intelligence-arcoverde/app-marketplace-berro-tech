@@ -1,14 +1,14 @@
 import {Separator, Button} from '../..';
-import {useNavigationHook} from '../../../hooks';
-
 import {Container} from './style';
+
+import {useNavigationHook} from '../../../hooks';
 
 export const FooterButtonCreateAccountIntro = () => {
   const {goToRouter} = useNavigationHook();
 
   return (
     <Container>
-      <Separator height={42} />
+      <Separator height={20} />
       <Button
         title="Criar conta"
         variant="containedSecondary"

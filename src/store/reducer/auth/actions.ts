@@ -1,38 +1,12 @@
-import { createAction } from '@reduxjs/toolkit';
-import {
-  ISignInRequestEmail,
-  IRecoveryAccountSendEmail,
-  IRecoveryAccountSendCode, ISignUp
-} from './types';
+import {createAction} from '@reduxjs/toolkit';
+import {IUser} from './types';
 
-export const signInRequestFacebook = createAction(
-  'user/sign-in-request-facebook',
-);
+export const signInSuccess = createAction<string>('auth/sign-in-success');
 
-export const signInRequestGoogle = createAction('user/sign-in-request-google');
+export const signUpSuccess = createAction<string>('auth/sign-up-success');
 
+export const signOutRequest = createAction('auth/sign-out-request');
 
+export const signOutSuccess = createAction('auth/sign-out-request');
 
-
-export const signInRequestEmail = createAction<ISignInRequestEmail>(
-  'user/sign-in-email-request',
-);
-
-export const sendEmailRecoveryAccountRequest =
-  createAction<IRecoveryAccountSendEmail>(
-    'user/send-email-recovery-account-request',
-  );
-
-export const sendCodeRecoveryAccountRequest =
-  createAction<IRecoveryAccountSendCode>(
-    'user/send-code-recovery-account-request',
-  );
-
-
-export const signUpStep01 = createAction<ISignUp>(
-  'user/sign-up-step-01',
-);
-
-export const signUpStep02 = createAction<ISignUp>(
-  'user/sign-up-step-02',
-);
+export const setToken = createAction<string>('auth/set-token');

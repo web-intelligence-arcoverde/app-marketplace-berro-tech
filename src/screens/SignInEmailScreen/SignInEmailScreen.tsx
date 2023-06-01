@@ -9,6 +9,7 @@ import {
   FooterButtonCreateAccountIntro,
   KeyboardContainer,
 } from '../../components';
+import {useAppSelector} from '../../hooks';
 
 export const SignInEmailScreen = () => {
   return (

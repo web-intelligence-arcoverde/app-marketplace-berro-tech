@@ -1,5 +1,20 @@
 import {createAction} from '@reduxjs/toolkit';
-import {IUserState, IChangerStepEditProfile} from './types';
+import {
+  IUserState,
+  IChangerStepEditProfile,
+  ISignIn,
+  IRecoveryAccountSendEmail,
+  IRecoveryAccountSendCode,
+  ISignUp,
+} from './types';
+
+/*
+
+ # Acoes do usuario
+
+*/
+
+export const signInRequest = createAction<ISignIn>('user/sign-in-request');
 
 export const readInformationUserRequest = createAction(
   'user/sign-information-user-request',
@@ -29,3 +44,21 @@ export const readSellerRequest = createAction<number>(
 export const readSellerSuccess = createAction<{
   user: IUserState;
 }>('user/read-seller-succes');
+
+export const signInRequestFacebook = createAction(
+  'user/sign-in-request-facebook',
+);
+
+export const sendEmailRecoveryAccountRequest =
+  createAction<IRecoveryAccountSendEmail>(
+    'user/send-email-recovery-account-request',
+  );
+
+export const sendCodeRecoveryAccountRequest =
+  createAction<IRecoveryAccountSendCode>(
+    'user/send-code-recovery-account-request',
+  );
+
+export const signUpStep01 = createAction<ISignUp>('user/sign-up-step-01');
+
+export const signUpStep02 = createAction<ISignUp>('user/sign-up-step-02');

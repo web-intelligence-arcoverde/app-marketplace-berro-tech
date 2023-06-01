@@ -15,6 +15,7 @@ import {
   ProfileChangerPasswordScreen,
   DetailProductScreen,
   SellerScreen,
+  LoadingScreen,
 } from '../screens/';
 
 import {
@@ -22,16 +23,43 @@ import {
   BottomSheetSelectAnimalSex,
   BottomSheetSelectAnimalBreed,
 } from '../components';
+import {useAppDispatch, useAppSelector, useNavigationHook} from '../hooks';
+import {useAsyncStorage} from '../hooks/useAsyncStorage';
+import {setToken} from '../store/reducer/auth/actions';
 
 const Stack = createNativeStackNavigator();
 
 export const RouterApp = () => {
+  const dispatch = useAppDispatch();
+  const {goToRouter} = useNavigationHook();
+
+  const {value, loadingValue} = useAsyncStorage();
+  const {token, isLogged} = useAppSelector(state => state.auth);
+
+  let initialRoute = 'LoadingScreen';
+
+  let isUserLogged = token && isLogged;
+  let isExistToken = !!value;
+
+  React.useEffect(() => {
+    if (!loadingValue) {
+      if (isExistToken || isUserLogged) {
+        dispatch(setToken(value));
+        goToRouter('DashboardBottomNavigation');
+      } else {
+        goToRouter('SignInEmailScreen');
+      }
+    }
+  }, [loadingValue]);
+
   return (
     <>
       <Stack.Navigator
-        initialRouteName={'DashboardBottomNavigation'}
+        initialRouteName={initialRoute}
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
+
+        <Stack.Screen name="LoadingScreen" component={LoadingScreen} />
 
         <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
 

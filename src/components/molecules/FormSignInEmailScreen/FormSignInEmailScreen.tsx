@@ -1,4 +1,4 @@
-import {Button, Input, ButtonText, Separator} from '../../';
+import {Button, Input, ButtonText} from '../../';
 import {useNavigationHook, useHookFormSignInEmail} from '../../../hooks';
 
 import {Container} from './style';

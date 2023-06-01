@@ -22,5 +22,13 @@ export const initialState: IUserInitialState = {
     products: [],
   },
 
+  userSignUp: {
+    email: '',
+    name: '',
+    phone: '',
+    password: '',
+    confirmationPassword: '',
+  },
+
   loadingSeller: true,
 };

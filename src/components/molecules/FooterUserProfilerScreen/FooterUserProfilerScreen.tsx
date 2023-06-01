@@ -13,7 +13,6 @@ interface IFooterUserProfilerScreen {
 
 export const FooterUserProfilerScreen = ({
   phone,
-  avaliationRate,
 }: IFooterUserProfilerScreen) => {
   return (
     <Container>
@@ -31,13 +30,6 @@ export const FooterUserProfilerScreen = ({
           Avaliações
         </Text>
         <Separator height={8} />
-        <View style={{flexDirection: 'row'}}>
-          <Text typography="h4" colorFamily="gray" colorVariant="_02">
-            {avaliationRate}
-          </Text>
-          <Separator height={10} />
-          <IconComponent icon="star-icon" />
-        </View>
       </View>
     </Container>
   );

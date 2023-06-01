@@ -17,3 +17,4 @@ export * from './ProfileChangerPasswordScreen/ProfileChangerPasswordScreen';
 export * from './DetailProductScreen/DetailProductScreen';
 
 export * from './SellerScreen/SellerScreen';
+export * from './LoadingScreen/LoadingScreen';

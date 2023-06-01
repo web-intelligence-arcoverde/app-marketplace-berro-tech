@@ -7,7 +7,8 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import {ErrorMessage} from '../locale';
 import {useAppDispatch, useAppSelector, useNavigationHook} from '.';
-import {signUpStep02} from '../store/reducer/auth/actions';
+
+import {signUpStep02} from '../store/reducer/user/actions';
 
 const schema = yup
   .object({
@@ -33,7 +34,7 @@ export const useFormSignUpStep02 = () => {
 
   const {goToRouter} = useNavigationHook();
 
-  const {userSignUp} = useAppSelector(state => state.auth);
+  const {userSignUp} = useAppSelector(state => state.user);
   const dispatch = useAppDispatch();
 
   const STEP_SIZE = step + 1;
@@ -54,7 +55,6 @@ export const useFormSignUpStep02 = () => {
 
   //@ts-ignore
   const onSubmit = data => {
-    console.log(data);
     dispatch(
       signUpStep02({
         ...userSignUp,

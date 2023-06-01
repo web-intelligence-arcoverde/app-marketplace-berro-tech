@@ -18,7 +18,7 @@ import {filterByAllAttributes} from '../../../utils/filters';
 import {useRoute} from '@react-navigation/native';
 
 export const SearchInput = ({setFocus, focus}: any) => {
-  const {produtcs, filterProdutcs} = useAppSelector(state => state.product);
+  const {produtcs} = useAppSelector(state => state.product);
   const dispatch = useAppDispatch();
 
   const [searchTerm, setSearchTerm] = useState('');

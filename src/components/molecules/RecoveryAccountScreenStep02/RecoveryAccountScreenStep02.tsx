@@ -17,7 +17,7 @@ import {
 import {
   sendEmailRecoveryAccountRequest,
   sendCodeRecoveryAccountRequest,
-} from '../../../store/reducer/auth/actions';
+} from '../../../store/reducer/user/actions';
 
 export const RecoveryAccountScreenStep02 = () => {
   const {handleStart, chronometer} = useChronometerHook();

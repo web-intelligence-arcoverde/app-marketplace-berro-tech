@@ -15,6 +15,7 @@ import {
 
 const EDIT_PROFILE_ROUTER = 'EditProfileScreen';
 const SELLER_SCREEN = 'SellerScreen';
+const PROFILE_SCREEN = 'ProfileScreen';
 const DETAIL_PRODUCT_ROUTER = 'DetailProductScreen';
 
 interface IHeaderVariantProfileEdit {
@@ -39,6 +40,8 @@ export const HeaderVariantProfileEdit = ({
   const isDetailProduictScreen = name === DETAIL_PRODUCT_ROUTER;
   const isSelleterScreen = name === SELLER_SCREEN;
 
+  const isProfileScreen = name === PROFILE_SCREEN;
+
   let isVisibleClearSearch = search.length > 0;
 
   return (
@@ -47,7 +50,10 @@ export const HeaderVariantProfileEdit = ({
         flexDirection: 'row',
         justifyContent: 'space-between',
         width:
-          isEditProfileScreen || isDetailProduictScreen || isSelleterScreen
+          isEditProfileScreen ||
+          isDetailProduictScreen ||
+          isSelleterScreen ||
+          isProfileScreen
             ? '100%'
             : 'auto',
         alignItems: 'center',

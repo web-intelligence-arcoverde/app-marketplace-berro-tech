@@ -4,6 +4,7 @@ export interface IUserInitialState {
   step_edit_profile?: number;
   bottom_sheet_index?: number;
   token: string;
+  userSignUp?: ISignUp;
 
   seller?: any;
   loadingSeller?: boolean;
@@ -25,4 +26,37 @@ interface IAddress {
 
 export interface IChangerStepEditProfile {
   step_edit_profile: number;
+}
+
+export interface ISignUp {
+  email?: string;
+  name?: string;
+  phone?: string;
+  password?: string;
+  confirmationPassword?: string;
+}
+
+export interface ISignIn {
+  email: string;
+  password: string;
+}
+
+export interface IRecoveryAccountSendEmail {
+  email: string;
+}
+
+export interface IRecoveryAccountSendCode {
+  code: string;
+}
+
+export interface IRecoveryAccount {
+  email: string;
+}
+
+export interface ISignUp {
+  email?: string;
+  name?: string;
+  phone?: string;
+  password?: string;
+  confirmationPassword?: string;
 }

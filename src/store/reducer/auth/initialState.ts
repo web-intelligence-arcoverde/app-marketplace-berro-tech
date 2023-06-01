@@ -1,14 +1,13 @@
-import { UserState } from './types';
+import {IUser} from './types';
 
-export const initialState: UserState = {
+export const initialState: IUser = {
   token: '',
-  lastSearchs: [],
   isLogged: false,
-  userSignUp: {
-    email: '',
-    name: '',
-    phone: '',
-    password: '',
-    confirmationPassword: ''
-  }
+  loading: true,
+  id: '',
+  name: '',
+  email: '',
+  products: [],
+  addresses: [],
+  contacts: [],
 };

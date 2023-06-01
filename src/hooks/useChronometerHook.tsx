@@ -2,7 +2,7 @@ import {useEffect, useRef, useState} from 'react';
 
 const twoDigits = (num: any) => String(num).padStart(2, '0');
 
-function useInterval(callback, delay) {
+function useInterval(callback: any, delay: any) {
   const savedCallback = useRef();
 
   // Remember the latest callback.
@@ -13,6 +13,7 @@ function useInterval(callback, delay) {
   // Set up the interval.
   useEffect(() => {
     function tick() {
+      //@ts-ignore
       savedCallback.current();
     }
     if (delay !== null) {

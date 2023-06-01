@@ -9,7 +9,7 @@ import * as yup from 'yup';
 
 import {ErrorMessage} from '../locale';
 import {useAppDispatch, useAppSelector} from '.';
-import {signUpStep01} from '../store/reducer/auth/actions';
+import {signUpStep01} from '../store/reducer/user/actions';
 
 const schema = yup.object({
   email: yup
