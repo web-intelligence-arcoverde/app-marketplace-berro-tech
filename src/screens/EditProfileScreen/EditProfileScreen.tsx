@@ -7,16 +7,15 @@ import {
 } from '../../components';
 
 import {HeaderDashboard} from '../../components';
-
-import {getBottomSpaceHeight} from '../../utils';
+import {useAppSelector} from '../../hooks';
 
 export const EditProfileScreen = () => {
+  const {loading} = useAppSelector(state => state.auth);
+
   return (
     <KeyboardContainer>
       <HeaderDashboard />
-      <AppContextEditProfileScreenComponent />
-
-      <Separator height={getBottomSpaceHeight()} />
+      {loading ? <></> : <AppContextEditProfileScreenComponent />}
     </KeyboardContainer>
   );
 };

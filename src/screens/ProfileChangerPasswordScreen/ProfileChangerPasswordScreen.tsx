@@ -16,15 +16,25 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import {ErrorMessage} from '../../locale';
+import {useAppDispatch, useNavigationHook} from '../../hooks';
+import {changerPasswordRequest} from '../../store/reducer/auth/actions';
 
-const schema = yup.object({
-  email: yup
-    .string()
-    .required(ErrorMessage['email-required'])
-    .email(ErrorMessage['email-valid']),
-});
+const schema = yup
+  .object({
+    currentPassword: yup
+      .string()
+      .required(ErrorMessage['password-required'])
+      .min(8, ErrorMessage['password-min']),
+    newPassword: yup
+      .string()
+      .required(ErrorMessage['confirmation-password-required'])
+      .min(8, ErrorMessage['password-min']),
+  })
+  .required();
 
 export const ProfileChangerPasswordScreen = () => {
+  const {goToRouter} = useNavigationHook();
+
   const {
     control,
     handleSubmit,
@@ -32,29 +42,51 @@ export const ProfileChangerPasswordScreen = () => {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      email: '',
+      currentPassword: '',
+      newPassword: '',
     },
   });
 
+  const dispatch = useAppDispatch();
+
+  const onSubmit = handleSubmit(data =>
+    dispatch(changerPasswordRequest({data, navigation: goToRouter})),
+  );
+
   return (
     <KeyboardContainer>
-      <ScrollView>
-        <HeaderDashboard />
-        <View style={{paddingHorizontal: 20}}>
-          <Text typography="h3">Localização</Text>
-          <Separator height={20} />
-          <View style={{gap: 20}}>
-            <Input control={control} label="Senha atual" name="password" />
-            <Input control={control} label="Nova senha" name="newPassword" />
+      <HeaderDashboard />
+      <Separator height={20} />
+      <View style={{paddingHorizontal: 20}}>
+        <Text typography="h3">Alterar senha</Text>
+        <Separator height={20} />
+        <View style={{gap: 20}}>
+          <Input
+            label="Senha atual"
+            placeholder="No mínimo 8 dígitos"
+            password
+            control={control}
+            name="currentPassword"
+            rightIcon
+            errors={errors?.password?.message}
+          />
+          <Input
+            label="Nova senha"
+            placeholder="A mesma senha de cima"
+            password
+            control={control}
+            rightIcon
+            name="newPassword"
+            errors={errors?.confirmationPassword?.message}
+          />
 
-            <Button
-              title="Salvar Alterações"
-              onPress={() => {}}
-              variant="containedThirdy"
-            />
-          </View>
+          <Button
+            title="Salvar Alterações"
+            onPress={() => onSubmit()}
+            variant="containedThirdy"
+          />
         </View>
-      </ScrollView>
+      </View>
     </KeyboardContainer>
   );
 };

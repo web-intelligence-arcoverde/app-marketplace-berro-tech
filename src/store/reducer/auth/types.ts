@@ -5,6 +5,7 @@ export type IStateAuth = {
   token: string;
   isLogged: boolean;
   filterProducts: IProduct[];
+  loading: boolean;
 };
 
 export type IUser = {
@@ -27,3 +28,9 @@ export type IContact = {
   id?: number;
   phone_number?: string;
 };
+
+export interface IChangerPassword {
+  router: any;
+  currentPassword: string;
+  newPassword: string;
+}

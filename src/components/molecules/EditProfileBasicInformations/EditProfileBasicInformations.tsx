@@ -7,10 +7,12 @@ import {
   EditProfileBasicInformationsForm,
 } from '../../';
 
+import {Container} from './style';
+
 export const EditProfileBasicInformations = () => {
   return (
     <ScrollView>
-      <View style={{paddingHorizontal: 20}}>
+      <Container>
         <EditProfileChangeImage />
         <Separator height={20} />
         <Text typography="h3" colorFamily="gray" colorVariant="_01">
@@ -18,7 +20,7 @@ export const EditProfileBasicInformations = () => {
         </Text>
         <Separator height={20} />
         <EditProfileBasicInformationsForm />
-      </View>
+      </Container>
     </ScrollView>
   );
 };

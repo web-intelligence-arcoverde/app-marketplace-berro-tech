@@ -1,14 +1,16 @@
-import {useContext} from 'react';
 import {Separator, Text} from '../../';
-import {ContextEditProfileStep} from '../../../context';
 
 import {StepItem, Container} from './style';
 
-import {useState} from 'react';
+interface IStepsEditProfileScreen {
+  step?: number;
+  setStep?: (step: number) => void;
+}
 
-export const StepsEditProfileScreen = () => {
-  const [step, setStep] = useState(0);
-
+export const StepsEditProfileScreen = ({
+  step,
+  setStep,
+}: IStepsEditProfileScreen) => {
   return (
     <Container>
       <StepItem isActive={step === 0} onPress={() => setStep(0)}>

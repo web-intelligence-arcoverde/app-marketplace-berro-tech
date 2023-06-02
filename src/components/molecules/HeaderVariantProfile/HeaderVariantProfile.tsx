@@ -13,13 +13,8 @@ import {readInformationUserLoggedRequest} from '../../../store/reducer/auth/acti
 
 export const HeaderVariantProfile = () => {
   const {goToRouter} = useNavigationHook();
-  const dispatch = useAppDispatch();
 
   const {products} = useAppSelector(state => state.auth.user);
-
-  useEffect(() => {
-    dispatch(readInformationUserLoggedRequest());
-  }, []);
 
   const isExistProducts = products.length >= 1;
 

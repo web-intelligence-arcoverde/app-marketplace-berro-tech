@@ -3,6 +3,7 @@ import {IStateAuth} from './types';
 export const initialState: IStateAuth = {
   token: '',
   isLogged: false,
+  loading: true,
   filterProducts: [],
   user: {
     id: '',

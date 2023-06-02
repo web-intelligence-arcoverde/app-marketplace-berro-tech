@@ -1,5 +1,5 @@
 import {createAction} from '@reduxjs/toolkit';
-import {IUser} from './types';
+import {IUser, IChangerPassword} from './types';
 
 export const signInSuccess = createAction<string>('auth/sign-in-success');
 
@@ -21,4 +21,12 @@ export const readInformationUserLoggedSuccess = createAction<IUser>(
 
 export const filterProductsByAnimalType = createAction<any>(
   'auth/filter-products-by-animal-type',
+);
+
+export const changerPasswordRequest = createAction<IChangerPassword>(
+  'auth/changer-password-request',
+);
+
+export const changerPasswordSuccess = createAction(
+  'auth/changer-password-success',
 );

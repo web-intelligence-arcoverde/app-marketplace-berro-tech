@@ -6,9 +6,13 @@ interface IEditProfileImage {
 }
 
 export const EditProfileImage = ({url}: IEditProfileImage) => {
-  const {photo} = useAppSelector(state => state.user.user);
+  const {avatar_url} = useAppSelector(state => state.auth.user);
 
-  const imageUrl = url ? {uri: url} : photo;
+  const imageUrl = !!url
+    ? {uri: url}
+    : !!avatar_url
+    ? {uri: avatar_url}
+    : {uri: url};
 
   return <ImageContainer resizeMode="stretch" source={imageUrl} />;
 };

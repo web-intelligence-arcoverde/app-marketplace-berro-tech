@@ -6,7 +6,9 @@ import {Separator, SearchInput, HeaderVariantProfileEdit} from '../..';
 
 import {style} from './style';
 import {useRoute} from '@react-navigation/native';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import {useAppDispatch} from '../../../hooks';
+import {readInformationUserLoggedRequest} from '../../../store/reducer/auth/actions';
 
 export const HeaderDashboard = () => {
   const {name} = useRoute();
@@ -14,6 +16,12 @@ export const HeaderDashboard = () => {
   const isHome = name == 'Home' || name == 'Negócios';
 
   const [focus, setFocus] = useState(false);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(readInformationUserLoggedRequest());
+  }, []);
 
   return (
     <View style={style.container}>

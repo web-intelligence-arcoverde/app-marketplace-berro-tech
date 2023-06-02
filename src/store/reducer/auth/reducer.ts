@@ -23,6 +23,7 @@ export const authReducer = createReducer(initialState, builder => {
     })
     .addCase(readInformationUserLoggedSuccess, (state, action) => {
       state.user = action.payload;
+      state.loading = false;
     })
     .addCase(filterProductsByAnimalType, (state, action) => {
       state.filterProducts = action.payload;

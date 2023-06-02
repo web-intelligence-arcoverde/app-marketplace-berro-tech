@@ -10,7 +10,7 @@ export const AppContextEditProfileScreenComponent = () => {
 
   return (
     <ContextEditProfileStep.Provider value={[step, setStep]}>
-      <StepsEditProfileScreen />
+      <StepsEditProfileScreen step={step} setStep={setStep} />
       <Separator height={28} />
       <Steps />
     </ContextEditProfileStep.Provider>

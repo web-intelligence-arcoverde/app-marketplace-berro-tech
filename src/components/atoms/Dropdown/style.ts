@@ -7,6 +7,7 @@ interface IDropdownContainer {
 
 export const Container = styled.View`
   position: relative;
+  align-items: flex-end;
 `;
 
 export const ItemDropdown = styled.TouchableOpacity`

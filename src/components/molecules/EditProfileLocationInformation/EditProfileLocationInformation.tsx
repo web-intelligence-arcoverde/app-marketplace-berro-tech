@@ -1,6 +1,6 @@
 import {View} from 'react-native';
 
-import {Button, Text, Input, Separator} from '../../';
+import {Button, Text, Input, Separator, Dropdown} from '../../';
 
 import {useForm} from 'react-hook-form';
 
@@ -13,17 +13,16 @@ import {useAppSelector} from '../../../hooks';
 
 const schema = yup
   .object({
-    email: yup.string().required().email(),
-    password: yup.string().required().min(8),
+    state: yup.string().required(),
+    city: yup.string().required(),
   })
   .required();
 
 export const EditProfileLocationInformation = () => {
-  const {address} = useAppSelector(state => state.user.user);
+  const {addresses} = useAppSelector(state => state.auth.user);
 
-  const defaultValue = address
-    ? {state: address?.uf, city: address?.city}
-    : {state: '', city: ''};
+  const {state, city} =
+    addresses.length >= 1 ? addresses[0] : {state: '', city: ''};
 
   const {
     control,
@@ -31,7 +30,7 @@ export const EditProfileLocationInformation = () => {
     formState: {errors},
   } = useForm({
     resolver: yupResolver(schema),
-    defaultValues: defaultValue,
+    defaultValues: {state: state, city: city},
   });
 
   const onSubmit = data => console.log(data);
@@ -43,8 +42,18 @@ export const EditProfileLocationInformation = () => {
       </Text>
       <Separator height={20} />
       <View style={{gap: 20}}>
-        <Input control={control} label="Estado" name="name" />
-        <Input control={control} label="Cidade" name="email" />
+        <Input
+          control={control}
+          label="Estado"
+          name="state"
+          errors={errors?.state?.message}
+        />
+        <Input
+          control={control}
+          label="Cidade"
+          name="city"
+          errors={errors?.city?.message}
+        />
 
         <Button
           title="Salvar Alterações"

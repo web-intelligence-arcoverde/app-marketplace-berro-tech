@@ -17,6 +17,7 @@ const EDIT_PROFILE_ROUTER = 'EditProfileScreen';
 const SELLER_SCREEN = 'SellerScreen';
 const PROFILE_SCREEN = 'Perfil';
 const DETAIL_PRODUCT_ROUTER = 'DetailProductScreen';
+const CHANGER_PASSWORD_SCREEN = 'ProfileChangerPasswordScreen';
 
 interface IHeaderVariantProfileEdit {
   focus?: boolean;
@@ -53,7 +54,8 @@ export const HeaderVariantProfileEdit = ({
           isEditProfileScreen ||
           isDetailProduictScreen ||
           isSelleterScreen ||
-          isProfileScreen
+          isProfileScreen ||
+          CHANGER_PASSWORD_SCREEN
             ? '100%'
             : 'auto',
         alignItems: 'center',
@@ -77,7 +79,10 @@ export const HeaderVariantProfileEdit = ({
         </TouchableOpacity>
       )}
       {search.length <= 0 && <Image source={IMAGES.LogoHeader} />}
-      {isEditProfileScreen || isDetailProduictScreen || isSelleterScreen ? (
+      {isEditProfileScreen ||
+      isDetailProduictScreen ||
+      isSelleterScreen ||
+      CHANGER_PASSWORD_SCREEN ? (
         <></>
       ) : (
         <HeaderVariantProfile />

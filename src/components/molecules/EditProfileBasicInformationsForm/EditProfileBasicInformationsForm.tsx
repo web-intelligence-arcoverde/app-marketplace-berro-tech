@@ -22,7 +22,10 @@ const schema = yup
 export const EditProfileBasicInformationsForm = () => {
   const {goToRouter} = useNavigationHook();
 
-  const {name, email, phone} = useAppSelector(state => state.user.user);
+  const {contacts, name, email} = useAppSelector(state => state.auth.user);
+
+  const {phone_number} =
+    contacts.length >= 1 ? contacts[0] : {phone_number: ''};
 
   const {
     control,
@@ -33,7 +36,7 @@ export const EditProfileBasicInformationsForm = () => {
     defaultValues: {
       name,
       email,
-      phone,
+      phone: phone_number,
     },
   });
 

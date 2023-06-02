@@ -1,40 +1,40 @@
 # Screens
 
-  ## SplashScreen
-  
-  ## OnboardingScreen
-  
-    - ajustado status bar 
-  
-  ## SignInSocialScreen
-    
+## SplashScreen
+
+## OnboardingScreen
+
+    - ajustado status bar
+
+## SignInSocialScreen
+
     - mudar nome da screen para SignInOptionScreen
- 
-  ## SignUpScreen
-  
+
+## SignUpScreen
+
     - gerar build
     - verificar tipos dos inputs
     - faltando button [ já tenho uma conta ]
     - faltando button [ voltar ]
     - mudar campo telefone para celular (whatsapp)
     - integrar com o back end
- 
-  ## SignInEmailScreen
-    
+
+## SignInEmailScreen
+
     - mudar nome da screen para SignInScreen
     - verificar tipos dos inputs
     - integrar com o back end
     - salvar token no asyncLocalStorage
- 
-  ## RecoveryAccountScreen
-    
+
+## RecoveryAccountScreen
+
     - adicionar provedor envio email
     - integrar com o back end
-    
-  ## DashboardBottomNavigation
-  
+
+## DashboardBottomNavigation
+
     ### Home
-      
+
       - header arrumar iteracoes com back
       - header adicionar espaçamento no topo
       - mudar nome da screen para DashboardScreen
@@ -42,25 +42,48 @@
       - adicionar redirecionamento do ver mais para negocios
       - adicionar redirecionamento quando clicar no produto para os detalhes dele
       - integrar ProductListSpecificHomeScreen com back end
-    
-    ### Negócios  
-    
+
+    ### Negócios
+
       - arrumar header
       - integrar com back end
       - arrumar informacoes do produto
       - organizar filtros
-      
+
     ### Perfil
-    
+
       - arrumar header
       - pegar informacoes do usuario do back
       - alterar informacoes do usuario
       - remover item de avaliacoes
       - arrumar steps de editar conta
-  
-  ## AddProductScreen
-    
+
+## AddProductScreen
+
     - ESSA SCREEN VAI SERVIR TANTO PARA CRIAR COMO EDITAR
     - mudar nome da screen para ProductScreen
     - Ajustar steps do cadastro de produto
     - adicionar rota para buscar select de animal, raca, idade
+
+## EditProfile
+
+    ### ChangerPassword
+
+      - criar action no redux
+      - criar criar sagas
+      - enviar valores para o back
+
+
+    ### ChangerLocation
+
+      - criar action no redux
+      - criar criar sagas
+      - alterar valor no reducer caso for successs
+      - enviar valores para o back
+
+    ### BasicInformation
+
+      - criar action no redux
+      - criar criar sagas
+      - alterar valor no reducer caso for successs
+      - enviar valores para o back

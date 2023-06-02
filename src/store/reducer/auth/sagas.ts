@@ -4,6 +4,7 @@ import {signUpRequest} from './service';
 import {signUpSuccess} from '../user/actions';
 import api from '../../../service';
 import {readInformationUserLoggedSuccess} from './actions';
+import {store} from '../..';
 
 function* signUp({payload}: any): any {
   try {
@@ -29,6 +30,23 @@ function* readInformationUser() {
   } catch (e) {}
 }
 
+function* changerPassword({payload}: any): any {
+  try {
+    console.log(payload);
+
+    const router = payload.navigation;
+
+    delete payload.router;
+
+    const id = store.getState().auth.user.id;
+    yield call(api.put, `/change-password/${id}`, payload.data);
+
+    yield put(router('EditProfileScreen'));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 function* authSagas() {
   yield all([
     takeLatest('user/sign-up-step-02', signUp),
@@ -36,6 +54,7 @@ function* authSagas() {
       'auth/read-information-user-logged-request',
       readInformationUser,
     ),
+    takeLatest('auth/changer-password-request', changerPassword),
   ]);
 }
 
