@@ -1,22 +1,27 @@
+import {IContact} from '../auth/types';
+import {IProduct} from '../product/types';
+
 export interface IUserInitialState {
-  user: IUserState;
+  user: IUser;
   loading?: boolean;
   step_edit_profile?: number;
   bottom_sheet_index?: number;
   token: string;
   userSignUp?: ISignUp;
 
-  seller?: any;
+  seller?: IUser;
   loadingSeller?: boolean;
 }
 
-export interface IUserState {
-  name?: string;
-  email?: string;
-  address?: IAddress | null;
-  phone?: string;
-  photo?: any;
-}
+export type IUser = {
+  id: '';
+  avatar_url?: string;
+  name: string;
+  email: string;
+  products: IProduct[];
+  addresses: IAddress[];
+  contacts: IContact[];
+};
 
 interface IAddress {
   city: string;

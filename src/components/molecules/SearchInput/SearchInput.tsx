@@ -1,4 +1,4 @@
-import {TouchableOpacity, View, TextInput, Keyboard} from 'react-native';
+import {TouchableOpacity, View, TextInput} from 'react-native';
 import {inputSearch} from './style';
 
 import {IconComponent} from '../../';

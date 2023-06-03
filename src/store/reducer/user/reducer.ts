@@ -21,6 +21,10 @@ export const userReducer = createReducer(initialState, builder => {
     .addCase(readInformationUserSuccess, (state, action) => {
       state.loading = false;
       state.user = action.payload;
+    })
+    .addCase(readSellerSuccess, (state, action) => {
+      state.seller = action.payload;
+      state.loadingSeller = false;
     });
 });
 

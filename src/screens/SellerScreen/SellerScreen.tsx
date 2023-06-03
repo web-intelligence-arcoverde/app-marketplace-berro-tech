@@ -57,74 +57,83 @@ export const SellerScreen = ({route}: any) => {
   return (
     <>
       <HeaderDashboard />
-      <ScrollView>
-        <View style={{width: width, height: scale(260)}}>
-          {!!avatar_url ? (
-            <Image
-              source={{uri: avatar_url}}
-              style={{
-                width: width,
-                height: scale(260),
-                resizeMode: 'stretch',
-              }}
-            />
-          ) : (
-            <Seller />
-          )}
-        </View>
-        <Separator height={12} />
-        <LayoutContainer>
-          <View>
-            <Text typography="h4" colorFamily="gray" colorVariant="_04">
-              Nome
-            </Text>
-            <Text colorFamily="gray" colorVariant="_01">
-              {name}
-            </Text>
-          </View>
-          {isExistAddress && (
-            <>
-              <Text typography="h4" colorFamily="gray" colorVariant="_04">
-                Localização
-              </Text>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <IconComponent icon="location-icon" />
-                <Separator width={8} />
-
-                <View>
-                  <Separator height={4} />
-                  {isExistAddress && (
-                    <Text
-                      typography="h3"
-                      colorFamily="sub_brand"
-                      colorVariant="_02">
-                      {city}, {state}
-                    </Text>
-                  )}
-                </View>
+      {loadingSeller ? (
+        <></>
+      ) : (
+        <>
+          <ScrollView>
+            <View style={{width: width, height: scale(260)}}>
+              {!!avatar_url ? (
+                <Image
+                  source={{uri: avatar_url}}
+                  style={{
+                    width: width,
+                    height: scale(260),
+                    resizeMode: 'stretch',
+                  }}
+                />
+              ) : (
+                <Seller />
+              )}
+            </View>
+            <Separator height={12} />
+            <LayoutContainer>
+              <View>
+                <Text typography="h4" colorFamily="gray" colorVariant="_04">
+                  Nome
+                </Text>
+                <Text colorFamily="gray" colorVariant="_01">
+                  {name}
+                </Text>
               </View>
-            </>
-          )}
+              {isExistAddress && (
+                <>
+                  <Text typography="h4" colorFamily="gray" colorVariant="_04">
+                    Localização
+                  </Text>
+                  <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <IconComponent icon="location-icon" />
+                    <Separator width={8} />
 
-          <Separator height={20} />
+                    <View>
+                      <Separator height={4} />
+                      {isExistAddress && (
+                        <Text
+                          typography="h3"
+                          colorFamily="sub_brand"
+                          colorVariant="_02">
+                          {city}, {state}
+                        </Text>
+                      )}
+                    </View>
+                  </View>
+                </>
+              )}
 
-          <Button
-            title="Entrar em contato"
-            onPress={() => goToWhatsapp()}
-            icon="whatsapp-icon"
-            variant="whatsapp"
-          />
-          <Separator height={20} />
+              <Separator height={20} />
 
-          {products.map((item: any, index: number) => {
-            return (
-              <View key={`${item}-${index}-product-item-highlight`}>
-                <ProductItemCard {...item} onPress={redirectToDetailsProduct} />
-              </View>
-            );
-          })}
-        </LayoutContainer>
-      </ScrollView>
+              <Button
+                title="Entrar em contato"
+                onPress={() => goToWhatsapp()}
+                icon="whatsapp-icon"
+                variant="whatsapp"
+              />
+              <Separator height={20} />
+
+              {products.map((item: any, index: number) => {
+                return (
+                  <View key={`${item}-${index}-product-item-highlight`}>
+                    <ProductItemCard
+                      {...item}
+                      onPress={redirectToDetailsProduct}
+                    />
+                  </View>
+                );
+              })}
+            </LayoutContainer>
+          </ScrollView>
+        </>
+      )}
     </>
   );
 };

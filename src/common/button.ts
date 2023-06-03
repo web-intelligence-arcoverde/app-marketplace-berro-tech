@@ -24,9 +24,7 @@ export const ButtonStyle = EStyleSheet.create({
   },
 
   containedNotIcon: {
-    containerStyle: {
-      width: '100%',
-    },
+    containerStyle: {},
 
     titleStyle: {
       color: COLORS.sub_brand._04,
@@ -37,8 +35,9 @@ export const ButtonStyle = EStyleSheet.create({
 
     buttonStyle: {
       backgroundColor: COLORS.sub_brand._02,
-      height: scale(52),
       borderRadius: scale(6),
+      paddingHorizontal: scale(24),
+      paddingVertical: scale(16),
     },
   },
 

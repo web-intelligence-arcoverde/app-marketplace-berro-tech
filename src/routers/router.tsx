@@ -47,7 +47,7 @@ export const RouterApp = () => {
         dispatch(setToken(value));
         goToRouter('DashboardBottomNavigation');
       } else {
-        goToRouter('SignInEmailScreen');
+        goToRouter('SplashScreen');
       }
     }
   }, [loadingValue]);

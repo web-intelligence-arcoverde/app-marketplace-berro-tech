@@ -25,7 +25,6 @@ interface IHeaderVariantProfileEdit {
 }
 
 export const HeaderVariantProfileEdit = ({
-  focus,
   setFocus,
 }: IHeaderVariantProfileEdit) => {
   const {search} = useAppSelector(state => state.product);
@@ -42,6 +41,8 @@ export const HeaderVariantProfileEdit = ({
   const isSelleterScreen = name === SELLER_SCREEN;
 
   const isProfileScreen = name === PROFILE_SCREEN;
+
+  const isChangerPasswordScreen = name === CHANGER_PASSWORD_SCREEN;
 
   let isVisibleClearSearch = search.length > 0;
 
@@ -80,13 +81,10 @@ export const HeaderVariantProfileEdit = ({
       )}
       {search.length <= 0 && <Image source={IMAGES.LogoHeader} />}
       {isEditProfileScreen ||
-      isDetailProduictScreen ||
-      isSelleterScreen ||
-      CHANGER_PASSWORD_SCREEN ? (
-        <></>
-      ) : (
-        <HeaderVariantProfile />
-      )}
+        isDetailProduictScreen ||
+        isSelleterScreen ||
+        (isChangerPasswordScreen && <></>)}
+      {isProfileScreen && <HeaderVariantProfile />}
     </View>
   );
 };

@@ -2,11 +2,13 @@ import {IUserInitialState} from './types';
 
 export const initialState: IUserInitialState = {
   user: {
+    id: '',
     name: '',
     email: '',
-    address: {city: '', uf: '', country: ''},
-    phone: '',
-    photo: '',
+    addresses: [{city: '', uf: '', country: ''}],
+    contacts: [{phone_number: ''}],
+    avatar_url: '',
+    products: [],
   },
   loading: true,
   step_edit_profile: 0,
@@ -14,11 +16,12 @@ export const initialState: IUserInitialState = {
   token: '',
 
   seller: {
+    id: '',
     name: '',
     email: '',
-    address: {city: '', uf: '', country: ''},
-    phone: '',
-    photo: '',
+    addresses: [{city: '', uf: '', country: ''}],
+    contacts: [{phone_number: ''}],
+    avatar_url: '',
     products: [],
   },
 

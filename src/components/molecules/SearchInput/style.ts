@@ -5,16 +5,15 @@ import {scale} from '../../../utils';
 export const inputSearch = EStyleSheet.create({
   container: {
     backgroundColor: COLORS.light._05,
-    width: '80%',
-    padding: scale(16),
+    width: scale(268),
+    padding: scale(14),
     flexDirection: 'row',
     height: scale(52),
     borderRadius: scale(6),
-    marginLeft: scale(20),
   },
 
   input: {
-    width: '86%',
+    width: '84%',
     height: '100%',
     marginLeft: scale(8),
   },

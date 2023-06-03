@@ -1,18 +1,19 @@
-import EStyleSheet from 'react-native-extended-stylesheet';
 import {COLORS} from '../../../common';
 import {scale} from '../../../utils';
 
-export const style = EStyleSheet.create({
-  container: {
-    width: '100%',
+import styled from 'styled-components/native';
 
-    backgroundColor: COLORS.brand_light._01,
-  },
+export const Container = styled.View`
+  width: 100%;
+  background-color: ${COLORS.brand_light._01};
 
-  content: {
-    paddingHorizontal: scale(20),
-    paddingVertical: scale(12),
-    alignItems: 'center',
-    flexDirection: 'row',
-  },
-});
+  padding-horizontal: ${scale(20)};
+  padding-vertical: ${scale(12)};
+`;
+
+export const StyledContainer = styled.View`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
