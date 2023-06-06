@@ -11,6 +11,16 @@ export interface IUserInitialState {
 
   seller?: IUser;
   loadingSeller?: boolean;
+
+  states: any[];
+  state: string;
+  visible_bottom_sheet_states: number;
+  loadingStates: boolean;
+
+  cities: any[];
+  city: string;
+  visible_bottom_sheet_cities: number;
+  loadingCities: boolean;
 }
 
 export type IUser = {

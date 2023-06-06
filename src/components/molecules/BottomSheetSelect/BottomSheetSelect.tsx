@@ -1,9 +1,10 @@
+import React from 'react';
 import {View, TouchableOpacity} from 'react-native';
 
 import {Separator, Text} from '../..';
 import {capitalize, scale} from '../../../utils';
 
-export const BottomSheetSelectAnimalTypeItem = ({item, selectOption}: any) => {
+export const BottomSheetSelect = ({item, selectOption}: any) => {
   return (
     <TouchableOpacity
       style={{
@@ -24,7 +25,7 @@ export const BottomSheetSelectAnimalTypeItem = ({item, selectOption}: any) => {
       />
       <Separator width={14} />
       <Text typography="h4" colorVariant="_01" colorFamily="gray">
-        {capitalize(item)}
+        {capitalize(item.name)}
       </Text>
     </TouchableOpacity>
   );

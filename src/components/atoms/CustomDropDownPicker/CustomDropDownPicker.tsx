@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {IconComponent, ContentDropDownPicker} from '../../';
 
 import {InputStyle} from './style';
@@ -21,7 +23,7 @@ export const CustomDropDownPicker = ({
   label,
   errorMessage,
 }: ICustomDropDownPicker) => {
-  const {containerStyle, containerContent} = InputStyle['contained'];
+  const {containerStyle, containerContent} = InputStyle.contained;
 
   return (
     <TouchableOpacity

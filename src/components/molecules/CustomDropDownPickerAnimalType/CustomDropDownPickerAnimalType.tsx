@@ -1,48 +1,35 @@
-import {CustomDropDownPicker} from '../../';
-import {useCallback, useEffect, useState} from 'react';
-import {
-  readTypesAnimalsRequest,
-  setVisibleBottomSheetAnimalType,
-} from '../../../store/reducer/product/actions';
-import {useAppDispatch, useAppSelector} from '../../../hooks';
+import React from 'react';
 
-export const CustomDropDownPickerAnimalType = () => {
+import {CustomDropDownPicker} from '../../';
+import {useCallback, useState} from 'react';
+import {useAppDispatch, useAppSelector} from '../../../hooks';
+import {setVisibleStates} from '../../../store/reducer/user/actions';
+
+export const CustomDropDownPickerStates = () => {
   const dispatch = useAppDispatch();
   const [focus, setFocus] = useState(false);
 
-  useEffect(() => {
-    dispatch(readTypesAnimalsRequest());
-  }, []);
-
-  const {visible_animal_type_select, animal_type} = useAppSelector(
-    state => state.product,
+  const {state, visible_bottom_sheet_states} = useAppSelector(
+    state => state.user,
   );
 
   const handleOpenBottomSheetAnimalType = useCallback(() => {
-    if (visible_animal_type_select === 0) {
-      dispatch(
-        setVisibleBottomSheetAnimalType({
-          visible_animal_type_select: 1,
-        }),
-      );
+    if (visible_bottom_sheet_states === 0) {
+      dispatch(setVisibleStates(1));
       setFocus(true);
     } else {
-      dispatch(
-        setVisibleBottomSheetAnimalType({
-          visible_animal_type_select: 0,
-        }),
-      );
+      dispatch(setVisibleStates(0));
       setFocus(false);
     }
-  }, [visible_animal_type_select]);
+  }, [dispatch, visible_bottom_sheet_states]);
 
   return (
     <CustomDropDownPicker
       onPress={handleOpenBottomSheetAnimalType}
       focus={focus}
-      value={animal_type}
-      label="Animal"
-      placeholder="Selecione um tipo de animal"
+      value={state}
+      label="Estado"
+      placeholder="Selecione seu estado"
     />
   );
 };

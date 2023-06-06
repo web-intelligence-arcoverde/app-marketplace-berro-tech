@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   HeaderDashboard,
   StepsAddProduct,
@@ -10,16 +12,16 @@ import {
   CustomDropDownPickerAnimalBreed,
 } from '../../components';
 
-import { yupResolver } from '@hookform/resolvers/yup';
+import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-import { useForm, SubmitHandler } from 'react-hook-form';
+import {useForm, SubmitHandler} from 'react-hook-form';
 
-import { ErrorMessage } from '../../locale';
+import {ErrorMessage} from '../../locale';
 
-import { View, ScrollView } from 'react-native';
-import { scale, getBottomSpaceHeight } from '../../utils';
-import { useAppDispatch } from '../../hooks';
+import {View, ScrollView} from 'react-native';
+import {scale, getBottomSpaceHeight} from '../../utils';
+import {useAppDispatch} from '../../hooks';
 
 const schema = yup.object({
   name: yup.string().required(ErrorMessage['email-required']),
@@ -29,7 +31,7 @@ export const AddProductScreen = () => {
   const {
     control,
     handleSubmit,
-    formState: { errors },
+    formState: {errors},
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
@@ -39,18 +41,16 @@ export const AddProductScreen = () => {
 
   const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
 
-  const dispatch = useAppDispatch();
-
   return (
-    <View style={{ flex: 1, backgroundColor: '#fff' }}>
+    <View style={{flex: 1, backgroundColor: '#fff'}}>
       <HeaderDashboard />
       <StepsAddProduct />
 
       <View
         style={{
-          marginTop: scale(28)
+          marginTop: scale(28),
         }}>
-        <ScrollView style={{ height: '70%', paddingHorizontal: scale(20) }}>
+        <ScrollView style={{height: '70%', paddingHorizontal: scale(20)}}>
           <Text typography="h3">Sobre o produto</Text>
           <Separator height={24} />
           <SecondInput

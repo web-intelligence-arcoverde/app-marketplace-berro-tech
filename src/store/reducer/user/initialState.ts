@@ -34,4 +34,13 @@ export const initialState: IUserInitialState = {
   },
 
   loadingSeller: true,
+
+  states: [],
+  loadingStates: true,
+  state: '',
+  visible_bottom_sheet_states: 0,
+  cities: [],
+  city: '',
+  visible_bottom_sheet_cities: 0,
+  loadingCities: true,
 };

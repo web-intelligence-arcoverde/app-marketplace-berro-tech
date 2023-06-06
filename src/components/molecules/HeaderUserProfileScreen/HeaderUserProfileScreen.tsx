@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {Text, Button, Separator} from '../../';
 import {View} from 'react-native';
 import {Container, ContainerImage} from './style';

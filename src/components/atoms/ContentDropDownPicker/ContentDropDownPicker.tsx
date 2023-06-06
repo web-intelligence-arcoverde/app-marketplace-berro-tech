@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {Text} from '../../';
 
 import {View} from 'react-native';

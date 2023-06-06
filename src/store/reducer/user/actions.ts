@@ -45,10 +45,6 @@ export const readSellerSuccess = createAction<{
   user: IUserState;
 }>('user/read-seller-succes');
 
-export const signInRequestFacebook = createAction(
-  'user/sign-in-request-facebook',
-);
-
 export const sendEmailRecoveryAccountRequest =
   createAction<IRecoveryAccountSendEmail>(
     'user/send-email-recovery-account-request',
@@ -60,5 +56,35 @@ export const sendCodeRecoveryAccountRequest =
   );
 
 export const signUpStep01 = createAction<ISignUp>('user/sign-up-step-01');
-
 export const signUpStep02 = createAction<ISignUp>('user/sign-up-step-02');
+
+export const readStateRequest = createAction('user/read-state-request');
+export const readStateSuccess = createAction<any[]>('user/read-state-success');
+
+export const setVisibleStates = createAction<number>(
+  'user/set-visible-bottom-sheet-states',
+);
+
+export const selectState = createAction<string>('user/select-state');
+
+export const readCityByStateRequest = createAction<string>(
+  'user/read-city-by-state-request',
+);
+
+export const readCityByStateSuccess = createAction<any[]>(
+  'user/read-city-by-state-success',
+);
+
+export const setVisibleCity = createAction<number>(
+  'user/set-visible-bottom-sheet-city',
+);
+
+export const updateUserAddressRequest = createAction<any>(
+  'user/update-user-address-request',
+);
+
+export const updateUserAddressSuccess = createAction(
+  'user/update-user-address-success',
+);
+
+export const selectCity = createAction<string>('user/select-city');

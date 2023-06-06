@@ -1,39 +1,45 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {View} from 'react-native';
+import React, {useEffect} from 'react';
 
-import {Button, Text, Input, Separator, Dropdown} from '../../';
-
-import {useForm} from 'react-hook-form';
+import {Button, Text, Separator, CustomDropDownPickerStates} from '../../';
 
 import {scale} from '../../../utils';
 
-import {yupResolver} from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-
-import {useAppSelector} from '../../../hooks';
-
-const schema = yup
-  .object({
-    state: yup.string().required(),
-    city: yup.string().required(),
-  })
-  .required();
+import {useAppDispatch, useAppSelector} from '../../../hooks';
+import {CustomDropDownPickerCities} from '../CustomDropDownPickerCities/CustomDropDownPickerCities';
+import {
+  selectCity,
+  selectState,
+  updateUserAddressRequest,
+} from '../../../store/reducer/user/actions';
 
 export const EditProfileLocationInformation = () => {
   const {addresses} = useAppSelector(state => state.auth.user);
 
+  const {state: stateSelected, city: citySelected} = useAppSelector(
+    state => state.user,
+  );
+
   const {state, city} =
     addresses.length >= 1 ? addresses[0] : {state: '', city: ''};
 
-  const {
-    control,
-    handleSubmit,
-    formState: {errors},
-  } = useForm({
-    resolver: yupResolver(schema),
-    defaultValues: {state: state, city: city},
-  });
+  const dispatch = useAppDispatch();
 
-  const onSubmit = data => console.log(data);
+  useEffect(() => {
+    if (!!state && !!city) {
+      if (state.length >= 1 || city.length >= 1) {
+        dispatch(selectCity(city));
+        dispatch(selectState(state));
+      }
+    }
+  }, [city?.length, state?.length]);
+
+  const handleSubmit = () => {
+    dispatch(
+      updateUserAddressRequest({state: stateSelected, city: citySelected}),
+    );
+  };
 
   return (
     <View style={{paddingHorizontal: scale(20)}}>
@@ -42,22 +48,13 @@ export const EditProfileLocationInformation = () => {
       </Text>
       <Separator height={20} />
       <View style={{gap: 20}}>
-        <Input
-          control={control}
-          label="Estado"
-          name="state"
-          errors={errors?.state?.message}
-        />
-        <Input
-          control={control}
-          label="Cidade"
-          name="city"
-          errors={errors?.city?.message}
-        />
+        <CustomDropDownPickerStates />
+
+        <CustomDropDownPickerCities />
 
         <Button
           title="Salvar Alterações"
-          onPress={handleSubmit(onSubmit)}
+          onPress={() => handleSubmit()}
           variant="containedThirdy"
         />
       </View>

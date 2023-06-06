@@ -22,7 +22,10 @@ import {
   BottomSheetSelectAnimalType,
   BottomSheetSelectAnimalSex,
   BottomSheetSelectAnimalBreed,
+  BottomSheetSelectState,
+  BottomSheetSelectCity,
 } from '../components';
+
 import {useAppDispatch, useAppSelector, useNavigationHook} from '../hooks';
 import {useAsyncStorage} from '../hooks/useAsyncStorage';
 import {setToken} from '../store/reducer/auth/actions';
@@ -45,11 +48,12 @@ export const RouterApp = () => {
     if (!loadingValue) {
       if (isExistToken || isUserLogged) {
         dispatch(setToken(value));
-        goToRouter('DashboardBottomNavigation');
+        goToRouter('EditProfileScreen');
       } else {
         goToRouter('SplashScreen');
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadingValue]);
 
   return (
@@ -101,6 +105,9 @@ export const RouterApp = () => {
       <BottomSheetSelectAnimalType defaultSize={180} />
       <BottomSheetSelectAnimalSex defaultSize={160} />
       <BottomSheetSelectAnimalBreed defaultSize={280} />
+
+      <BottomSheetSelectState defaultSize={160} />
+      <BottomSheetSelectCity defaultSize={160} />
     </>
   );
 };
