@@ -9,9 +9,12 @@ import {
   readStateSuccess,
   selectCity,
   selectState,
+  setImageUserBasicInformation,
   setVisibleCity,
   setVisibleStates,
+  userLoggedDeleteRequest,
 } from './actions';
+import {storeData} from '../../../hooks/useAsyncStorage';
 
 export const userReducer = createReducer(initialState, builder => {
   builder
@@ -45,6 +48,12 @@ export const userReducer = createReducer(initialState, builder => {
     })
     .addCase(setVisibleCity, (state, action) => {
       state.visible_bottom_sheet_cities = action.payload;
+    })
+    .addCase(setImageUserBasicInformation, (state, action) => {
+      state.image_user = action.payload;
+    })
+    .addCase(userLoggedDeleteRequest, () => {
+      storeData('');
     });
 });
 

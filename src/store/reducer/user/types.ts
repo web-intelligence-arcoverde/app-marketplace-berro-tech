@@ -21,6 +21,8 @@ export interface IUserInitialState {
   city: string;
   visible_bottom_sheet_cities: number;
   loadingCities: boolean;
+
+  image_user: any;
 }
 
 export type IUser = {

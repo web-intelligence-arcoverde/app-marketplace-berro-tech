@@ -1,3 +1,4 @@
+import React from 'react';
 import {EditProfileImage} from '../../';
 
 import {Container, IconContainer} from './style';

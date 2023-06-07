@@ -1,8 +1,14 @@
+import React from 'react';
+
 import {View} from 'react-native';
 
 import {Button, Input, CustomInput} from '../../';
 
-import {useAppSelector, useNavigationHook} from '../../../hooks';
+import {
+  useAppDispatch,
+  useAppSelector,
+  useNavigationHook,
+} from '../../../hooks';
 
 import {useForm} from 'react-hook-form';
 
@@ -10,6 +16,10 @@ import {scale} from '../../../utils';
 
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import {
+  userEditBasicInformationRequest,
+  userLoggedDeleteRequest,
+} from '../../../store/reducer/user/actions';
 
 const schema = yup
   .object({
@@ -23,6 +33,8 @@ export const EditProfileBasicInformationsForm = () => {
   const {goToRouter} = useNavigationHook();
 
   const {contacts, name, email} = useAppSelector(state => state.auth.user);
+
+  const {image_user} = useAppSelector(state => state.user);
 
   const {phone_number} =
     contacts.length >= 1 ? contacts[0] : {phone_number: ''};
@@ -40,7 +52,16 @@ export const EditProfileBasicInformationsForm = () => {
     },
   });
 
-  const onSubmit = data => console.log(data);
+  const dispatch = useAppDispatch();
+
+  const onSubmit = (data: any) => {
+    const formData = new FormData();
+    formData.append('name', data.name);
+    formData.append('email', data.email);
+    formData.append('phone', data.phone);
+    formData.append('avatar_url', image_user);
+    dispatch(userEditBasicInformationRequest(formData));
+  };
 
   return (
     <View style={{gap: scale(16)}}>
@@ -71,7 +92,7 @@ export const EditProfileBasicInformationsForm = () => {
       />
       <Button
         title="Excluir minha conta"
-        onPress={() => {}}
+        onPress={() => dispatch(userLoggedDeleteRequest({router: goToRouter}))}
         variant="noneSecondary"
       />
 

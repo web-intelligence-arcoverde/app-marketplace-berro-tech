@@ -88,3 +88,26 @@ export const updateUserAddressSuccess = createAction(
 );
 
 export const selectCity = createAction<string>('user/select-city');
+
+export const userEditBasicInformationRequest = createAction<any>(
+  'user/user-edit-basic-information-request',
+);
+export const userEditBasicInformationSuccess = createAction<any>(
+  'user/user-edit-basic-information-success',
+);
+
+export const setImageUserBasicInformation = createAction<any>(
+  'user/set-image-user-basic-information',
+);
+
+export const updateUserBasicInformationRequest = createAction<any>(
+  'user/update-user-basic-information-request',
+);
+
+export const updateUserBasicInformationSuccess = createAction<any>(
+  'user/update-user-basic-information-success',
+);
+
+export const userLoggedDeleteRequest = createAction<any>(
+  'user/user-logged-delete-request',
+);

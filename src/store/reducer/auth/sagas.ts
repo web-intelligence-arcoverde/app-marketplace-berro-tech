@@ -32,8 +32,6 @@ function* readInformationUser() {
 
 function* changerPassword({payload}: any): any {
   try {
-    console.log(payload);
-
     const router = payload.navigation;
 
     delete payload.router;

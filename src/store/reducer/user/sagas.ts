@@ -8,6 +8,7 @@ import {
   readStateSuccess,
   signUpSuccess,
 } from './actions';
+import {store} from '../..';
 
 function* signIn({payload}: any): any {
   try {
@@ -79,6 +80,25 @@ function* updateUserAddress({payload}: any): any {
   } catch (error) {}
 }
 
+function* updateUserBasicInformation({payload}: any): any {
+  try {
+    const id = store.getState().auth.user.id;
+
+    yield call(api.put, `/user/${id}`, payload, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  } catch (error) {}
+}
+
+function* userDelete({payload}: any): any {
+  try {
+    yield call(api.get, '/user-logged-delete');
+    payload.router('SignInEmail');
+  } catch (error) {}
+}
+
 function* userSagas() {
   yield all([
     takeLatest('user/sign-in-request', signIn),
@@ -87,6 +107,11 @@ function* userSagas() {
     takeLatest('user/read-state-request', readStates),
     takeLatest('user/read-city-by-state-request', readCities),
     takeLatest('user/update-user-address-request', updateUserAddress),
+    takeLatest(
+      'user/user-edit-basic-information-request',
+      updateUserBasicInformation,
+    ),
+    takeLatest('user/user-logged-delete-request', userDelete),
   ]);
 }
 

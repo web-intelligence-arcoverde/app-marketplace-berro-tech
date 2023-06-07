@@ -43,4 +43,5 @@ export const initialState: IUserInitialState = {
   city: '',
   visible_bottom_sheet_cities: 0,
   loadingCities: true,
+  image_user: '',
 };

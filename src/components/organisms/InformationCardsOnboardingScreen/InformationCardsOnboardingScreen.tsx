@@ -1,4 +1,5 @@
 import {cardInformations} from '../../../mock';
+import React from 'react';
 
 import {Container} from './style';
 
