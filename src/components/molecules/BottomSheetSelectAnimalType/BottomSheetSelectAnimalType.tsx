@@ -1,12 +1,11 @@
 import React, {useCallback, useMemo, useRef} from 'react';
 
 import BottomSheet, {BottomSheetFlatList} from '@gorhom/bottom-sheet';
-import {Separator} from '../..';
-import {getStatusBarHeight} from '../../../utils';
+
 import {useAppDispatch, useAppSelector} from '../../../hooks';
 import {
-  setVisibleBottomSheetAnimalType,
-  setAnimalType,
+  setVisibleBottomSheetAnimal,
+  setAnimal,
 } from '../../../store/reducer/product/actions';
 
 import {BottomSheetSelectAnimalTypeItem} from '../../';
@@ -15,18 +14,19 @@ export const BottomSheetSelectAnimalType = ({defaultSize}: any) => {
   const bottomSheetRef = useRef<BottomSheet>(null);
   const handleClosePress = () => bottomSheetRef?.current?.close();
 
-  const {visible_animal_type_select, types_animals} = useAppSelector(
-    state => state.product,
-  );
+  const {visibleAnimal, animals} = useAppSelector(state => state.product);
+
+  console.log(animals);
 
   const dispatch = useAppDispatch();
 
-  const snapPoints = useMemo(() => [1, defaultSize], []);
+  const snapPoints = useMemo(() => [1, defaultSize], [defaultSize]);
 
-  const data = useMemo(() => types_animals.map(item => item), [types_animals]);
+  const data = useMemo(() => animals.map(item => item.name), [animals]);
 
   const handleSelectAnimalType = (item: string) => {
-    dispatch(setAnimalType({animal_type: item}));
+    dispatch(setAnimal(item));
+    dispatch(setVisibleBottomSheetAnimal(0));
   };
 
   const renderItem = useCallback(
@@ -39,19 +39,20 @@ export const BottomSheetSelectAnimalType = ({defaultSize}: any) => {
     [],
   );
 
-  const handleSheetChanges = useCallback((index: number) => {
-    if (index === 0) {
-      handleClosePress();
-      dispatch(
-        setVisibleBottomSheetAnimalType({visible_animal_type_select: 0}),
-      );
-    }
-  }, []);
+  const handleSheetChanges = useCallback(
+    (index: number) => {
+      if (index === 0) {
+        handleClosePress();
+        dispatch(setVisibleBottomSheetAnimal(0));
+      }
+    },
+    [dispatch],
+  );
 
   return (
     <BottomSheet
       ref={bottomSheetRef}
-      index={visible_animal_type_select}
+      index={visibleAnimal}
       snapPoints={snapPoints}
       onChange={handleSheetChanges}>
       <BottomSheetFlatList
@@ -59,7 +60,6 @@ export const BottomSheetSelectAnimalType = ({defaultSize}: any) => {
         keyExtractor={i => i}
         renderItem={renderItem}
       />
-      <Separator height={getStatusBarHeight()} />
     </BottomSheet>
   );
 };

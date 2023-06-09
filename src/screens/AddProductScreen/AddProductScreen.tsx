@@ -1,88 +1,88 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-import {
-  HeaderDashboard,
-  StepsAddProduct,
-  Text,
-  SecondInput,
-  Separator,
-  Button,
-  CustomDropDownPickerAnimalType,
-  CustomDropDownPickerAnimalSex,
-  CustomDropDownPickerAnimalBreed,
-} from '../../components';
+import {HeaderDashboard, StepsAddProduct} from '../../components';
 
-import {yupResolver} from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import {View} from 'react-native';
 
-import {useForm, SubmitHandler} from 'react-hook-form';
+import {useCallback} from 'react';
 
-import {ErrorMessage} from '../../locale';
+import * as ImagePicker from 'react-native-image-picker';
 
-import {View, ScrollView} from 'react-native';
-import {scale, getBottomSpaceHeight} from '../../utils';
-import {useAppDispatch} from '../../hooks';
+import {Platform} from 'react-native';
+import {StepBasicInformationProduct} from '../../components/molecules/StepBasicInformationProduct/StepBasicInformationProduct';
+import {StepUploadFiles} from '../../components/molecules/StepUploadFiles/StepUploadFiles';
+import {StepLocationProduct} from '../../components/molecules/StepLocationProduct/StepLocationProduct';
+export const usePickDocumentHook = () => {
+  const [documents, setDocuments] = useState<any[]>([]);
 
-const schema = yup.object({
-  name: yup.string().required(ErrorMessage['email-required']),
-});
+  const onButtonPress = useCallback(() => {
+    ImagePicker.launchImageLibrary(
+      {
+        mediaType: 'mixed',
+        includeBase64: false,
+        includeExtra: true,
+        selectionLimit: 5,
+      },
+      response => {
+        if (response.assets) {
+          response.assets.map(image => {
+            let uri =
+              Platform.OS === 'ios'
+                ? image.uri.replace('file://', '')
+                : image.uri;
+            let type = image.type;
+            let name = image.fileName;
+
+            const source = {uri, type, name};
+
+            setDocuments([...documents, source]);
+          });
+        }
+
+        if (response.didCancel) {
+        } else if (response?.error) {
+          console.log('ImagePicker Error: ', response?.error);
+        } else {
+          if (response.assets) {
+            response.assets.map(image => {
+              let uri =
+                Platform.OS === 'ios'
+                  ? image.uri.replace('file://', '')
+                  : image.uri;
+              let type = image.type;
+              let name = image.fileName;
+
+              const source = {uri, type, name};
+
+              setDocuments([...documents, source]);
+            });
+          }
+        }
+      },
+    );
+  }, []);
+
+  return {documents, onButtonPress, setDocuments};
+};
+
+const Steps = {
+  0: StepBasicInformationProduct,
+  1: StepUploadFiles,
+  2: StepLocationProduct,
+};
 
 export const AddProductScreen = () => {
-  const {
-    control,
-    handleSubmit,
-    formState: {errors},
-  } = useForm({
-    resolver: yupResolver(schema),
-    defaultValues: {
-      name: '',
-    },
-  });
+  const [step, setStep] = useState(1);
 
-  const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
+  //@ts-ignore
+  const Step = Steps[step];
 
   return (
     <View style={{flex: 1, backgroundColor: '#fff'}}>
       <HeaderDashboard />
-      <StepsAddProduct />
+      <StepsAddProduct step={step} setStep={setStep} />
 
-      <View
-        style={{
-          marginTop: scale(28),
-        }}>
-        <ScrollView style={{height: '70%', paddingHorizontal: scale(20)}}>
-          <Text typography="h3">Sobre o produto</Text>
-          <Separator height={24} />
-          <SecondInput
-            name="name"
-            control={control}
-            label="Nome"
-            placeholder="Nome"
-            errors={errors?.name?.message}
-          />
-          <Separator height={16} />
-          <CustomDropDownPickerAnimalType />
-
-          <Separator height={16} />
-          <CustomDropDownPickerAnimalBreed />
-          <Separator height={16} />
-          <CustomDropDownPickerAnimalType />
-          <Separator height={16} />
-          <CustomDropDownPickerAnimalSex />
-
-          <Separator height={12} />
-          <Text typography="h3">Sobre o produto</Text>
-          <Separator height={12} />
-
-          <Button
-            title="Próximo"
-            variant="containedThirdy"
-            onPress={handleSubmit(onSubmit)}
-          />
-
-          <Separator height={getBottomSpaceHeight()} />
-        </ScrollView>
-      </View>
+      <Step />
     </View>
   );
 };

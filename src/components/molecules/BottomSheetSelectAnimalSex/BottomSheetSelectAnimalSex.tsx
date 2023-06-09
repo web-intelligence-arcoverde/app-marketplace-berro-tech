@@ -55,7 +55,6 @@ export const BottomSheetSelectAnimalSex = ({defaultSize}: any) => {
         keyExtractor={i => i}
         renderItem={renderItem}
       />
-      <Separator height={getStatusBarHeight()} />
     </BottomSheet>
   );
 };

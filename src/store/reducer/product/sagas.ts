@@ -3,6 +3,8 @@ import api from '../../../service';
 import {
   getProductByIdSuccess,
   readAnimalBreedSuccess,
+  readAnimalSuccess,
+  readBreedSuccess,
   readBusinessHighlightProductSuccess,
   readProductSuccess,
   readTypesAnimalsSuccess,
@@ -55,7 +57,7 @@ function* readBusinessHighlightProcuct() {
 
 function* topSearchProduct({payload}: any): any {
   try {
-    const {data} = yield call(api.post, `/search-product/`, {type: payload});
+    const {data} = yield call(api.post, '/search-product/', {type: payload});
     yield put(topSearchProductSuccess(data));
   } catch (e) {
     console.log(e);
@@ -64,7 +66,7 @@ function* topSearchProduct({payload}: any): any {
 
 function* readProducts() {
   try {
-    const {data} = yield call(api.get, `/products/`);
+    const {data} = yield call(api.get, '/products/');
 
     yield put(readProductSuccess(data));
   } catch (e) {
@@ -84,6 +86,26 @@ function* readProduct({payload}: any): any {
   }
 }
 
+function* readAnimals() {
+  try {
+    const {data} = yield call(api.get, '/animal');
+    console.log(data);
+    yield put(readAnimalSuccess(data));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function* readBreedByIdAnimal({payload}: any) {
+  try {
+    const {data} = yield call(api.get, `/search-breed-by-name/${payload}`);
+    console.log(data);
+    yield put(readBreedSuccess(data));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 function* productSagas() {
   yield all([
     takeLatest('product/read-types-animals-request', readAnimalType),
@@ -95,6 +117,8 @@ function* productSagas() {
     takeLatest('product/top-search-product-request', topSearchProduct),
     takeLatest('product/read-product-request', readProducts),
     takeLatest('product/get-product-by-id-request', readProduct),
+    takeLatest('product/read_animal_request', readAnimals),
+    takeLatest('product/read_breed_request', readBreedByIdAnimal),
   ]);
 }
 

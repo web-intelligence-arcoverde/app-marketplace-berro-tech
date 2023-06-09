@@ -1,11 +1,9 @@
-import {useState} from 'react';
+import React from 'react';
 import {Separator, Text} from '../..';
 
 import {StepItem, Container} from './style';
 
-export const StepsAddProduct = () => {
-  const [step, setStep] = useState(0);
-
+export const StepsAddProduct = ({step, setStep}: any) => {
   return (
     <Container>
       <StepItem isActive={step === 0} onPress={() => setStep(0)}>

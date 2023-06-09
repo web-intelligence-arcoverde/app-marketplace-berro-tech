@@ -3,7 +3,6 @@ import {initialState} from './initialState';
 
 import {
   setVisibleBottomSheetAnimalType,
-  setAnimalType,
   readTypesAnimalsSuccess,
   setAnimalSex,
   setVisibleBottomSheetAnimalSex,
@@ -21,6 +20,12 @@ import {
   addItemSelectedFilter,
   getProductByIdRequest,
   getProductByIdSuccess,
+  setVisibleBottomSheetAnimal,
+  readAnimalSuccess,
+  setAnimal,
+  readBreedSuccess,
+  addFile,
+  removeFile,
 } from './actions';
 
 export const productReducer = createReducer(initialState, builder => {
@@ -28,10 +33,6 @@ export const productReducer = createReducer(initialState, builder => {
     .addCase(setVisibleBottomSheetAnimalType, (state, action) => {
       state.visible_animal_type_select =
         action.payload.visible_animal_type_select;
-    })
-    .addCase(setAnimalType, (state, action) => {
-      state.animal_type = action.payload.animal_type;
-      state.visible_animal_type_select = 0;
     })
 
     .addCase(readTypesAnimalsSuccess, (state, action) => {
@@ -107,5 +108,31 @@ export const productReducer = createReducer(initialState, builder => {
     .addCase(getProductByIdSuccess, (state, action) => {
       state.product = action.payload;
       state.loadingProduct = false;
+    })
+    .addCase(setVisibleBottomSheetAnimal, (state, action) => {
+      state.visibleAnimal = action.payload;
+    })
+    .addCase(readAnimalSuccess, (state, action) => {
+      state.animals = action.payload;
+    })
+    .addCase(setAnimal, (state, action) => {
+      state.selectAnimal = action.payload;
+    })
+    .addCase(readBreedSuccess, (state, action) => {
+      state.breeds = action.payload;
+    })
+    .addCase(addFile, (state, action) => {
+      let olderFiles = state.files;
+      olderFiles.push(action.payload);
+      state.files = olderFiles;
+    })
+    .addCase(removeFile, (state, action) => {
+      let newFile = state.files;
+
+      let removeItem = newFile.filter((letter, index) => {
+        return index !== action.payload;
+      });
+
+      state.files = removeItem;
     });
 });

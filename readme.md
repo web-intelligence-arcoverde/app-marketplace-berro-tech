@@ -21,8 +21,7 @@
 - https://www.youtube.com/watch?v=V1M39hKE_D8
 - https://www.youtube.com/watch?v=9ji4-ie2c1Y
 
-
-## Clear 
+## Clear
 
 rm -rf $HOME/.gradle/caches/
 cd android && ./gradlew cleanBuildCache
@@ -34,5 +33,8 @@ yarn cache clean --force
 yarn install
 cd ios && pod install
 
+## Subir em multiplas plataformas
+
+- https://github.com/expo/eas-cli
 
 ## https://react-native-async-storage.github.io/async-storage/docs/install

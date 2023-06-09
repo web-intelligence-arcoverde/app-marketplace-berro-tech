@@ -48,7 +48,7 @@ export const RouterApp = () => {
     if (!loadingValue) {
       if (isExistToken || isUserLogged) {
         dispatch(setToken(value));
-        goToRouter('EditProfileScreen');
+        goToRouter('AddProductScreen');
       } else {
         goToRouter('SplashScreen');
       }
@@ -102,8 +102,9 @@ export const RouterApp = () => {
 
         <Stack.Screen name="SellerScreen" component={SellerScreen} />
       </Stack.Navigator>
-      <BottomSheetSelectAnimalType defaultSize={180} />
-      <BottomSheetSelectAnimalSex defaultSize={160} />
+      <BottomSheetSelectAnimalType defaultSize={120} />
+
+      <BottomSheetSelectAnimalSex defaultSize={120} />
       <BottomSheetSelectAnimalBreed defaultSize={280} />
 
       <BottomSheetSelectState defaultSize={160} />

@@ -27,4 +27,10 @@ export const initialState: IStateProduct = {
 
   product: {},
   loadingProduct: true,
+
+  animals: [],
+  selectAnimal: '',
+  visibleAnimal: 0,
+
+  files: [],
 };

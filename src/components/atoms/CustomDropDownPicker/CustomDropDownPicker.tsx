@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 import {IconComponent, ContentDropDownPicker} from '../../';
 
@@ -8,7 +8,6 @@ import {TouchableOpacity, View} from 'react-native';
 
 interface ICustomDropDownPicker {
   onPress: () => void;
-  focus: boolean;
   value: string;
   placeholder: string;
   label: string;
@@ -17,13 +16,22 @@ interface ICustomDropDownPicker {
 
 export const CustomDropDownPicker = ({
   onPress,
-  focus,
   placeholder,
   value,
   label,
   errorMessage,
 }: ICustomDropDownPicker) => {
   const {containerStyle, containerContent} = InputStyle.contained;
+
+  const [focus, setFocus] = useState(false);
+
+  useEffect(() => {
+    if (value) {
+      setFocus(false);
+    } else {
+      setFocus(true);
+    }
+  }, [value]);
 
   return (
     <TouchableOpacity

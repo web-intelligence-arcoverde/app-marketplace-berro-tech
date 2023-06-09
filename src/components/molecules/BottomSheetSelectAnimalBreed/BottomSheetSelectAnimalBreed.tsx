@@ -23,7 +23,7 @@ export const BottomSheetSelectAnimalBreed = ({defaultSize}: any) => {
 
   const snapPoints = useMemo(() => [1, defaultSize], []);
 
-  const data = useMemo(() => breeds.map(item => item), [breeds]);
+  const data = useMemo(() => breeds.map(item => item.name), [breeds]);
 
   const handleSelectAnimalBreed = (item: string) => {
     dispatch(setAnimalBreed({animal_breed: item}));
@@ -36,6 +36,7 @@ export const BottomSheetSelectAnimalBreed = ({defaultSize}: any) => {
         selectOption={handleSelectAnimalBreed}
       />
     ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
 
@@ -46,6 +47,7 @@ export const BottomSheetSelectAnimalBreed = ({defaultSize}: any) => {
         setVisibleBottomSheetAnimalBreed({visible_animal_breed_select: 0}),
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

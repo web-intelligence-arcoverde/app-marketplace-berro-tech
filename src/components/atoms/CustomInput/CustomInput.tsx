@@ -1,12 +1,10 @@
 import {Input} from '@rneui/themed';
 import {Controller} from 'react-hook-form';
+import React from 'react';
 
 import {TextInputMask, TextInputMaskOptionProp} from 'react-native-masked-text';
 
-const maskPhone = '(99) [9] [9999]-[9999]';
-
 interface IInput extends TextInputMaskOptionProp {
-  mask: string;
   control: any;
   name: string;
   label?: string;
@@ -14,6 +12,7 @@ interface IInput extends TextInputMaskOptionProp {
   errors?: string;
   variant?: string;
   type?: string;
+  options?: any;
 }
 
 import {Typography} from '../../../common';
@@ -27,8 +26,9 @@ export const CustomInput = ({
   errors,
   variant = 'contained',
   type = 'cel-phone',
+  options = {},
 }: IInput) => {
-  const typography = Typography['input'];
+  const typography = Typography.input;
 
   const {
     containerStyle,
@@ -59,6 +59,7 @@ export const CustomInput = ({
             inputContainerStyle={inputContainerStyle}
             labelStyle={[typography, labelStyle]}
             errorMessage={errors}
+            options={options}
           />
         );
       }}

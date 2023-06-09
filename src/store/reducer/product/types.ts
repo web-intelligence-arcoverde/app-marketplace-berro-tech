@@ -8,7 +8,6 @@ export interface IStateProduct {
 
   visible_animal_breed_select: number;
   animal_breed: string;
-  breeds: string[];
 
   businessHighlightProduct: Array<IProduct>;
   loadingBusinessHighlightProduct: boolean;
@@ -27,6 +26,14 @@ export interface IStateProduct {
 
   product: any;
   loadingProduct: boolean;
+
+  animals: any[];
+  selectAnimal: string;
+  visibleAnimal: number;
+
+  breeds: any[];
+
+  files: any[];
 }
 
 export interface IProduct {

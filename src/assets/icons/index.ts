@@ -63,6 +63,9 @@ import AgeIcon from './age-icon.svg';
 import BreedIcon from './breed-icon.svg';
 import ClassificationIcon from './classification-icon.svg';
 
+import EmptyDocuments from './empty-documents.svg';
+import DeleteIcon from './delete-icon.svg';
+
 export const ICONS = {
   email: EmailIcon,
   gmail: GmailIcon,
@@ -104,4 +107,6 @@ export const ICONS = {
   'classification-icon': ClassificationIcon,
   'whatsapp-icon': WhatsappIcon,
   'seller-default': SellerImgDefault,
+  'empty-documents': EmptyDocuments,
+  'delete-icon': DeleteIcon,
 };

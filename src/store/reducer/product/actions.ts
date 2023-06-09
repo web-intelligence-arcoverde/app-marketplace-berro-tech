@@ -13,10 +13,6 @@ export const setVisibleBottomSheetAnimalType = createAction<{
   visible_animal_type_select: number;
 }>('product/set-visible-bottom-sheet-animal-type');
 
-export const setAnimalType = createAction<{animal_type: string}>(
-  'product/set-animal-type',
-);
-
 export const setVisibleBottomSheetAnimalSex = createAction<{
   visible_animal_sex_select: number;
 }>('product/set-visible-bottom-sheet-animal-sex');
@@ -80,3 +76,25 @@ export const getProductByIdRequest = createAction<number>(
 export const getProductByIdSuccess = createAction<IProduct>(
   'product/get-product-by-id-success',
 );
+
+export const setVisibleBottomSheetAnimal = createAction<number>(
+  'product/set-visible-bottom-sheet-animal',
+);
+
+export const setAnimal = createAction<string>('product/set-animal');
+
+export const readAnimalRequest = createAction('product/read_animal_request');
+
+export const readAnimalSuccess = createAction<any>(
+  'product/read_animal_success',
+);
+
+export const readBreedRequest = createAction<string>(
+  'product/read_breed_request',
+);
+
+export const readBreedSuccess = createAction<any>('product/read_breed_success');
+
+export const addFile = createAction<any>('product/add-file');
+
+export const removeFile = createAction<number>('product/remove-file');
