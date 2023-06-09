@@ -98,3 +98,7 @@ export const readBreedSuccess = createAction<any>('product/read_breed_success');
 export const addFile = createAction<any>('product/add-file');
 
 export const removeFile = createAction<number>('product/remove-file');
+
+export const changerStepProduct = createAction<number>(
+  'product/changer-step-product',
+);

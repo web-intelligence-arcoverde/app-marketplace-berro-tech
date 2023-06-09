@@ -26,6 +26,7 @@ import {
   readBreedSuccess,
   addFile,
   removeFile,
+  changerStepProduct,
 } from './actions';
 
 export const productReducer = createReducer(initialState, builder => {
@@ -134,5 +135,8 @@ export const productReducer = createReducer(initialState, builder => {
       });
 
       state.files = removeItem;
+    })
+    .addCase(changerStepProduct, (state, action) => {
+      state.stepProduct = action.payload;
     });
 });

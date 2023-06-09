@@ -33,4 +33,6 @@ export const initialState: IStateProduct = {
   visibleAnimal: 0,
 
   files: [],
+
+  stepProduct: 0,
 };

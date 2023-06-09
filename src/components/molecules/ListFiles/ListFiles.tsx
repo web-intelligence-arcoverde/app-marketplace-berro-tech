@@ -4,7 +4,10 @@ import {Text, IconComponent, Separator, Button} from '../../';
 
 import {scale} from '../../../utils';
 import {useAppDispatch, useAppSelector} from '../../../hooks';
-import {removeFile} from '../../../store/reducer/product/actions';
+import {
+  changerStepProduct,
+  removeFile,
+} from '../../../store/reducer/product/actions';
 import {usePickFileHook} from '../../../hooks/usePickFileHook';
 
 export const ListFiles = () => {
@@ -119,7 +122,7 @@ export const ListFiles = () => {
             disabled={!limitFiles}
             title="Próximo"
             variant="containedThirdy"
-            onPress={() => console.log('aq')}
+            onPress={() => dispatch(changerStepProduct(2))}
           />
         </View>
       </View>

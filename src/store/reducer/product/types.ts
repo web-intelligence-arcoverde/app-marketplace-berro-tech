@@ -34,6 +34,8 @@ export interface IStateProduct {
   breeds: any[];
 
   files: any[];
+
+  stepProduct: number;
 }
 
 export interface IProduct {

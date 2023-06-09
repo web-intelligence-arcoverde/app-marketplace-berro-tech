@@ -7,6 +7,7 @@ import * as yup from 'yup';
 
 import {useForm} from 'react-hook-form';
 import {
+  changerStepProduct,
   readAnimalRequest,
   readBreedRequest,
   setVisibleBottomSheetAnimal,
@@ -181,7 +182,8 @@ export const StepBasicInformationProduct = () => {
         <Button
           title="Próximo"
           variant="containedThirdy"
-          onPress={handleSubmit(onSubmit)}
+          //onPress={handleSubmit(onSubmit)}
+          onPress={() => dispatch(changerStepProduct(1))}
         />
       </CustomContainer>
     </Container>
