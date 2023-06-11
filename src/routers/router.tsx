@@ -29,6 +29,7 @@ import {
 import {useAppDispatch, useAppSelector, useNavigationHook} from '../hooks';
 import {useAsyncStorage} from '../hooks/useAsyncStorage';
 import {setToken} from '../store/reducer/auth/actions';
+import {BottomSheetSelectAgeCategory} from '../components/molecules/BottomSheetSelectAgeCategory/BottomSheetSelectAgeCategory';
 
 const Stack = createNativeStackNavigator();
 
@@ -109,6 +110,7 @@ export const RouterApp = () => {
 
       <BottomSheetSelectState defaultSize={160} />
       <BottomSheetSelectCity defaultSize={160} />
+      <BottomSheetSelectAgeCategory defaultSize={120} />
     </>
   );
 };

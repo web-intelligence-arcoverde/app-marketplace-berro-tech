@@ -2,7 +2,7 @@ import {all, call, put, takeLatest} from 'redux-saga/effects';
 import api from '../../../service';
 import {
   getProductByIdSuccess,
-  readAnimalBreedSuccess,
+  readAgeCategoriesSuccess,
   readAnimalSuccess,
   readBreedSuccess,
   readBusinessHighlightProductSuccess,
@@ -13,33 +13,9 @@ import {
 
 const animals = ['ovino', 'caprino'];
 
-const racas = [
-  'Boer',
-  'Savannah',
-  'Saanen',
-  'Murciana Granadina',
-  'Alpina Americana',
-  'Parda Alpina',
-  'Moxotó',
-  'Canindé',
-  'Kalahari',
-  'Toggenburg',
-  'Marota',
-  'Anglo Nubiana',
-  'SRD (Sem raça definida)',
-];
-
 function* readAnimalType(): any {
   try {
     yield put(readTypesAnimalsSuccess({animals_types: animals}));
-  } catch (e) {
-    console.log(e);
-  }
-}
-
-function* readBreeds(exemplo: any): any {
-  try {
-    yield put(readAnimalBreedSuccess({breeds: racas}));
   } catch (e) {
     console.log(e);
   }
@@ -106,10 +82,19 @@ function* readBreedByIdAnimal({payload}: any) {
   }
 }
 
+function* readAgeCategories() {
+  try {
+    const {data} = yield call(api.get, '/age-categories');
+
+    yield put(readAgeCategoriesSuccess(data));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 function* productSagas() {
   yield all([
     takeLatest('product/read-types-animals-request', readAnimalType),
-    takeLatest('product/read-animal-breed-request', readBreeds),
     takeLatest(
       'product/read-business-highlight-product-request',
       readBusinessHighlightProcuct,
@@ -119,6 +104,7 @@ function* productSagas() {
     takeLatest('product/get-product-by-id-request', readProduct),
     takeLatest('product/read_animal_request', readAnimals),
     takeLatest('product/read_breed_request', readBreedByIdAnimal),
+    takeLatest('product/age_categories_request', readAgeCategories),
   ]);
 }
 

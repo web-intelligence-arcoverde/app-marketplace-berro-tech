@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {ScrollView} from 'react-native';
 import {
   KeyboardContainer,
@@ -5,7 +7,6 @@ import {
   BusinessHighlight,
   Separator,
   ProductListSpecificHomeScreen,
-  RegionInformationSection,
 } from '../../components';
 
 export const HomeScreen = () => {
@@ -15,9 +16,7 @@ export const HomeScreen = () => {
       <ScrollView>
         <BusinessHighlight />
 
-        <RegionInformationSection />
-
-        <Separator height={100} />
+        <Separator height={40} />
         <ProductListSpecificHomeScreen />
       </ScrollView>
     </KeyboardContainer>

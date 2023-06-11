@@ -27,6 +27,9 @@ import {
   addFile,
   removeFile,
   changerStepProduct,
+  readAgeCategoriesSuccess,
+  setVisibleBottomSheetAgeCategory,
+  setAgeCategory,
 } from './actions';
 
 export const productReducer = createReducer(initialState, builder => {
@@ -138,5 +141,14 @@ export const productReducer = createReducer(initialState, builder => {
     })
     .addCase(changerStepProduct, (state, action) => {
       state.stepProduct = action.payload;
+    })
+    .addCase(readAgeCategoriesSuccess, (state, action) => {
+      state.age_categories = action.payload;
+    })
+    .addCase(setVisibleBottomSheetAgeCategory, (state, action) => {
+      state.visibleAgeCategory = action.payload;
+    })
+    .addCase(setAgeCategory, (state, action) => {
+      state.setAgeCategory = action.payload;
     });
 });

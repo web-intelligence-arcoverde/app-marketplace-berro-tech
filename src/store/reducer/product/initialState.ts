@@ -35,4 +35,7 @@ export const initialState: IStateProduct = {
   files: [],
 
   stepProduct: 0,
+  age_categories: [],
+  setAgeCategory: '',
+  visibleAgeCategory: 0,
 };

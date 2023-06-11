@@ -1,5 +1,6 @@
+import React from 'react';
+
 import {useEffect} from 'react';
-import {View, ScrollView} from 'react-native';
 
 import {Text, BusinessHighlightProductList, Separator} from '../../';
 import {useAppDispatch, useAppSelector} from '../../../hooks';
@@ -14,7 +15,7 @@ export const BusinessHighlight = () => {
 
   useEffect(() => {
     dispatch(readBusinessHighlightProductRequest());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Container>

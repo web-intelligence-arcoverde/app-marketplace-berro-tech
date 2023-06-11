@@ -33,6 +33,10 @@ export interface IStateProduct {
 
   breeds: any[];
 
+  age_categories?: any[];
+  setAgeCategory: string;
+  visibleAgeCategory: number;
+
   files: any[];
 
   stepProduct: number;

@@ -1,5 +1,5 @@
 import {createAction} from '@reduxjs/toolkit';
-import {IStateProduct, IProduct} from './types';
+import {IProduct} from './types';
 
 export const readBusinessHighlightProductRequest = createAction(
   'product/read-business-highlight-product-request',
@@ -102,3 +102,17 @@ export const removeFile = createAction<number>('product/remove-file');
 export const changerStepProduct = createAction<number>(
   'product/changer-step-product',
 );
+
+export const readAgeCategoriesRequest = createAction(
+  'product/age_categories_request',
+);
+
+export const readAgeCategoriesSuccess = createAction<any>(
+  'product/age_categories_success',
+);
+
+export const setVisibleBottomSheetAgeCategory = createAction<number>(
+  'product/set-visible-bottom-sheet-age-category',
+);
+
+export const setAgeCategory = createAction<string>('product/set-age-category');

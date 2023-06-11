@@ -12,6 +12,7 @@ interface ICustomDropDownPicker {
   placeholder: string;
   label: string;
   errorMessage?: string;
+  name?: string;
 }
 
 export const CustomDropDownPicker = ({
@@ -20,6 +21,7 @@ export const CustomDropDownPicker = ({
   value,
   label,
   errorMessage,
+  name,
 }: ICustomDropDownPicker) => {
   const {containerStyle, containerContent} = InputStyle.contained;
 

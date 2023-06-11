@@ -36,7 +36,7 @@ export const SecondInput = ({
   leftIconName,
   variant = 'contained',
 }: IInput) => {
-  const typography = Typography['input'];
+  const typography = Typography.input;
 
   const rightShowIcon = rightIcon && password;
 
@@ -59,7 +59,7 @@ export const SecondInput = ({
   return (
     <Controller
       control={control}
-      render={({field: {onChange, onBlur, value}}) => {
+      render={({field: {onChange, value}}) => {
         const styleLabel =
           focus || !!value ? {color: '#1B5DE0'} : {color: '#FAFAFC'};
 
