@@ -61,7 +61,7 @@ export const SearchInput = ({setFocus, focus}: any) => {
     } else {
       setFocus(false);
     }
-  }, [searchTerm]);
+  }, [searchTerm, setFocus]);
 
   return (
     <View style={inputSearch.container}>

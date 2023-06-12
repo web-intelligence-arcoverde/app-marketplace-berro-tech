@@ -2,6 +2,8 @@ import {createReducer} from '@reduxjs/toolkit';
 import {initialState} from './initialState';
 
 import {
+  changerIndexBottomSheetRecentSearch,
+  changerStepEditProfile,
   readCityByStateSuccess,
   readInformationUserRequest,
   readInformationUserSuccess,
@@ -12,6 +14,8 @@ import {
   setImageUserBasicInformation,
   setVisibleCity,
   setVisibleStates,
+  signUpStep01,
+  signUpStep02,
   userLoggedDeleteRequest,
 } from './actions';
 import {storeData} from '../../../hooks/useAsyncStorage';
@@ -54,6 +58,18 @@ export const userReducer = createReducer(initialState, builder => {
     })
     .addCase(userLoggedDeleteRequest, () => {
       storeData('');
+    })
+    .addCase(changerIndexBottomSheetRecentSearch, (state, action) => {
+      state.bottom_sheet_index = action.payload.index;
+    })
+    .addCase(changerStepEditProfile, (state, action) => {
+      state.step_edit_profile = action.payload.step_edit_profile;
+    })
+    .addCase(signUpStep01, (state, action) => {
+      state.userSignUp = action.payload;
+    })
+    .addCase(signUpStep02, (state, action) => {
+      state.userSignUp = {...state.userSignUp, ...action.payload};
     });
 });
 
@@ -63,9 +79,7 @@ export const userReducer = createReducer(initialState, builder => {
  .addCase(changerStepEditProfile, (state, action) => {
       state.step_edit_profile = action.payload.step_edit_profile;
     })
-    .addCase(changerIndexBottomSheetRecentSearch, (state, action) => {
-      state.bottom_sheet_index = action.payload.index;
-    })
+
     .addCase(signUpSuccess, (state, action) => {
       state.token = action.payload.token;
       state.user = action.payload.user;

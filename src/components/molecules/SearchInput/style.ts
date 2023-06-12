@@ -16,5 +16,7 @@ export const inputSearch = EStyleSheet.create({
     width: '84%',
     height: '100%',
     marginLeft: scale(8),
+    fontSize: scale(14),
+    color: COLORS.gray._02,
   },
 });
