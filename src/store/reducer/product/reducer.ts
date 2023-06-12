@@ -178,5 +178,6 @@ export const productReducer = createReducer(initialState, builder => {
     })
     .addCase(setVisibleBottomSheetClassification, (state, action) => {
       state.visibleClassifications = action.payload;
+      state.stepProduct = 0;
     });
 });
