@@ -116,3 +116,19 @@ export const setVisibleBottomSheetAgeCategory = createAction<number>(
 );
 
 export const setAgeCategory = createAction<string>('product/set-age-category');
+
+export const readSellTypeRequest = createAction(
+  'product/read-sell-type-request',
+);
+
+export const readSellTypeSuccess = createAction<any>(
+  'product/read-sell-type-success',
+);
+
+export const setVisibleBottomSheetSellType = createAction<number>(
+  'product/set-visible-bottom-sheet-sell-type',
+);
+
+export const setSellType = createAction<string>('product/set-sell-type');
+
+export const setProductInfo = createAction<any>('product/set-product-info');

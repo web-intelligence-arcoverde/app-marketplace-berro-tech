@@ -37,9 +37,15 @@ export interface IStateProduct {
   setAgeCategory: string;
   visibleAgeCategory: number;
 
+  sellTypes: any[];
+  sellType: string;
+  visibleSellType: number;
+
   files: any[];
 
   stepProduct: number;
+
+  productInfo: any;
 }
 
 export interface IProduct {

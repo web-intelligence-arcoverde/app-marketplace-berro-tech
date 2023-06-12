@@ -18,8 +18,6 @@ export const BottomSheetSelectAgeCategory = ({defaultSize}: any) => {
     state => state.product,
   );
 
-  console.log(age_categories);
-
   const dispatch = useAppDispatch();
 
   const snapPoints = useMemo(() => [1, defaultSize], [defaultSize]);

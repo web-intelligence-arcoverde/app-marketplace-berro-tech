@@ -74,8 +74,6 @@ function* readCities({payload}: any) {
 
 function* updateUserAddress({payload}: any): any {
   try {
-    console.log(payload);
-
     yield call(api.post, '/address-user', payload);
   } catch (error) {}
 }

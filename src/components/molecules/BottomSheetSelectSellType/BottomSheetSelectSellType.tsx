@@ -4,27 +4,27 @@ import BottomSheet, {BottomSheetFlatList} from '@gorhom/bottom-sheet';
 
 import {useAppDispatch, useAppSelector} from '../../../hooks';
 import {
-  setVisibleBottomSheetAnimal,
-  setAnimal,
+  setVisibleBottomSheetSellType,
+  setSellType,
 } from '../../../store/reducer/product/actions';
 
-import {BottomSheetSelectAnimalTypeItem} from '../../';
+import {BottomSheetSelectAnimalTypeItem} from '../..';
 
-export const BottomSheetSelectAnimalType = ({defaultSize}: any) => {
+export const BottomSheetSelectSellType = ({defaultSize}: any) => {
   const bottomSheetRef = useRef<BottomSheet>(null);
   const handleClosePress = () => bottomSheetRef?.current?.close();
 
-  const {visibleAnimal, animals} = useAppSelector(state => state.product);
+  const {visibleSellType, sellTypes} = useAppSelector(state => state.product);
 
   const dispatch = useAppDispatch();
 
   const snapPoints = useMemo(() => [1, defaultSize], [defaultSize]);
 
-  const data = useMemo(() => animals.map(item => item.name), [animals]);
+  const data = useMemo(() => sellTypes.map(item => item.name), [sellTypes]);
 
   const handleSelectAnimalType = (item: string) => {
-    dispatch(setAnimal(item));
-    dispatch(setVisibleBottomSheetAnimal(0));
+    dispatch(setSellType(item));
+    dispatch(setVisibleBottomSheetSellType(0));
   };
 
   const renderItem = useCallback(
@@ -41,7 +41,7 @@ export const BottomSheetSelectAnimalType = ({defaultSize}: any) => {
     (index: number) => {
       if (index === 0) {
         handleClosePress();
-        dispatch(setVisibleBottomSheetAnimal(0));
+        dispatch(setVisibleBottomSheetSellType(0));
       }
     },
     [dispatch],
@@ -50,7 +50,7 @@ export const BottomSheetSelectAnimalType = ({defaultSize}: any) => {
   return (
     <BottomSheet
       ref={bottomSheetRef}
-      index={visibleAnimal}
+      index={visibleSellType}
       snapPoints={snapPoints}
       onChange={handleSheetChanges}>
       <BottomSheetFlatList

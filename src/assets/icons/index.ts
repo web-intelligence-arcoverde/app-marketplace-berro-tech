@@ -66,6 +66,8 @@ import ClassificationIcon from './classification-icon.svg';
 import EmptyDocuments from './empty-documents.svg';
 import DeleteIcon from './delete-icon.svg';
 
+import AddIcon from './add-icon.svg';
+
 export const ICONS = {
   email: EmailIcon,
   gmail: GmailIcon,
@@ -109,4 +111,5 @@ export const ICONS = {
   'seller-default': SellerImgDefault,
   'empty-documents': EmptyDocuments,
   'delete-icon': DeleteIcon,
+  'add-icon': AddIcon,
 };

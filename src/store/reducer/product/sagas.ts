@@ -7,6 +7,7 @@ import {
   readBreedSuccess,
   readBusinessHighlightProductSuccess,
   readProductSuccess,
+  readSellTypeSuccess,
   readTypesAnimalsSuccess,
   topSearchProductSuccess,
 } from './actions';
@@ -52,8 +53,6 @@ function* readProducts() {
 
 function* readProduct({payload}: any): any {
   try {
-    console.log(payload);
-
     const {data} = yield call(api.get, `/product/${payload}`);
 
     yield put(getProductByIdSuccess(data));
@@ -92,6 +91,16 @@ function* readAgeCategories() {
   }
 }
 
+function* readSellType() {
+  try {
+    const {data} = yield call(api.get, '/sale');
+
+    yield put(readSellTypeSuccess(data));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 function* productSagas() {
   yield all([
     takeLatest('product/read-types-animals-request', readAnimalType),
@@ -105,6 +114,7 @@ function* productSagas() {
     takeLatest('product/read_animal_request', readAnimals),
     takeLatest('product/read_breed_request', readBreedByIdAnimal),
     takeLatest('product/age_categories_request', readAgeCategories),
+    takeLatest('product/read-sell-type-request', readSellType),
   ]);
 }
 

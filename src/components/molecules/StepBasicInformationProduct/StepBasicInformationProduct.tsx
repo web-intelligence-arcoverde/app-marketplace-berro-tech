@@ -11,10 +11,13 @@ import {
   readAgeCategoriesRequest,
   readAnimalRequest,
   readBreedRequest,
+  readSellTypeRequest,
+  setProductInfo,
   setVisibleBottomSheetAgeCategory,
   setVisibleBottomSheetAnimal,
   setVisibleBottomSheetAnimalBreed,
   setVisibleBottomSheetAnimalSex,
+  setVisibleBottomSheetSellType,
 } from '../../../store/reducer/product/actions';
 
 import {
@@ -31,7 +34,7 @@ import {ErrorMessage} from '../../../locale';
 const schema = yup.object({
   name: yup.string().required(ErrorMessage['name-required']),
   weight: yup.number().required(),
-  date_birth: yup.date().required(),
+  date_birth: yup.string().required(),
   description: yup.string().required(),
   quantity: yup.string().required(),
   price: yup.string().required(),
@@ -40,8 +43,16 @@ const schema = yup.object({
 
 export const StepBasicInformationProduct = () => {
   const dispatch = useAppDispatch();
-  const {selectAnimal, animal_breed, animal_sex, setAgeCategory} =
-    useAppSelector(state => state.product);
+  const {
+    selectAnimal,
+    animal_breed,
+    animal_sex,
+    setAgeCategory,
+    sellType,
+    productInfo,
+  } = useAppSelector(state => state.product);
+
+  console.log(productInfo);
 
   var utc = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
 
@@ -53,44 +64,19 @@ export const StepBasicInformationProduct = () => {
     resolver: yupResolver(schema),
     defaultValues: {
       name: '',
-      animal: '',
-      breed: '',
-      classification: '',
-      gender: '',
-      ageCategory: '',
       weight: '',
       date_birth: utc,
       description: '',
-      sellType: '',
       quantity: '',
       price: '',
       installments: '',
     },
   });
 
-  const [productBasic, setProductBasic] = useState({
-    name: '',
-    animal: '',
-    breed: '',
-    classification: '',
-    gender: '',
-    ageCategory: '',
-    weight: '',
-    date_birth: utc,
-    description: '',
-    sellType: '',
-    quantity: '',
-    price: '',
-    installments: '',
-  });
-
-  const onChangeProductBasicInformation = (name: string, value: any) => {
-    setProductBasic({...productBasic, [name]: value});
-  };
-
   useEffect(() => {
     dispatch(readAnimalRequest());
     dispatch(readAgeCategoriesRequest());
+    dispatch(readSellTypeRequest());
   }, [dispatch]);
 
   useEffect(() => {
@@ -101,15 +87,16 @@ export const StepBasicInformationProduct = () => {
 
   //@ts-ignore
   const onSubmit = data => {
-    onChangeProductBasicInformation('name', data.name);
-    onChangeProductBasicInformation('animal', selectAnimal);
-    onChangeProductBasicInformation('breed', animal_breed);
-    onChangeProductBasicInformation('gender', animal_sex);
-    onChangeProductBasicInformation('ageCategory', setAgeCategory);
-    onChangeProductBasicInformation('weight', data.weight);
-    onChangeProductBasicInformation('date_birth', data.date_birth);
-    onChangeProductBasicInformation('description', data.description);
-    console.log(data);
+    dispatch(
+      setProductInfo({
+        ...data,
+        animal: selectAnimal,
+        breed: animal_breed,
+        gender: animal_sex,
+        ageCategory: setAgeCategory,
+        sellType: sellType,
+      }),
+    );
     dispatch(changerStepProduct(1));
   };
 
@@ -206,8 +193,8 @@ export const StepBasicInformationProduct = () => {
           name="sellType"
           label={'Tipo de venda'}
           placeholder={'Selecione o tipo de venda'}
-          onPress={() => console.log('log')}
-          value={''}
+          onPress={() => dispatch(setVisibleBottomSheetSellType(1))}
+          value={sellType}
         />
 
         <SecondInput

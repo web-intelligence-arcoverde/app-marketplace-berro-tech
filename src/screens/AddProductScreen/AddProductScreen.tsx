@@ -15,8 +15,6 @@ const Steps = {
 };
 
 export const AddProductScreen = () => {
-  const [step, setStep] = useState(0);
-
   const {stepProduct} = useAppSelector(state => state.product);
 
   //@ts-ignore
@@ -25,7 +23,7 @@ export const AddProductScreen = () => {
   return (
     <Container>
       <HeaderDashboard />
-      <StepsAddProduct step={step} setStep={setStep} />
+      <StepsAddProduct />
 
       <Step />
     </Container>

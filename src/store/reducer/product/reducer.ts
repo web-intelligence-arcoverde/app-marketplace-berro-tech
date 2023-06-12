@@ -30,6 +30,10 @@ import {
   readAgeCategoriesSuccess,
   setVisibleBottomSheetAgeCategory,
   setAgeCategory,
+  readSellTypeSuccess,
+  setSellType,
+  setVisibleBottomSheetSellType,
+  setProductInfo,
 } from './actions';
 
 export const productReducer = createReducer(initialState, builder => {
@@ -150,5 +154,17 @@ export const productReducer = createReducer(initialState, builder => {
     })
     .addCase(setAgeCategory, (state, action) => {
       state.setAgeCategory = action.payload;
+    })
+    .addCase(readSellTypeSuccess, (state, action) => {
+      state.sellTypes = action.payload;
+    })
+    .addCase(setSellType, (state, action) => {
+      state.sellType = action.payload;
+    })
+    .addCase(setVisibleBottomSheetSellType, (state, action) => {
+      state.visibleSellType = action.payload;
+    })
+    .addCase(setProductInfo, (state, action) => {
+      state.productInfo = action.payload;
     });
 });
