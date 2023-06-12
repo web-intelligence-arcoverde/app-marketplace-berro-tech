@@ -51,7 +51,7 @@ export const RouterApp = () => {
     if (!loadingValue) {
       if (isExistToken || isUserLogged) {
         dispatch(setToken(value));
-        goToRouter('AddProductScreen');
+        goToRouter('DashboardBottomNavigation');
       } else {
         goToRouter('SplashScreen');
       }
