@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import {ScrollView} from 'react-native';
 import {View} from 'react-native';
 import {Select, IconComponent, Separator, Text} from '../..';
@@ -54,19 +54,17 @@ export const CollapsibleAccordionSelect = ({
             <Input value={value} onChangeText={setValue} placeholder="Buscar" />
           </InputContainer>
           {filters.length >= 1 && (
-            <CollapsibleAccordionSelectListContainer>
-              <ScrollView>
-                {filteredByValue.map((value: string, index: number) => {
-                  return (
-                    <Select
-                      value={value}
-                      setValue={getValueSelected}
-                      key={`select-${value}-${index}`}
-                    />
-                  );
-                })}
-              </ScrollView>
-            </CollapsibleAccordionSelectListContainer>
+            <ScrollView>
+              {filteredByValue.map((value: string, index: number) => {
+                return (
+                  <Select
+                    value={value}
+                    setValue={getValueSelected}
+                    key={`select-${value}-${index}`}
+                  />
+                );
+              })}
+            </ScrollView>
           )}
         </>
       )}

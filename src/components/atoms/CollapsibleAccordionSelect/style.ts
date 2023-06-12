@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import {scale} from '../../../utils';
+import {COLORS} from '../../../common';
 
 export const HeaderCollapsibleAccordionSelect = styled.TouchableOpacity`
   display: flex;
@@ -17,6 +18,8 @@ export const Input = styled.TextInput`
   width: 86%;
   height: ${scale(42)}px;
   padding-left: ${scale(10)}px;
+  font-size: ${scale(14)};
+  color: ${COLORS.gray._02};
 `;
 
 export const InputContainer = styled.View`

@@ -1,6 +1,6 @@
-import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useRef} from 'react';
 import {StyleSheet} from 'react-native';
-import BottomSheet from '@gorhom/bottom-sheet';
+import BottomSheet, {BottomSheetScrollView} from '@gorhom/bottom-sheet';
 import {useAppDispatch, useAppSelector} from '../../../hooks';
 import {changerIndexBottomSheetRecentSearch} from '../../../store/reducer/user/actions';
 import {CollapsibleAccordionSelect, HeaderFilterProducts} from '../..';
@@ -24,7 +24,7 @@ export const BottomSheetExample = () => {
   const dispatch = useAppDispatch();
 
   // variables
-  const snapPoints = useMemo(() => ['1%', '50%'], []);
+  const snapPoints = useMemo(() => ['1%', '40%'], []);
 
   // callbacks
   const handleSheetChanges = useCallback((index: number) => {
@@ -68,7 +68,7 @@ export const BottomSheetExample = () => {
       index={bottom_sheet_index}
       snapPoints={snapPoints}
       onChange={handleSheetChanges}>
-      <ScrollView style={styles.contentContainer}>
+      <BottomSheetScrollView style={styles.contentContainer}>
         <HeaderFilterProducts />
         {businessFiltersMock.map((item: any, index: number) => {
           return (
@@ -83,7 +83,7 @@ export const BottomSheetExample = () => {
             />
           );
         })}
-      </ScrollView>
+      </BottomSheetScrollView>
     </BottomSheet>
   );
 };
@@ -92,5 +92,6 @@ const styles = StyleSheet.create({
   container: {height: '100%'},
   contentContainer: {
     paddingHorizontal: 20,
+    height: '100%',
   },
 });
