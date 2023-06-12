@@ -31,6 +31,7 @@ import {useAsyncStorage} from '../hooks/useAsyncStorage';
 import {setToken} from '../store/reducer/auth/actions';
 import {BottomSheetSelectAgeCategory} from '../components/molecules/BottomSheetSelectAgeCategory/BottomSheetSelectAgeCategory';
 import {BottomSheetSelectSellType} from '../components/molecules/BottomSheetSelectSellType/BottomSheetSelectSellType';
+import {BottomSheetSelectClassification} from '../components/molecules/BottomSheetSelectClassification/BottomSheetSelectClassification';
 
 const Stack = createNativeStackNavigator();
 
@@ -114,6 +115,7 @@ export const RouterApp = () => {
       <BottomSheetSelectAgeCategory defaultSize={120} />
 
       <BottomSheetSelectSellType defaultSize={120} />
+      <BottomSheetSelectClassification defaultSize={120} />
     </>
   );
 };

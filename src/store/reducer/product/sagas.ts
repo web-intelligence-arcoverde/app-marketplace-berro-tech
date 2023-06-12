@@ -6,11 +6,13 @@ import {
   readAnimalSuccess,
   readBreedSuccess,
   readBusinessHighlightProductSuccess,
+  readClassificationSuccess,
   readProductSuccess,
   readSellTypeSuccess,
   readTypesAnimalsSuccess,
   topSearchProductSuccess,
 } from './actions';
+import {store} from '../..';
 
 const animals = ['ovino', 'caprino'];
 
@@ -101,6 +103,46 @@ function* readSellType() {
   }
 }
 
+function* registerProduct({payload}: any): any {
+  try {
+    const {router} = payload;
+
+    const {productInfo, files} = store.getState().product;
+
+    const {state, city} = store.getState().user;
+
+    const product = {...productInfo, state, city};
+
+    var formData = new FormData();
+
+    files.map((file: any) => {
+      formData.append('document', file);
+    });
+
+    formData.append('productInfo', JSON.stringify(product));
+
+    yield call(api.post, '/product', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+
+    yield put(router('DashboardBottomNavigation'));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function* readClassifications() {
+  try {
+    const {data} = yield call(api.get, '/classification');
+
+    yield put(readClassificationSuccess(data));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 function* productSagas() {
   yield all([
     takeLatest('product/read-types-animals-request', readAnimalType),
@@ -115,6 +157,8 @@ function* productSagas() {
     takeLatest('product/read_breed_request', readBreedByIdAnimal),
     takeLatest('product/age_categories_request', readAgeCategories),
     takeLatest('product/read-sell-type-request', readSellType),
+    takeLatest('product/create-product-request', registerProduct),
+    takeLatest('product/read-classification-request', readClassifications),
   ]);
 }
 

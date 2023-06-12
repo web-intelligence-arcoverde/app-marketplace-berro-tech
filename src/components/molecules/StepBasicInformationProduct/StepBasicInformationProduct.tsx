@@ -11,12 +11,14 @@ import {
   readAgeCategoriesRequest,
   readAnimalRequest,
   readBreedRequest,
+  readClassificationRequest,
   readSellTypeRequest,
   setProductInfo,
   setVisibleBottomSheetAgeCategory,
   setVisibleBottomSheetAnimal,
   setVisibleBottomSheetAnimalBreed,
   setVisibleBottomSheetAnimalSex,
+  setVisibleBottomSheetClassification,
   setVisibleBottomSheetSellType,
 } from '../../../store/reducer/product/actions';
 
@@ -33,8 +35,8 @@ import {ErrorMessage} from '../../../locale';
 
 const schema = yup.object({
   name: yup.string().required(ErrorMessage['name-required']),
-  weight: yup.number().required(),
-  date_birth: yup.string().required(),
+  weight: yup.string().required(),
+  birthday: yup.string().required(),
   description: yup.string().required(),
   quantity: yup.string().required(),
   price: yup.string().required(),
@@ -49,10 +51,8 @@ export const StepBasicInformationProduct = () => {
     animal_sex,
     setAgeCategory,
     sellType,
-    productInfo,
+    classification,
   } = useAppSelector(state => state.product);
-
-  console.log(productInfo);
 
   var utc = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
 
@@ -65,7 +65,7 @@ export const StepBasicInformationProduct = () => {
     defaultValues: {
       name: '',
       weight: '',
-      date_birth: utc,
+      birthday: utc,
       description: '',
       quantity: '',
       price: '',
@@ -77,6 +77,7 @@ export const StepBasicInformationProduct = () => {
     dispatch(readAnimalRequest());
     dispatch(readAgeCategoriesRequest());
     dispatch(readSellTypeRequest());
+    dispatch(readClassificationRequest());
   }, [dispatch]);
 
   useEffect(() => {
@@ -93,8 +94,9 @@ export const StepBasicInformationProduct = () => {
         animal: selectAnimal,
         breed: animal_breed,
         gender: animal_sex,
-        ageCategory: setAgeCategory,
+        date: setAgeCategory,
         sellType: sellType,
+        classification: classification,
       }),
     );
     dispatch(changerStepProduct(1));
@@ -138,6 +140,14 @@ export const StepBasicInformationProduct = () => {
         />
 
         <CustomDropDownPicker
+          name="classification"
+          label="Classificação"
+          placeholder={'Classificação'}
+          onPress={() => dispatch(setVisibleBottomSheetClassification(1))}
+          value={classification}
+        />
+
+        <CustomDropDownPicker
           name="gender"
           label={'Sexo'}
           placeholder={'Selecione o sexo do animal'}
@@ -157,24 +167,28 @@ export const StepBasicInformationProduct = () => {
           value={setAgeCategory}
         />
 
-        <SecondInput
+        <CustomInput
           name="weight"
           control={control}
           label="Peso"
           placeholder="Peso"
           errors={errors?.weight?.message}
+          type="custom"
+          options={{
+            mask: 'KG 9999,99',
+          }}
         />
 
         <CustomInput
           control={control}
           label="Data de nascimento"
-          name="date_birth"
+          name="birthday"
           type="datetime"
           options={{
             format: 'DD/MM/YYYY',
           }}
           placeholder="Digite a data de nascimento do seu animal"
-          errors={errors?.date_birth?.message}
+          errors={errors?.birthday?.message}
         />
 
         <SecondInput

@@ -3,13 +3,16 @@ import React from 'react';
 import {CustomDropDownPickerStates, Text, Button} from '../../';
 import {useEffect} from 'react';
 import {ScrollView, View} from 'react-native';
-import {useAppDispatch} from '../../../hooks';
+import {useAppDispatch, useNavigationHook} from '../../../hooks';
 import {readStateRequest} from '../../../store/reducer/user/actions';
 import {CustomDropDownPickerCities} from '../CustomDropDownPickerCities/CustomDropDownPickerCities';
 import {scale} from '../../../utils';
+import {createProductRequest} from '../../../store/reducer/product/actions';
 
 export const StepLocationProduct = () => {
   const dispatch = useAppDispatch();
+
+  const {goToRouter} = useNavigationHook();
 
   useEffect(() => {
     dispatch(readStateRequest());
@@ -27,7 +30,7 @@ export const StepLocationProduct = () => {
         <Button
           title="Finalizar"
           variant="containedThirdy"
-          onPress={() => console.log('aq')}
+          onPress={() => dispatch(createProductRequest({router: goToRouter}))}
         />
       </View>
     </ScrollView>

@@ -34,7 +34,7 @@ export const initialState: IStateProduct = {
 
   files: [],
 
-  stepProduct: 1,
+  stepProduct: 0,
   age_categories: [],
   setAgeCategory: '',
   visibleAgeCategory: 0,
@@ -44,4 +44,8 @@ export const initialState: IStateProduct = {
   visibleSellType: 0,
 
   productInfo: {},
+
+  classifications: [],
+  classification: '',
+  visibleClassifications: 0,
 };

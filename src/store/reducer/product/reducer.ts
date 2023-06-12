@@ -34,6 +34,9 @@ import {
   setSellType,
   setVisibleBottomSheetSellType,
   setProductInfo,
+  setClassification,
+  readClassificationSuccess,
+  setVisibleBottomSheetClassification,
 } from './actions';
 
 export const productReducer = createReducer(initialState, builder => {
@@ -166,5 +169,14 @@ export const productReducer = createReducer(initialState, builder => {
     })
     .addCase(setProductInfo, (state, action) => {
       state.productInfo = action.payload;
+    })
+    .addCase(setClassification, (state, action) => {
+      state.classification = action.payload;
+    })
+    .addCase(readClassificationSuccess, (state, action) => {
+      state.classifications = action.payload;
+    })
+    .addCase(setVisibleBottomSheetClassification, (state, action) => {
+      state.visibleClassifications = action.payload;
     });
 });

@@ -132,3 +132,23 @@ export const setVisibleBottomSheetSellType = createAction<number>(
 export const setSellType = createAction<string>('product/set-sell-type');
 
 export const setProductInfo = createAction<any>('product/set-product-info');
+
+export const createProductRequest = createAction<any>(
+  'product/create-product-request',
+);
+
+export const readClassificationRequest = createAction(
+  'product/read-classification-request',
+);
+
+export const readClassificationSuccess = createAction<any>(
+  'product/read-classification-success',
+);
+
+export const setVisibleBottomSheetClassification = createAction<number>(
+  'product/set-visible-bottom-sheet-classification',
+);
+
+export const setClassification = createAction<string>(
+  'product/set-classification',
+);

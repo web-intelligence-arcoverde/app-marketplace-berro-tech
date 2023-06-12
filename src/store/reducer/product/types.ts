@@ -46,6 +46,10 @@ export interface IStateProduct {
   stepProduct: number;
 
   productInfo: any;
+
+  classifications: any[];
+  classification: string;
+  visibleClassifications: number;
 }
 
 export interface IProduct {
