@@ -1,89 +1,10 @@
-# Screens
-
-## SplashScreen
-
-## OnboardingScreen
-
     - ajustado status bar
 
-## SignInSocialScreen
+## AddProduct
 
-    - mudar nome da screen para SignInOptionScreen
-
-## SignUpScreen
-
-    - gerar build
-    - verificar tipos dos inputs
-    - faltando button [ já tenho uma conta ]
-    - faltando button [ voltar ]
-    - mudar campo telefone para celular (whatsapp)
-    - integrar com o back end
-
-## SignInEmailScreen
-
-    - mudar nome da screen para SignInScreen
-    - verificar tipos dos inputs
-    - integrar com o back end
-    - salvar token no asyncLocalStorage
-
-## RecoveryAccountScreen
-
-    - adicionar provedor envio email
-    - integrar com o back end
-
-## DashboardBottomNavigation
-
-    ### Home
-
-      - header arrumar iteracoes com back
-      - header adicionar espaçamento no topo
-      - mudar nome da screen para DashboardScreen
-      - ajustar espacamento do slide de negocios em destaque
-      - adicionar redirecionamento do ver mais para negocios
-      - adicionar redirecionamento quando clicar no produto para os detalhes dele
-      - integrar ProductListSpecificHomeScreen com back end
-
-    ### Negócios
-
-      - arrumar header
-      - integrar com back end
-      - arrumar informacoes do produto
-      - organizar filtros
-
-    ### Perfil
-
-      - arrumar header
-      - pegar informacoes do usuario do back
-      - alterar informacoes do usuario
-      - remover item de avaliacoes
-      - arrumar steps de editar conta
-
-## AddProductScreen
-
-    - ESSA SCREEN VAI SERVIR TANTO PARA CRIAR COMO EDITAR
-    - mudar nome da screen para ProductScreen
-    - Ajustar steps do cadastro de produto
-    - adicionar rota para buscar select de animal, raca, idade
-
-## EditProfile
-
-    ### ChangerPassword
-
-      - criar action no redux
-      - criar criar sagas
-      - enviar valores para o back
-
-
-    ### ChangerLocation
-
-      - criar action no redux
-      - criar criar sagas
-      - alterar valor no reducer caso for successs
-      - enviar valores para o back
-
-    ### BasicInformation
-
-      - criar action no redux
-      - criar criar sagas
-      - alterar valor no reducer caso for successs
-      - enviar valores para o back
+    [x] - criar um useContext para os steps
+    [] - pegar informacoes do context no StepsAddProduct e StepsFormContainer
+    [] - criar funcao para alterar o step
+    [] - alterar os dropdown para mostrar o label ou placeholder parecido com o input normal
+    [] - abrir o dropdown de raças apenas quando tiver um animal selecionado
+    [] - poder alterar de step apenas quando estiver tudo preenchido

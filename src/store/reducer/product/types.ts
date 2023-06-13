@@ -45,11 +45,27 @@ export interface IStateProduct {
 
   stepProduct: number;
 
-  productInfo: any;
+  productInfo: ICreateProduct;
 
   classifications: any[];
   classification: string;
   visibleClassifications: number;
+}
+
+export interface ICreateProduct {
+  name: string;
+  weight: string;
+  birthday: string;
+  description: string;
+  quantity: string;
+  price: string;
+  installments: string;
+  animal: string;
+  breed: string;
+  gender: string;
+  date: string;
+  sellType: string;
+  classification: string;
 }
 
 export interface IProduct {

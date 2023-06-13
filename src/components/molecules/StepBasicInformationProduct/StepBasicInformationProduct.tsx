@@ -1,13 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useContext, useState} from 'react';
 
 import {useAppDispatch, useAppSelector} from '../../../hooks';
 
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
+import {
+  ContextFormAddProduct,
+  IAppContextAddProduct,
+} from '../../../context/ContextContainerAddProduct';
+
 import {useForm} from 'react-hook-form';
 import {
-  changerStepProduct,
   readAgeCategoriesRequest,
   readAnimalRequest,
   readBreedRequest,
@@ -28,10 +32,13 @@ import {
   CustomInput,
   CustomDropDownPicker,
   Button,
+  Separator,
 } from '../../';
 
 import {Container, CustomContainer} from './style';
 import {ErrorMessage} from '../../../locale';
+import {useToast} from 'react-native-toast-notifications';
+import {getBottomSpaceHeight} from '../../../utils';
 
 const schema = yup.object({
   name: yup.string().required(ErrorMessage['name-required']),
@@ -44,6 +51,10 @@ const schema = yup.object({
 });
 
 export const StepBasicInformationProduct = () => {
+  const {setStep} = useContext(ContextFormAddProduct) as IAppContextAddProduct;
+
+  const {productInfo} = useAppSelector(state => state.product);
+
   const dispatch = useAppDispatch();
   const {
     selectAnimal,
@@ -54,8 +65,6 @@ export const StepBasicInformationProduct = () => {
     classification,
   } = useAppSelector(state => state.product);
 
-  var utc = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
-
   const {
     control,
     handleSubmit,
@@ -63,13 +72,13 @@ export const StepBasicInformationProduct = () => {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      name: '',
-      weight: '',
-      birthday: utc,
-      description: '',
-      quantity: '',
-      price: '',
-      installments: '',
+      name: productInfo.name,
+      weight: productInfo.weight,
+      birthday: productInfo.birthday,
+      description: productInfo.description,
+      quantity: productInfo.quantity,
+      price: productInfo.price,
+      installments: productInfo.installments,
     },
   });
 
@@ -86,6 +95,18 @@ export const StepBasicInformationProduct = () => {
     }
   }, [dispatch, selectAnimal]);
 
+  function isCheckPropObj(obj: any) {
+    let isEmptyObj = false;
+    Object.keys(obj).map(item => {
+      if (obj[item] === '' || obj[item] === null) {
+        isEmptyObj = true;
+      }
+    });
+    return isEmptyObj;
+  }
+
+  const toast = useToast();
+
   //@ts-ignore
   const onSubmit = data => {
     dispatch(
@@ -99,7 +120,19 @@ export const StepBasicInformationProduct = () => {
         classification: classification,
       }),
     );
-    dispatch(changerStepProduct(1));
+
+    let isEmptyObj: boolean = isCheckPropObj(productInfo);
+
+    //@ts-ignore
+    isCheckPropObj &&
+      toast.show('Preencha o restante dos campos', {
+        type: 'danger',
+        placement: 'bottom',
+        duration: 4000,
+        animationType: 'zoom-in',
+      });
+
+    !isEmptyObj && setStep(1);
   };
 
   return (
@@ -129,13 +162,15 @@ export const StepBasicInformationProduct = () => {
           name="breed"
           label="Raça"
           placeholder={'Selecione uma raça'}
-          onPress={() =>
-            dispatch(
-              setVisibleBottomSheetAnimalBreed({
-                visible_animal_breed_select: 1,
-              }),
-            )
-          }
+          onPress={() => {
+            if (selectAnimal !== '') {
+              dispatch(
+                setVisibleBottomSheetAnimalBreed({
+                  visible_animal_breed_select: 1,
+                }),
+              );
+            }
+          }}
           value={animal_breed}
         />
 
@@ -240,8 +275,9 @@ export const StepBasicInformationProduct = () => {
           title="Próximo"
           variant="containedThirdy"
           onPress={handleSubmit(onSubmit)}
-          //onPress={() => dispatch(changerStepProduct(1))}
         />
+
+        <Separator height={getBottomSpaceHeight() + 28} />
       </CustomContainer>
     </Container>
   );

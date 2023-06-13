@@ -43,9 +43,22 @@ export const initialState: IStateProduct = {
   sellType: '',
   visibleSellType: 0,
 
-  productInfo: {},
-
   classifications: [],
   classification: '',
   visibleClassifications: 0,
+  productInfo: {
+    name: '',
+    weight: '',
+    birthday: '',
+    description: '',
+    quantity: '',
+    price: '',
+    installments: '',
+    animal: '',
+    breed: '',
+    gender: '',
+    date: '',
+    sellType: '',
+    classification: '',
+  },
 };

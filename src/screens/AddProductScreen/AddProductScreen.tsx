@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
 
 import {HeaderDashboard, StepsAddProduct} from '../../components';
 
@@ -6,7 +6,11 @@ import {StepBasicInformationProduct} from '../../components/molecules/StepBasicI
 import {StepUploadFiles} from '../../components/molecules/StepUploadFiles/StepUploadFiles';
 import {StepLocationProduct} from '../../components/molecules/StepLocationProduct/StepLocationProduct';
 import {Container} from './style';
-import {useAppSelector} from '../../hooks';
+import {
+  ContextFormAddProduct,
+  IAppContextAddProduct,
+  ProviderStepsFormAddProduct,
+} from '../../context/ContextContainerAddProduct';
 
 const Steps = {
   0: StepBasicInformationProduct,
@@ -14,18 +18,25 @@ const Steps = {
   2: StepLocationProduct,
 };
 
-export const AddProductScreen = () => {
-  const {stepProduct} = useAppSelector(state => state.product);
+export const StepsFormCreateProductContainer = () => {
+  const {step} = useContext(ContextFormAddProduct) as IAppContextAddProduct;
 
   //@ts-ignore
-  const Step = Steps[stepProduct];
+  const Step = Steps[step];
 
+  return <Step />;
+};
+
+export const AddProductScreen = () => {
   return (
     <Container>
       <HeaderDashboard />
-      <StepsAddProduct />
 
-      <Step />
+      <ProviderStepsFormAddProduct>
+        <StepsAddProduct />
+
+        <StepsFormCreateProductContainer />
+      </ProviderStepsFormAddProduct>
     </Container>
   );
 };
