@@ -5,7 +5,7 @@ export const signInSuccess = createAction<string>('auth/sign-in-success');
 
 export const signUpSuccess = createAction<string>('auth/sign-up-success');
 
-export const signOutRequest = createAction('auth/sign-out-request');
+export const signOutRequest = createAction<any>('auth/sign-out-request');
 
 export const signOutSuccess = createAction('auth/sign-out-request');
 
@@ -29,4 +29,8 @@ export const changerPasswordRequest = createAction<IChangerPassword>(
 
 export const changerPasswordSuccess = createAction(
   'auth/changer-password-success',
+);
+
+export const visibleMessageErrorSignIn = createAction<string>(
+  'auth/visible-message-error-sign-in',
 );

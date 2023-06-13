@@ -14,3 +14,4 @@ export * from './Dropdown/Dropdown';
 
 export * from './Select/Select';
 export * from './CollapsibleAccordionSelect/CollapsibleAccordionSelect';
+export * from './Loading/Loading';

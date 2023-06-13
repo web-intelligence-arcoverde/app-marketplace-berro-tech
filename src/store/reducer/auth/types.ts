@@ -6,6 +6,9 @@ export type IStateAuth = {
   isLogged: boolean;
   filterProducts: IProduct[];
   loading: boolean;
+
+  visibleErrorMessage: boolean;
+  errorMessage: string;
 };
 
 export type IUser = {

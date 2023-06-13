@@ -14,4 +14,6 @@ export const initialState: IStateAuth = {
     addresses: [],
     contacts: [],
   },
+  visibleErrorMessage: false,
+  errorMessage: '',
 };

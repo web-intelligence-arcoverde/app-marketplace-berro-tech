@@ -1,6 +1,6 @@
 import {all, call, put, takeLatest} from 'redux-saga/effects';
 import api from '../../../service';
-import {signInSuccess} from '../auth/actions';
+import {signInSuccess, visibleMessageErrorSignIn} from '../auth/actions';
 import {signUpRequest} from '../auth/service';
 import {
   readCityByStateSuccess,
@@ -24,7 +24,7 @@ function* signIn({payload}: any): any {
 
     yield put(router('DashboardBottomNavigation'));
   } catch (e) {
-    console.log(e);
+    yield put(visibleMessageErrorSignIn('Credenciais inválidas'));
   }
 }
 

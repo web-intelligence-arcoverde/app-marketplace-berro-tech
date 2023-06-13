@@ -1,4 +1,7 @@
+import React from 'react';
+
 import {Dimensions, Image} from 'react-native';
+import Video from 'react-native-video';
 
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 import {useAppSelector} from '../../../hooks';
@@ -14,14 +17,32 @@ export const CarouselImagesDetailProductScreen = () => {
 
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const renderItem = ({item, index}: any) => {
+  const renderItem = ({item}: any) => {
+    let typeFile = item.url.split('.').reverse()[0];
+    let isVideo = typeFile === 'mp4';
+
     return (
-      <Image
-        style={{width: width, height: scale(300), resizeMode: 'cover'}}
-        source={{
-          uri: item.url,
-        }}
-      />
+      <>
+        {isVideo ? (
+          <Video
+            source={{uri: item.url}}
+            style={{
+              width: width,
+              height: scale(300),
+            }}
+            controls
+            resizeMode="stretch"
+            paused
+          />
+        ) : (
+          <Image
+            style={{width: width, height: scale(300), resizeMode: 'cover'}}
+            source={{
+              uri: item.url,
+            }}
+          />
+        )}
+      </>
     );
   };
 
@@ -34,7 +55,8 @@ export const CarouselImagesDetailProductScreen = () => {
         itemWidth={width}
         renderItem={renderItem}
         style={{position: 'relative'}}
-        onSnapToItem={index => setActiveIndex(index)}></Carousel>
+        onSnapToItem={index => setActiveIndex(index)}
+      />
       <Pagination
         dotsLength={documents.length}
         activeDotIndex={activeIndex}

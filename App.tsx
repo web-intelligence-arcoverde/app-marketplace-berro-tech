@@ -9,17 +9,21 @@ import {Provider} from 'react-redux';
 import {store} from './src/store';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
+import {ToastProvider} from 'react-native-toast-notifications';
+
 EStyleSheet.build();
 
 export default function App() {
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <SafeAreaProvider>
-        <Provider store={store}>
-          <NavigationContainer>
-            <RouterApp />
-          </NavigationContainer>
-        </Provider>
+        <ToastProvider>
+          <Provider store={store}>
+            <NavigationContainer>
+              <RouterApp />
+            </NavigationContainer>
+          </Provider>
+        </ToastProvider>
       </SafeAreaProvider>
     </GestureHandlerRootView>
   );

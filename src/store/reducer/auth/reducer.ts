@@ -6,6 +6,8 @@ import {
   readInformationUserLoggedSuccess,
   setToken,
   signInSuccess,
+  signOutRequest,
+  visibleMessageErrorSignIn,
 } from './actions';
 import {storeData} from '../../../hooks/useAsyncStorage';
 
@@ -27,5 +29,15 @@ export const authReducer = createReducer(initialState, builder => {
     })
     .addCase(filterProductsByAnimalType, (state, action) => {
       state.filterProducts = action.payload;
+    })
+    .addCase(signOutRequest, (state, action) => {
+      state.token = '';
+      state.isLogged = false;
+      storeData('');
+      action.payload.router('SignInEmailScreen');
+    })
+    .addCase(visibleMessageErrorSignIn, (state, action) => {
+      state.visibleErrorMessage = !state.visibleErrorMessage;
+      state.errorMessage = action.payload;
     });
 });

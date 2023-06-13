@@ -121,6 +121,25 @@ export const ButtonStyle = EStyleSheet.create({
     },
   },
 
+  containedFourNotIcon: {
+    containerStyle: {
+      width: '100%',
+    },
+
+    titleStyle: {
+      color: COLORS.sub_brand._02,
+      fontFamily: 'Inter-SemiBold',
+      fontSize: scale(14),
+      fontWeight: 600,
+    },
+
+    buttonStyle: {
+      backgroundColor: COLORS.sub_brand._03,
+      height: scale(36),
+      borderRadius: scale(6),
+    },
+  },
+
   outlined: {
     containerStyle: {
       width: '100%',
@@ -266,6 +285,24 @@ export const ButtonStyle = EStyleSheet.create({
 
     buttonStyle: {
       backgroundColor: COLORS.light._05,
+    },
+  },
+
+  containedNoneSecondary: {
+    containerStyle: {
+      width: '100%',
+    },
+
+    titleStyle: {
+      color: COLORS.auxiliary.red_state,
+      fontFamily: 'Inter-Regular',
+      fontSize: scale(14),
+      borderRadius: scale(6),
+      marginLeft: 0,
+    },
+
+    buttonStyle: {
+      backgroundColor: 'rgba(211, 60, 37, 0.1)',
     },
   },
 

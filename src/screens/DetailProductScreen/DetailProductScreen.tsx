@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {useEffect} from 'react';
 import {Linking, ScrollView, View} from 'react-native';
 
@@ -20,6 +22,7 @@ import {
   ProductSpecificList,
   PriceProductDetailScreen,
   DescriptionProductDetailScreen,
+  Loading,
 } from '../../components';
 
 import {LayoutContainer} from './style';
@@ -31,6 +34,8 @@ export const DetailProductScreen = ({route}: any) => {
 
   let productInfo = !loadingProduct ? product?.products[0] : {};
 
+  let concatInfo = !loadingProduct ? product?.contacts[0] : {phone_number: ''};
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -39,22 +44,21 @@ export const DetailProductScreen = ({route}: any) => {
 
   useEffect(() => {
     dispatch(topSearchProductRequest('rank'));
-  }, []);
+  }, [dispatch]);
 
-  let whatsappNo = '87998093765';
   let whatsappMsg = 'BerroTech';
 
   const goToWhatsapp = async () =>
     await Linking.openURL(
-      `whatsapp://send?phone=${whatsappNo}&text=${whatsappMsg}`,
+      `whatsapp://send?phone=${concatInfo.phone_number}&text=${whatsappMsg}`,
     );
 
   return (
     <ScrollView style={{backgroundColor: '#fff'}}>
       {loadingProduct ? (
-        <></>
+        <Loading />
       ) : (
-        <>
+        <View>
           <HeaderDashboard />
           <CarouselImagesDetailProductScreen />
           <ProductItemHeader {...productInfo} />
@@ -77,7 +81,7 @@ export const DetailProductScreen = ({route}: any) => {
           <LayoutContainer>
             <ProfileUserBasicInformation {...product} />
           </LayoutContainer>
-        </>
+        </View>
       )}
       <Separator height={20} />
       <View

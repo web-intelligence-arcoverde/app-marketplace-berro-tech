@@ -1,18 +1,21 @@
 import {ProductItemCard, Separator, EmptyContainerProduct} from '../../';
 
-import {useAppSelector} from '../../../hooks';
+import {useAppDispatch, useAppSelector} from '../../../hooks';
 import {useNavigation} from '@react-navigation/native';
 
 import {Container, ContainerProduct} from './style';
 import {Text} from '../../atoms';
 import React from 'react';
-import {View} from 'react-native';
+import {View, RefreshControl} from 'react-native';
 import {scale} from '../../../utils';
+import {readProductRequest} from '../../../store/reducer/product/actions';
 
 export const BusinessProductCardList = () => {
-  const {produtcs, filterProdutcs, search, itemsSelectedFilter} =
-    useAppSelector(state => state.product);
-  const navigate = useNavigation();
+  const {produtcs, filterProdutcs, search, loadingProducts} = useAppSelector(
+    state => state.product,
+  );
+
+  const dispatch = useAppDispatch();
 
   let isSearchExist = search.length >= 1;
   let isFilterProductExist = filterProdutcs.length >= 1;
@@ -23,28 +26,12 @@ export const BusinessProductCardList = () => {
 
   let product: any = isFilterProductExist ? filterProdutcs : produtcs;
 
-  const RenderList = () => {
-    return (
-      <Container>
-        <Separator height={32} />
-        {product.map((item: any, index: number) => {
-          return (
-            <ContainerProduct key={`${item}-${index}-item-product-card`}>
-              <ProductItemCard {...item} onPress={redirectToDetailsProduct} />
-              <Separator height={20} />
-            </ContainerProduct>
-          );
-        })}
-      </Container>
-    );
-  };
-
   const renderContainerList = () => {
     if (producstListExist) {
       if (productsSearchListExist) {
-        return <RenderList />;
+        return <RenderList product={product} />;
       } else if (!isSearchExist) {
-        return <RenderList />;
+        return <RenderList product={product} />;
       } else {
         return (
           <EmptyContainerProduct
@@ -56,18 +43,11 @@ export const BusinessProductCardList = () => {
     } else {
       return (
         <EmptyContainerProduct
-          title={`Não temos negócios no momento `}
-          description={`Tente novamente mais tarde`}
+          title={'Não temos negócios no momento '}
+          description={'Tente novamente mais tarde'}
         />
       );
     }
-  };
-
-  const redirectToDetailsProduct = (id: number) => {
-    //@ts-ignore
-    navigate.navigate('DetailProductScreen', {
-      id,
-    });
   };
 
   return (
@@ -81,5 +61,39 @@ export const BusinessProductCardList = () => {
       )}
       {renderContainerList()}
     </>
+  );
+};
+
+const RenderList = ({product}: any) => {
+  const {loadingProducts} = useAppSelector(state => state.product);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigation();
+
+  const onRefresh = React.useCallback(() => {
+    dispatch(readProductRequest());
+  }, [dispatch]);
+
+  const redirectToDetailsProduct = (id: number) => {
+    //@ts-ignore
+    navigate.navigate('DetailProductScreen', {
+      id,
+    });
+  };
+
+  return (
+    <Container
+      refreshControl={
+        <RefreshControl refreshing={loadingProducts} onRefresh={onRefresh} />
+      }>
+      <Separator height={32} />
+      {product.map((item: any, index: number) => {
+        return (
+          <ContainerProduct key={`${item}-${index}-item-product-card`}>
+            <ProductItemCard {...item} onPress={redirectToDetailsProduct} />
+            <Separator height={20} />
+          </ContainerProduct>
+        );
+      })}
+    </Container>
   );
 };

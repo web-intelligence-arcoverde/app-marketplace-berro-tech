@@ -5,6 +5,7 @@ import {View} from 'react-native';
 import {Container, ContainerImage} from './style';
 import {useAppDispatch, useNavigationHook} from '../../../hooks';
 import {changerStepEditProfile} from '../../../store/reducer/user/actions';
+import {signOutRequest} from '../../../store/reducer/auth/actions';
 
 interface IHeaderUserProfileScreen {
   name?: string;
@@ -38,14 +39,27 @@ export const HeaderUserProfileScreen = ({
           {email}
         </Text>
         <Separator height={8} />
-        <Button
-          title="Minha conta"
-          variant="containedFour"
-          onPress={() => {
-            goToRouter('EditProfileScreen');
-            dispatch(changerStepEditProfile({step_edit_profile: 0}));
-          }}
-        />
+        <View style={{flexDirection: 'row', width: '40%', gap: 12}}>
+          <View style={{width: 122}}>
+            <Button
+              title="Minha conta"
+              variant="containedFourNotIcon"
+              onPress={() => {
+                goToRouter('EditProfileScreen');
+                dispatch(changerStepEditProfile({step_edit_profile: 0}));
+              }}
+            />
+          </View>
+          <View style={{width: 80}}>
+            <Button
+              title="Sair"
+              variant="containedNoneSecondary"
+              onPress={() => {
+                dispatch(signOutRequest({router: goToRouter}));
+              }}
+            />
+          </View>
+        </View>
       </View>
     </Container>
   );
