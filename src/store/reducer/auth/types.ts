@@ -6,9 +6,6 @@ export type IStateAuth = {
   isLogged: boolean;
   filterProducts: IProduct[];
   loading: boolean;
-
-  visibleErrorMessage: boolean;
-  errorMessage: string;
 };
 
 export type IUser = {
@@ -36,4 +33,10 @@ export interface IChangerPassword {
   router: any;
   currentPassword: string;
   newPassword: string;
+}
+
+export interface ISignIn {
+  email: string;
+  password: string;
+  router: any;
 }

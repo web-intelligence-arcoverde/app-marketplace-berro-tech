@@ -4,15 +4,12 @@ import {
   signInSuccess,
   updateAuthAddressSuccess,
   userLoggedDeleteSuccess,
-  visibleMessageErrorSignIn,
 } from '../auth/actions';
-import {signUpRequest} from '../auth/service';
+
 import {
   readCityByStateSuccess,
   readSellerSuccess,
   readStateSuccess,
-  signUpSuccess,
-  updateUserAddressSuccess,
 } from './actions';
 import {store} from '../..';
 
@@ -29,9 +26,7 @@ function* signIn({payload}: any): any {
     yield put(signInSuccess(token.token));
 
     yield put(router('DashboardBottomNavigation'));
-  } catch (e) {
-    yield put(visibleMessageErrorSignIn('Credenciais inválidas'));
-  }
+  } catch (e) {}
 }
 
 function* readSeller({payload}: any): any {

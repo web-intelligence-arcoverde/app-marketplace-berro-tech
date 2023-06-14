@@ -24,7 +24,7 @@ export const RecoveryAccountScreenStep02 = () => {
   const [value, setValue] = useState('');
   const {goToRouter} = useNavigationHook();
 
-  const {setStep, email} = useHookStepsRecoveryAccount();
+  const {email} = useHookStepsRecoveryAccount();
 
   const dispatch = useAppDispatch();
 
@@ -46,7 +46,7 @@ export const RecoveryAccountScreenStep02 = () => {
         variant="contained"
         onPress={() => {
           dispatch(sendCodeRecoveryAccountRequest({code: ''}));
-          goToRouter('SignInEmailScreen');
+          goToRouter('SignInScreen');
         }}
       />
       <Separator height={SIZES.insideSpacingSmall} />

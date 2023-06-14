@@ -3,10 +3,12 @@ import {IProduct} from '../product/types';
 
 export interface IUserInitialState {
   user: IUser;
+  token: string;
+
   loading?: boolean;
   step_edit_profile?: number;
   bottom_sheet_index?: number;
-  token: string;
+
   userSignUp?: ISignUp;
 
   seller?: IUser;

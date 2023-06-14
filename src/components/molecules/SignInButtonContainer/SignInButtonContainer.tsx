@@ -21,7 +21,7 @@ export const SignInButtonContainer = () => {
           <Button
             title="Já tenho uma conta"
             variant="containedSecondary"
-            onPress={() => goToRouter('SignInEmailScreen')}
+            onPress={() => goToRouter('SignInScreen')}
           />
         </View>
       )}

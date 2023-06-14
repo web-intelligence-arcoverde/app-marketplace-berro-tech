@@ -1,8 +1,10 @@
 import {createAction} from '@reduxjs/toolkit';
-import {IUser, IChangerPassword} from './types';
+import {IUser, IChangerPassword, ISignIn} from './types';
 
+export const signInRequest = createAction<ISignIn>('auth/sign-in-request');
 export const signInSuccess = createAction<string>('auth/sign-in-success');
 
+export const signUpRequest = createAction<any>('auth/sign-up-request');
 export const signUpSuccess = createAction<any>('auth/sign-up-success');
 
 export const signOutRequest = createAction<any>('auth/sign-out-request');
@@ -29,10 +31,6 @@ export const changerPasswordRequest = createAction<IChangerPassword>(
 
 export const changerPasswordSuccess = createAction(
   'auth/changer-password-success',
-);
-
-export const visibleMessageErrorSignIn = createAction<string>(
-  'auth/visible-message-error-sign-in',
 );
 
 export const userLoggedDeleteRequest = createAction<any>(

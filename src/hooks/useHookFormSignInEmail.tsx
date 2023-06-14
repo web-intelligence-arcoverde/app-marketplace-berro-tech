@@ -20,7 +20,7 @@ const schema = yup
   })
   .required();
 
-import {signInRequest} from '../store/reducer/user/actions';
+import {signInRequest} from '../store/reducer/auth/actions';
 import {useNavigationHook} from './useNavigationHook';
 
 export const useHookFormSignInEmail = () => {
@@ -42,7 +42,13 @@ export const useHookFormSignInEmail = () => {
   const onSubmit = handleSubmit(data => nextStep(data));
 
   const nextStep = (data: any) => {
-    dispatch(signInRequest({data, router: goToRouter}));
+    dispatch(
+      signInRequest({
+        email: data.email,
+        password: data.password,
+        router: goToRouter,
+      }),
+    );
   };
 
   return {onSubmit, control, errors};

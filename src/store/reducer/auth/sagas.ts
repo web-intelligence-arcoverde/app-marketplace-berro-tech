@@ -3,7 +3,7 @@ import {signUpRequest} from './service';
 
 import {signUpSuccess} from '../user/actions';
 import api from '../../../service';
-import {readInformationUserLoggedSuccess} from './actions';
+import {readInformationUserLoggedSuccess, signInSuccess} from './actions';
 import {store} from '../..';
 
 function* signUp({payload}: any): any {
@@ -53,8 +53,27 @@ function* userDelete({payload}: any): any {
   } catch (error) {}
 }
 
+function* signIn({payload}: any): any {
+  try {
+    const router = payload.router;
+
+    delete payload.router;
+
+    console.log(payload);
+
+    const {
+      data: {token},
+    } = yield call(api.post, '/sign-in/', payload);
+
+    yield put(signInSuccess(token.token));
+
+    yield put(router('DashboardBottomNavigation'));
+  } catch (e) {}
+}
+
 function* authSagas() {
   yield all([
+    takeLatest('auth/sign-in-request', signIn),
     takeLatest('user/sign-up-step-02', signUp),
     takeLatest(
       'auth/read-information-user-logged-request',

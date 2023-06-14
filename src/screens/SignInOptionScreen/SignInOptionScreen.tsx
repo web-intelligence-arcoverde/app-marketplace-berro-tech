@@ -1,9 +1,12 @@
+import React from 'react';
+
 import {
   HeaderLogoIntro,
   HeaderDescriptionIntro,
   ContentButtonGroupSocialLoginIntro,
   FooterButtonCreateAccountIntro,
 } from '../../components';
+
 import {Container} from './style';
 
 export const SignInOptionScreen = () => {

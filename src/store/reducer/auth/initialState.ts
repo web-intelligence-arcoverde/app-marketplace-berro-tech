@@ -4,7 +4,6 @@ export const initialState: IStateAuth = {
   token: '',
   isLogged: false,
   loading: true,
-  filterProducts: [],
   user: {
     id: '',
     avatar_url: '',
@@ -14,6 +13,6 @@ export const initialState: IStateAuth = {
     addresses: [],
     contacts: [],
   },
-  visibleErrorMessage: false,
-  errorMessage: '',
+
+  filterProducts: [],
 };

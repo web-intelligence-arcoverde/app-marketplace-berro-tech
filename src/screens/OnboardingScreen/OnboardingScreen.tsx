@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Button,
-  IconComponent,
   Separator,
   InformationCardsOnboardingScreen,
 } from '../../components';
@@ -15,9 +14,7 @@ export const OnboardingScreen = () => {
 
   return (
     <Container>
-      <Separator height={scale(getStatusBarHeight())} />
-
-      <IconComponent icon="arrow-down-icon" />
+      <Separator height={scale(getStatusBarHeight() + 20)} />
 
       <InformationCardsOnboardingScreen />
 

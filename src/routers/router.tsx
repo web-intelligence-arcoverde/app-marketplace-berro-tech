@@ -7,7 +7,7 @@ import {
   SplashScreen,
   OnboardingScreen,
   SignInOptionScreen,
-  SignInEmailScreen,
+  SignInScreen,
   SignUpScreen,
   RecoveryAccountScreen,
   EditProfileScreen,
@@ -25,9 +25,6 @@ import {
   BottomSheetSelectCity,
 } from '../components';
 
-import {useAppDispatch, useAppSelector, useNavigationHook} from '../hooks';
-import {useAsyncStorage} from '../hooks/useAsyncStorage';
-import {setToken} from '../store/reducer/auth/actions';
 import {BottomSheetSelectAgeCategory} from '../components/molecules/BottomSheetSelectAgeCategory/BottomSheetSelectAgeCategory';
 import {BottomSheetSelectSellType} from '../components/molecules/BottomSheetSelectSellType/BottomSheetSelectSellType';
 import {BottomSheetSelectClassification} from '../components/molecules/BottomSheetSelectClassification/BottomSheetSelectClassification';
@@ -35,64 +32,24 @@ import {BottomSheetSelectClassification} from '../components/molecules/BottomShe
 const Stack = createNativeStackNavigator();
 
 export const RouterApp = () => {
-  const dispatch = useAppDispatch();
-  const {goToRouter} = useNavigationHook();
-
-  const {value, loadingValue} = useAsyncStorage();
-  const {token, isLogged} = useAppSelector(state => state.auth);
-
-  let initialRoute = 'LoadingScreen';
-
-  let isUserLogged = token && isLogged;
-  let isExistToken = !!value;
-
-  React.useEffect(() => {
-    if (!loadingValue) {
-      if (isExistToken || isUserLogged) {
-        dispatch(setToken(value));
-        goToRouter('DashboardBottomNavigation');
-      } else {
-        goToRouter('SplashScreen');
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loadingValue]);
-
   return (
-    <>
-      <Stack.Navigator
-        initialRouteName={'SplashScreen'}
-        screenOptions={{headerShown: false}}>
-        <Stack.Screen name="SplashScreen" component={SplashScreen} />
-      </Stack.Navigator>
-    </>
+    <Stack.Navigator
+      initialRouteName={'SplashScreen'}
+      screenOptions={{headerShown: false}}>
+      <Stack.Screen name="SplashScreen" component={SplashScreen} />
+      <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
+      <Stack.Screen name="SignInOptionScreen" component={SignInOptionScreen} />
+      <Stack.Screen name="SignInScreen" component={SignInScreen} />
+
+      <Stack.Screen
+        name="DashboardBottomNavigation"
+        component={DashboardBottomNavigation}
+      />
+    </Stack.Navigator>
   );
 };
 
 export const RouterApp2 = () => {
-  const dispatch = useAppDispatch();
-  const {goToRouter} = useNavigationHook();
-
-  const {value, loadingValue} = useAsyncStorage();
-  const {token, isLogged} = useAppSelector(state => state.auth);
-
-  let initialRoute = 'LoadingScreen';
-
-  let isUserLogged = token && isLogged;
-  let isExistToken = !!value;
-
-  React.useEffect(() => {
-    if (!loadingValue) {
-      if (isExistToken || isUserLogged) {
-        dispatch(setToken(value));
-        goToRouter('DashboardBottomNavigation');
-      } else {
-        goToRouter('SplashScreen');
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loadingValue]);
-
   return (
     <>
       <Stack.Navigator
@@ -106,8 +63,6 @@ export const RouterApp2 = () => {
           name="SignInOptionScreen"
           component={SignInOptionScreen}
         />
-
-        <Stack.Screen name="SignInEmailScreen" component={SignInEmailScreen} />
 
         <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
 
