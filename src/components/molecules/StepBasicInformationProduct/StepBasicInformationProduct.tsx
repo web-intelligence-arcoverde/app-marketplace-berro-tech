@@ -119,20 +119,20 @@ export const StepBasicInformationProduct = () => {
 
   //@ts-ignore
   const onSubmit = data => {
-    dispatch(
-      setProductInfo({
-        ...data,
-        animal: selectAnimal,
-        breed: animal_breed,
-        gender: animal_sex,
-        date: setAgeCategory,
-        sellType: sellType,
-        classification: classification,
-        birthday: date,
-      }),
-    );
+    let createProduct = {
+      ...data,
+      animal: selectAnimal,
+      breed: animal_breed,
+      gender: animal_sex,
+      date: setAgeCategory,
+      sellType: sellType,
+      classification: classification,
+      birthday: date,
+    };
 
-    let isEmptyObj: boolean = isCheckPropObj(productInfo);
+    dispatch(setProductInfo(createProduct));
+
+    let isEmptyObj: boolean = isCheckPropObj(createProduct);
 
     //@ts-ignore
     isCheckPropObj &&
