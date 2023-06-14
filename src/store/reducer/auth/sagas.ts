@@ -45,6 +45,14 @@ function* changerPassword({payload}: any): any {
   }
 }
 
+function* userDelete({payload}: any): any {
+  try {
+    yield call(api.get, '/user-logged-delete');
+
+    yield put(payload.router('EditProfileScreen'));
+  } catch (error) {}
+}
+
 function* authSagas() {
   yield all([
     takeLatest('user/sign-up-step-02', signUp),
@@ -53,6 +61,7 @@ function* authSagas() {
       readInformationUser,
     ),
     takeLatest('auth/changer-password-request', changerPassword),
+    takeLatest('auth/user-logged-delete-request', userDelete),
   ]);
 }
 

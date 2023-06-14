@@ -23,7 +23,7 @@ export const AddressUserProfileScreen = ({
       </Text>
       <Separator height={8} />
       {city ? (
-        <Text typography="h4">
+        <Text typography="h4" colorFamily="gray" colorVariant="_02">
           {city}, {state}
         </Text>
       ) : (

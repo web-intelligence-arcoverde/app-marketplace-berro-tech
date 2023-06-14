@@ -34,3 +34,15 @@ export const changerPasswordSuccess = createAction(
 export const visibleMessageErrorSignIn = createAction<string>(
   'auth/visible-message-error-sign-in',
 );
+
+export const userLoggedDeleteRequest = createAction<any>(
+  'auth/user-logged-delete-request',
+);
+
+export const userLoggedDeleteSuccess = createAction(
+  'auth/user-logged-delete-success',
+);
+
+export const updateAuthAddressSuccess = createAction<any>(
+  'auth/update-auth-address-success',
+);

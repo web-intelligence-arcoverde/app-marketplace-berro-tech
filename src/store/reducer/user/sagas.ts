@@ -1,12 +1,18 @@
 import {all, call, put, takeLatest} from 'redux-saga/effects';
 import api from '../../../service';
-import {signInSuccess, visibleMessageErrorSignIn} from '../auth/actions';
+import {
+  signInSuccess,
+  updateAuthAddressSuccess,
+  userLoggedDeleteSuccess,
+  visibleMessageErrorSignIn,
+} from '../auth/actions';
 import {signUpRequest} from '../auth/service';
 import {
   readCityByStateSuccess,
   readSellerSuccess,
   readStateSuccess,
   signUpSuccess,
+  updateUserAddressSuccess,
 } from './actions';
 import {store} from '../..';
 
@@ -75,6 +81,8 @@ function* readCities({payload}: any) {
 function* updateUserAddress({payload}: any): any {
   try {
     yield call(api.post, '/address-user', payload);
+
+    yield put(updateAuthAddressSuccess(payload));
   } catch (error) {}
 }
 
@@ -94,6 +102,7 @@ function* userDelete({payload}: any): any {
   try {
     yield call(api.get, '/user-logged-delete');
     payload.router('SignInEmail');
+    yield put(userLoggedDeleteSuccess());
   } catch (error) {}
 }
 

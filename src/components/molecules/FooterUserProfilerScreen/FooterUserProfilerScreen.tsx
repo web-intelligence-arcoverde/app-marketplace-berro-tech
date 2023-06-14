@@ -1,7 +1,7 @@
 import {View} from 'react-native';
-import {Text, IconComponent} from '../../';
+import {Text} from '../../';
 
-import {maskedPhoneNumber, setCellphoneMask} from '../../../utils';
+import {setCellphoneMask} from '../../../utils';
 import {Separator} from '../../atoms';
 
 import {Container} from './style';

@@ -1,11 +1,11 @@
+import React from 'react';
+
 import {
   DescriptionUserProfileScreen,
   HeaderDashboard,
-  FiltersProfileScreen,
   MyProductsProfileScreen,
   Separator,
 } from '../../components';
-import {useAppSelector} from '../../hooks';
 
 import {Container} from './style';
 

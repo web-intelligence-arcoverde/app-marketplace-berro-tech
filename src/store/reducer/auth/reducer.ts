@@ -7,6 +7,8 @@ import {
   setToken,
   signInSuccess,
   signOutRequest,
+  updateAuthAddressSuccess,
+  userLoggedDeleteSuccess,
   visibleMessageErrorSignIn,
 } from './actions';
 import {storeData} from '../../../hooks/useAsyncStorage';
@@ -39,5 +41,13 @@ export const authReducer = createReducer(initialState, builder => {
     .addCase(visibleMessageErrorSignIn, (state, action) => {
       state.visibleErrorMessage = !state.visibleErrorMessage;
       state.errorMessage = action.payload;
+    })
+    .addCase(userLoggedDeleteSuccess, (state, action) => {
+      state.token = '';
+      state.isLogged = false;
+      storeData('');
+    })
+    .addCase(updateAuthAddressSuccess, (state, action) => {
+      state.user.addresses = [{...action.payload}];
     });
 });
