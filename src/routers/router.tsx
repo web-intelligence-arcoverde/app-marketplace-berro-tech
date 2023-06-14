@@ -15,7 +15,6 @@ import {
   ProfileChangerPasswordScreen,
   DetailProductScreen,
   SellerScreen,
-  LoadingScreen,
 } from '../screens/';
 
 import {
@@ -62,11 +61,44 @@ export const RouterApp = () => {
   return (
     <>
       <Stack.Navigator
-        initialRouteName={initialRoute}
+        initialRouteName={'SplashScreen'}
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
+      </Stack.Navigator>
+    </>
+  );
+};
 
-        <Stack.Screen name="LoadingScreen" component={LoadingScreen} />
+export const RouterApp2 = () => {
+  const dispatch = useAppDispatch();
+  const {goToRouter} = useNavigationHook();
+
+  const {value, loadingValue} = useAsyncStorage();
+  const {token, isLogged} = useAppSelector(state => state.auth);
+
+  let initialRoute = 'LoadingScreen';
+
+  let isUserLogged = token && isLogged;
+  let isExistToken = !!value;
+
+  React.useEffect(() => {
+    if (!loadingValue) {
+      if (isExistToken || isUserLogged) {
+        dispatch(setToken(value));
+        goToRouter('DashboardBottomNavigation');
+      } else {
+        goToRouter('SplashScreen');
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loadingValue]);
+
+  return (
+    <>
+      <Stack.Navigator
+        initialRouteName={'SplashScreen'}
+        screenOptions={{headerShown: false}}>
+        <Stack.Screen name="SplashScreen" component={SplashScreen} />
 
         <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
 

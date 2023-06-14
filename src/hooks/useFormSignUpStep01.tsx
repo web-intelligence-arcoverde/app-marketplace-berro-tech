@@ -8,7 +8,7 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import {ErrorMessage} from '../locale';
-import {useAppDispatch, useAppSelector} from '.';
+import {useAppDispatch} from '.';
 import {signUpStep01} from '../store/reducer/user/actions';
 
 const schema = yup.object({

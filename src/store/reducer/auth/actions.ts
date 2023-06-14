@@ -3,7 +3,7 @@ import {IUser, IChangerPassword} from './types';
 
 export const signInSuccess = createAction<string>('auth/sign-in-success');
 
-export const signUpSuccess = createAction<string>('auth/sign-up-success');
+export const signUpSuccess = createAction<any>('auth/sign-up-success');
 
 export const signOutRequest = createAction<any>('auth/sign-out-request');
 

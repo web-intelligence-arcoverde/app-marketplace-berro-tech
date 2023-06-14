@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {ProviderStepsFormSignUp} from '../../../context/ContextSignUpScreenStep';
 import {SignInButtonContainer, StepsFormSignUpContainer} from '../..';
 

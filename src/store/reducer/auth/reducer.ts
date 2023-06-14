@@ -7,6 +7,7 @@ import {
   setToken,
   signInSuccess,
   signOutRequest,
+  signUpSuccess,
   updateAuthAddressSuccess,
   userLoggedDeleteSuccess,
   visibleMessageErrorSignIn,
@@ -46,6 +47,11 @@ export const authReducer = createReducer(initialState, builder => {
       state.token = '';
       state.isLogged = false;
       storeData('');
+    })
+    .addCase(signUpSuccess, (state, action) => {
+      state.token = action.payload.token;
+      state.isLogged = true;
+      storeData(action.payload.token);
     })
     .addCase(updateAuthAddressSuccess, (state, action) => {
       state.user.addresses = [{...action.payload}];

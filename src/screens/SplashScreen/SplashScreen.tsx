@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   Container,
   ContainerLogoImage,
@@ -6,14 +8,11 @@ import {
 
 import {IMAGES} from '../../assets';
 import {Image} from 'react-native';
-import {useRedirectRouterTimeOut} from '../../hooks';
 
 const {BackgroundSplashScreen, LogoSplashScreen, LogoWithNameSplashScreen} =
   IMAGES;
 
 export const SplashScreen = () => {
-  useRedirectRouterTimeOut();
-
   return (
     <Container>
       <Image source={BackgroundSplashScreen} />

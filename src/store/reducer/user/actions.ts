@@ -56,6 +56,7 @@ export const sendCodeRecoveryAccountRequest =
   );
 
 export const signUpStep01 = createAction<ISignUp>('user/sign-up-step-01');
+
 export const signUpStep02 = createAction<ISignUp>('user/sign-up-step-02');
 
 export const readStateRequest = createAction('user/read-state-request');

@@ -4,7 +4,8 @@ import {
   IAppContextSignUpScreenStep,
 } from '../../../context/ContextSignUpScreenStep';
 
-import {SignUpScreenStep01, SignUpScreenStep02} from '../..';
+import {SignUpScreenStep01} from '../../molecules/SignUpScreenStep01/SignUpScreenStep01';
+import {SignUpScreenStep02} from '../../molecules/SignUpScreenStep02/SignUpScreenStep02';
 
 import {Container} from './style';
 

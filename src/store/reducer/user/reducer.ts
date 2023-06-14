@@ -72,31 +72,3 @@ export const userReducer = createReducer(initialState, builder => {
       state.userSignUp = {...state.userSignUp, ...action.payload};
     });
 });
-
-/*
-
-
- .addCase(changerStepEditProfile, (state, action) => {
-      state.step_edit_profile = action.payload.step_edit_profile;
-    })
-
-    .addCase(signUpSuccess, (state, action) => {
-      state.token = action.payload.token;
-      state.user = action.payload.user;
-    })
-    .addCase(readSellerRequest, (state, action) => {
-      state.loadingSeller = true;
-    })
-    .addCase(readSellerSuccess, (state, action) => {
-      state.seller = action.payload;
-      state.loadingSeller = false;
-    })
-    .addCase(signUpStep01, (state, action) => {
-      state.userSignUp = action.payload;
-    })
-    .addCase(signUpStep02, (state, action) => {
-      state.userSignUp = {...state.userSignUp, ...action.payload};
-    });
-
-
-*/

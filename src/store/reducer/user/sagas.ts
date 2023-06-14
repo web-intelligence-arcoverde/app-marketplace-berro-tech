@@ -45,17 +45,18 @@ function* readSeller({payload}: any): any {
 
 function* signUp({payload}: any): any {
   try {
+    console.log(payload);
+
+    /*
     const router = payload.router;
 
     delete payload.router;
 
-    const {
-      data: {token},
-    } = yield call(() => signUpRequest(payload));
+    const {data: token} = yield call(api.post, '/sign-up', payload);
 
     yield put(signUpSuccess(token));
 
-    yield put(router('DashboardBottomNavigation'));
+    yield put(router('DashboardBottomNavigation'));*/
   } catch (e) {}
 }
 
