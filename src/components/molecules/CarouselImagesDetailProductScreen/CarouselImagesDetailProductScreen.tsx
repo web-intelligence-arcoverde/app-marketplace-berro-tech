@@ -30,9 +30,9 @@ export const CarouselImagesDetailProductScreen = () => {
               width: width,
               height: scale(300),
             }}
+            muted
             controls
             resizeMode="stretch"
-            paused
           />
         ) : (
           <Image

@@ -35,25 +35,36 @@ import {
   Separator,
 } from '../../';
 
+const handleDate = (value: string) => {
+  const selectedDate = new Date(value);
+
+  return selectedDate.toISOString().slice(0, 10);
+};
+
 import {Container, CustomContainer} from './style';
 import {ErrorMessage} from '../../../locale';
 import {useToast} from 'react-native-toast-notifications';
-import {getBottomSpaceHeight} from '../../../utils';
+import {formatDate, getBottomSpaceHeight} from '../../../utils';
+import {MaskInput} from '../../atoms/MaskInput/MaskInput';
 
 const schema = yup.object({
   name: yup.string().required(ErrorMessage['name-required']),
   weight: yup.string().required(),
-  birthday: yup.string().required(),
   description: yup.string().required(),
   quantity: yup.string().required(),
   price: yup.string().required(),
   installments: yup.string().required(),
 });
 
+import DatePicker from 'react-native-date-picker';
+
 export const StepBasicInformationProduct = () => {
   const {setStep} = useContext(ContextFormAddProduct) as IAppContextAddProduct;
 
   const {productInfo} = useAppSelector(state => state.product);
+
+  const [date, setDate] = useState(new Date());
+  const [open, setOpen] = useState(false);
 
   const dispatch = useAppDispatch();
   const {
@@ -74,7 +85,6 @@ export const StepBasicInformationProduct = () => {
     defaultValues: {
       name: productInfo.name,
       weight: productInfo.weight,
-      birthday: productInfo.birthday,
       description: productInfo.description,
       quantity: productInfo.quantity,
       price: productInfo.price,
@@ -118,6 +128,7 @@ export const StepBasicInformationProduct = () => {
         date: setAgeCategory,
         sellType: sellType,
         classification: classification,
+        birthday: date,
       }),
     );
 
@@ -202,35 +213,28 @@ export const StepBasicInformationProduct = () => {
           value={setAgeCategory}
         />
 
-        <CustomInput
+        <MaskInput
           name="weight"
           control={control}
           label="Peso"
           placeholder="Peso"
           errors={errors?.weight?.message}
-          type="custom"
-          options={{
-            mask: 'KG 9999,99',
-          }}
+          maskType="weight"
         />
 
-        <CustomInput
-          control={control}
-          label="Data de nascimento"
+        <CustomDropDownPicker
           name="birthday"
-          type="datetime"
-          options={{
-            format: 'DD/MM/YYYY',
-          }}
-          placeholder="Digite a data de nascimento do seu animal"
-          errors={errors?.birthday?.message}
+          label="Data de nascimento"
+          placeholder={'Data de nascimento'}
+          onPress={() => setOpen(true)}
+          value={formatDate(new Date(handleDate(date.toString())))}
         />
 
         <SecondInput
           name="description"
           control={control}
           label="Descrição"
-          placeholder="Nós dê uma descrição detalhada"
+          placeholder="Descrição"
           errors={errors?.description?.message}
         />
 
@@ -254,13 +258,13 @@ export const StepBasicInformationProduct = () => {
           errors={errors?.installments?.message}
         />
 
-        <CustomInput
+        <MaskInput
           control={control}
           label="Preço"
           name="price"
-          type="money"
           placeholder="Digite o valor do animal"
           errors={errors?.price?.message}
+          maskType="price"
         />
 
         <SecondInput
@@ -275,6 +279,21 @@ export const StepBasicInformationProduct = () => {
           title="Próximo"
           variant="containedThirdy"
           onPress={handleSubmit(onSubmit)}
+        />
+
+        <DatePicker
+          modal
+          mode="date"
+          maximumDate={new Date()}
+          open={open}
+          date={date}
+          onConfirm={date => {
+            setOpen(false);
+            setDate(date);
+          }}
+          onCancel={() => {
+            setOpen(false);
+          }}
         />
 
         <Separator height={getBottomSpaceHeight() + 28} />

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View} from 'react-native';
 import {Text, IconComponent, Separator, Button} from '../../';
 
-import {useAppDispatch, useAppSelector} from '../../../hooks';
-import {changerStepProduct} from '../../../store/reducer/product/actions';
+import {useAppDispatch} from '../../../hooks';
+import {addFile} from '../../../store/reducer/product/actions';
 import {usePickFileHook} from '../../../hooks/usePickFileHook';
 
 import {
@@ -14,14 +14,20 @@ import {
   AddNewFileButton,
 } from './style';
 import {FileItem} from '../FileItem/FileItem';
+import {
+  ContextFormAddProduct,
+  IAppContextAddProduct,
+} from '../../../context/ContextContainerAddProduct';
 
 export const ListFiles = () => {
   const {onButtonPress} = usePickFileHook();
 
   const dispatch = useAppDispatch();
-  const {files} = useAppSelector(state => state.product);
+  const {files, setStep} = useContext(
+    ContextFormAddProduct,
+  ) as IAppContextAddProduct;
 
-  let limitFiles = files.length <= 5 && files.length >= 1;
+  let limitFiles = files.length > 1 && files.length <= 5;
 
   return (
     <Container>
@@ -29,13 +35,22 @@ export const ListFiles = () => {
         <Text typography="h4" colorFamily="gray" colorVariant="_02">
           Você fez upload de {files.length} arquivos
         </Text>
-        <Separator height={4} />
+        <Separator />
         <Text typography="h4" colorFamily="gray" colorVariant="_04">
           Clique na lixeira para removê-lo
         </Text>
+        <Separator />
+        {!limitFiles && (
+          <Text
+            typography="h5"
+            colorFamily="auxiliary"
+            colorVariant="red_state">
+            O minimo de arquivos são 2 e o máximo são 5
+          </Text>
+        )}
       </ContainerInformation>
       <ContainerFileList>
-        {files.map((document, index) => {
+        {files.map((document: any, index: any) => {
           return <FileItem document={document} index={index} />;
         })}
       </ContainerFileList>
@@ -49,7 +64,10 @@ export const ListFiles = () => {
             disabled={!limitFiles}
             title="Próximo"
             variant="containedThirdy"
-            onPress={() => dispatch(changerStepProduct(2))}
+            onPress={() => {
+              setStep(2);
+              dispatch(addFile(files));
+            }}
           />
         </View>
       </ContainerFooter>

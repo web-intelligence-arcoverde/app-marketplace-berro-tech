@@ -1,14 +1,19 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Video from 'react-native-video';
 
 import {Text, IconComponent} from '../../';
-import {useAppDispatch} from '../../../hooks';
-import {removeFile} from '../../../store/reducer/product/actions';
 
 import {Container, StyledImage, CapeIcon, DeleteIconContainer} from './style';
+import {
+  ContextFormAddProduct,
+  IAppContextAddProduct,
+} from '../../../context/ContextContainerAddProduct';
 
 export const FileItem = ({index, document}: any) => {
-  const dispatch = useAppDispatch();
+  const {removerFile} = useContext(
+    ContextFormAddProduct,
+  ) as IAppContextAddProduct;
+
   let type = document.type.split('/')[0];
   let isVideo = type === 'video';
   return (
@@ -22,6 +27,7 @@ export const FileItem = ({index, document}: any) => {
             borderRadius: 6,
             marginBottom: 16,
           }}
+          muted
           controls
           resizeMode="stretch"
         />
@@ -35,7 +41,7 @@ export const FileItem = ({index, document}: any) => {
         </CapeIcon>
       )}
 
-      <DeleteIconContainer onPress={() => dispatch(removeFile(index))}>
+      <DeleteIconContainer onPress={() => removerFile(index)}>
         <IconComponent icon="delete-icon" />
       </DeleteIconContainer>
     </Container>

@@ -1,8 +1,11 @@
-import {useCallback} from 'react';
+import {useCallback, useContext} from 'react';
 import {Platform} from 'react-native';
 import * as ImagePicker from 'react-native-image-picker';
-import {useAppDispatch} from './useReduxHook';
-import {addFile} from '../store/reducer/product/actions';
+
+import {
+  ContextFormAddProduct,
+  IAppContextAddProduct,
+} from '../context/ContextContainerAddProduct';
 
 interface IImage {
   uri: string;
@@ -17,7 +20,7 @@ interface IResponse {
 }
 
 export const usePickFileHook = () => {
-  const dispatch = useAppDispatch();
+  const {addFile} = useContext(ContextFormAddProduct) as IAppContextAddProduct;
 
   const onButtonPress = useCallback(() => {
     ImagePicker.launchImageLibrary(
@@ -44,13 +47,13 @@ export const usePickFileHook = () => {
 
               const source = {uri, type, name};
 
-              dispatch(addFile(source));
+              addFile(source);
             });
           }
         }
       },
     );
-  }, [dispatch]);
+  }, [addFile]);
 
   return {onButtonPress};
 };

@@ -1,6 +1,6 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 
-import {HeaderDashboard, StepsAddProduct} from '../../components';
+import {HeaderDashboard, Loading, StepsAddProduct} from '../../components';
 
 import {StepBasicInformationProduct} from '../../components/molecules/StepBasicInformationProduct/StepBasicInformationProduct';
 import {StepUploadFiles} from '../../components/molecules/StepUploadFiles/StepUploadFiles';
@@ -16,6 +16,7 @@ const Steps = {
   0: StepBasicInformationProduct,
   1: StepUploadFiles,
   2: StepLocationProduct,
+  3: Loading,
 };
 
 export const StepsFormCreateProductContainer = () => {

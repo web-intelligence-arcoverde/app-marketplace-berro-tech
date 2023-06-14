@@ -37,6 +37,7 @@ import {
   setClassification,
   readClassificationSuccess,
   setVisibleBottomSheetClassification,
+  createProductSuccess,
 } from './actions';
 
 export const productReducer = createReducer(initialState, builder => {
@@ -133,9 +134,7 @@ export const productReducer = createReducer(initialState, builder => {
       state.breeds = action.payload;
     })
     .addCase(addFile, (state, action) => {
-      let olderFiles = state.files;
-      olderFiles.push(action.payload);
-      state.files = olderFiles;
+      state.files = action.payload;
     })
     .addCase(removeFile, (state, action) => {
       let newFile = state.files;
@@ -179,5 +178,31 @@ export const productReducer = createReducer(initialState, builder => {
     .addCase(setVisibleBottomSheetClassification, (state, action) => {
       state.visibleClassifications = action.payload;
       state.stepProduct = 0;
+    })
+    .addCase(createProductSuccess, (state, action) => {
+      state.productInfo = initialStateProductInfo;
+      state.stepProduct = 0;
+      state.classification = '';
+      state.sellType = '';
+      state.setAgeCategory = '';
+      state.setAgeCategory = '';
+      state.files = [];
+      state.selectAnimal = '';
     });
 });
+
+const initialStateProductInfo = {
+  name: '',
+  weight: '',
+  birthday: '',
+  description: '',
+  quantity: '',
+  price: '',
+  installments: '',
+  animal: '',
+  breed: '',
+  gender: '',
+  date: '',
+  sellType: '',
+  classification: '',
+};

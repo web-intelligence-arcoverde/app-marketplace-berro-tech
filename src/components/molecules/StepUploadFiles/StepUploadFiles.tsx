@@ -1,14 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
 
 import {usePickFileHook} from '../../../hooks/usePickFileHook';
 import {EmptyFiles} from '../EmptyFiles/EmptyFiles';
 import {ListFiles} from '../ListFiles/ListFiles';
-import {useAppSelector} from '../../../hooks';
 import {Container} from './style';
+import {
+  ContextFormAddProduct,
+  IAppContextAddProduct,
+} from '../../../context/ContextContainerAddProduct';
 
 export const StepUploadFiles = () => {
+  const {files} = useContext(ContextFormAddProduct) as IAppContextAddProduct;
   const {onButtonPress} = usePickFileHook();
-  const {files} = useAppSelector(state => state.product);
   let filesExist = files.length >= 1;
 
   return (

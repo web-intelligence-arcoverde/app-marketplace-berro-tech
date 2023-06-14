@@ -137,6 +137,10 @@ export const createProductRequest = createAction<any>(
   'product/create-product-request',
 );
 
+export const createProductSuccess = createAction(
+  'product/create-product-success',
+);
+
 export const readClassificationRequest = createAction(
   'product/read-classification-request',
 );

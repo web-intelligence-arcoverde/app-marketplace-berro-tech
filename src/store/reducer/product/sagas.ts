@@ -1,6 +1,7 @@
 import {all, call, put, takeLatest} from 'redux-saga/effects';
 import api from '../../../service';
 import {
+  createProductSuccess,
   getProductByIdSuccess,
   readAgeCategoriesSuccess,
   readAnimalSuccess,
@@ -128,6 +129,7 @@ function* registerProduct({payload}: any): any {
     });
 
     yield put(router('DashboardBottomNavigation'));
+    yield put(createProductSuccess());
   } catch (e) {
     console.log(e);
   }
