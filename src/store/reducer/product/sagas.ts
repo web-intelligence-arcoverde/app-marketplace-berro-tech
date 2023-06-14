@@ -67,7 +67,6 @@ function* readProduct({payload}: any): any {
 function* readAnimals() {
   try {
     const {data} = yield call(api.get, '/animal');
-    console.log(data);
     yield put(readAnimalSuccess(data));
   } catch (e) {
     console.log(e);
@@ -77,7 +76,6 @@ function* readAnimals() {
 function* readBreedByIdAnimal({payload}: any) {
   try {
     const {data} = yield call(api.get, `/search-breed-by-name/${payload}`);
-    console.log(data);
     yield put(readBreedSuccess(data));
   } catch (e) {
     console.log(e);
@@ -129,9 +127,10 @@ function* registerProduct({payload}: any): any {
     });
 
     yield put(router('DashboardBottomNavigation'));
-    yield put(createProductSuccess());
   } catch (e) {
     console.log(e);
+  } finally {
+    yield put(createProductSuccess());
   }
 }
 

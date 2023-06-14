@@ -23,6 +23,8 @@ export const ProviderStepsFormAddProduct = ({children}: IProps) => {
   const dispatch = useAppDispatch();
   const {stepProduct} = useAppSelector(state => state.product);
 
+  console.log(stepProduct);
+
   const changerStep = (step: number) => {
     dispatch(changerStepProduct(step));
   };

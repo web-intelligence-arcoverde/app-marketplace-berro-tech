@@ -1,10 +1,12 @@
+import React from 'react';
+
 import {getStatusBarHeight} from '../../../utils';
 
 import {AppLogo} from '../AppLogo/AppLogo';
 import {ClearSearchIcon} from '../ClearSearchIcon/ClearSearchIcon';
 import {CreateNewProductButton} from '../CreateNewProductButton/CreateNewProductButton';
 
-import {Separator, SearchInput, HeaderVariantProfileEdit, Button} from '../..';
+import {Separator, SearchInput, Button} from '../..';
 
 import {useRoute} from '@react-navigation/native';
 import {useState, useEffect} from 'react';

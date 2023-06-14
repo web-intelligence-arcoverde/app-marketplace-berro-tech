@@ -29,7 +29,6 @@ import {
 import {
   Text,
   SecondInput,
-  CustomInput,
   CustomDropDownPicker,
   Button,
   Separator,
@@ -134,8 +133,7 @@ export const StepBasicInformationProduct = () => {
 
     let isEmptyObj: boolean = isCheckPropObj(createProduct);
 
-    //@ts-ignore
-    isCheckPropObj &&
+    isEmptyObj &&
       toast.show('Preencha o restante dos campos', {
         type: 'danger',
         placement: 'bottom',
