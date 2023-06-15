@@ -5,6 +5,7 @@ import {signUpSuccess} from '../user/actions';
 import api from '../../../service';
 import {readInformationUserLoggedSuccess, signInSuccess} from './actions';
 import {store} from '../..';
+import {Alert} from 'react-native';
 
 function* signUp({payload}: any): any {
   try {
@@ -59,8 +60,6 @@ function* signIn({payload}: any): any {
 
     delete payload.router;
 
-    console.log(payload);
-
     const {
       data: {token},
     } = yield call(api.post, '/sign-in/', payload);
@@ -69,6 +68,24 @@ function* signIn({payload}: any): any {
 
     yield put(router('DashboardBottomNavigation'));
   } catch (e) {}
+}
+
+function* forgotPassword({payload}: any): any {
+  let toast = payload.toast;
+  delete payload.toast;
+
+  try {
+    yield call(api.post, '/user/forgot-password', {
+      email: payload.email,
+    });
+  } catch (e) {
+    toast.show('Este email não existe', {
+      type: 'danger',
+      placement: 'bottom',
+      duration: 4000,
+      animationType: 'zoom-in',
+    });
+  }
 }
 
 function* authSagas() {
@@ -81,6 +98,7 @@ function* authSagas() {
     ),
     takeLatest('auth/changer-password-request', changerPassword),
     takeLatest('auth/user-logged-delete-request', userDelete),
+    takeLatest('auth/forgot-password-request', forgotPassword),
   ]);
 }
 

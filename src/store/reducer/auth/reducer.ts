@@ -38,7 +38,6 @@ export const authReducer = createReducer(initialState, builder => {
       storeData('');
       action.payload.router('SignInScreen');
     })
-
     .addCase(userLoggedDeleteSuccess, (state, action) => {
       state.token = '';
       state.isLogged = false;

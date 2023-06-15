@@ -13,6 +13,10 @@ export const signOutSuccess = createAction('auth/sign-out-request');
 
 export const setToken = createAction<string>('auth/set-token');
 
+export const forgotPasswordRequest = createAction<any>(
+  'auth/forgot-password-request',
+);
+
 export const readInformationUserLoggedRequest = createAction(
   'auth/read-information-user-logged-request',
 );

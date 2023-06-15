@@ -22,7 +22,7 @@ api.interceptors.request.use(
     };
   },
   error => {
-    console.log(error);
+    throw new Error(error.response.data.message);
   },
 );
 
@@ -34,6 +34,7 @@ api.interceptors.response.use(
     if (error.response.status === 401) {
       storeData('');
     }
+    throw new Error(error.response.data.message);
   },
 );
 

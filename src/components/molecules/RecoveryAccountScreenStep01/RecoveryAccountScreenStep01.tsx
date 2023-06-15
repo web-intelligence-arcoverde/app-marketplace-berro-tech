@@ -1,13 +1,16 @@
 import React from 'react';
 import {Input, Separator, Button, useHookStepsRecoveryAccount} from '../..';
 import {SIZES} from '../../../common';
-import {useNavigationHook} from '../../../hooks';
+import {useAppDispatch, useNavigationHook} from '../../../hooks';
+
+import {useToast} from 'react-native-toast-notifications';
 
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import {useForm} from 'react-hook-form';
 import {ErrorMessage} from '../../../locale';
+import {forgotPasswordRequest} from '../../../store/reducer/auth/actions';
 
 const schema = yup.object({
   email: yup
@@ -20,6 +23,8 @@ export const RecoveryAccountScreenStep01 = () => {
   const {setStep, setEmail} = useHookStepsRecoveryAccount();
 
   const {goBack} = useNavigationHook();
+
+  const toast = useToast();
 
   const {
     control,
@@ -34,9 +39,12 @@ export const RecoveryAccountScreenStep01 = () => {
 
   const onSubmit = handleSubmit(data => nextStep(data?.email));
 
+  const dispatch = useAppDispatch();
+
   const nextStep = (email: string) => {
-    setEmail(email);
-    setStep(1);
+    dispatch(forgotPasswordRequest({email, toast}));
+    //setEmail(email);
+    //setStep(1);
   };
 
   return (

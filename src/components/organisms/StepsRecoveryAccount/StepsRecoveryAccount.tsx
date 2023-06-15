@@ -1,3 +1,5 @@
+import React from 'react';
+
 export {useHookStepsRecoveryAccount} from '../../../hooks';
 
 import {
