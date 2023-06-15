@@ -15,4 +15,8 @@ export const initialState: IStateAuth = {
   },
 
   filterProducts: [],
+
+  stepRecoveryAccount: 0,
+  recoveryAccountEmail: '',
+  tokenRecoveryAccount: '',
 };

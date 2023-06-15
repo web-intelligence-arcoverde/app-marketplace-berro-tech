@@ -67,6 +67,7 @@ export const ProfileChangerPasswordScreen = () => {
             password
             control={control}
             name="currentPassword"
+            password
             rightIcon
             errors={errors?.password?.message}
           />

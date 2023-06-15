@@ -6,6 +6,10 @@ export type IStateAuth = {
   isLogged: boolean;
   filterProducts: IProduct[];
   loading: boolean;
+
+  stepRecoveryAccount: number;
+  recoveryAccountEmail: string;
+  tokenRecoveryAccount: string;
 };
 
 export type IUser = {

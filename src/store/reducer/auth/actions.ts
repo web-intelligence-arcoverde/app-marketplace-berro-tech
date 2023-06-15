@@ -17,6 +17,26 @@ export const forgotPasswordRequest = createAction<any>(
   'auth/forgot-password-request',
 );
 
+export const forgotPasswordSuccess = createAction<string>(
+  'auth/forgot-password-success',
+);
+
+export const verifyTokenForgotPasswordRequest = createAction<any>(
+  'auth/verify-token-forgot-password-request',
+);
+
+export const verifyTokenForgotPasswordSuccess = createAction<string>(
+  'auth/verify-token-forgot-password-success',
+);
+
+export const changerPasswordForgotPasswordRequest = createAction<any>(
+  'auth/changer-password-forgot-password-request',
+);
+
+export const changerPasswordForgotPasswordSuccess = createAction(
+  'auth/changer-password-forgot-password-success',
+);
+
 export const readInformationUserLoggedRequest = createAction(
   'auth/read-information-user-logged-request',
 );

@@ -1,22 +1,26 @@
-import {useContext} from 'react';
-import {AppContextStepRecoveryAccount} from '../context/ContextRecoveryAccountStep';
-
 import {
   RecoveryAccountScreenStep01,
   RecoveryAccountScreenStep02,
 } from '../components';
+import {useAppSelector} from './useReduxHook';
+import {RecoveryAccountScreenStep03} from '../components/molecules/RecoveryAccountScreenStep03/RecoveryAccountScreenStep03';
 
 const stepContainer: any = {
   0: RecoveryAccountScreenStep01,
   1: RecoveryAccountScreenStep02,
+  2: RecoveryAccountScreenStep03,
 };
 
 export const useHookStepsRecoveryAccount = () => {
-  const [step, setStep, email, setEmail] = useContext(
-    AppContextStepRecoveryAccount,
+  const {stepRecoveryAccount, recoveryAccountEmail} = useAppSelector(
+    state => state.auth,
   );
 
-  const Steps = stepContainer[step];
+  const Steps = stepContainer[stepRecoveryAccount];
 
-  return {step, setStep, Steps, setEmail, email};
+  return {
+    step: stepRecoveryAccount,
+    Steps,
+    email: recoveryAccountEmail,
+  };
 };

@@ -2,7 +2,9 @@ import {createReducer} from '@reduxjs/toolkit';
 
 import {initialState} from './initialState';
 import {
+  changerPasswordForgotPasswordSuccess,
   filterProductsByAnimalType,
+  forgotPasswordSuccess,
   readInformationUserLoggedSuccess,
   setToken,
   signInSuccess,
@@ -10,6 +12,7 @@ import {
   signUpSuccess,
   updateAuthAddressSuccess,
   userLoggedDeleteSuccess,
+  verifyTokenForgotPasswordSuccess,
 } from './actions';
 import {storeData} from '../../../hooks/useAsyncStorage';
 
@@ -50,5 +53,18 @@ export const authReducer = createReducer(initialState, builder => {
     })
     .addCase(updateAuthAddressSuccess, (state, action) => {
       state.user.addresses = [{...action.payload}];
+    })
+    .addCase(forgotPasswordSuccess, (state, action) => {
+      state.stepRecoveryAccount = 1;
+      state.recoveryAccountEmail = action.payload;
+    })
+    .addCase(verifyTokenForgotPasswordSuccess, (state, action) => {
+      state.stepRecoveryAccount = 2;
+      state.tokenRecoveryAccount = action.payload;
+    })
+    .addCase(changerPasswordForgotPasswordSuccess, (state, action) => {
+      state.stepRecoveryAccount = 0;
+      state.tokenRecoveryAccount = '';
+      state.recoveryAccountEmail = '';
     });
 });

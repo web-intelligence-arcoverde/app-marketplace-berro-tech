@@ -11,28 +11,30 @@ import {
   useAppDispatch,
   useHookStepsRecoveryAccount,
   useChronometerHook,
-  useNavigationHook,
 } from '../../../hooks';
 
 import {
-  sendEmailRecoveryAccountRequest,
-  sendCodeRecoveryAccountRequest,
-} from '../../../store/reducer/user/actions';
+  forgotPasswordRequest,
+  verifyTokenForgotPasswordRequest,
+} from '../../../store/reducer/auth/actions';
+
+import {useToast} from 'react-native-toast-notifications';
 
 export const RecoveryAccountScreenStep02 = () => {
   const {handleStart, chronometer} = useChronometerHook();
   const [value, setValue] = useState('');
-  const {goToRouter} = useNavigationHook();
 
   const {email} = useHookStepsRecoveryAccount();
 
   const dispatch = useAppDispatch();
 
+  const toast = useToast();
+
   let isAtZero = chronometer === '00:00';
   let isAtZeroStyle = !isAtZero ? 'disabled' : 'containedSecondary';
 
   function resendCodeConfirmation() {
-    dispatch(sendEmailRecoveryAccountRequest({email}));
+    dispatch(forgotPasswordRequest({email}));
     handleStart();
   }
 
@@ -44,10 +46,9 @@ export const RecoveryAccountScreenStep02 = () => {
       <Button
         title="Próximo"
         variant="contained"
-        onPress={() => {
-          dispatch(sendCodeRecoveryAccountRequest({code: ''}));
-          goToRouter('SignInScreen');
-        }}
+        onPress={() =>
+          dispatch(verifyTokenForgotPasswordRequest({toast, code: value}))
+        }
       />
       <Separator height={SIZES.insideSpacingSmall} />
       <Button

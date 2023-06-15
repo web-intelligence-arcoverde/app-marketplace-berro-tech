@@ -1,5 +1,5 @@
 import React from 'react';
-import {Input, Separator, Button, useHookStepsRecoveryAccount} from '../..';
+import {Input, Separator, Button} from '../..';
 import {SIZES} from '../../../common';
 import {useAppDispatch, useNavigationHook} from '../../../hooks';
 
@@ -20,8 +20,6 @@ const schema = yup.object({
 });
 
 export const RecoveryAccountScreenStep01 = () => {
-  const {setStep, setEmail} = useHookStepsRecoveryAccount();
-
   const {goBack} = useNavigationHook();
 
   const toast = useToast();
@@ -43,8 +41,6 @@ export const RecoveryAccountScreenStep01 = () => {
 
   const nextStep = (email: string) => {
     dispatch(forgotPasswordRequest({email, toast}));
-    //setEmail(email);
-    //setStep(1);
   };
 
   return (
@@ -67,9 +63,7 @@ export const RecoveryAccountScreenStep01 = () => {
       <Button
         title="Recuperar conta"
         variant="contained"
-        onPress={() => {
-          onSubmit();
-        }}
+        onPress={() => onSubmit()}
       />
     </>
   );

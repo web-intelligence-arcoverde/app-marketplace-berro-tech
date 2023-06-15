@@ -3,7 +3,13 @@ import {signUpRequest} from './service';
 
 import {signUpSuccess} from '../user/actions';
 import api from '../../../service';
-import {readInformationUserLoggedSuccess, signInSuccess} from './actions';
+import {
+  changerPasswordForgotPasswordSuccess,
+  forgotPasswordSuccess,
+  readInformationUserLoggedSuccess,
+  signInSuccess,
+  verifyTokenForgotPasswordSuccess,
+} from './actions';
 import {store} from '../..';
 import {Alert} from 'react-native';
 
@@ -78,6 +84,8 @@ function* forgotPassword({payload}: any): any {
     yield call(api.post, '/user/forgot-password', {
       email: payload.email,
     });
+
+    yield put(forgotPasswordSuccess(payload.email));
   } catch (e) {
     toast.show('Este email não existe', {
       type: 'danger',
@@ -86,6 +94,56 @@ function* forgotPassword({payload}: any): any {
       animationType: 'zoom-in',
     });
   }
+}
+
+function* verifyTokenForgotPassword({payload}: any): any {
+  let toast = payload.toast;
+  delete payload.toast;
+
+  try {
+    const {data} = yield call(api.post, '/user/verify-token', {
+      token: payload.code,
+    });
+
+    yield put(verifyTokenForgotPasswordSuccess(data.verifyToken));
+  } catch (e) {
+    toast.show('Código invalido', {
+      type: 'danger',
+      placement: 'bottom',
+      duration: 4000,
+      animationType: 'zoom-in',
+    });
+  }
+}
+
+function* changerPasswordForgotPassword({payload}: any): any {
+  let toast = payload.toast;
+  let router = payload.router;
+  delete payload.toast;
+  delete payload.router;
+
+  try {
+    const {confirmationPassword, password} = payload.data;
+
+    const token = store.getState().auth.tokenRecoveryAccount;
+
+    yield call(api.post, '/user/changer-password', {
+      token,
+      password,
+      confirmationPassword,
+    });
+
+    toast.show('Senha alterada', {
+      type: 'success',
+      placement: 'bottom',
+      duration: 4000,
+      animationType: 'zoom-in',
+    });
+
+    yield put(router('SignInScreen'));
+
+    yield put(changerPasswordForgotPasswordSuccess());
+  } catch (e) {}
 }
 
 function* authSagas() {
@@ -99,6 +157,14 @@ function* authSagas() {
     takeLatest('auth/changer-password-request', changerPassword),
     takeLatest('auth/user-logged-delete-request', userDelete),
     takeLatest('auth/forgot-password-request', forgotPassword),
+    takeLatest(
+      'auth/verify-token-forgot-password-request',
+      verifyTokenForgotPassword,
+    ),
+    takeLatest(
+      'auth/changer-password-forgot-password-request',
+      changerPasswordForgotPassword,
+    ),
   ]);
 }
 
