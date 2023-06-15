@@ -10,6 +10,8 @@ export type IStateAuth = {
   stepRecoveryAccount: number;
   recoveryAccountEmail: string;
   tokenRecoveryAccount: string;
+
+  signUpForm: ISignUpForm;
 };
 
 export type IUser = {
@@ -43,4 +45,13 @@ export interface ISignIn {
   email: string;
   password: string;
   router: any;
+}
+
+export interface ISignUpForm {
+  email?: string;
+  name?: string;
+  phone?: string;
+  password?: string;
+  confirmationPassword?: string;
+  toast?: any;
 }

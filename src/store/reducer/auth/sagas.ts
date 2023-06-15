@@ -1,7 +1,6 @@
 import {all, call, takeLatest, put} from 'redux-saga/effects';
 import {signUpRequest} from './service';
 
-import {signUpSuccess} from '../user/actions';
 import api from '../../../service';
 import {
   changerPasswordForgotPasswordSuccess,
@@ -9,24 +8,44 @@ import {
   readInformationUserLoggedSuccess,
   signInSuccess,
   verifyTokenForgotPasswordSuccess,
+  signUpSuccess,
 } from './actions';
 import {store} from '../..';
-import {Alert} from 'react-native';
 
 function* signUp({payload}: any): any {
-  try {
-    const router = payload.router;
+  let router = payload.router;
+  let toast = payload.toast;
+  delete payload.router;
+  delete payload.toast;
 
-    delete payload.router;
+  try {
+    let userCreate = {
+      ...store.getState().auth.signUpForm,
+      ...payload,
+    };
 
     const {
       data: {token, user},
-    } = yield call(() => signUpRequest(payload));
+    } = yield call(() => signUpRequest(userCreate));
 
     yield put(signUpSuccess({user: user, token: token}));
 
-    yield put(router('DashboardBottomNavigation'));
-  } catch (e) {}
+    router('DashboardBottomNavigation');
+
+    toast.show('Conta criada com success.', {
+      type: 'success',
+      placement: 'bottom',
+      duration: 4000,
+      animationType: 'zoom-in',
+    });
+  } catch (e) {
+    toast.show('Este email já existe.', {
+      type: 'danger',
+      placement: 'bottom',
+      duration: 4000,
+      animationType: 'zoom-in',
+    });
+  }
 }
 
 function* readInformationUser() {
@@ -149,7 +168,7 @@ function* changerPasswordForgotPassword({payload}: any): any {
 function* authSagas() {
   yield all([
     takeLatest('auth/sign-in-request', signIn),
-    takeLatest('user/sign-up-step-02', signUp),
+    takeLatest('auth/sign-up-request', signUp),
     takeLatest(
       'auth/read-information-user-logged-request',
       readInformationUser,

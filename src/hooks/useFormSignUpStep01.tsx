@@ -2,14 +2,16 @@ import {useContext} from 'react';
 
 import {ContextSignUpScreenStep, IAppContextSignUpScreenStep} from '../context';
 
-import {useForm} from 'react-hook-form';
+import {FieldErrors, useForm} from 'react-hook-form';
 
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import {ErrorMessage} from '../locale';
-import {useAppDispatch} from '.';
-import {signUpStep01} from '../store/reducer/user/actions';
+import {useAppDispatch, useAppSelector} from '.';
+
+import {signUpForm} from '../store/reducer/auth/actions';
+import {ISignUpForm} from '../store/reducer/auth/types';
 
 const schema = yup.object({
   email: yup
@@ -21,7 +23,9 @@ const schema = yup.object({
   phone: yup.string().required(ErrorMessage['phone-required']),
 });
 
-const isObjectEmpty = objectName => {
+const isObjectEmpty = (
+  objectName: FieldErrors<{email: string; name: string; phone: string}>,
+) => {
   return (
     Object.keys(objectName).length === 0 && objectName.constructor === Object
   );
@@ -36,6 +40,7 @@ export const useFormSignUpSteps = () => {
   const TOTAL_STEPS = 2;
 
   const dispatch = useAppDispatch();
+  const stateForm = useAppSelector(state => state.auth.signUpForm);
 
   const {
     control,
@@ -44,14 +49,14 @@ export const useFormSignUpSteps = () => {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      email: '',
-      name: '',
-      phone: '',
+      email: stateForm.email,
+      name: stateForm.name,
+      phone: stateForm.phone,
     },
   });
 
-  const onSubmit = data => {
-    dispatch(signUpStep01(data));
+  const onSubmit = (data: ISignUpForm) => {
+    dispatch(signUpForm(data));
     setStep(1);
   };
 

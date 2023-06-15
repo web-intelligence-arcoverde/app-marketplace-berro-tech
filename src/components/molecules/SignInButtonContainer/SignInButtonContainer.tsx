@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {Button} from '../../';
 import {View} from 'react-native';
 import {useContext} from 'react';

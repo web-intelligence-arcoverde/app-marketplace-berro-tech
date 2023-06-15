@@ -6,9 +6,10 @@ import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import {ErrorMessage} from '../locale';
-import {useAppDispatch, useAppSelector, useNavigationHook} from '.';
+import {useAppDispatch, useNavigationHook} from '.';
 
-import {signUpStep02} from '../store/reducer/user/actions';
+import {signUpRequest} from '../store/reducer/auth/actions';
+import {useToast} from 'react-native-toast-notifications';
 
 const schema = yup
   .object({
@@ -34,8 +35,9 @@ export const useFormSignUpStep02 = () => {
 
   const {goToRouter} = useNavigationHook();
 
-  const {userSignUp} = useAppSelector(state => state.user);
   const dispatch = useAppDispatch();
+
+  const toast = useToast();
 
   const STEP_SIZE = step + 1;
   const TOTAL_STEPS = 2;
@@ -56,12 +58,11 @@ export const useFormSignUpStep02 = () => {
   //@ts-ignore
   const onSubmit = data => {
     dispatch(
-      signUpStep02({
-        ...userSignUp,
+      signUpRequest({
         confirmationPassword: data.confirmationPassword,
         password: data.password,
-        //@ts-ignore
         router: goToRouter,
+        toast,
       }),
     );
   };

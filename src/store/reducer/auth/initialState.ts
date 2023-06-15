@@ -19,4 +19,5 @@ export const initialState: IStateAuth = {
   stepRecoveryAccount: 0,
   recoveryAccountEmail: '',
   tokenRecoveryAccount: '',
+  signUpForm: {},
 };

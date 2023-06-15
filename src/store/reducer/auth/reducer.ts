@@ -9,6 +9,7 @@ import {
   setToken,
   signInSuccess,
   signOutRequest,
+  signUpForm,
   signUpSuccess,
   updateAuthAddressSuccess,
   userLoggedDeleteSuccess,
@@ -50,6 +51,7 @@ export const authReducer = createReducer(initialState, builder => {
       state.token = action.payload.token;
       state.isLogged = true;
       storeData(action.payload.token);
+      state.signUpForm = {name: '', email: '', phone: ''};
     })
     .addCase(updateAuthAddressSuccess, (state, action) => {
       state.user.addresses = [{...action.payload}];
@@ -66,5 +68,8 @@ export const authReducer = createReducer(initialState, builder => {
       state.stepRecoveryAccount = 0;
       state.tokenRecoveryAccount = '';
       state.recoveryAccountEmail = '';
+    })
+    .addCase(signUpForm, (state, action) => {
+      state.signUpForm = {...action.payload};
     });
 });

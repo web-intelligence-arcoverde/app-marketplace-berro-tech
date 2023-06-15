@@ -1,8 +1,10 @@
 import {createAction} from '@reduxjs/toolkit';
-import {IUser, IChangerPassword, ISignIn} from './types';
+import {IUser, IChangerPassword, ISignIn, ISignUpForm} from './types';
 
 export const signInRequest = createAction<ISignIn>('auth/sign-in-request');
 export const signInSuccess = createAction<string>('auth/sign-in-success');
+
+export const signUpForm = createAction<ISignUpForm>('auth/sign-up-form');
 
 export const signUpRequest = createAction<any>('auth/sign-up-request');
 export const signUpSuccess = createAction<any>('auth/sign-up-success');
