@@ -45,6 +45,7 @@ export interface ISignIn {
   email: string;
   password: string;
   router: any;
+  toast?: any;
 }
 
 export interface ISignUpForm {

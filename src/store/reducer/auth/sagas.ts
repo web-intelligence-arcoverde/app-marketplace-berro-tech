@@ -80,19 +80,33 @@ function* userDelete({payload}: any): any {
 }
 
 function* signIn({payload}: any): any {
+  let router = payload.router;
+  let toast = payload.toast;
+  delete payload.router;
+  delete payload.toast;
   try {
-    const router = payload.router;
-
-    delete payload.router;
-
     const {
       data: {token},
     } = yield call(api.post, '/sign-in/', payload);
 
     yield put(signInSuccess(token.token));
 
-    yield put(router('DashboardBottomNavigation'));
-  } catch (e) {}
+    router('DashboardBottomNavigation');
+
+    toast.show('Seja bem-vindo', {
+      type: 'success',
+      placement: 'bottom',
+      duration: 4000,
+      animationType: 'zoom-in',
+    });
+  } catch (e) {
+    toast.show('Credenciais incorretas', {
+      type: 'danger',
+      placement: 'bottom',
+      duration: 4000,
+      animationType: 'zoom-in',
+    });
+  }
 }
 
 function* forgotPassword({payload}: any): any {

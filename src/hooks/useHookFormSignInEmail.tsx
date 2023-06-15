@@ -22,6 +22,7 @@ const schema = yup
 
 import {signInRequest} from '../store/reducer/auth/actions';
 import {useNavigationHook} from './useNavigationHook';
+import {useToast} from 'react-native-toast-notifications';
 
 export const useHookFormSignInEmail = () => {
   const dispatch = useAppDispatch();
@@ -41,12 +42,15 @@ export const useHookFormSignInEmail = () => {
 
   const onSubmit = handleSubmit(data => nextStep(data));
 
+  const toast = useToast();
+
   const nextStep = (data: any) => {
     dispatch(
       signInRequest({
         email: data.email,
         password: data.password,
         router: goToRouter,
+        toast,
       }),
     );
   };
