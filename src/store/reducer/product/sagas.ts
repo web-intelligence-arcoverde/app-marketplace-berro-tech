@@ -133,7 +133,7 @@ function* registerProduct({payload}: any): any {
     yield put(readInformationUserLoggedRequest());
     yield put(readBusinessHighlightProductRequest());
 
-    yield put(router('DashboardBottomNavigation'));
+    yield put(router('Perfil'));
   } catch (e) {
     console.log(e);
   } finally {
