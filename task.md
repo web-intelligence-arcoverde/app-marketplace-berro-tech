@@ -14,8 +14,7 @@
 ## SignUp
 
     [x] - ERRO - remover todas as importações SignUpScreenStep01
-    [] - Recriar context dos steps do form de criar usuario
-    [] - Evitar perder o state do step 1
+    [x] - Evitar perder o state do step 1
 
 ## AddProduct
 

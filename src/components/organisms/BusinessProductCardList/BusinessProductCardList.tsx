@@ -11,11 +11,9 @@ import {scale} from '../../../utils';
 import {readProductRequest} from '../../../store/reducer/product/actions';
 
 export const BusinessProductCardList = () => {
-  const {produtcs, filterProdutcs, search, loadingProducts} = useAppSelector(
+  const {produtcs, filterProdutcs, search} = useAppSelector(
     state => state.product,
   );
-
-  const dispatch = useAppDispatch();
 
   let isSearchExist = search.length >= 1;
   let isFilterProductExist = filterProdutcs.length >= 1;

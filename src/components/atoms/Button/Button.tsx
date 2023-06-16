@@ -1,3 +1,4 @@
+import React from 'react';
 import {Button as ButtonDefault} from '@rneui/themed';
 
 import {IconComponent} from '..';

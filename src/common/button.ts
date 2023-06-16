@@ -149,8 +149,6 @@ export const ButtonStyle = EStyleSheet.create({
       color: COLORS.gray._02,
       fontFamily: 'Inter-Regular',
       fontSize: scale(14),
-
-      marginLeft: scale(14),
     },
 
     buttonStyle: {
@@ -279,12 +277,30 @@ export const ButtonStyle = EStyleSheet.create({
       color: COLORS.auxiliary.red_state,
       fontFamily: 'Inter-Regular',
       fontSize: scale(14),
-
-      marginLeft: 0,
     },
 
     buttonStyle: {
       backgroundColor: COLORS.light._05,
+    },
+  },
+
+  noneSecondaryBorder: {
+    containerStyle: {
+      width: '100%',
+    },
+
+    titleStyle: {
+      color: COLORS.auxiliary.red_state,
+      fontFamily: 'Inter-Regular',
+      fontSize: scale(14),
+    },
+
+    buttonStyle: {
+      height: scale(52),
+      backgroundColor: COLORS.light._05,
+      borderRadius: scale(6),
+      borderWidth: 1,
+      borderColor: COLORS.light._02,
     },
   },
 

@@ -156,3 +156,15 @@ export const setVisibleBottomSheetClassification = createAction<number>(
 export const setClassification = createAction<string>(
   'product/set-classification',
 );
+
+export const renewLimitProductRequest = createAction<any>(
+  'product/renew-limit-product-request',
+);
+
+export const deleteProductRequest = createAction<any>(
+  'product/delete-product-request',
+);
+
+export const deleteProductSuccess = createAction<any>(
+  'product/delete-product-success',
+);

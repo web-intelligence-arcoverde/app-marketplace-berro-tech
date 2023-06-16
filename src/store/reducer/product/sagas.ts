@@ -6,14 +6,17 @@ import {
   readAgeCategoriesSuccess,
   readAnimalSuccess,
   readBreedSuccess,
+  readBusinessHighlightProductRequest,
   readBusinessHighlightProductSuccess,
   readClassificationSuccess,
+  readProductRequest,
   readProductSuccess,
   readSellTypeSuccess,
   readTypesAnimalsSuccess,
   topSearchProductSuccess,
 } from './actions';
 import {store} from '../..';
+import {readInformationUserLoggedRequest} from '../auth/actions';
 
 const animals = ['ovino', 'caprino'];
 
@@ -126,6 +129,10 @@ function* registerProduct({payload}: any): any {
       },
     });
 
+    yield put(readProductRequest());
+    yield put(readInformationUserLoggedRequest());
+    yield put(readBusinessHighlightProductRequest());
+
     yield put(router('DashboardBottomNavigation'));
   } catch (e) {
     console.log(e);
@@ -139,6 +146,39 @@ function* readClassifications() {
     const {data} = yield call(api.get, '/classification');
 
     yield put(readClassificationSuccess(data));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function* renewLimitProduct({payload}: any) {
+  try {
+    yield call(api.get, `/renewad/${payload}`);
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function* deleteProduct({payload}: any) {
+  let toast = payload.toast;
+  let router = payload.router;
+  delete payload.toast;
+  delete payload.router;
+
+  try {
+    yield call(api.delete, `/product/${payload.id}`);
+    yield put(readProductRequest());
+    yield put(readInformationUserLoggedRequest());
+    yield put(readBusinessHighlightProductRequest());
+
+    router('DashboardBottomNavigation');
+
+    toast.show('Produto excluido', {
+      type: 'danger',
+      placement: 'bottom',
+      duration: 4000,
+      animationType: 'zoom-in',
+    });
   } catch (e) {
     console.log(e);
   }
@@ -160,6 +200,8 @@ function* productSagas() {
     takeLatest('product/read-sell-type-request', readSellType),
     takeLatest('product/create-product-request', registerProduct),
     takeLatest('product/read-classification-request', readClassifications),
+    takeLatest('product/renew-limit-product-request', renewLimitProduct),
+    takeLatest('product/delete-product-request', deleteProduct),
   ]);
 }
 

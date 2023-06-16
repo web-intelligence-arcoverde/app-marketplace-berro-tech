@@ -59,7 +59,7 @@ export const BottomSheetSelectState = ({defaultSize}: any) => {
       onChange={handleSheetChanges}>
       <BottomSheetFlatList
         data={data}
-        keyExtractor={i => i}
+        keyExtractor={(i, index) => `${index}-${i}-state`}
         renderItem={renderItem}
       />
     </BottomSheet>

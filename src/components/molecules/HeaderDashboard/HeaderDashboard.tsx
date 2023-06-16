@@ -19,9 +19,12 @@ import {Image} from 'react-native';
 import {IMAGES} from '../../../assets';
 
 import {BUSINESS_SCREEN, HOME_SCREEN, PROFILE_SCREEN} from '../../../common';
+import {useCheckUserLoggedIn} from '../../../hooks/useCheckUserLoggedIn';
 
 export const HeaderDashboard = () => {
   const {name} = useRoute();
+
+  const {} = useCheckUserLoggedIn();
 
   const isHomeScreen = name === HOME_SCREEN;
   const isBusinessScreen = name === BUSINESS_SCREEN;

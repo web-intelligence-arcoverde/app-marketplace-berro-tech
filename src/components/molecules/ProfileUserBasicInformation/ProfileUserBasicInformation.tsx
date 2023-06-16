@@ -1,4 +1,5 @@
-import {Image, Linking, View} from 'react-native';
+import React from 'react';
+import {Image, View} from 'react-native';
 import {Text} from '../../';
 import {capitalize, scale} from '../../../utils';
 
@@ -66,14 +67,19 @@ export const ProfileUserBasicInformation = ({
             </Text>
             <Separator height={4} />
             {isExistAddress && (
-              <Text typography="h3" colorFamily="gray" colorVariant="_02">
-                {city}, {state}
-              </Text>
+              <View
+                style={{
+                  width: scale(200),
+                }}>
+                <Text typography="h3" colorFamily="gray" colorVariant="_02">
+                  {city}, {state}
+                </Text>
+              </View>
             )}
           </View>
         </View>
         <View style={{width: scale(150), height: scale(140)}}>
-          {!!avatar_url ? (
+          {avatar_url ? (
             <Image
               source={{uri: avatar_url}}
               style={{

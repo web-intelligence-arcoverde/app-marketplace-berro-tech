@@ -58,7 +58,7 @@ export const BottomSheetSelectAnimalBreed = ({defaultSize}: any) => {
       onChange={handleSheetChanges}>
       <BottomSheetFlatList
         data={data}
-        keyExtractor={i => i}
+        keyExtractor={(i, index) => `${index}-${i}-breed`}
         renderItem={renderItem}
       />
       <Separator height={getStatusBarHeight()} />

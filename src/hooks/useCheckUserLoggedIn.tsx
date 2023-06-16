@@ -3,6 +3,16 @@ import {useAppDispatch, useAsyncStorage, useNavigationHook} from '.';
 import {setToken} from '../store/reducer/auth/actions';
 import {useRoute} from '@react-navigation/native';
 
+const authRouters = [
+  'DashboardBottomNavigation',
+  'DetailProductScreen',
+  'Home',
+  'Negócios',
+  'Perfil',
+  'AddProductScreen',
+  'SellerScreen',
+];
+
 export const useCheckUserLoggedIn = () => {
   const {getData, value, validToken} = useAsyncStorage();
 
@@ -11,21 +21,21 @@ export const useCheckUserLoggedIn = () => {
   const {name} = useRoute();
 
   const isSplashScreen = name === 'SplashScreen';
+  const isValidToken = value && validToken;
 
   const dispatch = useAppDispatch();
-
-  console.log(value);
-  console.log(validToken);
 
   useEffect(() => {
     getData('@token');
   }, [getData]);
 
   useEffect(() => {
-    if (value && validToken) {
+    if (isValidToken) {
       dispatch(setToken(value));
       const timer = setTimeout(() => {
-        goToRouter('DashboardBottomNavigation');
+        if (!authRouters.includes(name)) {
+          goToRouter('DashboardBottomNavigation');
+        }
       }, 1000);
       return () => clearTimeout(timer);
     } else {
@@ -36,7 +46,7 @@ export const useCheckUserLoggedIn = () => {
       }, 1000);
       return () => clearTimeout(timer);
     }
-  }, [value, dispatch, goToRouter, validToken, isSplashScreen]);
+  }, [dispatch, goToRouter, isSplashScreen, isValidToken, name, value]);
 
   return {};
 };

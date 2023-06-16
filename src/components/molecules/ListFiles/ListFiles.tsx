@@ -29,6 +29,11 @@ export const ListFiles = () => {
 
   let limitFiles = files.length > 1 && files.length <= 5;
 
+  let type = files[0].type.split('/')[0];
+  let isVideo = type === 'video';
+
+  console.log(isVideo);
+
   return (
     <Container>
       <ContainerInformation>
@@ -40,6 +45,14 @@ export const ListFiles = () => {
           Clique na lixeira para removê-lo
         </Text>
         <Separator />
+        {isVideo && (
+          <Text
+            typography="h5"
+            colorFamily="auxiliary"
+            colorVariant="red_state">
+            A capa não pode ser um video
+          </Text>
+        )}
         {!limitFiles && (
           <Text
             typography="h5"
@@ -61,7 +74,7 @@ export const ListFiles = () => {
         <Separator width={20} />
         <View style={{width: '78%'}}>
           <Button
-            disabled={!limitFiles}
+            disabled={!limitFiles || isVideo}
             title="Próximo"
             variant="containedThirdy"
             onPress={() => {

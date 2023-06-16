@@ -1,7 +1,7 @@
 import {ProductItemCard, FiltersProfileScreen} from '../../';
 
 import {View, ScrollView} from 'react-native';
-import {IProduct} from '../../../store/reducer/product/types';
+
 import {useNavigation} from '@react-navigation/core';
 import {scale} from '../../../utils';
 
