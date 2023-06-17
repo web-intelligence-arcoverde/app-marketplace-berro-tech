@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import {View} from 'react-native';
 
-import {Button, Input, CustomInput} from '../../';
+import {Button, Input, CustomInput, Text} from '../../';
 
 import {
   useAppDispatch,
@@ -20,6 +20,8 @@ import {
   userEditBasicInformationRequest,
   userLoggedDeleteRequest,
 } from '../../../store/reducer/user/actions';
+import {useToast} from 'react-native-toast-notifications';
+import {Dialog} from '@rneui/themed';
 
 const schema = yup
   .object({
@@ -54,13 +56,28 @@ export const EditProfileBasicInformationsForm = () => {
 
   const dispatch = useAppDispatch();
 
+  const toast = useToast();
+
+  const [visible2, setVisible2] = useState(false);
+
+  const toggleDialog2 = () => {
+    setVisible2(!visible2);
+  };
+
   const onSubmit = (data: any) => {
     const formData = new FormData();
     formData.append('name', data.name);
     formData.append('email', data.email);
     formData.append('phone', data.phone);
-    formData.append('avatar_url', image_user);
-    dispatch(userEditBasicInformationRequest(formData));
+    if (image_user) {
+      formData.append('avatar_url', image_user);
+    }
+    dispatch(userEditBasicInformationRequest({formData, toast}));
+  };
+
+  const deleteUserAccount = () => {
+    dispatch(userLoggedDeleteRequest({router: goToRouter}));
+    toggleDialog2();
   };
 
   return (
@@ -86,13 +103,8 @@ export const EditProfileBasicInformationsForm = () => {
       />
 
       <Button
-        title="Alterar senha"
-        onPress={() => goToRouter('ProfileChangerPasswordScreen')}
-        variant="none"
-      />
-      <Button
         title="Excluir minha conta"
-        onPress={() => dispatch(userLoggedDeleteRequest({router: goToRouter}))}
+        onPress={() => toggleDialog2()}
         variant="noneSecondary"
       />
 
@@ -101,6 +113,23 @@ export const EditProfileBasicInformationsForm = () => {
         onPress={handleSubmit(onSubmit)}
         variant="containedThirdy"
       />
+
+      <Dialog
+        isVisible={visible2}
+        onBackdropPress={toggleDialog2}
+        overlayStyle={{backgroundColor: '#fff'}}>
+        <Text typography="h3" colorFamily="gray" colorVariant="_04">
+          Realmente deseja deletar sua conta?
+        </Text>
+        <Dialog.Actions>
+          <Dialog.Button
+            title="Confirmar"
+            onPress={() => deleteUserAccount()}
+            titleStyle={{color: 'red'}}
+          />
+          <Dialog.Button title="Cancelar" onPress={() => toggleDialog2()} />
+        </Dialog.Actions>
+      </Dialog>
     </View>
   );
 };

@@ -57,17 +57,25 @@ function* readInformationUser() {
 }
 
 function* changerPassword({payload}: any): any {
+  let toast = payload.toast;
+  delete payload.toast;
   try {
-    const router = payload.navigation;
-
-    delete payload.router;
-
     const id = store.getState().auth.user.id;
     yield call(api.put, `/change-password/${id}`, payload.data);
 
-    yield put(router('EditProfileScreen'));
+    toast.show('Senha atualizada', {
+      type: 'success',
+      placement: 'bottom',
+      duration: 4000,
+      animationType: 'zoom-in',
+    });
   } catch (e) {
-    console.log(e);
+    toast.show('Tente novamente.', {
+      type: 'danger',
+      placement: 'bottom',
+      duration: 4000,
+      animationType: 'zoom-in',
+    });
   }
 }
 

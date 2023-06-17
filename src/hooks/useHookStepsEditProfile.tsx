@@ -5,10 +5,12 @@ import {
   EditProfileLocationInformation,
   EditProfileBasicInformations,
 } from '../components';
+import {ProfileChangerPasswordScreen} from '../screens';
 
 const renderSteps = {
   0: EditProfileBasicInformations,
   1: EditProfileLocationInformation,
+  2: ProfileChangerPasswordScreen,
 };
 
 export const useHookStepsEditProfile = () => {

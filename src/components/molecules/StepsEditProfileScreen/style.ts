@@ -13,7 +13,7 @@ export const StepItem = styled.TouchableOpacity<IStepItem>`
   padding-horizontal: ${scale(20)};
   padding-vertical: ${scale(12)};
 
-  width: 50%;
+  width: 35%;
 
   background-color: #fff;
 

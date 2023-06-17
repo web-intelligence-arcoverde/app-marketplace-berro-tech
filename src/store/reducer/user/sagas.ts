@@ -38,23 +38,6 @@ function* readSeller({payload}: any): any {
   }
 }
 
-function* signUp({payload}: any): any {
-  try {
-    console.log(payload);
-
-    /*
-    const router = payload.router;
-
-    delete payload.router;
-
-    const {data: token} = yield call(api.post, '/sign-up', payload);
-
-    yield put(signUpSuccess(token));
-
-    yield put(router('DashboardBottomNavigation'));*/
-  } catch (e) {}
-}
-
 function* readStates() {
   try {
     const {data} = yield call(api.get, '/state/');
@@ -75,23 +58,57 @@ function* readCities({payload}: any) {
 }
 
 function* updateUserAddress({payload}: any): any {
+  let toast = payload.toast;
+  delete payload.toast;
+
   try {
     yield call(api.post, '/address-user', payload);
 
     yield put(updateAuthAddressSuccess(payload));
-  } catch (error) {}
+
+    toast.show('Seu endereço foi atualizado', {
+      type: 'success',
+      placement: 'bottom',
+      duration: 4000,
+      animationType: 'zoom-in',
+    });
+  } catch (error) {
+    toast.show('Error na atualização, tente novamente.', {
+      type: 'danger',
+      placement: 'bottom',
+      duration: 4000,
+      animationType: 'zoom-in',
+    });
+  }
 }
 
 function* updateUserBasicInformation({payload}: any): any {
+  let toast = payload.toast;
+  delete payload.toast;
+
   try {
     const id = store.getState().auth.user.id;
 
-    yield call(api.put, `/user/${id}`, payload, {
+    yield call(api.put, `/user/${id}`, payload.formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     });
-  } catch (error) {}
+
+    toast.show('Seus dados foram atualizados', {
+      type: 'success',
+      placement: 'bottom',
+      duration: 4000,
+      animationType: 'zoom-in',
+    });
+  } catch (error) {
+    toast.show('Error na atualização, tente novamente.', {
+      type: 'danger',
+      placement: 'bottom',
+      duration: 4000,
+      animationType: 'zoom-in',
+    });
+  }
 }
 
 function* userDelete({payload}: any): any {
@@ -106,7 +123,7 @@ function* userSagas() {
   yield all([
     takeLatest('user/sign-in-request', signIn),
     takeLatest('user/read-seller-request', readSeller),
-    takeLatest('user/sign-up-step-02', signUp),
+
     takeLatest('user/read-state-request', readStates),
     takeLatest('user/read-city-by-state-request', readCities),
     takeLatest('user/update-user-address-request', updateUserAddress),

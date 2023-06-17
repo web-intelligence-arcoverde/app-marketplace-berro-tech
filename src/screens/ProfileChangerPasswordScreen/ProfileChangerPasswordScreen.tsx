@@ -1,4 +1,6 @@
-import {View, ScrollView} from 'react-native';
+import React from 'react';
+
+import {View} from 'react-native';
 
 import {
   Button,
@@ -8,16 +10,15 @@ import {
   KeyboardContainer,
 } from '../../components';
 
-import {HeaderDashboard} from '../../components';
-
 import {useForm} from 'react-hook-form';
 
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import {ErrorMessage} from '../../locale';
-import {useAppDispatch, useNavigationHook} from '../../hooks';
+import {useAppDispatch} from '../../hooks';
 import {changerPasswordRequest} from '../../store/reducer/auth/actions';
+import {useToast} from 'react-native-toast-notifications';
 
 const schema = yup
   .object({
@@ -33,8 +34,6 @@ const schema = yup
   .required();
 
 export const ProfileChangerPasswordScreen = () => {
-  const {goToRouter} = useNavigationHook();
-
   const {
     control,
     handleSubmit,
@@ -48,15 +47,14 @@ export const ProfileChangerPasswordScreen = () => {
   });
 
   const dispatch = useAppDispatch();
+  const toast = useToast();
 
   const onSubmit = handleSubmit(data =>
-    dispatch(changerPasswordRequest({data, navigation: goToRouter})),
+    dispatch(changerPasswordRequest({data, toast})),
   );
 
   return (
     <KeyboardContainer>
-      <HeaderDashboard />
-      <Separator height={20} />
       <View style={{paddingHorizontal: 20}}>
         <Text typography="h3">Alterar senha</Text>
         <Separator height={20} />
@@ -67,9 +65,8 @@ export const ProfileChangerPasswordScreen = () => {
             password
             control={control}
             name="currentPassword"
-            password
             rightIcon
-            errors={errors?.password?.message}
+            errors={errors?.currentPassword?.message}
           />
           <Input
             label="Nova senha"
@@ -78,7 +75,7 @@ export const ProfileChangerPasswordScreen = () => {
             control={control}
             rightIcon
             name="newPassword"
-            errors={errors?.confirmationPassword?.message}
+            errors={errors?.newPassword?.message}
           />
 
           <Button

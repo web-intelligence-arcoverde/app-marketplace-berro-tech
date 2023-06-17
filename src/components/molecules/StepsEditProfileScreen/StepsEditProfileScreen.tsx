@@ -2,6 +2,8 @@ import {Separator, Text} from '../../';
 
 import {StepItem, Container} from './style';
 
+import React from 'react';
+
 interface IStepsEditProfileScreen {
   step?: number;
   setStep?: (step: number) => void;
@@ -35,6 +37,18 @@ export const StepsEditProfileScreen = ({
           colorFamily="gray"
           colorVariant={step === 1 ? '_01' : '_03'}>
           Localização
+        </Text>
+      </StepItem>
+      <StepItem isActive={step === 2} onPress={() => setStep(2)}>
+        <Text typography="h4" colorFamily="gray" colorVariant="_04">
+          Editar
+        </Text>
+        <Separator height={8} />
+        <Text
+          typography="h4"
+          colorFamily="gray"
+          colorVariant={step === 2 ? '_01' : '_03'}>
+          Senha
         </Text>
       </StepItem>
     </Container>

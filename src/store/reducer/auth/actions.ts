@@ -51,7 +51,7 @@ export const filterProductsByAnimalType = createAction<any>(
   'auth/filter-products-by-animal-type',
 );
 
-export const changerPasswordRequest = createAction<IChangerPassword>(
+export const changerPasswordRequest = createAction<any>(
   'auth/changer-password-request',
 );
 

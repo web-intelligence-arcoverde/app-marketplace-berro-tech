@@ -13,6 +13,7 @@ import {
   selectState,
   updateUserAddressRequest,
 } from '../../../store/reducer/user/actions';
+import {useToast} from 'react-native-toast-notifications';
 
 export const EditProfileLocationInformation = () => {
   const {addresses} = useAppSelector(state => state.auth.user);
@@ -35,9 +36,15 @@ export const EditProfileLocationInformation = () => {
     }
   }, [city?.length, state?.length]);
 
+  const toast = useToast();
+
   const handleSubmit = () => {
     dispatch(
-      updateUserAddressRequest({state: stateSelected, city: citySelected}),
+      updateUserAddressRequest({
+        state: stateSelected,
+        city: citySelected,
+        toast,
+      }),
     );
   };
 

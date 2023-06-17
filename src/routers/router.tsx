@@ -28,14 +28,19 @@ import {
 import {BottomSheetSelectAgeCategory} from '../components/molecules/BottomSheetSelectAgeCategory/BottomSheetSelectAgeCategory';
 import {BottomSheetSelectSellType} from '../components/molecules/BottomSheetSelectSellType/BottomSheetSelectSellType';
 import {BottomSheetSelectClassification} from '../components/molecules/BottomSheetSelectClassification/BottomSheetSelectClassification';
+import {useAppSelector} from '../hooks';
 
 const Stack = createNativeStackNavigator();
 
 export const RouterApp = () => {
+  const {token} = useAppSelector(state => state.auth);
+
+  let initialRouter = token ? 'DashboardBottomNavigation' : 'SplashScreen';
+
   return (
     <>
       <Stack.Navigator
-        initialRouteName={'AddProductScreen'}
+        initialRouteName={initialRouter}
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
 
