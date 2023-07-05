@@ -2,10 +2,10 @@ import axios from 'axios';
 import {store} from '../store';
 import {storeData} from '../hooks/useAsyncStorage';
 
-const local = 'http://localhost:3333/v1';
+export const local = 'http://localhost:3333/v1';
 export const dev = 'https://berro-tech-api.herokuapp.com/v1';
 
-const api = axios.create({baseURL: local});
+const api = axios.create({baseURL: dev});
 
 api.interceptors.request.use(
   (config: any) => {
