@@ -48,7 +48,7 @@ export const DetailProductScreen = ({route}: any) => {
 
   useEffect(() => {
     dispatch(getProductByIdRequest(id));
-  }, []);
+  }, [dispatch, id]);
 
   useEffect(() => {
     dispatch(topSearchProductRequest('rank'));
@@ -56,10 +56,14 @@ export const DetailProductScreen = ({route}: any) => {
 
   let whatsappMsg = 'BerroTech';
 
-  const goToWhatsapp = async () =>
+  const goToWhatsapp = async () => {
+    let ddi = '+55';
+    let formatedNumber = ddi + concatInfo.phone_number;
+
     await Linking.openURL(
-      `whatsapp://send?phone=${concatInfo.phone_number}&text=${whatsappMsg}`,
+      `whatsapp://send?phone=${formatedNumber}&text=${whatsappMsg}`,
     );
+  };
 
   const [state, setState] = useState(false);
   const toast = useToast();
