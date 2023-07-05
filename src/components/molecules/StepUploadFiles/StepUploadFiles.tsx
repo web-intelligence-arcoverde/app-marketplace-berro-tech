@@ -1,23 +1,23 @@
 import React, {useContext} from 'react';
 
-import {usePickFileHook} from '../../../hooks/usePickFileHook';
 import {EmptyFiles} from '../EmptyFiles/EmptyFiles';
-import {ListFiles} from '../ListFiles/ListFiles';
 import {Container} from './style';
 import {
   ContextFormAddProduct,
   IAppContextAddProduct,
 } from '../../../context/ContextContainerAddProduct';
+import {usePickFileHookAdd} from '../../../hooks/usePickFileHookAdd';
+import {ListFilesAdd} from '../ListFilesAdd/ListFilesAdd';
 
 export const StepUploadFiles = () => {
   const {files} = useContext(ContextFormAddProduct) as IAppContextAddProduct;
-  const {onButtonPress} = usePickFileHook();
+  const {onButtonPress} = usePickFileHookAdd();
   let filesExist = files.length >= 1;
 
   return (
     <Container>
       {filesExist ? (
-        <ListFiles />
+        <ListFilesAdd onButtonPress={onButtonPress} />
       ) : (
         <EmptyFiles onButtonPress={onButtonPress} />
       )}

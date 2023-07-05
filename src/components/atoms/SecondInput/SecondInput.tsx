@@ -35,6 +35,7 @@ export const SecondInput = ({
   leftIcon,
   leftIconName,
   variant = 'contained',
+  keyboardType = 'email-address',
 }: IInput) => {
   const typography = Typography.input;
 
@@ -79,7 +80,7 @@ export const SecondInput = ({
             placeholderTextColor={focus ? '#fff' : '#737185'}
             value={value}
             autoCapitalize="none"
-            keyboardType="email-address"
+            keyboardType={keyboardType}
             autoCorrect={false}
             secureTextEntry={showPassword}
             leftIconContainerStyle={leftIconContainerStyle}

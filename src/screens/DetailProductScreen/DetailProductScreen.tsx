@@ -80,7 +80,7 @@ export const DetailProductScreen = ({route}: any) => {
 
   const redirectToDetailsProduct = (id: number) => {
     //@ts-ignore
-    navigate.navigate('AddProductScreen', {
+    navigate.navigate('EditProductScreen', {
       id,
     });
   };

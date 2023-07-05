@@ -93,6 +93,3 @@ export const HeaderVariantBottomNavigate = () => {
     </StyledContainer>
   );
 };
-
-// {showSearchProduct && <SearchInput setFocus={setFocus} focus={focus} />}
-// <HeaderVariantProfileEdit focus={focus} />

@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
-import {StyleSheet, View} from 'react-native';
-import {Text, IconComponent, Separator, Button} from '../../';
+import {View} from 'react-native';
+import {Text, IconComponent, Separator, Button} from '../..';
 
 import {useAppDispatch} from '../../../hooks';
 import {addFile} from '../../../store/reducer/product/actions';
@@ -13,27 +13,25 @@ import {
   AddNewFileButton,
 } from './style';
 import {FileItem} from '../FileItem/FileItem';
-
 import {
-  ContextEditProduct,
-  IAppContextEditProduct,
-} from '../../../context/ContextEditProduct';
+  ContextFormAddProduct,
+  IAppContextAddProduct,
+} from '../../../context/ContextContainerAddProduct';
 
-export const ListFiles = ({onButtonPress}: any) => {
+export const ListFilesAdd = ({onButtonPress}: any) => {
   const dispatch = useAppDispatch();
   const {files, setStep, removerFile} = useContext(
-    ContextEditProduct,
-  ) as IAppContextEditProduct;
+    ContextFormAddProduct,
+  ) as IAppContextAddProduct;
 
-  let limitFiles = files.length > 1 && files.length <= 5;
+  let minFiles = files.length > 1;
+  let maxFiles = files.length <= 5;
 
-  let typeUrl = files[0]?.url?.split('.')?.reverse()[0];
-  let typeUpload = files[0]?.type?.split('/')[0];
+  let limitFiles = minFiles && maxFiles;
 
-  let isVideo = typeUrl === 'mp4';
-  let isVideoUploaded = typeUpload === 'video';
+  let typeFile = files[0]?.type?.split('/')[0];
 
-  let isVideoFile = isVideo || isVideoUploaded;
+  let isFileVideo = typeFile === 'video';
 
   return (
     <Container>
@@ -46,7 +44,7 @@ export const ListFiles = ({onButtonPress}: any) => {
           Clique na lixeira para removê-lo
         </Text>
         <Separator />
-        {isVideoFile && (
+        {isFileVideo && (
           <Text
             typography="h5"
             colorFamily="auxiliary"
@@ -64,7 +62,7 @@ export const ListFiles = ({onButtonPress}: any) => {
         )}
       </ContainerInformation>
       <ContainerFileList>
-        {files[0].map((document: any, index: any) => {
+        {files.map((document: any, index: any) => {
           return (
             <FileItem
               document={document}
@@ -79,9 +77,9 @@ export const ListFiles = ({onButtonPress}: any) => {
           <IconComponent icon="add-icon" />
         </AddNewFileButton>
         <Separator width={20} />
-        <View style={styles.container}>
+        <View style={{width: '78%'}}>
           <Button
-            disabled={!limitFiles || isVideo}
+            disabled={!limitFiles || isFileVideo}
             title="Próximo"
             variant="containedThirdy"
             onPress={() => {
@@ -94,9 +92,3 @@ export const ListFiles = ({onButtonPress}: any) => {
     </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    width: '78%',
-  },
-});

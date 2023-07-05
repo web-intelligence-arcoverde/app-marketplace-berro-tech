@@ -13,6 +13,7 @@ const authRouters = [
   'SellerScreen',
   'ProfileChangerPasswordScreen',
   'EditProfileScreen',
+  'EditProductScreen',
 ];
 
 export const useCheckUserLoggedIn = () => {

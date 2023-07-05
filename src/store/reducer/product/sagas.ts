@@ -184,6 +184,54 @@ function* deleteProduct({payload}: any) {
   }
 }
 
+function* deletePhotoProduct({payload}: any) {
+  try {
+    yield call(api.delete, `/document/${payload}`);
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function* updateProductBasicInformation({payload}: any) {
+  try {
+    yield call(api.put, `/product-step-1/${payload.id}`, payload);
+
+    yield put(readBusinessHighlightProductRequest());
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function* addPhotoProduct({payload}: any) {
+  try {
+    const {files, id} = payload;
+
+    var formData = new FormData();
+
+    files.map((file: any) => {
+      formData.append('document', file);
+    });
+
+    yield call(api.put, `/product-step-2/${id}`, formData);
+
+    yield put(readBusinessHighlightProductRequest());
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function* updateLocationProduct({payload}: any) {
+  try {
+    const {id, formData} = payload;
+
+    yield call(api.put, `/product-step-3/${id}`, formData);
+
+    yield put(readBusinessHighlightProductRequest());
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 function* productSagas() {
   yield all([
     takeLatest('product/read-types-animals-request', readAnimalType),
@@ -202,6 +250,17 @@ function* productSagas() {
     takeLatest('product/read-classification-request', readClassifications),
     takeLatest('product/renew-limit-product-request', renewLimitProduct),
     takeLatest('product/delete-product-request', deleteProduct),
+    takeLatest('product/delete-file-product-request', deletePhotoProduct),
+    takeLatest(
+      'product/update-product-basic-information-request',
+      updateProductBasicInformation,
+    ),
+
+    takeLatest('product/update-document-product-request', addPhotoProduct),
+    takeLatest(
+      'product/update-product-location-request',
+      updateLocationProduct,
+    ),
   ]);
 }
 

@@ -168,3 +168,35 @@ export const deleteProductRequest = createAction<any>(
 export const deleteProductSuccess = createAction<any>(
   'product/delete-product-success',
 );
+
+export const deleteFileProductRequest = createAction<any>(
+  'product/delete-file-product-request',
+);
+
+export const deleteFileProductSuccess = createAction<any>(
+  'product/delete-file-product-success',
+);
+
+export const updateProductRequest = createAction<any>(
+  'product/update-product-request',
+);
+
+export const updateProductSuccess = createAction(
+  'product/update-product-success',
+);
+
+export const updateProductBasicInformationRequest = createAction<any>(
+  'product/update-product-basic-information-request',
+);
+
+export const updateProductBasicInformationSuccess = createAction<any>(
+  'product/update-product-basic-information-success',
+);
+
+export const updateProductDocumentRequest = createAction<any>(
+  'product/update-document-product-request',
+);
+
+export const updateProductLocationRequest = createAction<any>(
+  'product/update-product-location-request',
+);

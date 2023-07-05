@@ -3,9 +3,9 @@ import {Platform} from 'react-native';
 import * as ImagePicker from 'react-native-image-picker';
 
 import {
-  ContextEditProduct,
-  IAppContextEditProduct,
-} from '../context/ContextEditProduct';
+  ContextFormAddProduct,
+  IAppContextAddProduct,
+} from '../context/ContextContainerAddProduct';
 
 interface IImage {
   uri: string;
@@ -19,8 +19,8 @@ interface IResponse {
   error: any;
 }
 
-export const usePickFileHook = () => {
-  const {addFile} = useContext(ContextEditProduct) as IAppContextEditProduct;
+export const usePickFileHookAdd = () => {
+  const {addFile} = useContext(ContextFormAddProduct) as IAppContextAddProduct;
 
   const onButtonPress = useCallback(() => {
     ImagePicker.launchImageLibrary(
@@ -37,8 +37,6 @@ export const usePickFileHook = () => {
           console.log('ImagePicker Error: ', response?.error);
         } else {
           if (response.assets) {
-            let files: any[] = [];
-
             response.assets.map(image => {
               let uri =
                 Platform.OS === 'ios'
@@ -49,10 +47,8 @@ export const usePickFileHook = () => {
 
               const source = {uri, type, name};
 
-              files.push(source);
+              addFile(source);
             });
-
-            addFile(files);
           }
         }
       },

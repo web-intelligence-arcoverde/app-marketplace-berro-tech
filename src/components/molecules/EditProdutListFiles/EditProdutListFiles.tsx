@@ -1,9 +1,13 @@
-import React, {useContext} from 'react';
-import {StyleSheet, View} from 'react-native';
-import {Text, IconComponent, Separator, Button} from '../../';
+import React from 'react';
+import {View} from 'react-native';
+import {Text, IconComponent, Separator, Button} from '../..';
 
-import {useAppDispatch} from '../../../hooks';
-import {addFile} from '../../../store/reducer/product/actions';
+import {
+  useAppDispatch,
+  useAppSelector,
+  useNavigationHook,
+} from '../../../hooks';
+import {updateProductDocumentRequest} from '../../../store/reducer/product/actions';
 
 import {
   Container,
@@ -14,16 +18,16 @@ import {
 } from './style';
 import {FileItem} from '../FileItem/FileItem';
 
-import {
-  ContextEditProduct,
-  IAppContextEditProduct,
-} from '../../../context/ContextEditProduct';
-
-export const ListFiles = ({onButtonPress}: any) => {
+export const EditProdutListFiles = ({
+  files,
+  onButtonPress,
+  removerFile,
+}: any) => {
   const dispatch = useAppDispatch();
-  const {files, setStep, removerFile} = useContext(
-    ContextEditProduct,
-  ) as IAppContextEditProduct;
+
+  const product = useAppSelector(state => state.product.product.products[0]);
+
+  const {goToRouter} = useNavigationHook();
 
   let limitFiles = files.length > 1 && files.length <= 5;
 
@@ -64,12 +68,12 @@ export const ListFiles = ({onButtonPress}: any) => {
         )}
       </ContainerInformation>
       <ContainerFileList>
-        {files[0].map((document: any, index: any) => {
+        {files.map((document: any, index: any) => {
           return (
             <FileItem
               document={document}
               index={index}
-              removeFile={removerFile}
+              removerFile={removerFile}
             />
           );
         })}
@@ -79,14 +83,17 @@ export const ListFiles = ({onButtonPress}: any) => {
           <IconComponent icon="add-icon" />
         </AddNewFileButton>
         <Separator width={20} />
-        <View style={styles.container}>
+        <View style={{width: '78%'}}>
           <Button
             disabled={!limitFiles || isVideo}
-            title="Próximo"
+            title="Atualizar"
             variant="containedThirdy"
             onPress={() => {
-              setStep(2);
-              dispatch(addFile(files));
+              let newImages = files.filter((item: any) => !!item.id === false);
+              dispatch(
+                updateProductDocumentRequest({id: product.id, newImages}),
+              );
+              goToRouter('DashboardBottomNavigation');
             }}
           />
         </View>
@@ -94,9 +101,3 @@ export const ListFiles = ({onButtonPress}: any) => {
     </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    width: '78%',
-  },
-});

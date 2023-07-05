@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 
 import {HeaderDashboard, Loading, StepsAddProduct} from '../../components';
 
@@ -19,7 +19,7 @@ const Steps = {
   3: Loading,
 };
 
-export const StepsFormCreateProductContainer = () => {
+export const StepsCreateProduct = () => {
   const {step} = useContext(ContextFormAddProduct) as IAppContextAddProduct;
 
   //@ts-ignore
@@ -36,7 +36,7 @@ export const AddProductScreen = () => {
       <ProviderStepsFormAddProduct>
         <StepsAddProduct />
 
-        <StepsFormCreateProductContainer />
+        <StepsCreateProduct />
       </ProviderStepsFormAddProduct>
     </Container>
   );

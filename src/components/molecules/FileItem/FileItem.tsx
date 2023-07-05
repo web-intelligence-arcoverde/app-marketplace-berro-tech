@@ -1,38 +1,41 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import Video from 'react-native-video';
 
 import {Text, IconComponent} from '../../';
 
 import {Container, StyledImage, CapeIcon, DeleteIconContainer} from './style';
-import {
-  ContextFormAddProduct,
-  IAppContextAddProduct,
-} from '../../../context/ContextContainerAddProduct';
+import {StyleSheet} from 'react-native';
+import {scale} from '../../../utils';
 
-export const FileItem = ({index, document}: any) => {
-  const {removerFile} = useContext(
-    ContextFormAddProduct,
-  ) as IAppContextAddProduct;
+interface FileItemProps {
+  index: number;
+  document: any;
+  removeFile: any;
+}
 
-  let type = document.type.split('/')[0];
-  let isVideo = type === 'video';
+export const FileItem = ({index, document, removeFile}: FileItemProps) => {
+  let typeUrl = document?.url?.split('.')?.reverse()[0];
+  let typeUpload = document?.type?.split('/')[0];
+
+  let isVideo = typeUrl === 'mp4';
+  let isVideoUploaded = typeUpload === 'video';
+
+  let url = typeUpload ? document.uri : document.url;
+
+  let isVideoFile = isVideo || isVideoUploaded;
+
   return (
     <Container>
-      {isVideo && (
+      {isVideoFile && (
         <Video
-          source={{uri: document.uri}}
-          style={{
-            width: '100%',
-            height: 180,
-            borderRadius: 6,
-            marginBottom: 16,
-          }}
+          source={{uri: url}}
+          style={styles.videoContainer}
           muted
           controls
           resizeMode="stretch"
         />
       )}
-      {!isVideo && <StyledImage source={{uri: document.uri}} />}
+      {!isVideoFile && <StyledImage source={{uri: url}} />}
       {index === 0 && (
         <CapeIcon>
           <Text typography="h5" colorFamily="gray" colorVariant="_01">
@@ -41,9 +44,18 @@ export const FileItem = ({index, document}: any) => {
         </CapeIcon>
       )}
 
-      <DeleteIconContainer onPress={() => removerFile(index)}>
+      <DeleteIconContainer onPress={() => removeFile(index)}>
         <IconComponent icon="delete-icon" />
       </DeleteIconContainer>
     </Container>
   );
 };
+
+const styles = StyleSheet.create({
+  videoContainer: {
+    width: '100%',
+    height: scale(180),
+    borderRadius: scale(6),
+    marginBottom: scale(16),
+  },
+});

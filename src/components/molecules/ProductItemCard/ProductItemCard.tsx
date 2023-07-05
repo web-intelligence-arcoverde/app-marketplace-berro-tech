@@ -1,6 +1,6 @@
-import {mockImages} from '../../../assets/images/mock';
+import React from 'react';
 
-import {ProductItemDescriptionFooter, ProductItemHeader} from '../..';
+import {ProductItemHeader} from '../..';
 
 import {ProductDescriptionFooter} from '../ProductDescriptionFooter/ProductDescriptionFooter';
 
@@ -12,7 +12,7 @@ export const ProductItemCard = (props: any) => {
 
   return (
     <Container onPress={() => onPress(id)}>
-      <ImageContainer source={{uri: document.url}} />
+      <ImageContainer source={{uri: document?.url}} />
       <ProductItemHeader {...props} />
       <ContainerFoorterDescription>
         <ProductDescriptionFooter title="Sexo" description={gender} />

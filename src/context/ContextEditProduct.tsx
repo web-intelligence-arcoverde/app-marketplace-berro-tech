@@ -1,12 +1,15 @@
 import React, {useState} from 'react';
 import {useAppDispatch, useAppSelector} from '../hooks';
-import {changerStepProduct} from '../store/reducer/product/actions';
+import {
+  changerStepProduct,
+  deleteFileProductRequest,
+} from '../store/reducer/product/actions';
 
 type IProps = {
   children: string | JSX.Element | JSX.Element[];
 };
 
-export interface IAppContextAddProduct {
+export interface IAppContextEditProduct {
   step: number;
   setStep: (step: number) => void;
   files: any;
@@ -14,11 +17,15 @@ export interface IAppContextAddProduct {
   removerFile: (id: number) => void;
 }
 
-export const ContextFormAddProduct =
-  React.createContext<IAppContextAddProduct | null>(null);
+export const ContextEditProduct =
+  React.createContext<IAppContextEditProduct | null>(null);
 
-export const ProviderStepsFormAddProduct = ({children}: IProps) => {
-  const [files, setFiles] = useState<any>([]);
+export const ProviderStepsFormEditProduct = ({children}: IProps) => {
+  const documents = useAppSelector(
+    state => state.product.product.products[0].documents,
+  );
+
+  const [files, setFiles] = useState<any[]>(documents);
 
   const dispatch = useAppDispatch();
   const {stepProduct} = useAppSelector(state => state.product);
@@ -28,21 +35,29 @@ export const ProviderStepsFormAddProduct = ({children}: IProps) => {
   };
 
   const addFile = (file: any) => {
-    let newFiles = files;
-    newFiles.push(file);
-    setFiles([...newFiles]);
+    let newFile: any[] = [...files];
+    let mergeFiles: any[] = [];
+
+    mergeFiles = newFile.concat(file);
+
+    setFiles([...mergeFiles]);
   };
 
   const removerFile = (idFile: any) => {
-    let newFile: any[] = files;
+    let newFile = files;
     let removeItem = newFile.filter((_: any, index: number) => {
       return index !== idFile;
     });
+
+    let array1 = newFile.filter(val => !removeItem.includes(val));
+
+    dispatch(deleteFileProductRequest(array1[0].file));
+
     setFiles(removeItem);
   };
 
   return (
-    <ContextFormAddProduct.Provider
+    <ContextEditProduct.Provider
       value={{
         step: stepProduct,
         setStep: changerStep,
@@ -51,6 +66,6 @@ export const ProviderStepsFormAddProduct = ({children}: IProps) => {
         removerFile,
       }}>
       {children}
-    </ContextFormAddProduct.Provider>
+    </ContextEditProduct.Provider>
   );
 };

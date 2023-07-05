@@ -14,6 +14,7 @@ import {
   AddProductScreen,
   ProfileChangerPasswordScreen,
   DetailProductScreen,
+  EditProductScreen,
   SellerScreen,
 } from '../screens/';
 
@@ -71,6 +72,7 @@ export const RouterApp = () => {
         />
 
         <Stack.Screen name="AddProductScreen" component={AddProductScreen} />
+        <Stack.Screen name="EditProductScreen" component={EditProductScreen} />
 
         <Stack.Screen name="SellerScreen" component={SellerScreen} />
 
