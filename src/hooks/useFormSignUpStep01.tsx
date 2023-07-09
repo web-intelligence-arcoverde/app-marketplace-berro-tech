@@ -1,4 +1,4 @@
-import {useContext} from 'react';
+import React, {useContext} from 'react';
 
 import {ContextSignUpScreenStep, IAppContextSignUpScreenStep} from '../context';
 
@@ -12,6 +12,8 @@ import {useAppDispatch, useAppSelector} from '.';
 
 import {signUpForm} from '../store/reducer/auth/actions';
 import {ISignUpForm} from '../store/reducer/auth/types';
+import {useNavigation} from '@react-navigation/native';
+import {Alert} from 'react-native';
 
 const schema = yup.object({
   email: yup
@@ -32,6 +34,25 @@ const isObjectEmpty = (
 };
 
 export const useFormSignUpSteps = () => {
+  const navigation = useNavigation();
+
+  React.useEffect(() => {
+    navigation.addListener('beforeRemove', () => {
+      dispatch(
+        signUpForm({
+          email: '',
+          name: '',
+          phone: '',
+          password: '',
+          confirmationPassword: '',
+          toast: '',
+        }),
+      );
+    });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigation]);
+
   const {step, setStep} = useContext(
     ContextSignUpScreenStep,
   ) as IAppContextSignUpScreenStep;

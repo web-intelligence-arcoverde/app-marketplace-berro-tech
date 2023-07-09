@@ -51,7 +51,14 @@ export const authReducer = createReducer(initialState, builder => {
       state.token = action.payload.token;
       state.isLogged = true;
       storeData(action.payload.token);
-      state.signUpForm = {name: '', email: '', phone: ''};
+      state.signUpForm = {
+        email: '',
+        name: '',
+        phone: '',
+        password: '',
+        confirmationPassword: '',
+        toast: '',
+      };
     })
     .addCase(updateAuthAddressSuccess, (state, action) => {
       state.user.addresses = [{...action.payload}];
