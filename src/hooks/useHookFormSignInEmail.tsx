@@ -29,6 +29,8 @@ export const useHookFormSignInEmail = () => {
   const {goToRouter} = useNavigationHook();
 
   const {
+    clearErrors,
+    reset,
     control,
     handleSubmit,
     formState: {errors},
@@ -53,6 +55,8 @@ export const useHookFormSignInEmail = () => {
         toast,
       }),
     );
+    reset();
+    clearErrors();
   };
 
   return {onSubmit, control, errors};

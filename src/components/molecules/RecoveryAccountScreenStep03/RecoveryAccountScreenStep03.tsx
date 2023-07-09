@@ -46,7 +46,6 @@ export const RecoveryAccountScreenStep03 = () => {
   const {goToRouter} = useNavigationHook();
 
   const onSubmit = handleSubmit(data => {
-    console.log(data);
     dispatch(
       changerPasswordForgotPasswordRequest({data, toast, router: goToRouter}),
     );

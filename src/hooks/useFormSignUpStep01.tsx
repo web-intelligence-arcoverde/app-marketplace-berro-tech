@@ -13,7 +13,6 @@ import {useAppDispatch, useAppSelector} from '.';
 import {signUpForm} from '../store/reducer/auth/actions';
 import {ISignUpForm} from '../store/reducer/auth/types';
 import {useNavigation} from '@react-navigation/native';
-import {Alert} from 'react-native';
 
 const schema = yup.object({
   email: yup

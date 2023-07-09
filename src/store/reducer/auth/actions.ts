@@ -70,3 +70,7 @@ export const userLoggedDeleteSuccess = createAction(
 export const updateAuthAddressSuccess = createAction<any>(
   'auth/update-auth-address-success',
 );
+
+export const changerStepRecoveryAccount = createAction<any>(
+  'auth/changer-step-recovery-account',
+);

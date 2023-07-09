@@ -3,6 +3,7 @@ import {createReducer} from '@reduxjs/toolkit';
 import {initialState} from './initialState';
 import {
   changerPasswordForgotPasswordSuccess,
+  changerStepRecoveryAccount,
   filterProductsByAnimalType,
   forgotPasswordSuccess,
   readInformationUserLoggedSuccess,
@@ -78,5 +79,8 @@ export const authReducer = createReducer(initialState, builder => {
     })
     .addCase(signUpForm, (state, action) => {
       state.signUpForm = {...action.payload};
+    })
+    .addCase(changerStepRecoveryAccount, (state, action) => {
+      state.stepRecoveryAccount = action.payload;
     });
 });

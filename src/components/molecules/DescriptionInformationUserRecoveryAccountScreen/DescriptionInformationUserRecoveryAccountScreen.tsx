@@ -1,10 +1,13 @@
+import React from 'react';
+
 import {Button, Separator, Text} from '../..';
 
-import {useHookStepsRecoveryAccount} from '../../../hooks';
+import {useAppDispatch} from '../../../hooks';
 
 import {Container} from './style';
 
 import {SIZES} from '../../../common';
+import {changerStepRecoveryAccount} from '../../../store/reducer/auth/actions';
 
 interface IDescriptionInformationUserRecoveryAccountScreen {
   email: string;
@@ -13,15 +16,14 @@ interface IDescriptionInformationUserRecoveryAccountScreen {
 export const DescriptionInformationUserRecoveryAccountScreen = ({
   email,
 }: IDescriptionInformationUserRecoveryAccountScreen) => {
-  const {setStep, setEmail} = useHookStepsRecoveryAccount();
+  const dispatch = useAppDispatch();
 
   return (
     <Container>
       <Button
         title="Volta"
         onPress={() => {
-          setStep(0);
-          setEmail('');
+          dispatch(changerStepRecoveryAccount(0));
         }}
         variant="outlinedSecondary"
         icon="arrow-left"
