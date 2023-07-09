@@ -85,6 +85,7 @@ export const RouterApp = () => {
       </Stack.Navigator>
 
       <BottomSheetSelectAnimalType defaultSize={120} />
+
       <BottomSheetSelectAnimalBreed defaultSize={280} />
 
       <BottomSheetSelectClassification defaultSize={120} />

@@ -4,14 +4,14 @@ import {
   HeaderLogoIntro,
   HeaderDescriptionIntro,
   AppContextSignUpScreenComponent,
-  KeyboardContainer,
 } from '../../components';
 
 import {ScrollView} from 'react-native';
+import {Container} from './style';
 
 export const SignUpScreen = () => {
   return (
-    <KeyboardContainer>
+    <Container>
       <HeaderLogoIntro />
       <ScrollView>
         <HeaderDescriptionIntro
@@ -21,6 +21,6 @@ export const SignUpScreen = () => {
 
         <AppContextSignUpScreenComponent />
       </ScrollView>
-    </KeyboardContainer>
+    </Container>
   );
 };

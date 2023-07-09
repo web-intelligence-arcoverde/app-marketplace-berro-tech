@@ -2,7 +2,6 @@ import React from 'react';
 
 import {ScrollView} from 'react-native';
 import {
-  KeyboardContainer,
   HeaderDashboard,
   BusinessHighlight,
   Separator,
@@ -11,7 +10,7 @@ import {
 
 export const HomeScreen = () => {
   return (
-    <KeyboardContainer>
+    <ScrollView style={{flex: 1, backgroundColor: '#fff'}}>
       <HeaderDashboard />
       <ScrollView>
         <BusinessHighlight />
@@ -19,6 +18,6 @@ export const HomeScreen = () => {
         <Separator height={40} />
         <ProductListSpecificHomeScreen />
       </ScrollView>
-    </KeyboardContainer>
+    </ScrollView>
   );
 };

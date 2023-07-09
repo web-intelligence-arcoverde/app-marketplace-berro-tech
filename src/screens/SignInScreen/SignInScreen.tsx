@@ -7,12 +7,11 @@ import {
   HeaderDescriptionIntro,
   FormSignInEmailScreen,
   FooterButtonCreateAccountIntro,
-  KeyboardContainer,
 } from '../../components';
 
 export const SignInScreen = () => {
   return (
-    <KeyboardContainer>
+    <ScrollView style={{flex: 1, backgroundColor: '#fff'}}>
       <HeaderLogoIntro />
       <ScrollView>
         <HeaderDescriptionIntro
@@ -24,6 +23,6 @@ export const SignInScreen = () => {
 
         <FooterButtonCreateAccountIntro />
       </ScrollView>
-    </KeyboardContainer>
+    </ScrollView>
   );
 };

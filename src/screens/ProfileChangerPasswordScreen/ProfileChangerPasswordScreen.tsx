@@ -1,14 +1,8 @@
 import React from 'react';
 
-import {View} from 'react-native';
+import {ScrollView, View} from 'react-native';
 
-import {
-  Button,
-  Text,
-  Input,
-  Separator,
-  KeyboardContainer,
-} from '../../components';
+import {Button, Text, Input, Separator} from '../../components';
 
 import {useForm} from 'react-hook-form';
 
@@ -54,7 +48,7 @@ export const ProfileChangerPasswordScreen = () => {
   );
 
   return (
-    <KeyboardContainer>
+    <ScrollView style={{flex: 1, backgroundColor: '#fff'}}>
       <View style={{paddingHorizontal: 20}}>
         <Text typography="h3">Alterar senha</Text>
         <Separator height={20} />
@@ -85,6 +79,6 @@ export const ProfileChangerPasswordScreen = () => {
           />
         </View>
       </View>
-    </KeyboardContainer>
+    </ScrollView>
   );
 };

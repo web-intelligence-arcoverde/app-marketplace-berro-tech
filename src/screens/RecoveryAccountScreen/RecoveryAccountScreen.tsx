@@ -5,12 +5,11 @@ import {
   HeaderLogoIntro,
   HeaderDescriptionIntro,
   StepsRecoveryAccount,
-  KeyboardContainer,
 } from '../../components';
 
 export const RecoveryAccountScreen = () => {
   return (
-    <KeyboardContainer>
+    <ScrollView style={{flex: 1, backgroundColor: '#fff'}}>
       <ScrollView>
         <HeaderLogoIntro />
 
@@ -21,6 +20,6 @@ export const RecoveryAccountScreen = () => {
 
         <StepsRecoveryAccount />
       </ScrollView>
-    </KeyboardContainer>
+    </ScrollView>
   );
 };
