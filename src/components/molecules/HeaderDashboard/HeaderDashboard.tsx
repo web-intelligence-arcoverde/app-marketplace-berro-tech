@@ -9,9 +9,9 @@ import {CreateNewProductButton} from '../CreateNewProductButton/CreateNewProduct
 import {Separator, SearchInput, Button} from '../..';
 
 import {useRoute} from '@react-navigation/native';
-import {useState, useEffect} from 'react';
-import {useAppDispatch, useNavigationHook} from '../../../hooks';
-import {readInformationUserLoggedRequest} from '../../../store/reducer/auth/actions';
+import {useState} from 'react';
+import {useNavigationHook} from '../../../hooks';
+//import {readInformationUserLoggedRequest} from '../../../store/reducer/auth/actions';
 
 import {Container, StyledContainer} from './style';
 
@@ -32,14 +32,8 @@ export const HeaderDashboard = () => {
 
   const {goBack} = useNavigationHook();
 
-  const dispatch = useAppDispatch();
-
   const isNotBottomNavigate =
     isHomeScreen || isBusinessScreen || isProfileScreen;
-
-  useEffect(() => {
-    dispatch(readInformationUserLoggedRequest());
-  }, []);
 
   let buttonBackText = 'Voltar';
   let buttonVariant = 'outlinedFour';

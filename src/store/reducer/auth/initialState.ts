@@ -3,7 +3,7 @@ import {IStateAuth} from './types';
 export const initialState: IStateAuth = {
   token: '',
   isLogged: false,
-  loading: true,
+
   user: {
     id: '',
     avatar_url: '',
@@ -13,6 +13,8 @@ export const initialState: IStateAuth = {
     addresses: [],
     contacts: [],
   },
+
+  loading: true,
 
   filterProducts: [],
 

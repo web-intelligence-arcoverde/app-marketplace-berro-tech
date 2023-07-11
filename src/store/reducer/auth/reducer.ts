@@ -7,6 +7,7 @@ import {
   changerStepRecoveryAccount,
   filterProductsByAnimalType,
   forgotPasswordSuccess,
+  readInformationUserLoggedRequest,
   readInformationUserLoggedSuccess,
   setToken,
   signInSuccess,
@@ -30,6 +31,9 @@ export const authReducer = createReducer(initialState, builder => {
       state.token = action.payload;
       state.isLogged = true;
       storeData(action.payload);
+    })
+    .addCase(readInformationUserLoggedRequest, (state, action) => {
+      state.loading = true;
     })
     .addCase(readInformationUserLoggedSuccess, (state, action) => {
       state.user = action.payload;

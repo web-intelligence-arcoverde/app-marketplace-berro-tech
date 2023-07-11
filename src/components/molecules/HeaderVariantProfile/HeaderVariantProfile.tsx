@@ -1,15 +1,10 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useRoute} from '@react-navigation/native';
-import {useEffect} from 'react';
 
 import {View} from 'react-native';
+import React from 'react';
+
 import {Button} from '../..';
-import {
-  useAppDispatch,
-  useAppSelector,
-  useNavigationHook,
-} from '../../../hooks';
-import {readInformationUserLoggedRequest} from '../../../store/reducer/auth/actions';
+import {useAppSelector, useNavigationHook} from '../../../hooks';
 
 export const HeaderVariantProfile = () => {
   const {goToRouter} = useNavigationHook();

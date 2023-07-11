@@ -5,7 +5,7 @@
   "scripts": {
     "android": "react-native run-android",
     "android-pixel": "emulator -avd Pixel_6_Pro_API_30",
-    "custom-ios":"npx pod-install && npx react-native run-ios --simulator=iPhone 13",
+    "custom-ios": "npx pod-install && npx react-native run-ios --simulator=iPhone 13",
     "ios": "npx pod-install && react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",

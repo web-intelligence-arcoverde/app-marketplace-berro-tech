@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {Container} from './style';
 
 import {BreedSteps, OrderFilterDropdown} from '../../';
@@ -9,7 +11,7 @@ import {OrderFilterDropdownProfile} from '../OrderFilterDropdownProfile/OrderFil
 export const FiltersProfileScreen = () => {
   const {name} = useRoute();
 
-  const isProfileScreen = name === `Perfil`;
+  const isProfileScreen = name === 'Perfil';
 
   return (
     <Container>

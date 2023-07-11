@@ -40,14 +40,6 @@ export const changerPasswordForgotPasswordSuccess = createAction(
   'auth/changer-password-forgot-password-success',
 );
 
-export const readInformationUserLoggedRequest = createAction(
-  'auth/read-information-user-logged-request',
-);
-
-export const readInformationUserLoggedSuccess = createAction<IUser>(
-  'auth/read-information-user-logged-success',
-);
-
 export const filterProductsByAnimalType = createAction<any>(
   'auth/filter-products-by-animal-type',
 );
@@ -78,4 +70,12 @@ export const changerStepRecoveryAccount = createAction<any>(
 
 export const addProductUserLogged = createAction<IProduct>(
   'user/add-product-user-logged',
+);
+
+export const readInformationUserLoggedRequest = createAction(
+  'auth/read-information-user-logged-request',
+);
+
+export const readInformationUserLoggedSuccess = createAction<IUser>(
+  'auth/read-information-user-logged-success',
 );

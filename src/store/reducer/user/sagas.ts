@@ -123,7 +123,6 @@ function* userSagas() {
   yield all([
     takeLatest('user/sign-in-request', signIn),
     takeLatest('user/read-seller-request', readSeller),
-
     takeLatest('user/read-state-request', readStates),
     takeLatest('user/read-city-by-state-request', readCities),
     takeLatest('user/update-user-address-request', updateUserAddress),
