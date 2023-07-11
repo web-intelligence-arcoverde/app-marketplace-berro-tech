@@ -8,12 +8,10 @@ import {
   Separator,
 } from '../../components';
 import {Container} from './style';
-import {RefreshControl, View} from 'react-native';
+import {RefreshControl} from 'react-native';
 
-import {Skeleton} from '@rneui/themed';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {readInformationUserLoggedRequest} from '../../store/reducer/auth/actions';
-import {LinearGradient} from 'react-native-svg';
 
 export const ProfileScreen = () => {
   const {loading} = useAppSelector(state => state.auth);

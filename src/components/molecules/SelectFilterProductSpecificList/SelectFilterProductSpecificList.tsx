@@ -22,7 +22,7 @@ export const SelectFilterProductSpecificList = () => {
 
   useEffect(() => {
     dispatch(topSearchProductRequest('rank'));
-  }, []);
+  }, [dispatch]);
 
   const searchByTag = (item: any) => {
     setIndexSelected(item.id);
@@ -37,7 +37,9 @@ export const SelectFilterProductSpecificList = () => {
             key={`${item.id}-${index}`}
             selected={indexSelect === item.id}
             onPress={() => searchByTag(item)}>
-            <Text typography="h4">{item.title}</Text>
+            <Text typography="h4" colorFamily="dark" colorVariant="_03">
+              {item.title}
+            </Text>
           </SelectFilterSpecific>
         );
       })}
