@@ -2,6 +2,7 @@ import {createReducer} from '@reduxjs/toolkit';
 import {initialState} from './initialState';
 
 import {
+  addProductUserLogged,
   changerIndexBottomSheetRecentSearch,
   changerStepEditProfile,
   readCityByStateSuccess,
@@ -70,5 +71,8 @@ export const userReducer = createReducer(initialState, builder => {
     })
     .addCase(signUpStep02, (state, action) => {
       state.userSignUp = {...state.userSignUp, ...action.payload};
+    })
+    .addCase(addProductUserLogged, (state, action) => {
+      state.user.products = [...state.user.products, action.payload];
     });
 });

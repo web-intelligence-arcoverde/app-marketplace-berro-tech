@@ -61,7 +61,6 @@ export const BottomSheetSelectAnimalBreed = ({defaultSize}: any) => {
         keyExtractor={(i, index) => `${index}-${i}-breed`}
         renderItem={renderItem}
       />
-      <Separator height={getStatusBarHeight()} />
     </BottomSheet>
   );
 };

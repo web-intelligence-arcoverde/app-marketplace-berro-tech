@@ -8,9 +8,21 @@ import {useNavigationHook} from '../../hooks';
 import {getStatusBarHeight, scale} from '../../utils';
 
 import {Container} from './style';
+import {useNavigation} from '@react-navigation/native';
 
 export const OnboardingScreen = () => {
   const {goToRouter} = useNavigationHook();
+
+  const navigation = useNavigation();
+
+  React.useEffect(
+    () =>
+      navigation.addListener('beforeRemove', e => {
+        // Prevent default behavior of leaving the screen
+        e.preventDefault();
+      }),
+    [navigation],
+  );
 
   return (
     <Container>

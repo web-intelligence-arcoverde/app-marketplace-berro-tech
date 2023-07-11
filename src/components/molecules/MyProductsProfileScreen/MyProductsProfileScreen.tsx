@@ -1,4 +1,4 @@
-import {ScrollView} from 'react-native';
+import React from 'react';
 
 import {EmptyContainerProduct, ProductListProfile} from '../../';
 import {useAppSelector} from '../../../hooks';

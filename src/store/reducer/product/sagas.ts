@@ -17,6 +17,7 @@ import {
 } from './actions';
 import {store} from '../..';
 import {readInformationUserLoggedRequest} from '../auth/actions';
+import {addProductUserLogged} from '../user/actions';
 
 const animals = ['ovino', 'caprino'];
 
@@ -123,21 +124,18 @@ function* registerProduct({payload}: any): any {
 
     formData.append('productInfo', JSON.stringify(product));
 
-    yield call(api.post, '/product', formData, {
+    const {data} = yield call(api.post, '/product', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     });
 
-    yield put(readProductRequest());
-    yield put(readInformationUserLoggedRequest());
-    yield put(readBusinessHighlightProductRequest());
+    yield put(createProductSuccess(data));
+    yield put(addProductUserLogged(data));
 
     yield put(router('Perfil'));
   } catch (e) {
     console.log(e);
-  } finally {
-    yield put(createProductSuccess());
   }
 }
 

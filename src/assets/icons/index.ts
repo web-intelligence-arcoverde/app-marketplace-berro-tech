@@ -68,6 +68,8 @@ import DeleteIcon from './delete-icon.svg';
 
 import AddIcon from './add-icon.svg';
 
+import Avatar from './avatar.svg';
+
 export const ICONS = {
   email: EmailIcon,
   gmail: GmailIcon,
@@ -112,4 +114,5 @@ export const ICONS = {
   'empty-documents': EmptyDocuments,
   'delete-icon': DeleteIcon,
   'add-icon': AddIcon,
+  'avatart-icon': Avatar,
 };

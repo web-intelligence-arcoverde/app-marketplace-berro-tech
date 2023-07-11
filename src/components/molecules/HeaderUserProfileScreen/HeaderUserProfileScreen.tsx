@@ -6,6 +6,7 @@ import {Container, ContainerImage} from './style';
 import {useAppDispatch, useNavigationHook} from '../../../hooks';
 import {changerStepEditProfile} from '../../../store/reducer/user/actions';
 import {signOutRequest} from '../../../store/reducer/auth/actions';
+import {ICONS} from '../../../assets';
 
 interface IHeaderUserProfileScreen {
   name?: string;
@@ -18,6 +19,10 @@ export const HeaderUserProfileScreen = ({
   email,
   photo,
 }: IHeaderUserProfileScreen) => {
+  const isExistPhoto = photo !== null;
+
+  const DefaultPhotoAvatar = ICONS['avatart-icon'];
+
   const formatedName = name.split(' ');
 
   const firstName = formatedName[0];
@@ -29,7 +34,12 @@ export const HeaderUserProfileScreen = ({
 
   return (
     <Container>
-      <ContainerImage source={{uri: photo}} />
+      {isExistPhoto ? (
+        <ContainerImage source={{uri: photo}} />
+      ) : (
+        <DefaultPhotoAvatar style={{width: 96, height: 96}} />
+      )}
+
       <Separator width={20} />
       <View>
         <Text typography="h3" colorFamily="gray" colorVariant="_02">

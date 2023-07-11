@@ -2,6 +2,7 @@ import {createReducer} from '@reduxjs/toolkit';
 
 import {initialState} from './initialState';
 import {
+  addProductUserLogged,
   changerPasswordForgotPasswordSuccess,
   changerStepRecoveryAccount,
   filterProductsByAnimalType,
@@ -82,5 +83,8 @@ export const authReducer = createReducer(initialState, builder => {
     })
     .addCase(changerStepRecoveryAccount, (state, action) => {
       state.stepRecoveryAccount = action.payload;
+    })
+    .addCase(addProductUserLogged, (state, action) => {
+      state.user.products = [...state.user.products, action.payload];
     });
 });

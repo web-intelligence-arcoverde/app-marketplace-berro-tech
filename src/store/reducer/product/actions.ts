@@ -137,11 +137,11 @@ export const createProductRequest = createAction<any>(
   'product/create-product-request',
 );
 
-export const createProductSuccess = createAction(
+export const createProductSuccess = createAction<IProduct>(
   'product/create-product-success',
 );
 
-export const readClassificationRequest = createAction(
+export const readClassificationRequest = createAction<any>(
   'product/read-classification-request',
 );
 

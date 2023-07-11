@@ -1,5 +1,6 @@
 import {createAction} from '@reduxjs/toolkit';
 import {IUser, ISignIn, ISignUpForm} from './types';
+import {IProduct} from '../product/types';
 
 export const signInRequest = createAction<ISignIn>('auth/sign-in-request');
 export const signInSuccess = createAction<string>('auth/sign-in-success');
@@ -73,4 +74,8 @@ export const updateAuthAddressSuccess = createAction<any>(
 
 export const changerStepRecoveryAccount = createAction<any>(
   'auth/changer-step-recovery-account',
+);
+
+export const addProductUserLogged = createAction<IProduct>(
+  'user/add-product-user-logged',
 );

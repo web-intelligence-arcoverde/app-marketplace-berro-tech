@@ -27,7 +27,7 @@ export const DescriptionUserProfileScreen = () => {
 
   useEffect(() => {
     dispatch(readInformationUserRequest());
-  }, []);
+  }, [dispatch]);
 
   return (
     <View style={{paddingHorizontal: scale(20)}}>

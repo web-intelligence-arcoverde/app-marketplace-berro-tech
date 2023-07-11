@@ -188,6 +188,11 @@ export const productReducer = createReducer(initialState, builder => {
       state.setAgeCategory = '';
       state.files = [];
       state.selectAnimal = '';
+
+      state.businessHighlightProduct = [
+        ...state.businessHighlightProduct,
+        action.payload,
+      ];
     });
 });
 

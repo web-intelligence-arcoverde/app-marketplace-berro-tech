@@ -7,6 +7,7 @@ import {
   IRecoveryAccountSendCode,
   ISignUp,
 } from './types';
+import {IProduct} from '../product/types';
 
 /*
 
@@ -111,4 +112,8 @@ export const updateUserBasicInformationSuccess = createAction<any>(
 
 export const userLoggedDeleteRequest = createAction<any>(
   'user/user-logged-delete-request',
+);
+
+export const addProductUserLogged = createAction<IProduct>(
+  'user/add-product-user-logged',
 );
