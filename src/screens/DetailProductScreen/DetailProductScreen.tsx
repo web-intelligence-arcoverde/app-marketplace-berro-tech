@@ -57,7 +57,7 @@ export const DetailProductScreen = ({route}: any) => {
   let whatsappMsg = 'BerroTech';
 
   const goToWhatsapp = async () => {
-    let ddi = '+55';
+    let ddi = '55';
     let formatedNumber = ddi + concatInfo.phone_number;
 
     await Linking.openURL(

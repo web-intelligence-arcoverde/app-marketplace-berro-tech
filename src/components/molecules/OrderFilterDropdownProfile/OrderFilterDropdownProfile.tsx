@@ -1,7 +1,7 @@
+import React from 'react';
 import {Dropdown} from '../..';
 import {useAppDispatch, useAppSelector} from '../../../hooks';
 import {filterProductsByAnimalType} from '../../../store/reducer/auth/actions';
-import {readFilterProduct} from '../../../store/reducer/product/actions';
 import {sortFunction, sortFunctionReverse} from '../../../utils/filters';
 
 const optionsOrder = [

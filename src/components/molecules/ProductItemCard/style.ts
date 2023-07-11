@@ -11,6 +11,8 @@ export const ContainerFoorterDescription = styled.View`
   flex-direction: row;
   height: 100px;
   align-items: center;
+  z-index: -2;
+  elevation: -2;
 `;
 
 export const ImageContainer = styled.Image`
@@ -19,4 +21,6 @@ export const ImageContainer = styled.Image`
   border-top-left-radius: ${scale(6)};
   border-top-right-radius: ${scale(6)};
   resize-mode: stretch;
+  z-index: -2;
+  elevation: -2;
 `;

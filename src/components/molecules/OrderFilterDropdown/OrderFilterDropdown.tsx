@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {Dropdown} from '../../';
 import {useAppDispatch, useAppSelector} from '../../../hooks';
 import {readFilterProduct} from '../../../store/reducer/product/actions';
@@ -9,9 +11,7 @@ const optionsOrder = [
 ];
 
 export const OrderFilterDropdown = () => {
-  const {produtcs, filterProdutcs, search} = useAppSelector(
-    state => state.product,
-  );
+  const {produtcs, filterProdutcs} = useAppSelector(state => state.product);
 
   let isFilterProductExist = filterProdutcs.length >= 1;
 

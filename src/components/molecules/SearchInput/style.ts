@@ -10,11 +10,12 @@ export const inputSearch = EStyleSheet.create({
     flexDirection: 'row',
     height: scale(52),
     borderRadius: scale(6),
+    alignItems: 'center',
   },
 
   input: {
     width: '84%',
-    height: '100%',
+    height: scale(52),
     marginLeft: scale(8),
     fontSize: scale(14),
     color: COLORS.gray._02,

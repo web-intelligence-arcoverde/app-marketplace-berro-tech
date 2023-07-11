@@ -16,10 +16,12 @@ import {readInformationUserLoggedRequest} from '../../store/reducer/auth/actions
 export const ProfileScreen = () => {
   const {loading} = useAppSelector(state => state.auth);
 
+  console.log(loading);
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    onRefresh();
+    dispatch(readInformationUserLoggedRequest());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

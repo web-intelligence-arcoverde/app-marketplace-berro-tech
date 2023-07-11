@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {ProductItemCard, FiltersProfileScreen} from '../../';
 
 import {View, ScrollView} from 'react-native';
