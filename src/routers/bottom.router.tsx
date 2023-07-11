@@ -9,8 +9,20 @@ import {BottomSheetExample} from '../components/molecules/BottomSheetExample/Bot
 
 import {ProfileScreen, HomeScreen, BusinessScreen} from '../screens/';
 import {getBottomSpaceHeight, scale} from '../utils';
+import {useNavigation} from '@react-navigation/native';
 
 export const DashboardBottomNavigation = () => {
+  const navigation = useNavigation();
+
+  React.useEffect(
+    () =>
+      navigation.addListener('beforeRemove', e => {
+        // Prevent default behavior of leaving the screen
+        e.preventDefault();
+      }),
+    [navigation],
+  );
+
   return (
     <>
       <Tab.Navigator
