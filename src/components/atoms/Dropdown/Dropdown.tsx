@@ -41,7 +41,9 @@ export const Dropdown = ({
                 setOption(item.value);
                 setVisible('none');
               }}>
-              <Text typography="h5">{item.text}</Text>
+              <Text typography="h5" colorFamily="dark" colorVariant="_04">
+                {item.text}
+              </Text>
             </ItemDropdown>
           );
         })}
