@@ -15,7 +15,7 @@ import {useNavigationHook} from '../../../hooks';
 
 import {Container, StyledContainer} from './style';
 
-import {Image} from 'react-native';
+import {Image, Platform} from 'react-native';
 import {IMAGES} from '../../../assets';
 
 import {BUSINESS_SCREEN, HOME_SCREEN, PROFILE_SCREEN} from '../../../common';
@@ -40,7 +40,7 @@ export const HeaderDashboard = () => {
 
   return (
     <Container>
-      <Separator height={getStatusBarHeight()} />
+      <Separator height={Platform.OS === 'ios' ? getStatusBarHeight() : 0} />
       <HeaderVariantBottomNavigate />
       {!isNotBottomNavigate && (
         <StyledContainer>
